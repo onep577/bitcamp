@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<h1>수영시합</h1>
+<button id="woman">여성부</button>
+<button id="man">남성부</button>
+<br><br>
+
+<table border="1" id="result">
+	<tr>
+		<th></th>
+		<th>name</th>
+		<th>time</th>
+	</tr>
+	<tr>
+		<td>우승</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>2위</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>3위</td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+
+<script type="text/javascript">
+/* file io */
+var woman = [
+	["", ""],
+	["또치", "01:06:45"],
+	["둘리", "01:16:11"],
+	["고길동", "01:22:32"]
+];
+var man = [
+	["", ""],
+	["희동이", "01:54:01"],
+	["공실이", "01:00:39"],
+	["마이콜", "01:51:42"]
+];
+
+$(function () {
+	//$("tr:even").css("background-color", "#00ff00");
+	//$("tr:eq(1) td:eq(0)").html("데이터");
+	//$("tr:eq(1) td:eq(1)").html("데이터1");
+	
+	$("woman")
+});
+
+</script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+
+</head>
+<body>
+
+<h2>Life on the water<br><br></h2>
+<b id="b1"><img src="./images/photo1.jpg"></b>
+<b id="b2"><img src="./images/photo2.jpg"></b>
+<b id="b3"><img src="./images/photo3.jpg"></b>
+<b id="b4"><img src="./images/photo4.jpg"></b>
+
+
+<script type="text/javascript">
+$(function () {
+	$("b").click( function () {
+		$(this).css("backgroud","blue");
+		$(this).css("border","solid 3px red");
+	});
+});
+</script>
+
+</body>
+</html>

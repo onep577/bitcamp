@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+
+</head>
+<body>
+
+<!-- JQuery도 java script처럼 태그명, id, class, name으로 접근 가능하다 -->
+<p>p tag</p>
+
+<p id="demo">p tag id demo</p>
+
+<p class="cls">p tag class cls</p>
+
+<p name="_name">p tag name name</p>
+
+<button>click</button>
+
+
+
+<script type="text/javascript">
+$(function () {
+	$("p").click(function () {
+		console.log( $(this).text() );
+		// p태그는 일반 태그이기 때문에 text, html로 값을 가져온다
+	});
+	
+	$("button").click(function () {
+		//$('p').hide(); // 지우는 게 아니라 감추는 거다
+		//$('*').hide(); // 버튼까지 다 감춘다
+		//$('p#demo').hide(); // p태그 안에 id가 demo인 경우만 감춘다
+		//$('p.cls').hide(); // p태그 안에 class가 cls인 경우만 감춘다
+		//$('p[name=_name]').hide(); // p태그 안에 name 이름이 _name인 경우만 감춘다
+	});
+});
+</script>
+<br><br>
+
+
+
+<ul id="list">
+	<li>Coffee
+		<ul>
+			<li>black</li>
+			<li>milk</li>
+		</ul>
+	</li>
+	<li>Tea</li>
+	<li>Milk</li>
+</ul>
+
+<button type="button" id="btn">선택</button>
+
+<script type="text/javascript">
+$(function () {
+	$("#btn").click(function () {
+		$("#list").hide();
+		
+		//$("ul li:first").hide(); // list 중 첫번째 list만 감춘다
+		//$("#list li:first").hide();
+		
+		//$("ul ul li:first-child").hide();	// black을 감춘다
+		$("ul ul li:nth-child(2)").hide();	// milk를 감춘다
+	});
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+

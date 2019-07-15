@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+E:\bitcamp\JQeury\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+4162049473.index
+1874042160.index
+1629127803.index
+414494118.index
+2176711708.index
+169414830.index
