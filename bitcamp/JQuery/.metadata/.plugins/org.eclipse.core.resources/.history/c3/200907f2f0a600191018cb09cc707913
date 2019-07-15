@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<h1>수영시합</h1>
+<button id="woman">여성부</button>
+<button id="man">남성부</button>
+<br><br>
+
+<table border="1" id="result">
+	<tr>
+		<th></th>
+		<th>name</th>
+		<th>time</th>
+	</tr>
+	<tr>
+		<td>우승</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>2위</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>3위</td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+
+<script type="text/javascript">
+/* file io */
+var woman = [
+	["", ""],
+	["김영희", "01:06:11"],
+	["이수빈", "01:16:45"],
+	["박진희", "01:22:32"]
+];
+
+var man = [
+	["", ""],
+	["홍길동", "01:09:21"],
+	["일지매", "01:12:34"],
+	["정수동", "01:36:11"]
+];
+
+$(function () {
+	//$("tr:even").css("background-color", "#00ff00");
+	// even 짝수만 odd 홀수만
+	
+	//$("tr:eq(1) td:eq(0)").html("데이터");
+	//$("tr:eq(1) td:eq(1)").html("데이터1");
+	// 하나 하나씩 값을 넣는 방식
+	
+	$("#woman").click(function () {
+		for(i = 0; i < 4; i++){
+			for(j = 0; j < 2; j++){
+				$("tr:eq(" + i + ") td:eq(" + j + ")" ).html(woman[i][j]);
+			}
+		}
+	});
+	
+	$("#man").click(function () {
+		for(i = 0; i < 4; i++){
+			for(j = 0; j < 2; j++){
+				$("tr:eq(" + i + ") td:eq(" + j + ")" ).html(man[i][j]);
+			}
+		}
+	});
+	
+	// td를 tr로 바꾸면 한 줄이 통으로 변한다	
+	$("td").mouseover(function () {
+		$(this).css({ "background-color" : "#ffff00", "color" : "#000" });
+	});
+	
+	$("td").mouseout(function () {
+		$(this).css({ "background-color" : "#666666", "color" : "#fff" });
+	});
+	
+});
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

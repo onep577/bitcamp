@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+
+</head>
+<body>
+
+<p>p tag</p>
+
+<div>
+	<p>div in p tag1</p>	
+	<p>div in p tag2</p>
+	<p>div in p tag3</p>
+	<b>div in b tag4</b>
+</div>
+
+<script type="text/javascript">
+/* 
+$(document).ready(function () {
+	
+});
+ */
+$(function () {
+	
+	$('p').click(function () {
+		// 모든 p 태그를 클릭했을 때 적용된다
+		alert("p tag click");
+	});
+	/**/
+	 
+	 
+	 $('div p').click(function () {
+		// div안에 있는 모든 p 태그를 클릭했을 때 적용된다
+		//alert("div p tag click");
+		//$('div p').hide();		// < - > show()
+		// 세 개 중 하나의 p태그를 클릭하면 세 개의 p 태그가 전부 사라진다
+		$(this).hide();
+		// 세 개 중 하나의 p태그를 클릭하면 클릭한 p태그만 사라진다
+		
+		// 지워진게 아니라 감춰진거다
+	 });
+	 /**/
+	 
+	 $('div b').click(function () {
+		 $('div p').show();
+		 // 감춰졌던 p 태그들이 보인다
+	 });
+
+	 $('p').on("click", function () {
+		$('p').css("background", "#00ff00");	// setter
+		// property명과 value
+		
+		var color = $(this).css("background");	// getter
+		// property명
+		alert(color);
+	 });
+});
+
+</script>
+<br><br>
+
+
+<!-- 
+<h3 class="cls" onmouseover="mousefunc()"
+	style="background-color: green">h3 tag class cls</h3>
+-->
+<h3 class="cls" style="background-color: green">h3 tag class cls</h3>
+
+<script type="text/javascript">
+function mousefunc(){
+	alert("h3 범위에 들어왔다");
+}
+
+$(document).ready(function () {
+	$(".cls").mouseover(function () {
+		//alert("JQuery h3 범위에 들어왔습니다");
+		$(".cls").css("background", "#ffff00");
+		// 배경색이 노란색으로 변한다
+		$(this).css("background", "#ff0000");
+		// 배경색이 빨간색으로 변한다
+	});
+	
+	$(".cls").mouseout(function () {
+		$(this).css("background", "green");
+		// 배경색이 초록색으로 변한다
+	});
+	
+	$('p').mouseover(function () {
+		$(this).css("background", "#aabbcc");
+	});
+	
+	$('p').mouseout(function () {
+		$(this).css("background", "#ffffff");
+	});
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+

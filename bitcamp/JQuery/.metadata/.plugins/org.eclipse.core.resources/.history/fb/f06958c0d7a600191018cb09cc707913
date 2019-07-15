@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+
+<style>
+.bg {
+	background-color: #00ff00;
+	padding: 10px 10px 50px 10px;
+}
+.bd {
+	border: 1px solid #666666;
+}
+</style>
+
+</head>
+<body>
+
+<h1>Life on the water<br></h1>
+<button type="button" id="Btn">프레임의 추가/삭제</button><br><br>
+
+<img src="./images/photo1.jpg">
+<img src="./images/photo2.jpg"><br>
+<img src="./images/photo3.jpg">
+<img src="./images/photo4.jpg">
+
+
+
+<script type="text/javascript">
+var count = 0;
+$(function () {
+	$("#Btn").click( function () {
+		if(count > 0){
+				$('img').removeClass();
+			
+			count = 0;
+			console.log("2"+count);
+		}
+		
+			$('img').addClass('bg bd');
+			count++;
+			console.log("3"+count);
+	});
+	
+	
+});
+</script>
+
+</body>
+</html>

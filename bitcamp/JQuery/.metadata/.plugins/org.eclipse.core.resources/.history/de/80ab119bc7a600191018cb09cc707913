@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+
+</head>
+<body>
+
+<h1>
+Photo Library
+</h1>
+<img src="./images/p01.jpg" class="pic">
+
+<h1>
+▼ New Photos
+</h1>
+<img src="./images/p02.jpg">
+<img src="./images/p03.jpg">
+<img src="./images/p04.jpg">
+<img src="./images/p05.jpg">
+
+<h1>
+▼ Old Photos
+</h1>
+<img src="./images/p06.jpg">
+<img src="./images/p07.jpg">
+<img src="./images/p08.jpg">
+<img src="./images/p09.jpg"><br>
+<img src="./images/p10.jpg">
+<img src="./images/p11.jpg">
+<img src="./images/p12.jpg">
+<img src="./images/p13.jpg">
+
+
+<script type="text/javascript">
+$(function () {
+	$('img').css("border", "solid 3px blue");
+	$('img').css("border", "solid 3px");
+	$('img').css("border-color", "#ff0000");
+});
+</script>
+
+</body>
+</html>
