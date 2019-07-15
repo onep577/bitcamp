@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+
+</head>
+<body>
+
+<!-- java script와 JQuery 둘 다 기억하자 -->
+Java Script
+<p id="ptag" onclick="func()">클릭</p>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+body{
+  background-color: #666666;
+  color: #FFFFFF;
+  margin :30px;
+}
+
+h1{
+  font: bold 2em sans-serif;
+}
+
+table{
+  border-collapse: collapse;
+  margin: 20px 0px;
+}
+
+th{
+  text-align:center;
+  background-color: #669966;
+  padding:5px 10px;
+  border: solid 1px #CCCCCC;
+}
+
+td{
+  text-align:left;
+  padding:5px 20px;
+  border: solid 1px #CCCCCC;
+}
+

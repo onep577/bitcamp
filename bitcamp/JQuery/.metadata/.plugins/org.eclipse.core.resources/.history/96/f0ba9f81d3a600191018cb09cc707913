@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+<h1>Life on the water<br></h1>
+<button type="button" id="btn">프레임의 추가/삭제</button><br><br>
+<img src="./images/photo1.jpg">
+<img src="./images/photo2.jpg"><br>
+<img src="./images/photo3.jpg">
+<img src="./images/photo4.jpg">
+
+
+
+<script type="text/javascript">
+$(function () {
+	$("#btn").click( function () {
+		alert("dd");
+		$('img').css("background", "#0000ff");
+	});
+});
+</script>
+
+</body>
+</html>
