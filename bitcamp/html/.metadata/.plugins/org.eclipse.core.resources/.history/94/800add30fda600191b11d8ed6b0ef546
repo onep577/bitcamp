@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<p>This is a p element</p>
+
+<p>This is also a p element.</p>
+
+<p>This is also a p element - Click the button to change the background color of all p elements in this document.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<script>
+function myFunction() {
+    var myNodelist = document.getElementsByTagName("p");
+    var i;
+    for (i = 0; i < myNodelist.length; i++) {
+        myNodelist[i].style.backgroundColor = "red";	/* <-- �� �ٲ� */
+    }
+}
+</script>
+
+</body>
+</html>

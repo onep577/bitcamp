@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style>
+div {
+    border: 1px solid black;
+    margin: 5px;
+}
+</style>
+
+</head>
+<body>
+
+<p>아래의 div 요소에 몇 개의 자식 노드가 있는지 알아 보려면 버튼을 클릭하십시오.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<!-- 
+<div id="myDIV"> 0					
+  <p> 1 </p> 2
+  <p> 3 </p> 4
+</div>
+ -->
+
+<div id="myDIV">					
+  <p>First p element (index 1)</p>
+  <p>Second p element (index 3)</p>
+</div>
+
+<p><strong>Note:</strong> 요소 내부의 공백은 텍스트로 간주되고 텍스트
+노드로 간주됩니다. 이 예에서 DIV의 인덱스 0, 2 및 4는 텍스트 노드입니다.</p>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+    var c = document.getElementById("myDIV").childNodes.length;
+    document.getElementById("demo").innerHTML = c;  		/* --> 5 */
+    document.getElementById("myDIV").childNodes[1].innerHTML = "Hello";
+    /* alert(document.getElementById("myDIV").childNodes[1].innerHTML); */
+}
+</script>
+
+
+</body>
+</html>

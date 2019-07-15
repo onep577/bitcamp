@@ -1,0 +1,2 @@
+127.0.0.1 - - [15/Jul/2019:21:33:57 +0900] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [15/Jul/2019:21:33:58 +0900] "GET /DocumentObjectModel01/06insertBefore.html HTTP/1.1" 200 695

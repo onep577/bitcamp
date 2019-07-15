@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<p>Hello World!</p>
+
+<p>How many paragraphs in this document?</p>
+
+<p>This example demonstrates the length property of a nodelist.</p>
+
+<p id="demo"></p>
+
+<button onclick="myFunction()">Click Me!</button> 
+
+<script>
+
+document.write(navigator.appName);
+
+function myFunction() {
+	var myNodelist = document.getElementsByTagName("p");
+	document.getElementById("demo").innerHTML = myNodelist.length;
+}
+</script>
+
+</body>
+</html>

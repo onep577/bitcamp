@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<p>Example list:</p>
+
+<ul><li id="item1">Coffee (first li)</li><li id="item2">Tea (second li)</li></ul>
+
+<p>버튼을 클릭하여 두 번째 목록 항목의 이전 형제에 대한 HTML 콘텐츠를 가져옵니다.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p><strong>Note:</strong> 요소 내부의 공백은 텍스트로 간주되고 텍스트 노드로 간주됩니다.</p>
+
+<p>두 개의 li 요소 사이에 공백을 추가하면 결과가 "undefined(정의되지 않음)"이됩니다.</p>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("item2").previousSibling.innerHTML; 
+    document.getElementById("demo").innerHTML = x;	/* <-- Coffee (first li) */
+}
+</script>
+
+
+</body>
+</html>

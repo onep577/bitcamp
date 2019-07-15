@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<p id="myP">단추를 클릭하여 이 요소의 노드 이름을 가져옵니다.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("myP").nodeName;
+    document.getElementById("demo").innerHTML = x;	/* <-- p */
+}
+</script>
+
+</body>
+</html>
