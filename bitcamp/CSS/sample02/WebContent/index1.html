@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+body{
+	color: blue;
+	text-align: center;
+}
+h1{
+	color: #ff0000;
+	text-decoration: overline;
+}
+p.ex{
+	color: rgb(0,255,0);
+	text-align: right;
+	text-decoration: line-through;
+}
+a{
+	text-decoration: none;
+	/* 링크를 알아보기 어려워져서 거의 안한다 */
+}
+p.uppercase{
+	text-transform: uppercase; /* 대문자로 변경 */
+}
+p.lowercase{
+	text-transform: lowercase; /* 소문자로 변경 */
+}
+p.capitalize{
+	text-transform: capitalize;	/* 첫글자만 대문자로 변경 */
+}
+p.serif{
+	font-family: "Times New Roman", Times, serif;
+	font-style: italic;
+	/* font-size: 24px; */
+	font-size: 1.5em;	/* pixels / 16 = em */
+	/* font-size: 150%; */ /* 1em과 %는 거의 비슷하다 */
+	color: #ff8800;
+}
+a:link{
+	color: #ff0000;
+}
+a:visited {
+	/* 방문했던 사이트 */
+	color: #00ff00;
+}
+a:hover{
+	/* 마우스 가져갔을 때 변한다 */
+	color: #ffffff;
+	background-color: #000000;
+}
+a:active {
+	/* 링크 클릭한 순간 */
+	color: #000000;
+	background-color: #ffffff;
+}
+</style>
+</head>
+<body>
+
+<h1>이동통신 업체</h1>
+
+<p>다음달부터 100만원 이하</p>
+
+<p class="ex">5세대 스마트폰(5G)</p>
+
+<h3 class="ex">국내 시장에 내놓기로 했다</h3>
+
+<a href="http://www.naver.com">Naver</a>
+
+<p class="uppercase">abcABC</p>
+<p class="lowercase">abcABC</p>
+<p class="capitalize">abcABC</p>
+
+<p class="serif">hello My World. I can do it</p>
+
+<a href="http://google.com">google 사이트 링크</a><br>
+<a href="http://zum.com">zum 사이트 링크</a><br>
+<a href="http://yahoo.com">yahoo 사이트 링크</a><br>
+
+</body>
+</html>
