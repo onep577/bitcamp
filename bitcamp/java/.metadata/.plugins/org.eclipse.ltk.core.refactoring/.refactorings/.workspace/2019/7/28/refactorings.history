@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Rename Java project &apos;Static&apos; to &apos;static&apos;&#x0D;&#x0A;- Original element: &apos;Static&apos;&#x0D;&#x0A;- Renamed element: &apos;Static&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename Java project &apos;Static&apos;" flags="7" id="org.eclipse.jdt.ui.rename.java.project" input="=Static" name="static" references="true" stamp="1562993356446" version="1.0"/>&#x0A;<refactoring comment="Delete resource &apos;exception&apos;" deleteContents="false" description="Delete resource &apos;exception&apos;" element1="/exception" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1562998331130"/>
-</session>
