@@ -1,6 +1,0 @@
-INDEX VERSION 1.131+E:\bitcamp\JQeury\.metadata\.plugins\org.eclipse.jdt.core
-1874042160.index
-4162049473.index
-414494118.index
-2176711708.index
-1629127803.index
