@@ -1,0 +1,62 @@
+-- scott 계정
+-- View문제
+-- 문제1) EMP 테이블에서 20번 부서의 세부 사항을 포함하는 EMP_20 VIEW를 생성 하여라
+CREATE OR REPLACE VIEW VW_EMP_20(
+    EMPNO,
+    ENAME,
+    JOB,
+    MGR,
+    HIREDATE,
+    SAL,
+    COMM,
+    DEPTNO
+)
+AS
+SELECT *
+FROM EMP
+WHERE DEPTNO = 20;
+
+-- 문제2) EMP 테이블에서 30번 부서만 EMPNO를 EMP_NO로 ENAME를 NAME로 SAL를 SALARY로 바꾸어 EMP_30 VIEW를 생성 하여라.
+CREATE OR REPLACE VIEW VW_EMP_30(
+    EMP_NO,
+    NAME,
+    SALARY
+)
+AS
+SELECT EMPNO, ENAME, SAL
+FROM EMP;
+-- 문제3) 부서별로 부서명,최소 급여,최대 급여,부서의 평균 급여를 포함하는 DEPT_SUM VIEW을 생성하여라.
+CREATE OR REPLACE VIEW VW_DEPT_SUM(
+    NAME,
+    MIN_SAL,
+    MAX_SAL,
+    AVG_SAL
+)
+AS
+SELECT D.DNAME, MIN(SAL), MAX(SAL), AVG(SAL)
+FROM DEPT D, EMP E
+WHERE D.DEPTNO(+) = E.DEPTNO
+GROUP BY D.DNAME;
+
+
+
+
+-- SEQUENCE문제
+--1. 초기값1부터 최대값999,999까지 1씩 증가하는 TEST_SEQ SEQUENCE를 생성하여라.
+CREATE SEQUENCE TEST_SEQ
+    INCREMENT BY 1
+    START WITH 1
+    MAXVALUE 999999
+    MINVALUE 1;
+
+-- 2. 1번에서 작성한 SRQUENCE의 현재 값을 조회하여라.
+SELECT TEST_SEQ.NEXTVAL
+FROM DUAL;
+
+SELECT TEST_SEQ.CURRVAL
+FROM DUAL;
+
+-- 3. CURRVAL과 NEXTVAL을 설명하여라.
+
+-- 4. 1번에서 생성한 SRQUENCE를 삭제하여라.
+DROP SEQUENCE TEST_SEQ;
