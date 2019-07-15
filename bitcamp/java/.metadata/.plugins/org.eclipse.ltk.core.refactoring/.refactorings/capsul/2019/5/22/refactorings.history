@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;capsul.capsul&apos; to &apos;mainClass&apos;&#x0D;&#x0A;- Original project: &apos;capsul&apos;&#x0D;&#x0A;- Original element: &apos;capsul.capsul&apos;&#x0D;&#x0A;- Renamed element: &apos;capsul.mainClass&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;capsul&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;capsul{capsul.java[capsul" matchStrategy="1" name="mainClass" qualified="false" references="true" similarDeclarations="false" stamp="1559027127360" textual="false" version="1.0"/>
+</session>
