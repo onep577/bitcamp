@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<p>Example list:</p>
+<ul id="myList"><li>Coffee</li><li>Tea</li></ul>
+
+<!-- <ul id="myList">
+	<li>Coffee</li>
+	<li>Tea</li>
+</ul> -->
+
+<p>버튼을 클릭하여 목록의 마지막 자식 노드의 HTML 콘텐츠를 가져옵니다.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p><strong>Note:</strong> 요소 내부의 공백은 텍스트로 간주되며 텍스트는 노드로 간주됩니다.</p>
+
+<p>닫는 UL 요소 앞에 공백을 추가하면 결과가 "undefined(정의되지 않음)"이됩니다.</p>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+    var list = document.getElementById("myList").lastChild.innerHTML;
+    document.getElementById("demo").innerHTML = list;
+}
+</script>
+
+</body>
+</html>

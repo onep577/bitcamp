@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<p id="demo"></p>
+
+<script type="text/javascript">
+var num = 12;
+var str = "hello";
+var fnum = 12.34;
+var swit = true;
+
+// switch, if, for, foreach
+
+// Object (포괄적으로 쓰진 않지만 기본형은 알아야한다)
+//var	lastname = "홍";
+// 여기에 lastname이 있으면 return 값으로 this를 안 써도 된다
+var person = {
+	// key값과 value값으로 알게된다
+	firstname : "길동", // 자동적으로 string이 들어간다
+	lastname : "홍",
+	// 여기에 lastname이 있으면 return 값으로 this를 써야 된다
+	age : 24, // 자동적으로 int가 들어간다
+	info : function(){
+		return this.firstname + " " + this.lastname + " " + this.age;
+	}
+}
+document.getElementById("demo").innerHTML = person.info();
+// function은 리턴값이 있으니깐 demo의 p 태그로 내보낼 수 있다
+</script>
+<br><br>
+
+
+
+
+
+<h3 id="h3tag"><b>여기는 h3 태그입니다</b></h3>
+<p id="ptag">여기는 p 태그입니다</p>
+<br>
+
+<input type="text" id="text" value="world">
+<br><br>
+
+<button type="button" onclick="_click()">클릭</button>
+<!-- 함수명칭으로 click()이라고 쓰면 안된다 왜? default 값이 있다 -->
+
+<script type="text/javascript">
+function _click(){
+	//alert("_click");
+	// innerHTML, value 로 접근해야한다
+	var h3str = document.getElementById("h3tag").innerHTML;
+	alert(h3str);
+	var pstr = document.getElementById("ptag").innerHTML;
+	alert(pstr);
+	// 일반 태그 즉, h, p 는 innerHTML로 가져온다
+	var text = document.getElementById("text").value;
+	alert(text);
+	// 이벤트를 가지는 button, text, select 등은 value로 가져온다
+}
+</script>
+<br><br>
+
+<select id="car">
+	<option value="볼보" selected="selected">볼보</option>
+	<option value="사브">사브</option>
+	<option value="BMW">BMW</option>
+</select>
+
+<button type="button" onclick="carChoice()">선택</button>
+
+<script type="text/javascript">
+function carChoice(){
+	var carName = document.getElementById("car").value;
+	alert(carName);
+}
+</script>
+
+
+</body>
+</html>

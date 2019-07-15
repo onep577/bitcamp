@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h2>변수의 연산</h2>
+<p>a=10, b=4에 대해서 계산 결과를 표시합니다.</p>
+
+<p id="operation">결과값</p>
+<button type="button" onclick="add()">덧셈</button>
+<button type="button" onclick="subtraction()">뺄셈</button>
+<button type="button" onclick="multiplication()">곱셈</button>
+<button type="button" onclick="division()">나눗셈</button>
+<button type="button" onclick="remainder()">나머지</button>
+<br><br><br><br>
+
+
+a : <input type="text" id="text1" size="5">
+b : <input type="text" id="text2" size="5">
+결과값 : <input type="text" id="text3" size="5">
+
+<script type="text/javascript">
+var a = 10, b = 4;
+function add(){
+	document.getElementById("operation").innerHTML = a + b;
+}
+function subtraction(){
+	document.getElementById("operation").innerHTML = a - b;
+}
+function multiplication(){
+	document.getElementById("operation").innerHTML = a * b;
+}
+function division(){
+	//document.getElementById("operation").innerHTML = a / b;
+	
+	var a1 = parseInt(document.getElementById("text1").value);
+	var b1 = parseInt(document.getElementById("text2").value);
+	document.getElementById("text3").value = a1 / b1;
+}
+function remainder(){
+	document.getElementById("operation").innerHTML = a % b;
+}
+</script>
+
+</body>
+</html>

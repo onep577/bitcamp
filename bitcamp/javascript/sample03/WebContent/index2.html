@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<p id="demo"></p>
+<button type="button" onclick="func()">click</button>
+
+<script type="text/javascript">
+function func(){
+	var number = 128;
+	
+	// 10진수 -> 2진수, 8진수, 16진수
+	
+	document.getElementById("demo").innerHTML =
+		"10진수 : " + number + "<br>" +
+		"2진수 : " + number.toString(2) + "<br>" +
+		"8진수 : " + number.toString(8) + "<br>" +
+		"16진수 : " + number.toString(16) + "<br>";
+		// 10진수 : 128
+		// 2진수 : 10000000
+		// 8진수 : 200
+		// 16진수 : 80
+	/**/
+	 
+	// 2진수, 8진수, 16진수 -> 10진수
+	/*
+	var bin = "11001010";
+	var oct ="34";
+	var hex = "ab";
+	document.getElementById("demo").innerHTML =
+		"2진수 : " + bin + "를 10진수로 : " + parseInt(bin, 2) + "<br>" +
+		"8진수 : " + oct + "를 10진수로 : " + parseInt(oct, 8) + "<br>" +
+		"16진수 : " + hex + "를 10진수로 : " + parseInt(hex, 16);
+	 */
+}
+</script>
+
+<!--
+사용자에게 입력 받아서
+10진수 -> 2진수
+16진수 -> 10진수
+-->
+
+</body>
+</html>
+

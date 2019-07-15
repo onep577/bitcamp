@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h2>다음 생일까지 남은 일수</h2>
+<p>다음 버튼을 클릭하여 생일을 입력하면 다음 생일까지 남은 일수를 볼 수 있습니다.</p>
+<button type="button" name="day" onclick="count()">생일을 입력</button>
+<br><br>
+<b id="b1"></b>까지 남은 일수는 <b id="b2"> ? </b>일입니다.
+
+<!-- 강사님 : prompt를 요즘도 많이 사용한다고 말하기는 좀 그렇다 -->
+<script type="text/javascript">
+function count(){
+	// 입력
+	var birthMonth = prompt('생일의 월 입력');
+	var birthDay = prompt('생일의 일 입력');
+
+	// 현재 날짜를 취득
+	var nowday = new Date();
+	
+	// 자신의 생일을 설정
+	var birth = new Date();
+	birth.setMonth(birthMonth - 1);
+	birth.setDate(birthDay);
+	
+	// 원하는 날짜 - 지금 날짜
+	// 남은 일수가 밀리세컨 단위로 나온다 (24 * 60 * 60  * 1000 = 86400000 즉, 1일 남았으면 86400000이 나온다)
+	var msecond = birth.getTime() - nowday.getTime();
+	//alert("msecond : " + msecond);	
+	// 생일 전이면 -, 생일이면 0, 생일이 지났으면 + 이다
+
+	if(msecond <= 0){	// 생일이 자난 경우
+		// 올해를 년도를 받고 +1해서 다음 년도를 넣는다
+		var birthYear = birth.getFullYear();
+		birth.setFullYear(birthYear + 1);
+		// alert(birth.getFullYear());
+		
+		// 다음년도 생일날짜 - 오늘날짜
+		msecond = birth.getTime() - nowday.getTime();
+	}
+	
+	// year, month, date, hour, minute, second, msecond
+	// 					   24	  60      60  	 1000
+	// 밀리세컨드 단위로 나오니까 86400000으로 나눠줘야한다
+	var d_day = msecond / (24 * 60 * 60 * 1000);
+	// alert(days);
+	
+	// 예) 12월 26일
+	// 예) 169
+	document.getElementById("b1").innerHTML = "<b>" + birthMonth + "월" + birthDay + "일" + "</b>";
+	document.getElementById("b2").innerHTML = d_day;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- onblur : 포커스가 이동했을 떄 실행 -->
+나이 : <input type="text" onblur="isRegNum()" size="10" maxlength="3">세<br>
+
+<script type="text/javascript">
+function isRegNum() {
+	alert("onblur실행");
+}
+</script>
+<br><br>
+
+
+<!-- onchange : 입력된 값이 바뀌고 포커스가 다른 곳으로 설정한 경우 실행 -->
+우편번호 입력란
+T : <input type="text" size="5" maxlength="3" onchange="isPostNum(this)"> - 
+<!-- this하면 T : <> 즉, Object 자체가 넘어간다 -->
+
+<input type="text" size="5" maxlength="3" onchange="isPostNum(this)">
+<br>
+
+<script type="text/javascript">
+function isPostNum( obj ){
+	// object가 넘어오니 obj 란 변수로 설정
+	alert("onchange 실행됨");
+	// obj는 텍스트필드이다 즉, value로 접근해야한다
+	var str = obj.value;
+	alert(str);
+	
+	// 숫자가 아닌 문자열이 포함되어 있는 경우
+	if(str.match(/[^0-9]/g)){
+		// true 일때 실행. 사실 이것과 onchange는 상관이 없다...
+		alert("숫자가 아닌 문자가 포함되어 있습니다");
+	}
+}
+</script>
+
+<br><br>
+
+<!-- onkeydown -->
+<input type="text" name="title">
+<!--
+onkeydown 은 아스키코드값을 정확히 가져오지 못한다 대소문자 구분 못함
+onkeypress 는 아스키코드값을 정확히 가져온다 대소문자 구분할 수 있다. 하지만 특수한 경우만 쓴다
+-->
+<script type="text/javascript">
+// s 붙었다는 것은 배열!
+/* document.getElementsByName("title")[0].onkeydown = function(event){
+	console.log("keydown = keycode : " + event.keyCode);
+} */
+document.getElementsByName("title")[0].onkeypress = function(event) {
+	console.log("onkeypress = keycode:" + event.keyCode);
+}
+</script>
+
+<br><br>
+
+
+<!-- onMouseDown, onMouseUp, onMouseOver, onMouseOut 많이 사용하는 편 -->
+<input type="image" src="./images/san0.gif"
+	onmousedown="mouseDown(this)" onmouseup="mouseUp(this)"
+	onmouseover="mouseOver(this)" onmouseout="mouseOut(this)">
+	
+<a href="#" onmouseover="document.box.src='./images/surprise.gif'"
+	onmouseout="document.box.src='./images/box.gif'">
+	<img alt="" name="box" src="./images/box.gif" border="0">
+</a>
+
+<script type="text/javascript">
+function mouseDown(obj){
+	obj.src = "./images/san1.gif";
+	// 마우스로 이미지를 클릭하면 노란 자동차
+}
+function mouseUp(obj){
+	obj.src = "./images/san0.gif";
+	// 클릭한 이미지에서 마우스를 뺀 순간 빨간 자동차
+}
+function mouseOver(obj){
+	obj.src = "./images/san2.gif";
+	// 마우스를 이미지로 가져가면 파란 자동차
+}
+function mouseOut(obj){
+	obj.src = "./images/san0.gif";
+	// 마우스를 이미지 밖으로 가져가면 빨간 자동차
+}
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form name="f1">
+	<input type="image" value="1" src="./images/m_nature01.jpg"
+		onmouseover="mouseOver(this)" onmouseout="mouseOut(this)">
+	<input type="image" value="2" src="./images/m_nature02.jpg"
+		onmouseover="mouseOver(this)" onmouseout="mouseOut(this)">
+	<input type="image" value="3" src="./images/m_nature03.jpg"
+		onmouseover="mouseOver(this)" onmouseout="mouseOut(this)">
+	<input type="image" value="4" src="./images/m_nature04.jpg"
+		onmouseover="mouseOver(this)" onmouseout="mouseOut(this)">
+	<input type="image" value="5" src="./images/m_nature05.jpg"
+		onmouseover="mouseOver(this)" onmouseout="mouseOut(this)">
+	<input type="image" value="6" src="./images/m_nature06.jpg"
+		onmouseover="mouseOver(this)" onmouseout="mouseOut(this)">
+</form>
+
+<script type="text/javascript">
+function mouseOver( obj ){
+	if(obj.value == 1){
+		obj.src = "./images/nature01.jpg";
+	}else if(obj.value == 2){
+		obj.src = "./images/nature02.jpg";
+	}else if(obj.value == 3){
+		obj.src = "./images/nature03.jpg";
+	}else if(obj.value == 4){
+		obj.src = "./images/nature04.jpg";
+	}else if(obj.value == 5){
+		obj.src = "./images/nature05.jpg";
+	}else if(obj.value == 6){
+		obj.src = "./images/nature06.jpg";
+	}	
+}
+function mouseOut( obj ){
+	if(obj.value == 1){
+		obj.src = "./images/m_nature01.jpg";
+	}else if(obj.value == 2){
+		obj.src = "./images/m_nature02.jpg";
+	}else if(obj.value == 3){
+		obj.src = "./images/m_nature03.jpg";
+	}else if(obj.value == 4){
+		obj.src = "./images/m_nature04.jpg";
+	}else if(obj.value == 5){
+		obj.src = "./images/m_nature05.jpg";
+	}else if(obj.value == 6){
+		obj.src = "./images/m_nature06.jpg";
+	}	
+}
+</script>
+<br><br>
+
+
+
+
+
+
+<h1>풍경 사진</h1>
+이미지 위로 마우스를 이동하면, 그 이미지가 컬러로 표시됩니다.
+<br><br>
+
+<table style="width: 100%">
+<tr>
+	<td>
+		<img alt="" src="images/m_nature01.jpg"
+			onmouseover="this.src='images/nature01.jpg'"
+			onmouseout="this.src='images/m_nature01.jpg'">
+	</td>
+	<td>
+		<img alt="" src="images/m_nature02.jpg"
+			onmouseover="this.src='images/nature02.jpg'"
+			onmouseout="this.src='images/m_nature02.jpg'">
+	</td>
+	<td>
+		<img alt="" src="images/m_nature03.jpg"
+			onmouseover="this.src='images/nature03.jpg'"
+			onmouseout="this.src='images/m_nature03.jpg'">
+	</td>
+</tr>
+<tr>
+	<td>
+		<img alt="" src="images/m_nature04.jpg"
+			onmouseover="this.src='images/nature04.jpg'"
+			onmouseout="this.src='images/m_nature04.jpg'">
+	</td>
+	<td>
+		<img alt="" src="images/m_nature05.jpg"
+			onmouseover="this.src='images/nature05.jpg'"
+			onmouseout="this.src='images/m_nature05.jpg'">
+	</td>
+	<td>
+		<img alt="" src="images/m_nature06.jpg"
+			onmouseover="this.src='images/nature06.jpg'"
+			onmouseout="this.src='images/m_nature06.jpg'">
+	</td>
+</tr>
+
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

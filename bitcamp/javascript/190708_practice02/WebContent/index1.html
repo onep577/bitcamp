@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+function _answer(){
+	document.getElementById("mountain").innerHTML = "한라산";
+	//documetn.getElementsByTagName(tagName)
+/* 	var _answer = document.getElementById('_answer').value;
+	if(_answer == "한라산"){
+		alert("정답!");
+	}else{
+		alert('땡!');
+	} */
+	// "", '' 상관없다?
+	
+}
+</script>
+
+</head>
+<body>
+
+<p id="mountain">문제
+<br>
+한국에서 제일 높은 산은?
+
+<button onclick="_answer()">해답</button>
+<!--
+답 : <input type="text" id="_answer">
+<button onclick="answer()">해답</button>
+-->
+</p>
+<br><br>
+
+<script type="text/javascript">
+/* function _answer(){
+	document.getElementById("mountain").value = "한라산";
+} */
+</script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<p id="pid">p id pid</p>
+<br><br>
+
+<p class="pclass">p class pclass</p>
+<br><br>
+
+<p name="pname">p name pname</p>
+<br><br>
+
+<input type="text" id="text">
+<br><br>
+
+<button type="button" onclick="func()">버튼</button>
+
+<script type="text/javascript">
+function func(){
+	/*
+	// id로 접근
+	var text = document.getElementById("pid").innerHTML;
+	document.getElementById("text").value = text;
+	/**/
+	
+	
+	// class로 접근
+	// Elements 는 다수가 있을 수 있다는 뜻 그래서 [0]을 붙인다
+	// 만약 두번째 class라면 [1]을 붙인다
+	/*
+	var text = document.getElementsByClassName("pclass")[0].innerHTML;
+	document.getElementById("text").value = text;
+	/**/
+	
+	
+	// name으로 접근
+	// Elements 는 다수가 있을 수 있다는 뜻 그래서 [0]을 붙인다
+	// 만약 두번째 name이라면 [1]을 붙인다
+	/*
+	var text = document.getElementsByName("pname")[0].innerHTML;
+	document.getElementById("text").value = text;
+	/**/
+	
+	
+	// 한 페이지에서 id는 반드시 하나이다
+	// class와 name은 복수이다
+}
+</script>
+
+</body>
+</html>

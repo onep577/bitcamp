@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h2>(문제)</h2>
+<p>사나이들의 영화인 탑건은 군인 영화입니다. 그러면 육군, 해군, 공군 중 어느 군의 영화일까요?</p>
+
+<button type="button" value="1" id="btn" onclick="answer()">답을 보다</button>
+<br><br>
+<p id="p1">※ 버튼을 한 번 클릭하면 힌트가 표시됩니다.</p>
+<p id="p2">※ 버튼을 두 번 클릭하면 답이 표시됩니다.</p>
+
+<!-- <script type="text/javascript">
+function answer(){	
+	if(document.getElementById("btn").value == 1){
+		document.getElementById("p1").innerHTML = "힌트";
+		document.getElementById("btn").value = 2;
+	}else if(document.getElementById("btn").value == 2){
+		document.getElementById("p2").innerHTML = "정답";
+	}
+}
+</script> -->
+
+<script type="text/javascript">
+var i = 0;
+function answer() {
+	if(i == 0){
+		alert("[힌트]바다에서 싸우는 군인입니다");
+	}else{
+		alert("[정답]해군입니다");
+	}
+	i++;
+}
+
+
+</script>
+
+</body>
+</html>

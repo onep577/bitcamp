@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+Variable(변수)
+
+<p id="demo">p tag</p>
+<script type="text/javascript">
+
+// document.getElementBuId("") -> JQuery(ver)
+// JQuery는 Java Script의 간소화이다
+
+/*
+var -- int, double, String, Object, char
+ */
+ 
+var pi = 3.141592;
+var name = "홍길동";
+var number = 123;
+var updown = true;
+
+var person = "일지매", num = 234 + 5;
+
+alert("person : " + person + ", num : " + num);
+
+num = "정수동";
+alert("person : " + person + ", num : " + num);
+
+var nn = "5" + 3 + 1;
+alert(nn);
+
+var nn = 3 + 1 + "5";
+alert(nn);
+
+
+
+
+// 배열
+var cars = [ "Saab", "Volvo", "BMW" ];
+alert(cars[1]);
+
+var cars = new Array(3);
+cars[0] = "사브";
+cars[1] = "볼보";
+cars[2] = "BMW";
+alert(cars[1]);
+
+for(i = 0; i < cars.length; i++){
+	console.log(cars[i]);
+}
+
+// foreach
+for(v in cars){
+	console.log(v + " " + cars[v]);
+}
+
+
+
+// Object == class
+var obj = {
+	firstname : "길동",
+	lastname : "홍",
+	age : 24,
+	func:function(){
+		//alert("obj func() 호출");
+	}
+};
+// HashMap == key:value -> Json(Web)
+console.log(obj.firstname + " " + obj.lastname + " " + obj.age);
+obj.func();
+
+
+
+
+
+var y = 123e3;		// 123 * 10 * 10 * 10
+console.log(y);
+
+var z = 123e-3;		// 123 * 1/10 * 1/10 * 1/10
+console.log(z);
+
+
+
+
+
+// typeof로 자료형을 알 수 있다
+document.getElementById("demo").innerHTML =
+	"홍길동 : " + typeof "홍길동" + "<br>" +
+	"352 : " + typeof 352 + "<br>" +
+	"3.14 : " + typeof 3.14 + "<br>" +
+	"true : " + typeof true + "<br>" +
+	"array : " + typeof [1, 2, 3] + "<br>" +
+	"Object : " + typeof {num:1, name:"abs"};
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

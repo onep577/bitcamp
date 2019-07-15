@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form name="frm">
+<h2>미술관 및 박물관의 링크</h2>
+<!-- 현재창에서 "_self", 다른창에서 "_blank" -->
+<!-- <select name="links" id="_links" onchange="window.open(value, '_blank')"> -->
+<!-- 아래 select 대신 위의 select를 써도 된다 -->
+<select name="links" id="_links" onchange="func()">
+	<option>대상을 선택해주세요</option>
+	<option>-----미술관-----</option>
+	<option value="http://sema.seoul.go.kr/">서울시립미술관</option>
+	<option value="http://www.mmca.go.kr/">국립현대미술관</option>
+	<option value="http://www.sac.or.kr/">예술의전당</option>
+	<option>-----박물관-----</option>
+	<option value="http://www.museum.go.kr/">국립중앙박물관</option>
+	<option value="http://www.museum.seoul.kr/">서울역사박물관</option>
+	<option value="http://www.nfm.go.kr/">국립민속박물관</option>
+</select>
+</form>
+
+<!-- 화면을 확 바꿔버리는 것보다 iframe이나 화면을 나눠놓고 바꿔주는 것도 좋다 -->
+<!-- 강사님 왈 ChildNodes, nodeList를 기억했으면 좋겠다 왜? 급할때 쓸 수 있으니까 -->
+
+<script type="text/javascript">
+function func(){
+	var selectIndex = document.frm.links.selectedIndex;	
+	var url = document.frm.links.options[selectIndex].value;
+	
+	// 0은 대상을 선택해주세요, 1은 미술관, 5는 박물관이라서 제외
+	if(selectIndex != 0 && selectIndex != 1 && selectIndex != 5){
+		// location.href = url;
+		window.open(url);
+	}
+}
+</script>
+
+
+</body>
+</html>

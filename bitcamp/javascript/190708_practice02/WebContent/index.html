@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- 사진 클릭했을 때 타히티사진입니다 가 나온다 -->
+<img alt="이미지 없음" src="./images/tahiti01.jpg" onclick="alert('타히티사진입니다')">
+<br><br>
+
+
+<!-- 사진 클릭했을 때 텍스트에 적은 문자열과 타히티사진입니다 가 나온다 -->
+<input type="text" id="_id" size="10px">
+<br><br>
+<img alt="이미지 없음" src="./images/tahiti01.jpg"
+	onclick="func()">
+
+<script type="text/javascript">
+function func() {
+	var id = document.getElementById('_id').value;
+	window.alert(id + ' 타히티사진입니다');	
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h3>(문제)</h3>
+<p>영어 속담으로 "1일 1개씩 먹으면 의사 필요없다"라고 하는 과일은 무엇일까요?</p>
+<br>
+<form name="frm">
+	<input type="checkbox" id="check">영어 (소문자)로 답한다
+	<br><br>
+	답 : <input type="text" id="textField">
+	<button type="button" id="button" onclick="answer()" value="dd">답을 체크</button>
+	<p id="p1">11</p>
+	<h3 id="h1">22</h3>
+	<input type="image" value="99">
+	<input type="button" id="textField2" value="456">
+</form>
+
+<script type="text/javascript">
+function answer(){
+ 	var answer = document.getElementById("textField").value;
+	var checkB = document.getElementById("check");
+	// [object HTMLInputElement] checked를 안하면 object로 넘어온다. if문에서 checked로 체크되어있는 지 확인한다
+	//alert(checkB);
+	
+	if(answer == ""){
+		alert('답을 적어주세요');
+		return;
+	}
+	
+	if(checkB.checked == true){
+		if(answer == "apple"){
+			alert(answer + ' : 정답!');
+		}else{
+			alert(answer + ' : 땡!');
+		}
+	}else{
+		if(answer == "사과" || answer == "apple" || answer == "APPLE" || answer == "Apple"){
+			alert(answer + ' : 정답!');
+		}else{
+			alert(answer + ' : 땡!');
+		}
+	} /**/
+	
+	/*
+	document.폼 네임.요소 아이디 잘된다
+ 	var checkB = document.frm.check.checked;
+	var answer = document.frm.textField.value;
+	alert("--"+checkB); /**/
+	
+	// 자바 스크립트의 목적 : 뷰에 접근하는 것
+	var checkB = document.forms[0].elements[0].checked;
+	// checkbox // forms 라는 것은 다수라는 것 즉, forms[0]는 첫번째 폼이다
+	var answer = document.forms[0].elements[1].value;
+	// text // elements 라는 것은 다수라는 것 즉, elements[0]은 checkbox이고 elements[1]은 text이다
+	
+	var answer2 = document.forms[0].elements[2].value;
+	// button // button 태그도 3번째 element이다
+	
+	//var answer3 = document.forms[0].elements[3].innerHTML;
+	var answer3 = document.forms[0].elements[3].value;
+	// p태그와 h태그와 input type="image"는 4번째 element가 아니다. input type="button"이 4번째 element이다
+	//alert(answer3);
+	
+	
+	
+
+	// forms 라는 것은 다수라는 것 즉, forms[0]는 첫번째 폼이다
+	// elements 라는 것은 다수라는 것 즉, elements[0]은 checkbox이고 elements[1]은 text이다
+	// button 태그도 3번째 element이다
+	// p태그와 h태그와 input type="image"는 4번째 element가 아니다. input type="button"이 4번째 element이다
+}
+</script>
+
+</body>
+</html>

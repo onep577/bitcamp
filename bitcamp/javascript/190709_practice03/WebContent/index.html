@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form name="frm">
+<!-- form안에 name을 적었을 때는 java script에서 접근하기 위한 목적인 경우가 많다 -->
+<div align="center">
+<h3>라면 타이머</h3>
+
+<select name="myMenu" id="selid">
+	<option value="30" selected="selected">원하는 시간을 선택해 주세요</option>
+	<option value="30">30초</option>
+	<option value="60">1분</option>
+	<option value="90">1분30초</option>
+	<option value="120">2분</option>
+	<option value="150">2분30초</option>
+	<option value="180">3분</option>
+</select>
+<button type="button"onclick="play()">GO!</button>
+
+<p>완료까지 <span id="result">0</span>초 남았습니다</p>
+<!-- span은 그냥 뿌려주는 태그 -->
+
+<input type="button" value="닫기" onclick="window.close()">
+<!-- 닫기버튼 누르면 닫아진다 -->
+</div>
+</form>
+
+<!-- <input type="text" name="id" id="_id"> -->
+<!-- name은 짐싸기 id는 빈칸일 때 못가게 한다 -->
+<!-- name, id 가 둘 다 이름이 "id"여도 에러 없다 하지만 이걸 더 추천 -->
+
+<script type="text/javascript">
+var count = 0;
+var time = 0;
+var choice = 0;
+
+function play(){
+	// 초기화
+	clearInterval(time);
+	
+	// select 태그의 id로 접근하여 value 값을 가져온다
+	// choice = document.getElementById("selid").value;
+	// alert(choice); // 30초는 30, 1분은 60이다
+	
+	// select 태그의 name으로 접근하여 선택한 인덱스를 가져온다 인덱스번호는 0부터 시작한다
+	// choice = document.getElementById("selid").selectedIndex;
+	// alert(choice); // 30초는 1, 1분은 2이다
+	
+	// form name으로 접근하여 또 select name으로 접근하여 인덱스번호를 가져온다
+	choice = document.frm.myMenu.selectedIndex;
+	// alert(choice); // 30초는 1, 1분은 2이다
+	
+	// form name으로 접근하여 또 select name으로 접근하여 인덱스번호에 따라 value값을 가져온다
+	count = parseInt(document.frm.myMenu.options[choice].value);
+	// alert(count); // 30초는 30, 1분은 60이다
+
+	// myTimer() 함수를 1초마다 한번씩 실행한다
+	time = setInterval("myTimer()", 1000);
+	// time은 타이머의 객체이다
+	// alert(time);
+}
+
+function myTimer(){
+	count = count - 1;
+	document.getElementById("result").innerHTML = count;
+
+	if(count == 0){
+		clearInterval(time);
+		alert("완료되었습니다");
+	}
+}
+
+document.oncontextmenu = function(){
+	alert("마우스 우클릭 사용금지");
+	return false;
+};
+
+</script>
+
+</body>
+</html>

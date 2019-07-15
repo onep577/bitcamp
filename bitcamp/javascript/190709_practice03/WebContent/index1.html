@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form name="f1">
+<h3>배경색의 변경</h3>
+<p>※다음 버튼을 클릭하면 홈페이지의 배경색을 변경할 수 있습니다.</p>
+<button type="button" onclick="document.bgColor='red'">빨강</button>
+<button type="button" onclick="document.bgColor='#00ff00'">녹색</button>
+<button type="button" onclick="color('blue')">청색</button>
+<button type="button" onclick="color('orange')">주황색</button>
+<button type="button" onclick="color('black')">검정색</button>
+<button type="button" onclick="document.bgColor='#ffffff'">흰색</button>
+</form>
+
+<script type="text/javascript">
+var choice;
+function color(color){
+	// form의 배경색을 바꿔준다
+	//document.getElementsByName("f1")[0].style.backgroundColor = color;
+	
+	// 페이지의 배경색을 바꿔준다
+	document.body.style.background=color;
+	//document.bgColor=color;
+	
+	
+	// 버튼 태그에서는 bgColor를 사용하고 함수로 와서는 background를 사용하면 충돌!
+	// 결과 : bgColor인 빨강, 녹색, 흰색이 잘 나오다가 background인 청색, 주황색, 검정색을 한번이라도 누른 후
+	// 빨강을 누르면 배경이 빨강으로 변하지 않는다 새로고침하면 다시 빨강, 녹색, 흰색이 잘 나온다
+}
+</script>
+
+
+</body>
+</html>

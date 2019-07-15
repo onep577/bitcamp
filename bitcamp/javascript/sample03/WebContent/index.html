@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- String, Number -->
+<p id="demo">여기로</p>
+
+<p id="p1">반가운 장맛비 동서 차이커.. 강원 영동 200mm vs 수도권 60mm 장맛비</p>
+
+<script type="text/javascript">
+var str = document.getElementById("p1").innerHTML;
+
+//str = str.indexOf("장맛비"); // 4 - 앞에서부터 장맛비를 찾고 그 장맛비의'장'의 index가 4이다
+//str = str.lastIndexOf("장맛비"); // 41 - 뒤에서부터 장맛비를 찾고 그 장맛비의 '장'의 indeex가 41이다
+//str = str.search("장맛비"); // 4 - indexOf와 같다
+//str = str.search("강원"); // 17 - indexOf와 같다
+//str = str.substring(4, 8); // 장맛비  - 4번째부터 7번째까지 가져와라
+//str = str.slice(0, 2); // 반가 - 0부터 2전까지 가져와라
+//str = str.charAt(0); // 반 - 0번째 하나만 가져와라
+
+
+str = "aa,bb,cc,dd";
+var arr = str.split(",");
+str = arr[1]; // bb
+//str.trim(); // 공백 없애기도 있다
+
+
+document.getElementById("demo").innerHTML = str;
+
+</script>
+
+</body>
+</html>

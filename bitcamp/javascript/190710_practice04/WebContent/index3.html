@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+th {
+	background-color: green;
+	color:white;
+	padding: 10px;
+}
+</style>
+</head>
+<body>
+
+<h2>포털 사이트</h2>
+<p>"열기" 버튼을 클릭하면 해당 홈페이지를 새 창에서 볼 수 있습니다.</p>
+
+<table border="1">
+	<tr>
+		<th>네이버</th>
+		<td>http://www.naver.com/</td>
+		<td>
+			<button value="http://www.naver.com/" onclick="goPage(this)">열기</button>
+		</td>
+	</tr>
+	<tr>
+		<th>다음</th>
+		<td>http://www.daum.net/</td>
+		<td>
+			<button value="http://www.daum.net/" onclick="goPage(this)">열기</button>
+		</td>
+	</tr>
+	<tr>
+		<th>줌</th>
+		<td>http://zum.com/</td>
+		<td>
+			<button value="http://zum.com/" onclick="goPage(this)">열기</button>
+		</td>
+	</tr>
+</table>
+<!-- 현재창에서 "_self", 다른창에서 "_blank" -->
+<script type="text/javascript">
+function goPage( obj ){
+	// location.href 는 엄청 많이 사용한다
+	//location.href = obj.value;
+	window.open(obj.value);
+}
+</script>
+
+</body>
+</html>

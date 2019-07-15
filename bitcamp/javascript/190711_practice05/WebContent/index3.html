@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1>영화들</h1>
+
+<table>
+<tr>
+	<td>
+		<img alt="" src="http://img.cgv.co.kr/Movie/Thumbnail/Poster/000081/81619/81619_185.jpg"
+			name="photo" border="3">
+	</td>
+	<td valign="top" style="padding-left: 10px">
+		<form name="frm">
+		<select name="picture" onchange="photochange(value)">
+		<!-- <select name="picture" onchange="photochange()"> -->
+			<option>영화 선택</option>
+			<option value="http://img.cgv.co.kr/Movie/Thumbnail/Poster/000081/81619/81619_185.jpg">스파이더맨</option>
+			<option value="http://img.cgv.co.kr/Movie/Thumbnail/Poster/000081/81478/81478_185.jpg">알라딘</option>
+			<option value="http://img.cgv.co.kr/Movie/Thumbnail/Poster/000081/81907/81907_185.jpg">토이스토리</option>
+			<option></option>
+		</select>
+		</form>
+	</td>
+</tr>
+</table>
+
+<script type="text/javascript">
+function photochange( val ){
+/* function photochange(){ */
+	var indexNum = document.frm.picture.selectedIndex;
+	//alert("indexNum : " + indexNum);
+	
+	if(indexNum != 0){
+		// src를 변경해 주는 방법도 있다 해보자
+		
+		
+		
+		document.photo.src = val;
+		
+		// 이건 다른 방법
+		//document.photo.src = document.frm.picture.options[indexNum].value;
+	}
+}
+</script>
+
+</body>
+</html>

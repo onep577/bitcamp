@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<p>Example list:</p>
+
+<ul>
+  <li id="myLI">Coffee</li>
+  <li>Tea</li>
+</ul>
+
+<p>버튼을 클릭하여 목록에서 li 요소의 부모 노드의 노드 이름을 가져옵니다.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("myLI").parentNode.nodeName;
+    document.getElementById("demo").innerHTML = x;	/* <-- UL --> */
+}
+</script>
+
+</body>
+</html>

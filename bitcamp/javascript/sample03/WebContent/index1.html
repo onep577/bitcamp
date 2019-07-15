@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<p id="demo"></p>
+<script type="text/javascript">
+/*
+document.getElementById("demo").innerHTML = 
+ 	parseInt("10") + "<br>" + 
+	parseInt("23.4") + "<br>" + 
+	parseFloat("23.4") + "<br>" + 
+	parseInt("     23.4") + "<br>" + 
+	parseInt("5 10");
+	// 10
+	// 23
+	// 23.4
+	// 23
+	// 5
+*/
+
+document.getElementById("demo").innerHTML = 
+	Number(true) + "<br>" +
+	Number(false) + "<br>" +
+	Number(new Date()) + "<br>" +
+	Number("10") + "<br>" +
+	Number("    10") + "<br>" +
+	Number("23.4") + "<br>" +
+	Number("5 10") + "<br>";
+	
+	//1
+	//0
+	//1562724927045
+	//10
+	//10
+	//23.4
+	//NaN
+
+// new Date()의 숫자는 밀리세컨단위로 다 합산된 숫자이다
+
+</script>
+</body>
+</html>

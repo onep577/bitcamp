@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- 
+		Java Script != Java		-> Node.JS
+		Front End 제어하기 위한 스크립트.
+		보조 프로그래밍적인 요소이다.
+		화면제어 언어이다. Client
+		컴파일을 하지 않는다.
+		속도가 빠르다. 가볍다.
+		
+		예) 회원가입 -> 빈칸조사, ID 글자수를 조사, PW 숫자, 문자 포함 체크
+		
+		Timer를 설정해서 특수효과 같은 처리를 할 수 있다.
+		차트, 그래프등도 표현이 가능하다.
+		
+		id(1개, data), class(다수, CSS),
+		name(링크를 걸면서 데이터 들고 갈 때, link)
+ -->
+
+<p id="demo">p tag id demo</p>
+ 
+<script type="text/javascript">
+// 한 줄 주석문
+
+/*
+범위 주석문
+*/
+
+alert("Java Script 실행");
+
+console.log("Java Script 실행");
+
+// getter
+var p = document.getElementById("demo").innerHTML;
+// 현재 문서에서. 요소의 id가 "demo"인.  html 코드를 가져와라
+
+alert("p = " + p);
+
+// setter
+document.getElementById("demo").innerHTML = "p태그 demo 아이디";
+
+</script>
+
+</body>
+</html>
+

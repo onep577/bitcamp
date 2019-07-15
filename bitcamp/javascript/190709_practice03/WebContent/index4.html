@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1>2개의 주사위</h1>
+<p>버튼을 클릭하면 2개의 주사위가 랜덤됩니다</p>
+<img src="./images/sai_1.gif" id="photo1" width="30" height="30">
+<img src="./images/sai_6.gif" id="photo2" width="30" height="30">
+<br><br>
+<button type="button" name="btn" onclick="func()">주사위를 굴린다</button>
+
+<script type="text/javascript">
+function func(){
+/*	
+	// 이미지를 배열로 넣고 index 번호로 이미지를 바꿔줬다
+	var ran1 = parseInt(Math.random() * 6);
+	var ran2 = parseInt(Math.random() * 6);
+	//alert(ran1 + " : " + ran2);
+	
+ 	var sal = [ "sai_1.gif", "sai_2.gif", "sai_3.gif",
+					"sai_4.gif", "sai_5.gif", "sai_6.gif" ];
+	
+	document.getElementById("photo1").src = "./images/" + sal[ran1];
+	document.getElementById("photo2").src = "./images/" + sal[ran2];
+*/
+
+	var ran1 = parseInt(Math.random() * 6 + 1);
+	var ran2 = parseInt(Math.random() * 6 + 1);
+	document.getElementById("photo1").src = "./images/sai_" + ran1 + ".gif";
+	document.getElementById("photo2").src = "./images/sai_" + ran2 + ".gif";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form name="frm">
+	<select id="userMenu">
+		<option value="2">2진수</option>
+		<option value="8">8진수</option>
+		<option value="10" selected="selected">10진수</option>
+		<option value="16">16진수</option>
+	</select>
+	
+	<input type="text" id="textField">
+	<button type="button" onclick="change()">변환</button>
+	
+	<select name="changeMenu">
+		<option value="2">2진수</option>
+		<option value="8">8진수</option>
+		<option value="10" selected="selected">10진수</option>
+		<option value="16">16진수</option>
+	</select>
+	
+	<br><br>
+	<p id="p1">변환값</p>
+</form>
+
+<script type="text/javascript">
+function change(){
+	// 변환 전 진수값, 문자열, 변환 할 진수값 받는다
+	userChoice = document.frm.userMenu.value;
+	userText = document.getElementById("textField").value;
+	changeChoice = document.frm.changeMenu.value;
+	alert("사용자 선택 : " + userChoice);
+	alert("사용자 입력 숫자 : " + userText);
+	alert("바꿀 선택 : " + changeChoice);
+
+
+	// 모든 텍스트값을 10진수로 변환
+	changeResult = parseInt(userText, userChoice);
+	alert("모두 10진수로 : " + changeResult);
+	
+	// 10진수를 사용자가 원하는 값으로 변환
+	changeValue = changeResult.toString(changeChoice);
+	alert("끝 : " + changeValue);
+	
+	
+	document.getElementById("p1").innerHTML = changeValue;
+}
+</script>
+
+</body>
+</html>
+
+

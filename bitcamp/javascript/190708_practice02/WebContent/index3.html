@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!--  
+<h2>체육관 이용 요금</h2>
+기본 사용료 (2면, 4시간) 40,800원<br>
+<input type="checkbox" id="ch1" value="20000" 
+	onclick="pay1()">야간 조명 (20,000원)<br>
+<input type="checkbox" id="ch2" value="4000" 
+	onclick="pay2()">배구 네트 X 2면 (4,000원)<br>
+<input type="checkbox" id="ch3" value="5000" 
+	onclick="pay3()">배구 X 10개 (5,000원)<br>
+합계 금액<input type="text" size="10" id="textField" value="40800">원
+
+<script type="text/javascript">
+var totalNum = 40800;
+function pay1(){
+	var num = parseInt(document.getElementById("ch1").value);
+	if(ch1.checked == true){
+		totalNum = totalNum + num;
+	}else if(ch1.checked == false){
+		totalNum = totalNum - num;
+	}
+	alert("결과값 : " + totalNum);
+	document.getElementById("textField").value = totalNum;
+}
+function pay2(){
+ 	var num = parseInt(document.getElementById("ch2").value);
+	if(ch2.checked == true){
+		totalNum = totalNum + num;
+	}else if(ch2.checked == false){
+		totalNum = totalNum - num;
+	}
+	alert("결과값 : " + totalNum);
+	document.getElementById("textField").value = totalNum;
+}
+function pay3(){
+	var num = parseInt(document.getElementById("ch3").value);
+	if(ch3.checked == true){
+		totalNum = totalNum + num;
+	}else if(ch3.checked == false){
+		totalNum = totalNum - num;
+	}
+	alert("결과값 : " + totalNum);
+	document.getElementById("textField").value = totalNum;
+}
+</script>
+-->
+
+
+
+
+<h1>체육관 이용요금</h1>
+기본이용료(4시간)40,800원
+<br><br>
+
+<form name="f1">
+	<input type="checkbox" onclick="sum(0)" id="ch1" value="20000">야간조명(20,000원)
+	<br>
+	<input type="checkbox" onclick="sum(1)" id="ch2" value="4000">배구네트 * 2장(4,000원)
+	<br>
+	<input type="checkbox" onclick="sum(2)" id="ch3" value="5000">배구공 * 10장(5,000원)
+	<br>
+	<input type="text" id="t1" size="10" value="40800">
+	<br>
+	<input type="button" id="11" onclick="sum(4)" value="11">
+</form>
+
+<script type="text/javascript">
+var total = parseInt(document.getElementById("t1").value);
+
+var arr = new Array(3);
+arr[0] = parseInt(document.getElementById("ch1").value);
+arr[1] = parseInt(document.getElementById("ch2").value);
+arr[2] = parseInt(document.getElementById("ch3").value);
+
+function sum( n ) {	
+	alert("if문 전 : " + n);
+	// checkbox, text, button, button 태그 폼네임.elements[인덱스번호]로 인식된다
+	if(document.f1.elements[n].checked == true){
+		total = total + arr[n];
+	}else{
+		total = total - arr[n];
+	}
+	document.f1.elements[3].value = total;
+	
+	var v = document.getElementsByTagName("body")[0];	
+	v.getElementsByTagName("h1")[0].innerHTML = "이용요금 계산";
+
+	document.f1.elements[4].value = total; // 값이 잘 들어간다
+	//alert(document.f1.elements[4].checked);
+	// true, false 아무것도 인식 못한다
+}
+
+
+</script>
+
+</body>
+</html>

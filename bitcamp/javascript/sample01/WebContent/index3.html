@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<p id="demo">p tag</p>
+
+<button type="button" onclick="func()">버튼 1</button>
+<button type="button" onclick="func1(7)">버튼 2</button>
+<button type="button" onclick="func2()">버튼 3</button>
+
+<br><br>
+
+<input type="text" size="5px" id="num1"> *
+<input type="text" size="5px" id="num2"> =
+<input type="text" size="5px" id="res">
+<br><br>
+<button type="button" onclick="calculator()">계산결과</button>
+
+<br><br>
+
+<script type="text/javascript">
+function func(){
+	document.getElementById("demo").innerHTML = "Hello";
+}
+function func1( num ){
+	document.getElementById("demo").innerHTML = num * 3;
+}
+function func2( ){
+	document.getElementById("demo").innerHTML = myfunc(8, 9);
+}
+function myfunc( x, y ){
+	return x * y;
+}
+// 일반태그(p, h)의 값을 가져오는 것은 innerHTML
+// 텍스트필드의 값을 가져오는 것은 value이다
+function calculator(){
+	var n1 = document.getElementById("num1").value;
+	var n2 = document.getElementById("num2").value;
+	var num1 = parseInt(n1);
+	var num2 = parseInt(n2);
+	
+	document.getElementById("res").value = num1 * num2;
+}
+// 자바스크립트 목적 : 현재 우리가 웹상에서 보는 데이터의 출력
+
+</script>
+
+</body>
+</html>
+

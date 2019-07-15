@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h3>단가 x 수량 일람표</h3>
+
+<table border="1" id="mytable">
+	<tr>
+		<th>갯수</th>
+		<th>제품A</th>
+		<th>제품B</th>
+		<th>제품C</th>
+	</tr>	
+</table>
+
+<script type="text/javascript">
+var a = 300;
+var b = 450;
+var c = 520;
+
+var tbody = document.getElementById("mytable");
+	
+	
+for(var i = 0; i < 10; i++){
+	var trow = document.createElement("tr"); // <tr></tr>
+	
+	
+	
+	var tdata0 = document.createElement("td"); // <td></td>	
+	// td 태그 사이에 값을 생성 아직 넣은 건 아니다
+	var textNode = document.createTextNode(i+1); // <td>1</td>	
+	// td 태그 사이에 값을 넣는다
+	tdata0.appendChild(textNode);
+	
+	
+	
+	var tdata1 = document.createElement("td"); // <td></td>	
+	// td 태그 사이에 값을 생성 아직 넣은 건 아니다
+	var textNode = document.createTextNode((a * (i + 1))  + "원"); // <td>300원</td>
+	// td 태그 사이에 값을 넣는다
+	tdata1.appendChild(textNode);
+	
+	
+	
+	var tdata2 = document.createElement("td"); // <td></td>	
+	// td 태그 사이에 값을 생성 아직 넣은 건 아니다
+	var textNode = document.createTextNode((b * (i + 1)) + "원"); // <td>450원</td>
+	// td 태그 사이에 값을 넣는다
+	tdata2.appendChild(textNode);
+	
+	
+	
+	var tdata3 = document.createElement("td"); // <td></td>	
+	// td 태그 사이에 값을 생성 아직 넣은 건 아니다
+	var textNode = document.createTextNode((c * (i + 1)) + "원"); // <td>520원</td>
+	// td 태그 사이에 값을 넣는다
+	tdata3.appendChild(textNode);
+	
+	
+	
+	// tr에 td태그 추가
+	trow.appendChild(tdata0);
+	trow.appendChild(tdata1);
+	trow.appendChild(tdata2);
+	trow.appendChild(tdata3);
+	
+	
+	
+	// table에 tr태그 추가
+	tbody.appendChild(trow);
+}
+</script>
+
+
+
+
+</body>
+</html>

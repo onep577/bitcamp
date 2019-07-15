@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h2>환영합니다</h2>
+※현재 시각은<input type="text" id="textField">입니다.
+
+<script type="text/javascript">
+function nowTime(){
+	var now = new Date();
+	var hour = now.getHours();
+	var minute = now.getMinutes();
+	var second = now.getSeconds();
+	
+	if(hour < 10){
+		hour = "0" + hour;
+	}
+	if(minute < 10){
+		minute = "0" + minute;
+	}
+	if(second < 10){
+		second = "0" + second;
+	}
+	
+	document.getElementById("textField").value
+		= hours + ":" + minute + ":" + second;
+}
+setInterval(nowTime(), 1000);
+
+</script>
+
+</body>
+</html>

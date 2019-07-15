@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+<!--
+DOM : Document Object Model
+-->
+
+<!-- childNodes -->
+<h3 id="intro">h3 tag intro1</h3>
+
+<p id="demo">p tag</p>
+
+<button onclick="func()">버튼</button>
+
+<script type="text/javascript">
+function func(){
+	var text = document.getElementById("intro").childNodes[0].nodeValue;
+	document.getElementById("demo").innerHTML = text;
+}
+</script>
+<br><br>
+
+
+
+
+
+
+<!-- select가 0번째 노드, 1아우디가 1번째 노드이다 childNodes는 사용하기 껄끄럽지만 급할 때 유용하다 -->
+<select id="car">0
+	<option>1아우디</option>2
+	<option>3벤</option>4
+	<option>5볼보</option>6
+</select>
+
+<button onclick="myFunc()">클릭</button>
+
+<script type="text/javascript">
+function myFunc(){
+	var text = document.getElementById("car").childNodes;
+	// alert(text[1].text); // 1아우디가 나온다
+	// alert(text[5]); // object가 나온다. [object HTMLOptionElement]
+	alert(text[5].text); // 5볼보가 나온다
+}
+</script>
+<br><br>
+
+
+
+
+
+
+<div id="div1">
+	<p id="p1">첫번째 p태그</p>
+	<p id="p2">두번째 p태그</p>
+</div>
+
+<button onclick="appendBtn()">뒤에 추가</button>
+<button onclick="insertBtn()">앞에 추가</button>
+<button onclick="deleteBtn()">삭제</button>
+
+<script type="text/javascript">
+function appendBtn(){
+	// tag 생성
+	// 생성하고 싶은 태그 네임을 문자열로 넣었다
+	var ptag = document.createElement("p");					// <p></p>
+	// p태그 안에 넣고 싶은 문자열 생성 아직 넣은 것은 아니다
+	var textNode = document.createTextNode("새로운 p태그");		// 문자열 만들었다
+	// p태그 안에 문자열을 넣었다
+	ptag.appendChild(textNode);								// <p>새로운 p태그</p>
+	
+	// div1에 p태그 추가
+	var element = document.getElementById("div1");
+	element.appendChild(ptag);
+}
+function insertBtn(){
+	// tag 생성
+	// 생성하고 싶은 태그 네임을 문자열로 넣었다
+	var h3tag = document.createElement("h3");				// <h3></h3>
+	// h3태그 안에 넣고 싶은 문자열 생성 아직 넣은 것은 아니다
+	var textNode = document.createTextNode("새로운 h3태그");	// 문자열 만들었다
+	// h3태그 안에 문자열을 넣었다
+	h3tag.appendChild(textNode);							// <h3>새로운 h3태그</h3>
+	
+	// div1에 h3태그 추가
+	var element = document.getElementById("div1");
+	// 누구?
+	var elementBefore = document.getElementById("p2");
+	
+	element.insertBefore(h3tag, elementBefore);
+}
+function deleteBtn(){
+	var element = document.getElementById("div1");
+	var delChild = document.getElementById("p2");
+	element.removeChild(delChild);
+}
+
+</script>
+<br><br>
+
+
+
+
+
+
+<!-- NodeList -->
+
+<p onclick="pdelfunc(this)">Hello</p>
+<p onclick="pdelfunc(this)">World</p>
+<p onclick="pdelfunc(this)">I can do it</p>
+<p onclick="pdelfunc(this)">Never Change My Mind</p>
+
+<button onclick="listfunc()">NodeList</button>
+
+<script type="text/javascript">
+function listfunc(){
+	var nodeList = document.getElementsByTagName("p");
+	// 태그 네임으로 받으면 nodeList를 쓰기 좋다
+	// alert(nodeList.length); // 7 왜? 위에도 p태그가 3개 더 있다 여기는 p태그가 4개 있다
+	
+	nodeList[3].innerHTML = "안녕하세요";
+	// 정말 급할때 쓴다
+	// Hello 자리가 nodeList[3]이다
+	
+	for(i = 0; i < nodeList.length; i++){
+		nodeList[i].style.backgroundColor = "#0f0";
+		// style은 어트리뷰트
+	}
+}
+
+function pdelfunc( obj ){
+	// 마우스 클릭하면 테그가 지워진다
+	obj.remove();
+}
+
+</script>
+
+
+
+</body>
+</html>

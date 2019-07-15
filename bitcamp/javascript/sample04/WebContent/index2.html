@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body bgColor="#00ff00">
+
+<input type="button" value="이전으로 돌아가기" onclick="history.back()">
+<!-- 방금전 화면으로 돌아간다 -->
+
+<!-- 아래 두개는 사실 많이 쓰지는 않는다 -->
+<input type="button" value="현재 페이지 갱신" onclick="location.reload()">
+<!-- 현재 페이지를 refrech 해준다 -->
+
+<input type="button" value="진행" onclick="history.forward()">
+<!-- 갔던 페이지에서 돌아왔다가 다시 갔던 페이지로 가는 것 -->
+<!-- forward 전진이란 뜻,  -->
+
+
+
+<!-- 많이 사용한다 -->
+<button type="button" onclick="gopage()">index3.html로 이동</button>
+<!-- input type="button"과 button 태그는 똑같은 것이다 -->
+
+<script type="text/javascript">
+function gopage(){
+	location.href = "index3.html";
+}
+</script>
+
+
+</body>
+</html>
