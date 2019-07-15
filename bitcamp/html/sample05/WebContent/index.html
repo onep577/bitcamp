@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!--
+link -> anchor <a href="이동하고 싶은 주소" http  .html  id
+ -->
+ 
+ <!-- form 값을 가지고 이동하는 매개체 이 곳에서 같이 사용하는 것은? input -->
+ 
+ <!-- 
+ 		id		: 현재 페이지에서 1개만 인식. JavaScript(==JQuery)
+ 					javascript로도 접근 가능하고 jquery로도 접근 가능하다
+ 		class	: 다중 인식. CSS(디자인) JavaScript(==JQuery)
+ 					javascript로도 접근 가능하고 jquery로도 접근 가능하다
+ 		name	: link. 값을 가지고 이동. 변수의 역할
+  -->
+<!-- action은? 어디로 갈지 파일명을 적어준다 -->
+<form action="NewFile.html">
+<!-- form 하나당 버튼에 해당하는 submit은 하나이다 -->
+	<input type="submit" value="클릭">
+</form>
+
+<br><br>
+
+<form action="NewFile.html">
+<!-- value는 초기값을 넣고 싶을 때 사용 -->
+name : <input type="text" value="여기에 입력" size="12">
+<br>
+password : <input type="password" value="" size="12">
+<br>
+<input type="submit" value="이동">
+<br>
+<input type="reset" value="초기화">
+</form>
+
+<br><br>
+<!-- input -->
+
+<div align="center">
+<!-- get방식이 default이다 가볍다 NewFile.jsp?id=12&pwd=34 url로 넘어간다
+post방식은 무겁다 NewFile.jsp url로 넘어간다 -->
+<form action="NewFile.jsp" method="post">
+<!-- value는 초기값을 넣고 싶을 때 사용 -->
+<!-- 위의 id와 다르다 name이 id인 것은 다르다 여기서는 변수명이 id이다 -->
+<!-- text와 password는 String 즉, 문자열이다 -->
+
+<table border="1">
+<tr>
+	<td>id</td>
+	<td><input type="text" id="" name="id" value="여기에 입력" size="12"></td>
+</tr>
+<tr>
+	<td>password</td>
+	<td><input type="password" name="pwd" value="" size="12"></td>
+</tr>
+<tr>
+	<td colspan="2">
+	&nbsp;&nbsp;<input type="submit" value="이동">
+	<input type="reset" value="초기화">
+	</td>
+</tr>
+</table>
+</form>
+</div>
+
+<br><br>
+
+<form action="NewFile1.jsp">
+<!-- html5 -->
+number : <input type="number" name="number" max="5" min="1">
+<!-- number = 1 ~ 5 -->
+<br>
+date : <input type="date" name="date">
+<br>
+color : <input type="color" name="color" value="#0000ff"> <!-- RGB -->
+<br>
+range : <input type="range" name="range" max="10" min="0">
+<br>
+search : <input type="search" name="search">
+<br>
+<input type="submit" value="선택">
+</form>
+
+<br><br>
+
+CheckBox
+<form action="NewFile2.jsp">
+<!--
+패션 checkbox
+음악 checkbox
+checkbox 게임
+-->
+패션<input type="checkbox" name="job" value="패션"><br>
+음악<input type="checkbox" name="job" value="음악"><br>
+<input type="checkbox" name="job" value="게임">게임<br>
+<input type="submit" value="선택">
+
+</form>
+
+<br><br><br>
+
+<form action="">
+<!-- name을 같은 이름으로 지정하는 것이 group by이다 -->
+<!-- checked로 default값을 지정하면 반드시 하나는 넘어가기 때문에 오류가 날 확률이 적다 -->
+<input type="radio" name="car" value="벤츠">벤츠
+<br>
+<input type="radio" name="car" value="BMW" checked="checked">BMW
+<br>
+<input type="radio" name="car" value="아우디">아우디
+<br>
+<input type="submit" value="차선택">
+</form>
+
+<br><br><br>
+
+<!-- select == choice, combobox -->
+
+<form action="">
+<select multiple="multiple">
+	<option value="볼보">Volvo</option>
+	<option value="사브">Saab</option>
+	<option value="피아트" selected="selected">Fiat</option>
+	<option value="프리우스">Prius</option>
+</select>
+</form>
+
+<br><br><br>
+
+<textarea rows="20" cols="30">여기에 입력</textarea>
+
+<br><br><br>
+
+<button type="button" onclick="alert('클릭')">버튼</button>
+
+
+
+
+<br><br><br>
+<br><br><br>
+
+
+
+
+
+
+
+
+</body>
+</html>

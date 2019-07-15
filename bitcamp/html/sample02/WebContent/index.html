@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+td{
+	text-align: center;
+}
+</style>
+
+</head>
+<body>
+
+<div align="center">
+
+<table border="1" style="width: 80%">
+<col width="30">
+<col width="100">
+<col width="200">
+<col width="200">
+<!-- 브라우저의 width와 몇 % 같게하자 -->
+	<tr>
+		<th></th>
+		<td>성</td>
+		<td>이름</td>
+		<td>나이</td>
+	</tr>
+	<tr>
+		<th>1</th> <!-- table header -->
+		<td>홍</td> <!-- table data -->
+		<td>길동</td>
+		<td>24</td>
+	</tr>
+	<tr>
+		<th>2</th>
+		<td>일</td>
+		<td>지매</td>
+		<td>21</td>
+	</tr>
+	<tr>
+		<th>3</th>
+		<td>홍</td>
+		<td>두깨</td>
+		<td>23</td>
+	</tr>
+</table>
+</div>
+
+<br><br>
+
+<table border="2" style="width: 80%">
+	<caption>주소록</caption>
+<colgroup>
+	<col width="30">
+	<col width="100">
+	<col width="200">
+	<col width="50">
+</colgroup>
+<thead>
+	<tr>
+		<th>1</th>
+		<td>홍</td>
+		<td>길동</td>
+		<td>24</td>
+	</tr>
+	<tr>
+		<th>2</th>
+		<td>일</td>
+		<td>지매</td>
+		<td>21</td>
+	</tr>
+	<tr>
+		<th>3</th>
+		<td>홍</td>
+		<td>두깨</td>
+		<td>23</td>
+	</tr>
+</thead>
+</table>
+
+<br><br>
+
+<table border="1" style="width: 70%">
+	<caption>주소록</caption>
+	<tr>
+		<th>성</th>
+		<th>이름</th>
+		<th>나이</th>
+		<th colspan="2">전화번호</th>
+		<!-- <th>전화번호</th> -->
+		<!-- column을 합할 때 2는 column 개수 -->
+	</tr>
+	<tr>
+		<th>홍</th>
+		<th>길동</th>
+		<th>24</th>
+		<th>1234-5678</th>
+		<th>2345-6789</th>
+	</tr>
+</table>
+
+<br><br>
+
+<table border="1" style="width: 70%">
+	<caption>주소록</caption>
+	<tr>
+		<th>이름</th>
+		<td>길동</td>
+	</tr>
+	<tr>
+		<th rowspan="2">전화번호</th>
+		<td>1234-5678</td>
+	</tr>
+	<tr>
+		<!-- <th>전화번호</th> -->
+		<td>2345-6789</td>
+	</tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
