@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+<!-- radio, checkbox -->
+<ul>
+	<li>
+		<input type="radio" name="radio_test" value="사과">사과
+	</li>
+	<li>
+		<input type="radio" name="radio_test" value="배">배
+	</li>
+	<li>
+		<input type="radio" name="radio_test" value="바나나" checked>바나나
+	</li>
+</ul>
+
+<p id="get_p">클릭</p>
+<br><br>
+
+<input type="checkbox" id="ch1" value="그림 그리기">그림 그리기
+
+<script type="text/javascript">
+$(document).ready(function () {
+	$("#get_p").click(function () {
+	// --- radio
+		// getter
+		var rValue = $("input[name='radio_test']:checked").val();	// name
+	//	alert("rValue : " + rValue);		
+		// setter
+		$("input[name='radio_test']").val(["배"]);
+		
+		
+		
+	// --- checkbox
+		// getter
+		var check = $("#ch1").is(":checked");
+	//	alert("check : " + check);
+		var check = $("input:checkbox[id='ch1']").is(":checked");
+		// setter
+		// 잘 안 쓴다
+		$("#ch1").prop("checked", true);
+		
+		/*
+		checkbox에 value="그림 그리기" 일 경우
+		if($("#ch1").is(":checked")){
+			alert( $("#ch1").val() );
+		}else{
+			alert( $(this).val() );
+		}
+		*/
+	});
+});
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

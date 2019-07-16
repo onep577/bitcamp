@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+<h3>JQuery</h3>
+
+<!-- 
+<form action = "NewFile1.jsp">
+ 
+이름 : <input type="text" id="name"><br>
+나이 : <input type="text" id="age"><br>
+주소 : <input type="text" id="address"><br>
+-->
+<!-- id에 age인지 age 띄어쓰기가 있는 것과 다르다 띄어쓰기가 있으면 null값 포함된다 -->
+<!-- id="name" 을 id = "name" 으로 쓰지 않는 이유는 혹시나 띄어쓰기가 들어가
+null 값이 포함될까봐이다 -->
+
+
+
+
+<form id="frm">
+이름 : <input type="text" name="name"><br>
+나이 : <input type="text" name="age"><br>
+주소 : <input type="text" name="address"><br>
+<button type="button" id="frmBtn">전송</button>
+</form>
+
+<script type="text/javascript">
+
+
+
+// id="name" id="age" id="address" 일 때
+$(function () {
+	/* 
+	$("#btn").click(function () {
+		//
+	});
+	 */
+	$("#btn").on("click", function () {
+		//alert("click");
+		location.href = "NewFile1.jsp?name=" + $("#name").val()
+				+ "&age=" + $("#age").val()
+				+ "&address=" + $("#address").val();
+	});
+});
+
+
+
+// name="name" name="age" name="address"
+$(function () {
+	$("#frmBtn").click(function () {
+		// form, jQuery, java script를 다 쓴다. 아주 많이 쓴다. submit과 같은 효과
+		// 장점 : 검사를 할 수 있다.
+		// 자바 코드를 쓸 수 있다는 것은 DB까지 접근 할 수 있다는 것
+		$("#frm").attr("action", "NewFile1.jsp").submit();
+	});
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
