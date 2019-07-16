@@ -47,18 +47,22 @@
 
 <!-- 일반 tag -->
 <p id="test">안녕java <b>오늘은</b> 2019-07-16이야</p>
+<p>text는 문자만 출력, html은 html태그까지 출력 </p>
 <button id="btnText">show text</button>
 <button id="btnHtml">show html</button>
+<br><br>
 
 <script type="text/javascript">
 $(document).ready(function () {
 	
 	$("#btnText").click(function () {
 		var text = $("#test").text();
+		// p 태그의 값을 text로 가져온다
 		alert(text);
 	});
 	$("#btnHtml").click(function () {
 		var html = $("#test").html();
+		// p 태그의 값을 html로 가져온다
 		alert(html);
 	});
 	
@@ -73,7 +77,6 @@ $(document).ready(function () {
 
 
 <!-- 입력(input, select) -->
-
 <input type="text" id="text" value="테스트">
 <button type="button" id="btnInput">show value</button>
 
@@ -109,6 +112,7 @@ $(function () {
 		
 		// setter
 		$("#naver").attr("href", "http://www.daum.net");
+		//					특성명		값
 		$("#naver").text("다음");
 		
 	});

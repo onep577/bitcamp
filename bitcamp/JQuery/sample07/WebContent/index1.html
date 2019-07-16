@@ -15,6 +15,8 @@
 <p>
 	<a href="http://www.tutorialspoint.com" class="cls" title="tutorial"
 		id="_tutorial">tutorialspoint.com</a>
+	<a href="http://www.naver.com" class="cls" title="naver"
+		id="_naver">http://www.naver.com</a>
 </p>
 
 <button>title과 href를 변경</button>
@@ -22,21 +24,18 @@
 <script type="text/javascript">
 $(function () {
 	$("button").click(function () {
-		/*
-		$("#id").attr("title", "daum");
-		$("#id").attr("href", "http://www.daum.net");
+		
+		$("#id").attr("title", "daum");						// setter
+		$("#id").attr("href", "http://www.daum.net");		// setter
 		
 		alert( $("#id").attr("title") );
-		*/
 		
-		$(".cls").attr("href", function (i, origVal){
-		//	alert("i = " + i);
-		//	alert("origVal = " + origVal);
+		
+		$(".cls").attr("href", function (i, origVal){		// setter
+			alert("i = " + i);					// index
+			alert("origVal = " + origVal);		// href 값
 			return origVal + "/jsp";	// http://www.tutorialspoint.com/jsp
-		});
-		
-		
-		
+		});	
 		
 	});
 });

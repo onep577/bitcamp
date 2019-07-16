@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+<h1>Detail</h1>
+
+<input type="text" placeholder="기본글"><br>
+<button id="btn">답글입력</button>
+ 
+ <script type="text/javascript">
+$(document).ready(function () {
+	$("#btn").click(function () {
+		var text1 = "<p>답글 : <input type='text' class='okText'><br>"
+			+ "<button class='okBtn'>답글작성완료</button></p>";
+		$("body").append(text1);
+		
+		$(".okBtn").click(function () {
+			alert( $('.okText').val() );
+		});
+	});
+});
+</script>
+
+
+</body>
+</html>

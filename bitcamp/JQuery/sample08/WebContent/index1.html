@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+<button type="button">tag 추가</button>
+
+<script type="text/javascript">
+$(function () {
+	$("button").click(function () {
+		// html(text) 추가
+		var text1 = "<p>html text 추가</p>";
+		$("body").append(text1);
+		
+		
+		// java script 추가
+		var text2 = document.createElement("p");
+		text2.innerHTML = "JS 추가 텍스트";
+		$("body").append(text2);
+		
+		
+		// jquery 추가
+		var text3 = $("<p></p>").text("JQuery 추가 텍스트");
+		// $("<p></p>") == document.createElement("p")
+		$("body").append(text3);
+		
+		
+	});
+});
+</script>
+
+</body>
+</html>

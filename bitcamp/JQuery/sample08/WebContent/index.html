@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+<!-- createElement -->
+
+<p>임팩트, '모두 다 쿵따리' 첫 OST 공개…클론 '쿵따리 샤바라' 리메이크 곡</p>
+<p>'모두다 쿵따리' 박시은, 김호진과 싸우며 강렬한 첫 만남</p>
+
+<ol>
+	<li>사과</li>
+	<li>배</li>
+	<li>바나나</li>
+</ol>
+
+<select id="food" multiple="multiple">
+	<option value="햄버거">햄버거</option>
+	<option value="피자">피자</option>
+	<option value="치킨">치킨</option>
+</select>
+
+<br><br>
+
+<button type="button" id="btn1">추가 텍스트(뒤)</button>
+<button type="button" id="btn2">추가 텍스트(앞)</button>
+
+<script type="text/javascript">
+$(document).ready(function () {
+	$("#btn1").click(function () {
+		// 뒤에 추가
+		//$("p").append("<br>추가(append) 요소입니다");
+		// <br>안하면 옆으로 생긴다
+		//$("ol").append("<li>오렌지</li>");
+		$("select").append("<option value='스테이크'>스테이크</option>");
+	});
+	$("#btn2").click(function () {
+		// 앞에 추가
+		//$("p").prepend("<br>추가(prepend) 요소입니다");
+		//$("ol").prepend("<li>파인애플</li>");
+		$("select").prepend("<option value='떡볶이'>떡볶이</option>");
+	});
+});
+</script>
+
+</body>
+</html>
