@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+<!-- 
+Link
+html
+
+<a
+
+<form
+
+Java Script
+location.href
+
+Java
+
+-->
+
+
+<form action="NewFile.jsp">
+	ID : <input type="text" name="__id" id="_id" placeholder="id 입력"><br>
+	<!-- name은 링크걸 때 사용, id는 자바 스크립트에서 사용 -->
+	
+	<!-- <input type="submit" value="form이동"> -->
+	<!-- name으로 데이터를 가지고 jsp 파일로 이동 -->
+	
+	<!-- <button type="button" onclick="btnClick()">Java Script 이동</button> -->
+	<!-- 입력한 값을 확인한 후 보내줄때는 java script가 유용하다 -->
+	
+	<button type="button" id="btn">JQuery 이동</button>
+</form>
+
+<script type="text/javascript">
+
+function btnClick(){
+	var id = document.getElementById("_id").value;
+	location.href = "NewFile.jsp?id=" + id;
+}
+
+$(function () {	
+	$("#btn").click(function () {
+		var id = $("#_id").val();	// getter
+		location.href = "NewFile.jsp?id=" + id;
+	});
+		
+});
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

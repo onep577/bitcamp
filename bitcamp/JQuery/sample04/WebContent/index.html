@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+<!-- 자바 스크립트는 핸들러를 통해서 핸들러 함수를 호출한다 -->
+<!-- <input onchange="func()"> -->	<!-- handling : 특정 처리를 위해서 함수를 호출하는 것 -->
+
+이름 : <input type="text"><br><br>
+
+이메일 : <input type="text"><br><br>
+
+<p>여기가 p1 태그입니다</p>
+<p>여기가 p2 태그입니다</p>
+<br>
+
+<script type="text/javascript">
+// 다 읽으들이기 전에도 실행될 수 있다
+/* $(function () {
+	
+}); */
+
+// 오리지널이다
+// 다 읽어들인 후 실행
+$(document).ready(function () {
+	
+	// 함수명, 매개변수, 처리
+	$("input").focus(function () {
+		// focus는 포커스를 받았을 때 실행
+		$(this).css("background-color", "#aa0077");
+	});
+	
+	$("input").blur(function () {
+		// blur는 포커스를 잃었을 때 실행
+		$(this).css("background-color", "#fff");
+	});
+	
+	$("p").mouseover(function () {
+		$(this).css("background-color", "#ffff00");
+	});
+	
+	$("p").mouseout(function () {
+		$(this).css("background-color", "#fff");
+	});
+	
+	$("p").dblclick(function () {
+		alert( $(this).text() );
+	});
+	
+});
+</script>
+
+<br><br>
+
+<button id="hideBtn">감추기</button>
+<button id="showBtn">보여주기</button>
+<button id="toggleBtn">스위치</button>
+
+<br><br>
+
+<div align="center">
+	<div class="test" style="background-color: green;
+		width: 50%; height: 100px; text-align: center;">
+		I can do it !!
+	</div>
+</div>
+
+
+<script type="text/javascript">
+$(function () {
+	
+	$("#hideBtn").click(function () {
+		//$(".test").hide();
+		$(".test").hide(2000);
+	});
+	
+	$("#showBtn").click(function () {
+		$(".test").show(3000);
+	});
+	
+	$("#toggleBtn").click(function () {
+		$(".test").toggle(4000);
+	});
+	
+	
+	
+	/*
+	$(".test").mouseenter(function () {
+		$(this).css("background-color", "#00ff00");
+	});
+	
+	$(".test").mouseleave(function () {
+		$(this).css("background-color", "#ff0000");
+	});
+	*/	
+	
+	// $(".test").hover( , ); 이다
+	// mouseenter, mouseleave와 동일하다. 그래픽적 요소가 강하다
+	$(".test").hover(function () {
+		$(this).css("background-color", "#ff00ff");
+	}, function () {
+		$(this).css("background-color", "#00ffff");
+	});
+	
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

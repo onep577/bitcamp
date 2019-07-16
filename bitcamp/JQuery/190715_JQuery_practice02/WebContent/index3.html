@@ -23,10 +23,10 @@
 <h1>Life on the water<br></h1>
 <button type="button" id="Btn">프레임의 추가/삭제</button><br><br>
 
-<img src="./images/photo1.jpg">
-<img src="./images/photo2.jpg"><br>
-<img src="./images/photo3.jpg">
-<img src="./images/photo4.jpg">
+<img src="./images/photo1.jpg" class="cls">
+<img src="./images/photo2.jpg" class="cls"><br>
+<img src="./images/photo3.jpg" class="cls">
+<img src="./images/photo4.jpg" class="cls">
 
 
 
@@ -34,19 +34,19 @@
 var count = 0;
 $(function () {
 	$("#Btn").click( function () {
-		/* 
-		if(count > 0){
+		
+		if(count == 1){
 			console.log("remove : "+count);
-			$('img').removeClass();			
-			count--;
+			$('.cls').removeClass('bg bd');
+			count = 0;
 		}else{
 			console.log("insert : "+count);
-			$('img').addClass('bg bd');
-			count++;
+			$('.cls').addClass('bg bd');
+			count = 1;
 		}
-		*/
 		
-		$("img").toggleClass( 'bg bd' );
+		
+		//$(".cls").toggleClass( 'bg bd' );
 		// 특정 요소에 스타일을 직접 추가하거나 제거할 수 있다
 	});
 	
