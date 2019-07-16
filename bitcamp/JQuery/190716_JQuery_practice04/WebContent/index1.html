@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+<h1>사진들</h1>
+<img src="./images/img01.jpg" class="photo" title="1번" alt="1번 사진">
+<img src="./images/img02.jpg" class="photo" title="2번" alt="2번 사진">
+<img src="./images/img03.jpg" class="photo" title="3번" alt="3번 사진">
+<img src="./images/img04.jpg" class="photo" title="4번" alt="4번 사진">
+<!-- 이미지에 마우스를 가져가면 title이 나온다 -->
+
+<script type="text/javascript">
+$(document).ready(function () {
+	
+	$(".photo").on("click", function () {
+		var picName = $(this).attr("alt");
+		alert("picName = " + picName);		
+	});
+		
+});
+
+</script>
+
+</body>
+</html>
