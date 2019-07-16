@@ -21,9 +21,15 @@ $(document).ready(function () {
 		$(this).attr("src", "./images/b_pic2.jpg");
 	});
 	 */
-	 $("#photo").hover(function () {
-		 //
-	 });
+	$("#photo").hover(
+		// .hover(이미지, 이미지);
+		function () {
+			$(this).attr("src", "./images/b_pic1.jpg");
+		},
+		function () {
+			$(this).attr("src", "./images/b_pic2.jpg");
+		}
+	);
 });
 </script>
 

@@ -8,19 +8,19 @@
 </head>
 <body>
 
-<form name="frm">
+<form id="frm">
 <h1>송부 정보의 입력</h1>
-이 름 : <input type="text" id="name">
+이 름 : <input type="text" name="_name">
 <br><br>
-우편번호 : <input type="text" id="zip1"> - <input type="text" id="zip2">
+우편번호 : <input type="text" name="zip1"> - <input type="text" name="zip2">
 <input type="button" value="주소변환">
 <br><br>
-주 소 : <input type="text" id="address">
+주 소 : <input type="text" name="address">
 <br><br>
-전화번호 : <input type="text" id="phone1">
-	- <input type="text" id="phone2"> - <input type="text" id="phone3">
+전화번호 : <input type="text" name="phone1">
+	- <input type="text" name="phone2"> - <input type="text" name="phone3">
 <br><br>
-배달시간 : <select id="delivery" multiple="multiple">
+배달시간 : <select name="delivery" multiple="multiple">
 			<option value="지정하지 않음">지정하지 않음</option>
 			<option value="10:00 ~ 12:00">10:00 ~ 12:00</option>
 			<option value="12:00 ~ 15:00">12:00 ~ 15:00</option>
@@ -28,7 +28,7 @@
 			<option value="17:00 ~ 20:00">17:00 ~ 20:00</option>
 		  </select>
 <br><br>
-영수증 요청 : <input type="checkbox" id="bills">
+영수증 요청 : <input type="checkbox" name="bills">
 <br><br>
 매일 매거진을 수신 <input type="radio" name="magazine" value="신청">신청
 				 <input type="radio" name="magazine" value="신청하지 않음">신청하지 않음
@@ -54,6 +54,7 @@ $(document).ready(function () {
 		}else if( $("#name").val().length <= 2 ){
 			alert("이름을 정확하게 기입하여 주십시오");
 		}else{
+			alert("이동");
 			$("#frm").attr("action", "NewFile.jsp").submit();
 		}
 		
