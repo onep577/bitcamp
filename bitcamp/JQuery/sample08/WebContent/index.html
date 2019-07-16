@@ -34,15 +34,16 @@
 $(document).ready(function () {
 	$("#btn1").click(function () {
 		// 뒤에 추가
-		//$("p").append("<br>추가(append) 요소입니다");
-		// <br>안하면 옆으로 생긴다
-		//$("ol").append("<li>오렌지</li>");
+		$("p").append("<br>추가(append) 요소입니다");
+		// <br>안하면 오른쪽으로 생긴다
+		$("ol").append("<li>오렌지</li>");
 		$("select").append("<option value='스테이크'>스테이크</option>");
 	});
 	$("#btn2").click(function () {
 		// 앞에 추가
-		//$("p").prepend("<br>추가(prepend) 요소입니다");
-		//$("ol").prepend("<li>파인애플</li>");
+		$("p").prepend("추가(prepend) 요소입니다<br>");
+		// <br>안하면 왼쪽으로 생긴다
+		$("ol").prepend("<li>파인애플</li>");
 		$("select").prepend("<option value='떡볶이'>떡볶이</option>");
 	});
 });

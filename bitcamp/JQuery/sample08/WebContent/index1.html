@@ -15,19 +15,26 @@ $(function () {
 	$("button").click(function () {
 		// html(text) 추가
 		var text1 = "<p>html text 추가</p>";
+		// p태그를 생성
 		$("body").append(text1);
+		// body 태그에 p태그를 추가한다
 		
 		
 		// java script 추가
 		var text2 = document.createElement("p");
+		// p태그 생성
 		text2.innerHTML = "JS 추가 텍스트";
+		// 태그에 문자열을 추가
 		$("body").append(text2);
+		// body 태그에 p태그를 추가한다
 		
 		
 		// jquery 추가
 		var text3 = $("<p></p>").text("JQuery 추가 텍스트");
 		// $("<p></p>") == document.createElement("p")
+		// p태그를 생성하고 그 태그에 text를 추가한다
 		$("body").append(text3);
+		// body 태그에 p태그를 추가한다
 		
 		
 	});
