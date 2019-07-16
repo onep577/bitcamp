@@ -33,22 +33,29 @@ $(document).ready(function () {
 	$("input").focus(function () {
 		// focus는 포커스를 받았을 때 실행
 		$(this).css("background-color", "#aa0077");
+		// 보라색
 	});
 	
 	$("input").blur(function () {
 		// blur는 포커스를 잃었을 때 실행
 		$(this).css("background-color", "#fff");
+		// 흰색
 	});
 	
 	$("p").mouseover(function () {
+		// 마우스 위치가 p태그 안으로 이동했을 때
 		$(this).css("background-color", "#ffff00");
+		// 노란색
 	});
 	
 	$("p").mouseout(function () {
+		// 마우스 위치가 p태그 안에서 밖으로 이동했을 때
 		$(this).css("background-color", "#fff");
+		// 흰색
 	});
 	
 	$("p").dblclick(function () {
+		// 두번 연속 클릭했을 때 실행
 		alert( $(this).text() );
 	});
 	
@@ -56,72 +63,6 @@ $(document).ready(function () {
 </script>
 
 <br><br>
-
-<button id="hideBtn">감추기</button>
-<button id="showBtn">보여주기</button>
-<button id="toggleBtn">스위치</button>
-
-<br><br>
-
-<div align="center">
-	<div class="test" style="background-color: green;
-		width: 50%; height: 100px; text-align: center;">
-		I can do it !!
-	</div>
-</div>
-
-
-<script type="text/javascript">
-$(function () {
-	
-	$("#hideBtn").click(function () {
-		//$(".test").hide();
-		$(".test").hide(2000);
-	});
-	
-	$("#showBtn").click(function () {
-		$(".test").show(3000);
-	});
-	
-	$("#toggleBtn").click(function () {
-		$(".test").toggle(4000);
-	});
-	
-	
-	
-	/*
-	$(".test").mouseenter(function () {
-		$(this).css("background-color", "#00ff00");
-	});
-	
-	$(".test").mouseleave(function () {
-		$(this).css("background-color", "#ff0000");
-	});
-	*/	
-	
-	// $(".test").hover( , ); 이다
-	// mouseenter, mouseleave와 동일하다. 그래픽적 요소가 강하다
-	$(".test").hover(function () {
-		$(this).css("background-color", "#ff00ff");
-	}, function () {
-		$(this).css("background-color", "#00ffff");
-	});
-	
-});
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

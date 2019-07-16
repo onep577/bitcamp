@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+<button id="hideBtn">감추기</button>
+<button id="showBtn">보여주기</button>
+<button id="toggleBtn">스위치</button>
+
+<br><br>
+
+<div align="center">
+	<div class="test" style="background-color: green;
+		width: 50%; height: 100px; text-align: center;">
+		I can do it !!
+	</div>
+</div>
+
+
+<script type="text/javascript">
+$(function () {
+	
+	$("#hideBtn").click(function () {
+		//$(".test").hide();
+		$(".test").hide(2000);
+	});
+	
+	$("#showBtn").click(function () {
+		$(".test").show(3000);
+	});
+	
+	$("#toggleBtn").click(function () {
+		$(".test").toggle(4000);
+	});
+	
+	
+	
+	/*
+	$(".test").mouseenter(function () {
+		$(this).css("background-color", "#00ff00");
+	});
+	
+	$(".test").mouseleave(function () {
+		$(this).css("background-color", "#ff0000");
+	});
+	*/	
+	
+	// $(".test").hover( , ); 이다
+	// mouseenter, mouseleave와 동일하다. 그래픽적 요소가 강하다
+	$(".test").hover(function () {
+		$(this).css("background-color", "#ff00ff");
+	}, function () {
+		$(this).css("background-color", "#00ffff");
+	});
+	
+});
+</script>
+
+</body>
+</html>

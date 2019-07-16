@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+<form name="frm">
+<h1>송부 정보의 입력</h1>
+이 름 : <input type="text" id="name">
+<br><br>
+우편번호 : <input type="text" id="zip1"> - <input type="text" id="zip2">
+<input type="button" value="주소변환">
+<br><br>
+주 소 : <input type="text" id="address">
+<br><br>
+전화번호 : <input type="text" id="phone1">
+	- <input type="text" id="phone2"> - <input type="text" id="phone3">
+<br><br>
+배달시간 : <select id="delivery" multiple="multiple">
+			<option value="지정하지 않음">지정하지 않음</option>
+			<option value="10:00 ~ 12:00">10:00 ~ 12:00</option>
+			<option value="12:00 ~ 15:00">12:00 ~ 15:00</option>
+			<option value="15:00 ~ 17:00">15:00 ~ 17:00</option>
+			<option value="17:00 ~ 20:00">17:00 ~ 20:00</option>
+		  </select>
+<br><br>
+영수증 요청 : <input type="checkbox" id="bills">
+<br><br>
+매일 매거진을 수신 <input type="radio" name="magazine" value="신청">신청
+				 <input type="radio" name="magazine" value="신청하지 않음">신청하지 않음
+<br><br>
+<button id="goBtn">확인 화면으로 진행</button>
+</form>
+
+<script type="text/javascript">
+$(document).ready(function () {
+		
+	$("*").focus(function () {
+		// input 태그가 아니가 * 로 바꿔주면 select도 해당된다
+		$(this).css("background-color", "#ffff00");
+	});
+	$("*").blur(function () {
+		$(this).css("background-color", "#ffffff");
+	});
+	
+	$("#goBtn").on("click", function () {
+		
+		if( $("#name").val() == "" ){
+			alert("이름을 기입하여 주십시오");
+		}else if( $("#name").val().length <= 2 ){
+			alert("이름을 정확하게 기입하여 주십시오");
+		}else{
+			$("#frm").attr("action", "NewFile.jsp").submit();
+		}
+		
+		/* 
+		var _name = $("#name").val();
+		var _zipcode = $("#zip1").val() + "-" + $("#zip2").val();
+		var _address = $("#address").val();
+		var _phone = $("#phone1").val() + "-" + $("#phone2").val()
+						+ "-" + $("#phone3").val();
+		var _delivery = $("#delivery").val();
+		var _bills = $("#bills").is(":checked");
+		var _magazine = $("input[name='magazine']:checked").val();
+		
+		location.href = "NewFile.jsp?name=" + _name + "&zipcode=" + _zipcode
+					+ "&address=" + _address + "&phone=" + _phone
+					+ "&bills=" + _bills + "&magazine=" + _magazine;
+		 */
+	});
+});
+</script>
+
+</body>
+</html>

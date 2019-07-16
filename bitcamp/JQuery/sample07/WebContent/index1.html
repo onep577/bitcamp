@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+<p>
+	<a href="http://www.naver.com" title="naver" id="id">Naver.com</a>
+</p>
+
+<p>
+	<a href="http://www.tutorialspoint.com" class="cls" title="tutorial"
+		id="_tutorial">tutorialspoint.com</a>
+</p>
+
+<button>title과 href를 변경</button>
+
+<script type="text/javascript">
+$(function () {
+	$("button").click(function () {
+		/*
+		$("#id").attr("title", "daum");
+		$("#id").attr("href", "http://www.daum.net");
+		
+		alert( $("#id").attr("title") );
+		*/
+		
+		$(".cls").attr("href", function (i, origVal){
+		//	alert("i = " + i);
+		//	alert("origVal = " + origVal);
+			return origVal + "/jsp";	// http://www.tutorialspoint.com/jsp
+		});
+		
+		
+		
+		
+	});
+});
+</script>
+
+</body>
+</html>
