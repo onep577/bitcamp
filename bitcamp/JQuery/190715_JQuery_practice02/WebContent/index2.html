@@ -5,8 +5,13 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js">
 </script>
-
-<style>
+<style type="text/css">
+.frame {
+	border-left : 8px solid #5500aa;
+	border-right : 8px solid #5500aa;
+	border-top : 8px solid #5500aa;
+	border-bottom : 24px solid #5500aa;
+}
 .bg {
 	background-color: #00ff00;
 	padding: 10px 10px 50px 10px;
@@ -33,7 +38,8 @@
 <script type="text/javascript">
 $(function () {
 	$("#insertBtn").click( function () {
-		$('img').addClass('bg bd');
+		//$('img').addClass('bg bd');
+		$('img').addClass('frame');
 	});
 });
 $(function () {

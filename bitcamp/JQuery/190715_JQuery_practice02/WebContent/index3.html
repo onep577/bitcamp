@@ -34,7 +34,7 @@
 var count = 0;
 $(function () {
 	$("#Btn").click( function () {
-		
+		/* 
 		if(count > 0){
 			console.log("remove : "+count);
 			$('img').removeClass();			
@@ -44,9 +44,11 @@ $(function () {
 			$('img').addClass('bg bd');
 			count++;
 		}
-			
+		*/
+		
+		$("img").toggleClass( 'bg bd' );
+		// 특정 요소에 스타일을 직접 추가하거나 제거할 수 있다
 	});
-	
 	
 });
 </script>
