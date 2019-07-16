@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+
+
+
+
+
+<!--
+	DOM (Document Object Model)
+	
+	Java Script : innerHTML, value
+	JQuery : html(), text(), css(), attr(), prop()
+	// 어트리뷰트로 접근해야 하는 경우가 있고 프러퍼티로 접근해야 하는 경우가 있다
+	
+			setter -> css("background-color", "#ff0000")
+					  css({ "background-color" : "#ff0000",
+					  		"border" : "3px solid black" })
+					  		
+			getter -> var v = $("#id").css("background-color");
+			
+			setter -> $(id, class, name, tag).val( 값 );
+					  $(id, class, name, tag).text( 값 );
+					  $(id, class, name, tag).html( 값 + "<br>" );
+
+
+					  $(id, class, name, tag).css( "특성명", 값 );
+
+			getter -> var v = $(id, class, name, tag).val();
+					  var cv = $(id, class, name, tag).css("특성명");
+					  
+			form : $(id, class, name, tag).attr("action", "파일명").submit();
+
+-->
+
+
+
+
+
+
+<!-- 일반 tag -->
+<p id="test">안녕java <b>오늘은</b> 2019-07-16이야</p>
+<button id="btnText">show text</button>
+<button id="btnHtml">show html</button>
+
+<script type="text/javascript">
+$(document).ready(function () {
+	
+	$("#btnText").click(function () {
+		var text = $("#test").text();
+		alert(text);
+	});
+	$("#btnHtml").click(function () {
+		var html = $("#test").html();
+		alert(html);
+	});
+	
+});
+</script>
+
+<br><br>
+
+
+
+
+
+
+<!-- 입력(input, select) -->
+
+<input type="text" id="text" value="테스트">
+<button type="button" id="btnInput">show value</button>
+
+<script type="text/javascript">
+$(function () {
+	$("#btnInput").click(function() {
+		var v = $("#text").val();
+		alert(v);
+	});
+});
+</script>
+
+<br><br>
+
+
+
+
+
+
+<!-- attr -->
+<p>
+	<a href="http://www.naver.com" id="naver">네이버</a>
+</p>
+<button id="btnAttr">Attribute(속성)</button>
+
+<script type="text/javascript">
+$(function () {
+	$("#btnAttr").click(function () {
+		
+		// getter
+		var attrVal = $("#naver").attr("href");
+		alert(attrVal);
+		
+		// setter
+		$("#naver").attr("href", "http://www.daum.net");
+		$("#naver").text("다음");
+		
+	});
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+

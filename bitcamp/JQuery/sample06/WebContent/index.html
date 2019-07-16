@@ -24,7 +24,7 @@
 <p id="get_p">클릭</p>
 <br><br>
 
-<input type="checkbox" id="ch1" value="그림 그리기">그림 그리기
+<input type="checkbox" id="ch1" value="그림 그리기">그림 그리기<br>
 
 <script type="text/javascript">
 $(document).ready(function () {
@@ -40,21 +40,22 @@ $(document).ready(function () {
 		
 	// --- checkbox
 		// getter
-		var check = $("#ch1").is(":checked");
+		//var check = $("#ch1").is(":checked");
 	//	alert("check : " + check);
-		var check = $("input:checkbox[id='ch1']").is(":checked");
+		//var check = $("input:checkbox[id='ch1']").is(":checked");
 		// setter
 		// 잘 안 쓴다
-		$("#ch1").prop("checked", true);
+		//$("#ch1").prop("checked", true);
 		
-		/*
-		checkbox에 value="그림 그리기" 일 경우
+		
+		//checkbox에 value="그림 그리기" 일 경우
 		if($("#ch1").is(":checked")){
 			alert( $("#ch1").val() );
+			alert( $("#ch1").text() );
 		}else{
 			alert( $(this).val() );
 		}
-		*/
+		/**/
 	});
 });
 </script>
