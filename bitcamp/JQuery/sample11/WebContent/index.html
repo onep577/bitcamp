@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+<style type="text/css">
+.q6{
+	color : #ff00ff;
+	border : 2px solid;
+}
+.q9{
+	padding : 10px;
+	border : #000 2px solid;
+	background-color: gray;
+}
+</style>
+</head>
+<body>
+
+<button id="btn">실행</button>
+<p id="q01">Hello JQuery</p>
+<p id="q02">Hello JQuery</p>
+<p id="q03">Hello JQuery</p>
+<p id="q04">Hello JQuery</p>
+<p id="q05">Hello JQuery</p>
+
+<ul id="q06">
+	<li>사과</li>
+	<li>배</li>
+	<li>바나나</li>
+</ul>
+
+<p id="q07"></p>
+
+<ul id="q08">
+	<li>커피</li>
+</ul>
+
+<p id="q09">나는 최선을 다할것이다</p>
+
+
+
+
+
+<script type="text/javascript">
+$(function () {
+	$("button").click(function () {
+		// font color 변경
+		$("#q01").css("color", "#ff0000");
+		
+		// font color, background-color 변경
+		$("#q02").css({
+			"color" : "#00f",
+			"background-color" : "#ffff00"
+		});
+		
+		// 문자열 변경
+		$("#q03").text("헬로우 제이쿼리");
+		$("#q04").html("<b>헬로우</b> 제이쿼리");
+		
+		// html 변경
+		$("#q05").html("<a href='#'>World JQuery</a>");
+		
+		// class 추가
+		$("#q06").addClass("q6");
+		
+		// 항목 추가
+		//		html 방식
+		$("#q06").append("<li>오렌지</li>");
+		
+		//		j 방식
+		var app = $("<li></li>").text("복숭아");
+		$("#q06").append(app);
+		
+		// 항목 삭제
+		//$("#q06 li").remove();
+		
+		// 항목 추가
+		$("#q07").prepend("<p>끝까지</p>");		
+		$("#q07").append("<p>나는 성공할 것이다</p>");
+		
+		// 항목 추가
+		$("#q08 li").before("<li>홍차</li>");
+		$("#q08 li").after("<li>우유</li>");
+		
+		// 랩이 씌워진다
+		$("#q09").wrap("<div class='q9'></div>");
+
+	
+	
+	
+	
+	});
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

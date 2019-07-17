@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+<ul id="_list">
+	<li class="child">커피</li>
+	<li class="child">홍차</li>
+	<li class="child">우유</li>
+	<li class="child">쥬스</li>
+	<li class="child">녹차</li>
+</ul>
+
+<p><b></b>개의 요소가 있습니다</p>
+<br><br>
+
+<p>선택한 항목 : <input type="text" id="clickList">
+<br><br>
+
+<p>추가 항목 : <input type="text" id="insertList">
+<br><br>
+
+<button id="btn">추가</button>
+
+<script type="text/javascript">
+// 강사님 코드
+$(document).ready(function () {
+	// 몇개의 리스트가 있는지
+	/* 
+	var len = $("ul#_list").children().length;
+	*/
+	var len = $("ul#_list li").length;
+	$("b").text(len);
+	
+	
+	
+	
+	// 선택한 리스트를 가져와라
+	/*
+	$("ul#_list").children().click(function () {
+		var text = $(this).text();
+		$("#clickList").val( text );		// setter
+	});
+	*/
+	$(document).on("click", "ul#_list ul" function () {
+		$("#choice").val( $(this).text() );
+	});
+	$("ul#_list li").click(function () {
+		var text = $(this).text();
+		$("#clickList").val( text );		// setter
+	});
+	
+	
+	
+	
+	// 추가 항목 만들기
+	$("#btn").on("click", function () {
+		var text = $("#insertList").val();
+		$("ul").append("<li class='child'>" + text + "</li>");
+	}
+	
+});
+
+
+
+/* 
+// 내 코드
+$(document).ready(function () {
+	// 몇개의 리스트가 있는지
+	$("b").text( $("li").length );
+	
+	
+	// 추가 항목 만들기
+	$("#btn").on("click", function () {
+		var text = $("#insertList").val();
+		
+		$("ul").append("<li class='child'>" + text + "</li>");
+
+		$("b").text( $("li").length );
+		
+		$("li").on("click", function () {
+			var text = $(this).text();
+			alert( text );
+			$("#clickList").val( text );		// setter
+		});
+	});
+	
+	
+	// 선택한 리스트를 가져와라
+	$("li").on("click", function () {
+		var text = $(this).text();
+		alert( text );
+		$("#clickList").val( text );		// setter
+	});
+	
+});
+*/
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
