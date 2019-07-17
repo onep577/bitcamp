@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+<h1>Detail</h1>
+
+<input type="text" placeholder="기본글"><br><br>
+<button id="btn">답글입력</button>
+
+<div id="answerForm">
+	<br><p>답글 : <input type='text' id='answer'><br><br>
+	<button id='okBtn'>답글작성완료</button></p>
+</div>
+
+
+<!--
+	1. div 태그에 넣고 hide로 숨기고 클릭하면 show로 보여지게 한다
+	2. $(document).on("click", "#okBtn", function () {
+		});
+-->
+
+
+
+<!-- 첫번째 방법 -->
+<script type="text/javascript">
+$(document).ready(function () {
+	$("#answerForm").hide();
+	
+	$("#btn").click(function () {
+		$("#answerForm").show();
+	});
+	
+	$("#okBtn").click(function () {
+		alert( $('#answer').val() );
+	});
+}
+</script>
+
+
+
+<!-- 두번째 방법 -->
+<!--
+<script type="text/javascript">
+$(document).ready(function () {
+	$("#btn").click(function () {
+		var text = "<br><p>답글 : <input type='text' id='answer'><br><br>"
+			+ "<button id='okBtn'>답글작성완료</button></p>";
+		$("body").append(text);
+		
+		// body 태그에 추가할 수 있고 div 태그에 추가할 수 있다
+	});
+	
+	$(document).on("click", "#okBtn", function () {
+		// 개발 하다보면 나중에 만들어진 코드를 가능하게 할 떄 유용
+		// 꼭 기억하자 필요한 순간이 온다
+		alert( $('#answer').val() );
+	});
+	 
+});
+</script>
+-->
+
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+<p style="background-color: #ff0000" class="_color">p tag 1</p>
+<p style="background-color: #00ff00" class="_color">p tag 2</p>
+<p style="background-color: #0000ff" class="_color">p tag 3</p>
+
+<!-- 클래스로 접근했을 때 구분자는 this이다 -->
+<script type="text/javascript">
+$(function () {
+	$("._color").click(function () {
+		// getter
+		var color = $(this).css("background-color");
+		// background-color 는 프로퍼티
+		alert(color);
+		
+		// setter
+		var color = $(this).css("background-color", "purple");
+		$(this).text("새로운 문자열");
+		
+		$(this).css({
+			"background-color" : "#ffff00",
+			"font-size" : "200%",
+			"border" : "3px solid red"
+		});
+		
+	});
+});
+</script>
+
+</body>
+</html>

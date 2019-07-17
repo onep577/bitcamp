@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+<div id="news">로딩 중...</div>
+
+<script type="text/javascript">
+$(document).ready(function () {
+	/* 
+	$(window).resize(function () {
+		alert("윈도우 크기가 변경됨");
+	});
+	*/
+	// status : 파일이 있는지 없는지 감지한다
+	$("#news").load("news.txt", function (txt, status) {
+	//	alert( status );
+		// 200 : 정상처리, 404 : 문서가 없다, 500 : 문법이 틀렸다
+	//	alert( txt );
+		$("#news").text( txt );		// setter
+		// 로딩 중... 없어진다 왜? 덮어씌우기라서
+	});
+});
+</script>
+
+</body>
+</html>

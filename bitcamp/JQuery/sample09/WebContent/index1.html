@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+<img alt="이미지 없음" src="./images/p01.jpg">
+
+<br><br>
+
+<button id="btn1">앞에 추가</button>
+<button id="btn2">뒤에 추가</button>
+
+<!-- 이미지 추가 before, after, attr( src, 경로 ) -->
+
+<script type="text/javascript">
+$(function () {
+	$("#btn1").click(function () {
+		/* 
+		var text1 = $("<p></p>").text("JQuery text 추가");
+		$("img").before(text1);
+		*/
+		
+	});
+	$("#btn2").click(function () {
+		/* 
+		var text1 = $("<h3></h3>").text("JQuery text 뒤에 추가");
+		$("img").after(text1);
+		*/
+		// 많이 쓰인다
+		var img = $("<img>").attr("src", "./images/p02.jpg");
+		$("img").after(img);
+	});
+});
+</script>
+
+
+</body>
+</html>

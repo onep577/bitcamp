@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+<!-- image의 크기를 입력해서 변경 -->
+<div id="d1">
+	<img alt="이미지 없음" src="./images/p01.jpg">
+</div>
+
+width : <input type="text" id="width"><br>
+height : <input type="text" id="height"><br><br>
+
+<button type="button">크기 변경</button>
+
+
+<script type="text/javascript">
+$(function () {
+	$("button").click(function () {
+		// img setter
+		$("#d1 img").css({
+			// 특성명, 값
+			"width" : $("#width").val(),
+			"height" : $("#height").val()
+		});
+	});
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+<div id="div1" style="width: 500px; height: 150px; border: 1px solid blue;
+	background-color: #00ff00">
+<p id="pid">5호 태풍 '다나스' 북상…서해 진출 가능성</p>
+<p class="pcls">태풍 다나스, 필리핀서 북상중…한반도도 영향권?</p>
+<h3 class="hcls">[날씨] 내륙 소나기, 남부 장마전선 영향…태풍 ‘다나스’ 북상</h3>
+</div>
+
+<button type="button" id="btn">삭제</button>
+
+<script type="text/javascript">
+$(function () {
+	$("#btn").click(function () {
+		//$("*").remove();				// 전부다 삭제
+		//$("#div1").remove();			// 버튼 빼고 삭제
+		//$("#div1").empty();			// 버튼 빼고 녹백 div에 텍스트가 지워진다
+		//$(".cls").remove();
+		$("p").remove("#pid, .cls");	// 
+	});
+});
+</script>
+
+
+</body>
+</html>
+
