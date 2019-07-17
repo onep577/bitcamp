@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+<style type="text/css">
+.button {
+	padding: 5px 10px;
+	border: #666 solid 1px;
+	background: #FFF;
+	display: block;
+	width: 100px;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+
+<p class="button">버튼</p>
+<ul id="q19">
+	<li>리스트1</li>
+	<li>리스트2</li>
+	<li>리스트3</li>
+</ul>
+
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+	$(".button").click(function () {
+		$("#q19").children().remove("li");
+	});
+});
+</script>
+
+
+</body>
+</html>

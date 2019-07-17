@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+<style type="text/css">
+#q30_box{
+	width: 200px;
+	height: 100px;
+	background: #999;
+}
+</style>
+</head>
+<body>
+
+<select id= "q30_select">
+	<option value= "100" >100</option>
+	<option value= "200" >200</option>
+	<option value= "300" >300</option>
+	<option value= "400" >400</option>
+	<option value= "500" >500</option>
+</select>
+<input type= "button" id="q30_color" value=" 박스폭 변경 ">
+<br><br>
+<div id= "q30_box"></div>
+
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+	$("#q30_color").click(function () {
+		var width = $("#q30_select option:selected").val();
+		
+		$("#q30_box").css("width", width);
+	});
+});
+</script>
+
+</body>
+</html>

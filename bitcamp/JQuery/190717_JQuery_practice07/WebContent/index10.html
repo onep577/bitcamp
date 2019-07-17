@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+<div id= "q31_box">
+<label>첫번째수</label>
+<input id= "q31_val" type="text" size="3" width="50" />
+
+<label>두번째수</label>
+<input id= "q31_subject" type="text" size="3" width="50" />
+<br><br>
+
+<select id= "q31_select">
+	<option value= "addition" > 더하기 </option>
+	<option value= "subtraction" > 빼기 </option>
+	<option value= "multiplication" > 곱하기 </option>
+	<option value= "division" > 나누기 </option>
+</select>
+
+<input id= "q31_button" type="button" value=" 계산 " /><br>
+<p id= "q31_answer"></p>
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+	$("#q31_button").click(function () {
+		var operate = $("#q31_select option:selected").text();
+		operate = operate.trim();
+		
+		var result = 1;
+		var num1 = parseInt( $("#q31_val").val() );
+		var num2 = parseInt( $("#q31_subject").val() );
+		
+		if(operate == "더하기"){
+			result = num1 + num2;
+		}else if(operate == "빼기"){
+			result = num1 - num2;
+		}else if(operate == "곱하기"){
+			result = num1 * num2;
+		}else if(operate == "나누기"){
+			result = num1 / num2;
+		}
+		
+		$("#q31_answer").text(result);
+		
+	});
+});
+</script>
+
+</body>
+</html>

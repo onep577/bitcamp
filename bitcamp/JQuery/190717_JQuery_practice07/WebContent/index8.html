@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+<input id="q29_val" type="text">
+<input id="q29_button" type="button" value="결과는">
+<p id="q29_answer"></p>
+
+<script type="text/javascript">
+$(document).ready(function () {	
+	$("#q29_button").click(function () {
+		var val = parseInt( $("#q29_val").val() );
+		
+		var grade = funcValReturn(val);
+		
+		$("#q29_answer").text( grade );		
+	});
+});
+
+function funcValReturn(num){
+	var grade = " ";
+	if(num >= 70){
+		grade = "합격";
+	}else if(num <= 70){
+		grade = "불합격";
+	}
+	
+	return grade;
+}
+</script>
+
+</body>
+</html>

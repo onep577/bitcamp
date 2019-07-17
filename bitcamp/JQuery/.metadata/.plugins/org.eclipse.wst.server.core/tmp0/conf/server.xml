@@ -149,7 +149,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="E:\github\bitcamp\JQuery\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="E:\github\bitcamp\JQuery\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\190717_JQuery_practice07" path="/190717_JQuery_practice07" reloadable="true" source="org.eclipse.jst.jee.server:190717_JQuery_practice07"/></Host>
+      <Context docBase="E:\github\bitcamp\JQuery\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="E:\github\bitcamp\JQuery\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\190717_JQuery_practice07" path="/190717_JQuery_practice07" reloadable="true" source="org.eclipse.jst.jee.server:190717_JQuery_practice07"/><Context docBase="E:\github\bitcamp\JQuery\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\190717_JQuery_practice08" path="/190717_JQuery_practice08" reloadable="true" source="org.eclipse.jst.jee.server:190717_JQuery_practice08"/></Host>
     </Engine>
   </Service>
 </Server>
