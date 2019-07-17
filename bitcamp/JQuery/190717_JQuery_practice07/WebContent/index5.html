@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+<ul id="q26">
+	<li>커피</li>
+	<li>홍차</li>
+	<li>우유</li>
+	<li>쥬스</li>
+	<li>소다</li>
+</ul>
+
+<script type="text/javascript">
+$(document).ready(function () {	
+	var len = $("ul#q26 li").length;
+	alert( len );
+	
+	for(i = 0; i < len; i++){
+		alert( i );
+		$("ul#q26 li").eq(i).text(
+				(i+1) + ", " + $("ul#q26 li").eq(i).text() );
+	}
+
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

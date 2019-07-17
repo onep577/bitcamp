@@ -8,15 +8,14 @@
 </head>
 <body>
 
-<div id="q20">
-	<img src="./images/photo_1.jpg">
-</div>
+<div id="q27"></div>
 
 <script type="text/javascript">
-$(document).ready(function () {
-	/* $("#q20 img").css({"width" : "500px", "height" : "300px"}); */
-	$("#q20").children().css({"width" : "500px", "height" : "300px"});
-});
+var result = " ";
+for(i = 1; i <= 100; i++){
+	result = result + i + ", ";
+}
+$("#q27").append(result);
 </script>
 
 </body>

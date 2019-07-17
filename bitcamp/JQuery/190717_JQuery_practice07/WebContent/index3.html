@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+<input type="text" id="score">
+<button id="btn">합격여부</button>
+<div id="q23"></div>
+
+<script type="text/javascript">
+$(document).ready(function () {
+	$("#btn").click(function () {
+		var score = parseInt($("#score").val());
+		
+		var sucess;
+		if(score >= 75){
+			sucess = "합격";
+		}else if(score <= 70){
+			sucess = "불합격";
+		}
+		
+		$("#q23").text( sucess );
+	});
+});
+</script>
+
+</body>
+</html>

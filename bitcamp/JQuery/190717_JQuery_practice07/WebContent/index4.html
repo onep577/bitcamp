@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+<h4>주인공</h4>
+<ul class="q24">
+	<li>홍길동</li>
+	<li>일지매</li>
+	<li>임꺽정</li>
+	<li>정수동</li>
+</ul>
+<p class="q25">주인공들의 모임</p>
+
+<script type="text/javascript">
+$(document).ready(function () {
+	//$(".q24").children().text(); // 전체가 한꺼번에 넘어온다
+	var len = $("ul.q24 li").length;
+	
+	var result = " ";
+	for(i = 0; i < len; i++){
+		var text = $("ul.q24 li").eq(i).text();
+		result = result + text + ", ";
+	}
+	
+	$(".q25").prepend(result);
+});
+</script>
+
+</body>
+</html>

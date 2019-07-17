@@ -16,13 +16,15 @@
 	<li>리스트5</li>
 	<li>리스트6</li>
 </ul>
-<p id="q21"></p>
+<div id="q22"></div>
 
 <script type="text/javascript">
 $(document).ready(function () {
-	var len = $(".eee").children().length;
-	
-	$("#q21").text("리스트는 " + len + "개입니다");
+	$(".eee li").click(function () {
+		var num = $(this).index();
+		
+		$("#q22").text( num );
+	});
 });
 </script>
 

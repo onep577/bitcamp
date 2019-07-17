@@ -8,21 +8,17 @@
 </head>
 <body>
 
-<ul class="eee">
-	<li>리스트1</li>
-	<li>리스트2</li>
-	<li>리스트3</li>
-	<li>리스트4</li>
-	<li>리스트5</li>
-	<li>리스트6</li>
-</ul>
-<p id="q21"></p>
+<ul class="q28"></ul>
 
 <script type="text/javascript">
 $(document).ready(function () {
-	var len = $(".eee").children().length;
+	var menu = ["커피", "홍차", "우유", "주스", "소다"];
+	var result = " ";
+	for(i = 0; i < menu.length; i++){
+		text = "<li>" + menu[i] + "</li><br>";
+		$(".q28").append(text);
+	}
 	
-	$("#q21").text("리스트는 " + len + "개입니다");
 });
 </script>
 
