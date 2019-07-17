@@ -40,8 +40,15 @@
 
 <p id="q09">나는 최선을 다할것이다</p>
 
+<div class="q9">
+	<p id="q10">나는 끝까지 도전할 것입니다</p>
+</div>
 
+<p id="q11" class="q11">나는 문제없어</p>
 
+<p id="q12">
+	<a href="http://www.naver.com">Naver</a>
+</p>
 
 
 <script type="text/javascript">
@@ -84,13 +91,21 @@ $(function () {
 		// 항목 추가
 		$("#q08 li").before("<li>홍차</li>");
 		$("#q08 li").after("<li>우유</li>");
+		// 우유는 2개 생긴다
 		
 		// 랩이 씌워진다
 		$("#q09").wrap("<div class='q9'></div>");
 
+		// 랩 제거
+		// 클래스 제거는 removeClass 랩을 제거할 때는 div태그의 클래스 q9
+		$("#q10").unwrap("div.q9");
+		
+		// 클래스 명칭을 바꾼다
+		$("#q11").attr("class", "q12");
+		alert( $("#q11").attr("class") );
 	
-	
-	
+		// attr 제거
+		$("#q12 a").removeAttr("href");
 	
 	});
 });

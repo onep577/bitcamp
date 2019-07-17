@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+<h2>마우스로 이미지를 클릭하면 이미지를 지울 수 있습니다</h2>
+
+<div id="a"></div>
+
+<script type="text/javascript">
+$(document).ready(function () {
+	for(i = 1; i < 10 ; i++){
+		var img = $("<img>").attr("src", "./images/photo_" + i + ".jpg");
+		$("#a").after(img);
+	}
+	
+	// 이미지 위로 마우스가 올라가면 커서 모양이 변한다
+	$("img").mouseover(function () {
+		$(this).css("cursor", "pointer");		// setter
+	});
+	
+	$("img").click(function () {
+		var imgName = $(this).attr("src");		// getter
+		alert( imgName );
+	});
+	
+	$(document).on("click", "img", function () {
+		//$(this).remove();
+		$(this).removeAttr("src");
+	});
+
+});
+</script>
+
+</body>
+</html>

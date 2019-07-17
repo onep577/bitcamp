@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+<h1>동적 테이블</h1>
+
+<!-- 데이터 테이블 -->
+<table border="1" id="list_table">
+<colgroup>
+	<col style="width: 70px">
+	<col style="width: 200px">
+	<col style="width: 300px">
+	<col style="width: 200px">
+</colgroup>
+
+<thead>
+<tr>
+	<th>번호</th><th>이름</th><th>생년월일</th><th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<th>1</th><td>홍길동</td><td>2011/03/12</td>
+	<td><a href="#" class="delete-link">삭제</a></td>
+</tr>
+</tbody>
+
+</table>
+
+<!-- 입력 테이블 -->
+<br><br>
+
+<h3>추가입력</h3>
+
+<!-- 데이터 테이블 -->
+<table border="1" id="append_table">
+
+<colgroup>
+	<col style="width: 70px">
+	<col style="width: 200px">
+	<col style="width: 300px">
+	<col style="width: 200px">
+</colgroup>
+
+<thead>
+<tr>
+	<th>번호</th><th>이름</th><th>생년월일</th><th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+<tr align="center">
+	<td><input type="text" id="add_no"></td>
+	<td><input type="text" id="add_name"></td>
+	<td><input type="text" id="add_birth"></td>
+	<td><button id="append_row">데이터 추가</button></td>
+</tr>
+</tbody>
+
+</table>
+
+
+
+
+
+
+<script type="text/javascript">
+$(function () {
+	
+	// append() 라는 함수는 , , , 컴마로 구분해서 얼마든지 추가할 수 있다
+	$("#append_row").on("click", function () {
+		$("#list_table").append(
+			$("<tr></tr>").append(
+				$("<th></th>").append( $("#add_no").val() ),
+				$("<td></td>").append( $("#add_name").val() ),
+				$("<td></td>").append( $("#add_birth").val() ),
+				$("<td></td>").append(
+					$("<a></a>").attr("href", "#").addClass("delete-link").append("삭제")
+				)
+			)
+		);
+	});
+	
+	// 삭제 클릭시 가로줄 삭제
+	// on을 쓰지 않으면 나중에 생성된 tr이 안 지워진다
+	$(document).on("click", ".delete-link", function () {
+		$(this).parent().parent().remove();
+	});
+	
+});
+</script>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+
+<link rel="stylesheet" href="style.css" type="text/css"
+	media="print, projection, screen">
+
+<script type="text/javascript" src="./jquery/jquery.tablesorter.js"></script>
+<script type="text/javascript" src="./jquery/jquery.tablesorter.min.js"></script>
+
+</head>
+<body>
+
+<h1>테이블 정렬</h1>
+
+<!-- 데이터 테이블 -->
+<table border="1" id="list_table" class="tablesorter">
+<colgroup>
+	<col style="width: 70px">
+	<col style="width: 200px">
+	<col style="width: 300px">
+</colgroup>
+
+<thead>
+<tr>
+	<th>번호</th><th>이름</th><th>생년월일</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<th>1</th><td>홍길동</td><td>2011/03/12</td>
+</tr>
+<tr>
+	<th>3</th><td>임꺽정</td><td>2019/04/30</td>
+</tr>
+<tr>
+	<th>2</th><td>고길동</td><td>2000/12/27</td>
+</tr>
+</tbody>
+
+</table>
+
+
+
+
+<script type="text/javascript">
+$(function () {
+	$("#list_table").tablesorter();
+});
+</script>
+
+
+
+
+
+
+
+</body>
+</html>
