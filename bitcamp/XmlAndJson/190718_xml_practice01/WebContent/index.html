@@ -49,10 +49,8 @@ $(document).ready(function () {
 function func( xml ){
 	var xmlDoc;	
 	var len1, len2;	
-	var arr;
-	var num, name, address, visit;
-	var txt, ntxt, atxt, vtxt;
-	txt = ntxt = atxt = vtxt = "";
+	var arr, childArr;
+	var txt;
 	xmlDoc = xml.responseXML;
 	
 	
@@ -74,31 +72,39 @@ function func( xml ){
 		}
 	}
 	document.getElementById("childnode").innerHTML = "자식노드의 자식노드의 개수 : " + len2;
-	
+	 
 	
 	
 	
 	
 	// datas
+	// 자식 노드의 
+	//alert("자식 노드 개수 : " + arr.length ); // 7
 	for(i = 0; i < arr.length; i++){
 		if(arr[i].nodeType == 1){
-			//
+			// 자식노드 movie이다
+			//alert( arr[i].nodeName ); // movie
+ 			childArr = xmlDoc.getElementsByTagName(arr[i].nodeName)[0].childNodes;
+			//alert( childArr.nodeName ); // movie
+		}
+	}
+	//alert("자식의 자식 노드 개수 : " + childArr.length ); // 7
+
+	for(j = 0; j < childArr.length; j++){
+		//alert( "22" ); // 7번 찍힌다
+		if(childArr[j].nodeType == 1){
+			//alert( "33" ); // 2 4 6
+			childNodeName = childArr[j].nodeName;
+			//alert( childNodeName ); // title point review
+			
+			txt = xmlDoc.getElementsByTagName(childNodeName)[0].childNodes[0].nodeValue + ", " + txt + "<br>";
+			
+			
+			$("#datas").html( txt );
 		}
 	}
 	
-	num = xmlDoc.getElementsByTagName("번호");
-	name = xmlDoc.getElementsByTagName("이름");
-	address = xmlDoc.getElementsByTagName("주소");
-	visit = xmlDoc.getElementsByTagName("방문");
 	
- 	for(i = 0; i < num.length; i++){
-		txt = txt + num[i].childNodes[0].nodeValue + "<br>";
-		ntxt = ntxt + name[i].childNodes[0].nodeValue + "<br>";
-		atxt = atxt + address[i].childNodes[0].nodeValue + "<br>";
-		vtxt = vtxt + visit[i].childNodes[0].nodeValue + "<br>";
-	}
-	
-	document.getElementById("datas").innerHTML = "데이터 : <br>" + txt + ntxt + atxt + vtxt;
 	
 } // func( xml )
 
