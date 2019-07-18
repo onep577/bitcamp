@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<p id="demo">p tag</p>
+
+<script type="text/javascript">
+
+var xmlhttp = new XMLHttpRequest();
+// json은 xml에서 파생된 데이터 형태이다 정식은 아니다
+
+xmlhttp.onreadystatechange = function () {
+	if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+		func( xmlhttp.responseText );
+		// this.responseText json 사용했을때는 이렇게 넘겨줘야 한다
+	}
+}
+xmlhttp.open("GET", "data.json", true);
+xmlhttp.send();
+
+function func( resp ){
+	var arr = JSON.parse(resp); // String -> Json
+	var txt = "";
+	// alert(arr);
+	/* 
+	// key:value를 취득
+	for(i = 0; i < arr.length; i++){
+		for(key in arr[i]){
+			// key값을 취득
+			txt = txt + key + " : " + arr[i][key] + " ";
+		}
+		txt = txt + "<br>";
+	}
+	 */
+	for(i = 0; i < arr.length; i++){
+		txt = txt + arr[i].name + " "
+					+ arr[i].age + " "
+					+ arr[i].address + " "
+					+ arr[i].phone + " " + "<br>";
+					alert( arr[i].address );
+	}
+	
+	document.getElementById("demo").innerHTML = txt;
+}
+
+</script>
+
+</body>
+</html>

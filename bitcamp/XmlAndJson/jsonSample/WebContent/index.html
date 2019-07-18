@@ -8,7 +8,64 @@
 
 <!--
 	JSON -> Java Script Object Notation(표기법)
+	데이터를 저장, 불러오기
+	
+	한쌍(pair) Key : Value == Hashmap(Java)
+	
+	Ajax : xml, json
 -->
+
+<p id="demo">p tag</p>
+
+<script type="text/javascript">
+/* 
+var arr = [1, 2, 3];
+var arr = [[1, 2], [3, 4]];
+*/
+
+var arr = [
+	// key값, value
+	{
+		"name" : "길동",
+		"age" : 24,
+	},
+	{
+		"name" : "지매",
+		"age" : 21,
+	},
+	{
+		"name" : "수동",
+		"age" : 29,
+	}
+];
+
+/* 
+document.getElementById("demo").innerHTML
+	//= arr[0].name + ", " + arr[0].age;
+	= arr[1]["name"] + ", " + arr[1]["age"];
+*/
+
+// String이다 json이 아니다
+var text = '{ "name" : "홍길동", "age" : "24", "주소" : "서울시" }';
+alert( text ); // 그냥 문자열이다 json object가 안 되었다
+
+// obj가 완전체 json이다
+var obj = JSON.parse(text);		// String -> Json
+		  //JSON.stringify(text);	// Json -> String
+alert( obj ); // object이다 완전체 json object가 되었다
+
+document.getElementById("demo").innerHTML
+	= obj.name + ", " + obj.age + ", " + obj.주소;
+
+
+
+
+
+
+
+
+
+</script>
 
 </body>
 </html>

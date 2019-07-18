@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+
+</head>
+<body>
+
+<!--
+	자신이 읽은 책 : 4권
+		제목(title), 저자(author), 가격(price)
+	JSON 형태로 작성 -> parse
+	
+	-> 시각화 -> table(표)로 표현
+	
+	json은 파일로 만들고 파일을 읽어와서 쭉 
+-->
+
+<table border="1" id="tableId">
+<tr>
+	<th></th>
+	<th>title</th>
+	<th>author</th>
+	<th>가격</th>
+</tr>
+<tr>
+	<th>1</th>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<th>2</th>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr><tr>
+	<th>3</th>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr><tr>
+	<th>4</th>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+</table>
+
+<script type="text/javascript">
+
+var xmlhttp = new XMLHttpRequest();
+// json은 xml에서 파생된 데이터 형태이다 정식은 아니다
+
+xmlhttp.onreadystatechange = function () {
+	if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+		bookfunc( xmlhttp.responseText );
+		// this.responseText json 사용했을때는 이렇게 넘겨줘야 한다
+	}
+}
+xmlhttp.open("GET", "book.json", true);
+xmlhttp.send();
+
+function bookfunc( resp ){
+	var arr = JSON.parse(resp); // String -> Json
+	//alert( arr.length ); // 4
+
+	for(i = 0; i < arr.length; i++){					
+		$("tr:eq(" + (i+1) + ") td:eq(" + 0 + ")" ).html( arr[i].title );
+		$("tr:eq(" + (i+1) + ") td:eq(" + 1 + ")" ).html( arr[i].author );
+		$("tr:eq(" + (i+1) + ") td:eq(" + 2 + ")" ).html( arr[i].price );
+
+	}
+}
+
+//
+
+</script>
+
+
+</body>
+</html>
