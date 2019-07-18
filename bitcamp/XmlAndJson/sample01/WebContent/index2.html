@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<p id="demo">p tag</p>
+
+<script type="text/javascript">
+var text = "<bookstore>" +
+				"<book>" +
+					"<title>탈무드</title>" +
+					"<author>woman</author>" +
+					"<year>2000</year>" +
+				"</book>" +
+				"<book>" +
+					"<title>이솝이야기</title>" +
+					"<author>man</author>" +
+					"<year>2004</year>" +
+				"</book>" +
+			"</bookstore>";
+			
+var parser, xmlDoc;
+
+parser = new DOMParser();
+xmlDoc = parser.parseFromString(text, "text/html");
+// 문자열 Parsing이다 이건 xml이 아니다
+
+document.getElementById("demo").innerHTML
+	//= xmlDoc.getElementsByTagName("book")[0].childNodes[0].nodeName; // title
+	// 첫번째 book태그에 첫번째 자식노드 즉, title의 노드네임을 가져와라 == title
+	//= xmlDoc.getElementsByTagName("book")[0].childNodes[1].nodeName; // author
+	// 첫번째 book태그에 두번째 자식노드 즉, author의 노드네임을 가져와라 == author
+
+	= xmlDoc.getElementsByTagName("book")[0].childNodes[0].childNodes[0].nodeValue; // 탈무드
+	// 첫번째 book태그에 첫번째 자식노드 title의 첫번째 자식노드 탈무드의 노드벨류를 가져와라 == 탈무드
+
+</script>
+
+</body>
+</html>

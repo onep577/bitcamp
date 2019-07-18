@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Movies>	<!-- root tag -->
+
+<movie>
+	<title>신세계</title>
+	<point>95</point>
+	<review>매우 재미있다</review>
+</movie>
+
+<movie>
+	<title>범죄와의 전쟁</title>
+	<point>84</point>
+	<review>흥미있다</review>
+</movie>
+
+</Movies>

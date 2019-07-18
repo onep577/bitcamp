@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<p id="demo">p tag</p>
+
+<script type="text/javascript">
+var xhttp = new XMLHttpRequest();
+
+xhttp.onreadystatechange = function () {
+	if(this.readyState == 4 && this.status == 200){
+		// 현재 이 객체의 처리가 완료 되었을 때
+		//func( this ); // == XMLHttpRequest()를 넘겨준다 == Parsing
+		//nodefunc( this );
+		childNodefunc( this );
+	}
+	
+	
+};
+xhttp.open("GET", "job.xml", true);
+xhttp.send();
+
+
+
+function func( xml ){
+	var num, name;
+	var txt, ntxt, xmlDoc;
+	
+	txt = ntxt = "";
+	xmlDoc = xml.responseXML;
+	// function을 통해서 xml 넘어왔다	
+	//alert( xmlDoc ); // [object XMLDocument]
+	
+	num = xmlDoc.getElementsByTagName("번호");
+	name = xmlDoc.getElementsByTagName("이름");
+	// Elements 이다 즉, 배열로 넘어온다
+	//alert( num.length ); // 3
+	//alert ( name.length ); // 3
+	
+	for(i = 0; i < num.length; i++){
+		txt = txt + num[i].childNodes[0].nodeValue + "<br>";
+		ntxt = ntxt + name[i].childNodes[0].nodeValue + "<br>";
+	}
+	
+	document.getElementById("demo").innerHTML = txt + ntxt;
+	
+} // func( xml )
+
+
+
+function nodefunc( xml ){
+	var arr, xmlDoc, txt;
+	txt = "";
+	
+	xmlDoc = xml.responseXML;
+	arr = xmlDoc.documentElement.childNodes;
+	
+	for(i = 0; i < arr.length; i++){
+		if(arr[i].nodeType == 1){
+			txt = txt + arr[i].nodeName + "<br>";
+		}
+	}
+	
+	document.getElementById("demo").innerHTML = txt;
+	
+} // nodefunc( xml )
+
+
+
+function childNodefunc( xml ){
+	var arr, xmlDoc, txt;
+	txt = "";
+	
+	xmlDoc = xml.responseXML;
+	
+	arr = xmlDoc.getElementsByTagName("고객")[0];
+	var len = arr.childNodes.length;
+	//alert( len ); // 9
+	
+	var firstChild = arr.firstChild;
+	
+	for(i = 0; i < len; i++){
+		if(firstChild.nodeType == 1){
+			txt = txt + i + " " + firstChild.nodeName + "<br>";
+		}
+		firstChild = firstChild.nextSibling;
+		// 다음 형제 노드로 보낸다
+	}
+	document.getElementById("demo").innerHTML = txt;
+} // childNodefunc( xml )
+
+
+
+
+
+</script>
+
+</body>
+</html>

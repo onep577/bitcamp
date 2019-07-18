@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<button type="button" onclick="loadXMLDoc()">내용변경</button>
+<p id="demo">p tag</p>
+
+
+
+<script type="text/javascript">
+var xhttp = new XMLHttpRequest();
+
+function loadXMLDoc(){
+	
+	xhttp.onreadystatechange = function (){
+		// 현재 준비 상태가 변경되었는지
+		// 현재 상태에 대한 리턴값이 계속 넘어온다
+		// 맨 처음은 0
+		// open 읽어들이고 1
+		// xhttp.open xhttp.send 읽은 후 계속 현재 상태 체크
+		if(this.readyState == 4 && this.status == 200){
+			document.getElementById("demo").innerHTML = this.responseText;
+			// 응답객체를 innerHTML에 넣는다
+		}
+	}
+	
+	xhttp.open("GET", "text.txt", true);
+	// get or host, 읽어올 파일을 설정, 
+	xhttp.send(); // 전송
+}
+
+
+
+</script>
+
+<!--
+readyState
+0: xhttp.open() 메소드를 수행하기 전은 0이 나온다
+1: 읽어들이는 중. 로딩 중...
+2: 로딩완료
+3: 서버 처리중...
+4: 서버 처리 완료
+
+status
+200: 성공
+403: 골 아파진다. 접근금지. 대부분 DB에서 난다 방어벽 안 풀렸을 떄 혹은 setter가 없을 때
+404: 파일이나 페이지가 없을 때
+500: 구문(문법)이 이상
+-->
+
+
+
+
+
+
+
+</body>
+</html>
