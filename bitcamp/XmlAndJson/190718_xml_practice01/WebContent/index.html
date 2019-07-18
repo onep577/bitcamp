@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<!--
+1. select -> job.xml, movie.xml
+2. button
+
+결과 :
+node : 3개
+node in node : 4개
+
+datas : 출력
+-->
+
+<select id="select">
+	<option>선택해주세요</option>
+	<option value="job.xml">job.xml</option>
+	<option value="movie.xml">movie.xml</option>
+</select>
+<button id="btn">결과 출력</button>
+
+<p id="node"></p>
+<p id="childnode"></p>
+<p id="datas"></p>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		if(this.readyState == 4 && this.status == 200){
+			$("#btn").click(function () {
+				func( xhttp );
+			});
+		}	
+	};
+	var selectXml = $("#select option:selected").val();
+	xhttp.open("GET", "movie.xml", true);
+	xhttp.send();
+});
+
+
+
+function func( xml ){
+	var xmlDoc;	
+	var len1, len2;	
+	var arr;
+	var num, name, address, visit;
+	var txt, ntxt, atxt, vtxt;
+	txt = ntxt = atxt = vtxt = "";
+	xmlDoc = xml.responseXML;
+	
+	
+	
+	// 자식 노드의 개수
+	len1 = xmlDoc.documentElement.childElementCount;
+	document.getElementById("node").innerHTML = "자식노드의 개수 : " + len1;
+	
+	
+	
+	
+	
+	// 자식 노드의 자식노드의 개수
+	arr = xmlDoc.documentElement.childNodes;
+	
+	for(i = 0; i < arr.length; i++){
+		if(arr[i].nodeType == 1){
+			len2 = xmlDoc.getElementsByTagName(arr[i].nodeName)[0].childElementCount;
+		}
+	}
+	document.getElementById("childnode").innerHTML = "자식노드의 자식노드의 개수 : " + len2;
+	
+	
+	
+	
+	
+	// datas
+	for(i = 0; i < arr.length; i++){
+		if(arr[i].nodeType == 1){
+			//
+		}
+	}
+	
+	num = xmlDoc.getElementsByTagName("번호");
+	name = xmlDoc.getElementsByTagName("이름");
+	address = xmlDoc.getElementsByTagName("주소");
+	visit = xmlDoc.getElementsByTagName("방문");
+	
+ 	for(i = 0; i < num.length; i++){
+		txt = txt + num[i].childNodes[0].nodeValue + "<br>";
+		ntxt = ntxt + name[i].childNodes[0].nodeValue + "<br>";
+		atxt = atxt + address[i].childNodes[0].nodeValue + "<br>";
+		vtxt = vtxt + visit[i].childNodes[0].nodeValue + "<br>";
+	}
+	
+	document.getElementById("datas").innerHTML = "데이터 : <br>" + txt + ntxt + atxt + vtxt;
+	
+} // func( xml )
+
+
+</script>
+
+
+
+</body>
+</html>
