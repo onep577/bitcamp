@@ -30,12 +30,20 @@
 
 <script type="text/javascript">
 $(document).ready(function () {
-	$("#q30_color").click(function () {
-		var width = $("#q30_select option:selected").val();
-		
-		$("#q30_box").css("width", width);
-	});
+	funcCssChange();
 });
+
+function funcCssChange(){
+	$("#q30_color").click(function () {
+		setTimeout(function() {
+			var width = $("#q30_select option:selected").val();
+			
+			$("#q30_box").css("width", width);
+		}, 2000);		
+	});
+} // funcCssChange 사용자 정의 함수
+
+
 </script>
 
 </body>
