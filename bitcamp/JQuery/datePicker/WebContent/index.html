@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- jquery-ui 전에 기본 jquery를 넣자 왜? 강사님께서 개발하다 에러난적 있다고 하셨다 -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
+<body>
+
+<h1>JQuery-UI 달력</h1>
+<h2>date Picker</h2>
+
+<p>선택일 : <input type="text" id="date"></p>
+
+<p>text 박스를 클릭하면, 달력이 표시됩니다</p>
+
+연도 : <input type="text" id="year"><br>
+월 : <input type="text" id="month"><br>
+일 : <input type="text" id="day"><br>
+요일 : <input type="text" id="week"><br>
+
+<script type="text/javascript">
+$(function () {
+	var week = ['일', '월', '화', '수', '목', '금', '토'];
+	var month = ["1월", "2월", "3월", "4월", "5월", "6월", "7월",
+		"8월", "9월", "10월", "11월", "12월"];
+	// java script 배열 초기화
+	
+	$("#date").datepicker({
+		// key값, value
+		dateFormat: "yy/mm/dd",
+		dayNamesMin: week,
+		monthNames: month,
+		onSelect: function ( d ) {
+		//	alert( d );
+			var arr = d.split('/');
+			
+			$("#year").val( arr[0].trim() );
+			$("#month").val( arr[1].trim() );
+			$("#day").val( arr[2].trim() );
+
+			var weekday = new Date( $("#date").datepicker({dateFormat : "yy/mm/dd"}).val() );
+			alert( weekday );
+			alert( weekday.getDay() );
+			
+			$("#week").val( week[weekday.getDay()] );
+		}
+	});
+	
+});
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>

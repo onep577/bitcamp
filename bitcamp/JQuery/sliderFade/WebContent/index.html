@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- jquery-ui 전에 기본 jquery를 넣자 왜? 강사님께서 개발하다 에러난적 있다고 하셨다 -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
+<body>
+
+<h1>JQuery-UI slider</h1>
+
+<img alt="" src="./images/p1.jpg">
+<img alt="" src="./images/p2.jpg">
+<img alt="" src="./images/p3.jpg">
+
+<p>Slider 키를 좌우로 움직이면, 이미지의 투명도를 조절 할 수 있습니다</p>
+
+<div id="slider1" style="width: 250px">
+</div>
+
+<p id="opacity"></p>
+
+<script type="text/javascript">
+$(function () {
+	$("#slider1").slider({
+		animate: true,
+		range: "min",
+		value: 100,
+		slide: function(event, ui){
+			// event, ui는 가인수이다 다른 걸로 바꿔도 된다
+			// slider는 value 체인지 텀이 없다
+			console.log("slide move");
+			
+			$("img").css("opacity", ui.value / 100);
+			
+			$("#opacity").text(ui.value);
+		}
+	});
+});
+</script>
+
+
+
+</body>
+</html>
