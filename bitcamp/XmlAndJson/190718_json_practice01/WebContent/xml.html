@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div id="demo">
+</div>
+
+<script type="text/javascript">
+var xhttp = new XMLHttpRequest();
+// xml 생성
+xhttp.onreadystatechange = function () {
+	// 함수를 통해서 준비
+	if(this.readyState == 4 && this.status == 200){
+		func( this );
+		// xml을 this로 넘겨줬다
+	}
+}
+xhttp.open("GET", "books.xml", true);
+// 꼭 이렇게 불러와야 하는것은 아니다 웹의 url로 부를 수 있다
+xhttp.send();
+
+function func( xml ){
+	//alert( xml ); // [object XMLHttpRequest] 넘어온다
+	// 제대로 넘어왔다 이제 Parsing하자
+	
+	var nodeArr;
+	var xmlDoc = xml.responseXML;
+	// xml을 통해서 document를 가져와라
+	
+	
+	
+	// root tag 취득
+	var rootTagName = xmlDoc.documentElement.nodeName;
+	//alert( rootTagName ); // books
+	
+	// node명 취득
+	var nodeName;
+	nodeArr = xmlDoc.documentElement.childNodes;
+	// 자식 태그들
+	for(i = 0; i < nodeArr.length; i++){
+		if(nodeArr[i].nodeType == 1){
+			// nodeType을 자주 쓰진 않는다
+			nodeName = nodeArr[i].nodeName;
+			//alert( nodeName ); // book 4번 찍힌다
+			// nodeName을 취득하게 목적이기 때문에 한 번만 보고 break한다
+			break;
+		}
+	}
+	
+	// table 준비
+	var out = "<table border='1'>";
+	out += "<col width=100><col width=140><col width=100>";
+	out += "<tr>";
+	
+	// column명을 취득
+	nodeArr = xmlDoc.getElementsByTagName( nodeName )[0];
+	// 첫번째 book
+	
+	var child = nodeArr.firstChild;
+	for (i = 0; i < nodeArr.childNodes.length; i++) {
+		// 첫번째 book
+		if(child.nodeType == 1){
+			// 첫번째 book의 첫번째 title
+			out += "<th>" + child.nodeName + "</th>";
+		}
+		child = child.nextSibling;
+	}
+	
+	out += "</tr>";
+	
+	// data를 출럭
+	var len = xmlDoc.getElementsByTagName( nodeName ).length;
+	//alert( len ); // 4 즉, book의 개수
+	var dataArr;
+	for(i = 0; i < len; i++){
+		out += "<tr>";
+		
+		dataArr = xmlDoc.getElementsByTagName( nodeName )[i]; // i번째 book태그
+		
+		child = dataArr.firstChild;
+		for(j = 0; j < dataArr.childNodes.length; j++){
+			//alert( dataArr.childNodes.length ); // 7 // book태그 안의 node가 몇개인지
+			if(child.nodeType == 1){
+				out += "<td>";
+				out += child.childNodes[0].nodeValue;
+				out += "</td>";
+			}
+			child = child.nextSibling;
+			// 다음 형제로
+		}
+		
+		out += "</tr>";
+	}
+	
+	out += "</table>";
+	
+	document.getElementById("demo").innerHTML = out;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+</script>
+
+</body>
+</html>

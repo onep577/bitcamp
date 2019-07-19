@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div id="demo"></div>
+
+<script type="text/javascript">
+var xmlhttp = new XMLHttpRequest();
+
+xmlhttp.onreadystatechange = function () {
+	if(this.readyState == 4 && this.status == 200){
+		// xmlhttp.responseText 서버에서 받은 데이터를 문자열로 반환
+		func( xmlhttp.responseText );
+	}
+}
+xmlhttp.open("GET", "books.json", true);
+xmlhttp.send();
+
+function func( resp ){
+	arr = JSON.parse(resp);
+	// String -> Json
+	// responseText로 받은 문자열을 Json으로 Parsing한다
+	//alert( arr.length ); // 4 왜? arr은 이차원 배열이다 books.json은 4행3열 이차원 배열이다
+	// arr[0]의 key값은 title, author, price이다
+	alert( arr[1].length );
+	
+	var out = "<table border='1'>";
+	out += "<col width=100><col width=140><col width=100>";
+	
+	// key의 출력 -> column
+	out += "<tr>";	
+	for(key in arr[0]){
+		out += "<th>" + key + "</th>";
+	}
+	out += "</tr>";
+	
+	
+	
+	// datas 출력
+	for(i = 0; i < arr.length; i++){
+		out += "<tr>";
+		/* 
+		out += "<td>" + arr[i].title + "</td>";
+		out += "<td>" + arr[i].author + "</td>";
+		out += "<td>" + arr[i].price + "</td>";
+		*/
+		// 위에는 가독성이 높고 아래는 유지보수가 편하다
+		for(key in arr[i]){
+			out += "<td>" + arr[i][key] + "</td>";
+		}
+		out += "</tr>";
+	}
+	
+	
+	
+	out += "</table>";
+	document.getElementById("demo").innerHTML = out;
+	
+} // func( resp )
+
+
+</script>
+
+</body>
+</html>

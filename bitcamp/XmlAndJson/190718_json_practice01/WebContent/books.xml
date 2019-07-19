@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<books>
+	<book>
+		<title>난장이가 쏘아 올린 작은 공</title>
+		<author>조세희</author>
+		<price>10,000</price>
+	</book>
+	<book>
+		<title>어린왕자</title>
+		<author>생텍쥐페리</author>
+		<price>8,000</price>
+	</book>
+	<book>
+		<title>해리포터</title>
+		<author>조앤 K 롤링</author>
+		<price>18,000</price>
+	</book>
+	<book>
+		<title>원피스</title>
+		<author>오다 에이치로</author>
+		<price>4,500</price>
+	</book>
+</books>
