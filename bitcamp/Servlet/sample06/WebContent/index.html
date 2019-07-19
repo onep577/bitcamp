@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+
+<h1>상태 코드 선택</h1>
+
+<!-- <form action="loc" method="post"> -->
+<!-- JQuery 할때는 위에가 필요없다 -->
+<form id="frm" method="post">
+<table>
+<tr>
+	<td>이름</td>
+	<td>
+		<input type="text" size="20" name="name" value="">
+	</td>
+</tr>
+<tr>
+	<td>나이</td>
+	<td>
+		<input type="text" size="20" name="age" value="">
+	</td>
+</tr>
+<tr>
+	<td>좋아하는 과일</td>
+	<td>
+		<select multiple="multiple" name="fruit">
+			<option value="apple" selected="selected">사과</option>
+			<option value="pear">배</option>
+			<option value="banana">바나나</option>
+		</select>
+	</td>
+</tr>
+</table>
+<!-- <input type="submit" value="결과출력"> -->
+<!-- 위에는 보내기만 아래는 JQuery -->
+<button type="button" id="move">이동</button>
+</form>
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+	$("#move").click(function () {
+		alert("click");
+		$("#frm").attr("action", "loc").submit();
+	});
+});
+</script>
+
+
+
+
+</body>
+</html>

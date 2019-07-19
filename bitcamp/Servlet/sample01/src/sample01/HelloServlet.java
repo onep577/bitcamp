@@ -48,6 +48,7 @@ public class HelloServlet extends HttpServlet{
 		pw.println("</body>");
 		
 		pw.println("</html>");
+		pw.close();
 		
 		//System.out.println("HelloServlet get 방식");
 	}

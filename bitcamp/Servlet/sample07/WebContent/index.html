@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!--
+html			servlet									servlet			html
+name=" "		request를 통해서 
+<a				getParameter, getParameterValues로 받는다
+<form			response.sendRedirect	--- >
+				forward					--- >
+
+이동만 한다면 location.href나 a 태그를 써도된다
+form을 사용하는 이유는 데이터를 가져가기 위해서이다
+
+include는 잘 안쓴다
+sendRedirect와 forward 둘 다 데이터를 가져갈 수 있다
+
+servlet에서 html로 갈때는 데이터를 날려줄 수 있다
+html만 가지고는 한께가 있다
+html은 데이터를 보내줄 수는 있어도 받기가...
+
+servlet에서 html로 이동만 할 때는 response.sendRedirect와 forward를 사용하면 된다
+servlet에서 html로 데이터를 보내줄 수는 있어도 html이 못 받는다
+
+forward는 파라미터 값을 가져가고 sendRedirect는 파라미터 값을 못 가져간다
+
+-->
+
+<!-- a태그로 파라미터를 넘길 수 있다 -->
+<a href="location?name='홍길동'">hello servlet</a>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!--
+	html -- > Web Server : 4가지 방법
+	
+	html
+		<a href=
+		<form submit
+	
+	Java script
+		location.href
+	
+	JQuery
+		$("#frm").attr("action", "bbs.jsp").submit();
+		$("#frm").attr("action", "loc").submit();
+		// frm는 form의 id값이다. loc는 web.xml의 url-partern이다
+		
+	Java
+		resp.sendRedirect("index.html");
+-->
+
+<h1>상태 코드 선택</h1>
+
+<!--
+form과 함께 table을 같이 쓰는 경우가 많다
+form은 짐을 이동시키는 용도 : back end, table은 데이터를 정렬하는 용도 : front end
+-->
+<form action="loc" method="get">
+<table>
+<tr>
+	<td>상태 코드</td>
+	<td>
+		<select name="code">
+			<!-- selected="selected" 대신에 selected만 써도 된다 -->
+			<option value="200" selected="selected">SC_OK</option>
+			<option value="404">SC_NOT_FOUND</option>
+			<option value="500">SC_INTERNAL_SERVER_ERROR(문법에러)</option>
+		</select>
+	</td>
+</tr>
+</table>
+
+<input type="submit" value="송신">
+</form>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

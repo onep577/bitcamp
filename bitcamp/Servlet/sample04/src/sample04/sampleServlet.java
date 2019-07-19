@@ -29,26 +29,28 @@ public class sampleServlet extends HttpServlet {
 	}
 	
 	public String createHTML(String methodType, HttpServletRequest req, HttpServletResponse resp) {
-		// 여기서 doGet, doPost로 리턴하면 get으로 오던지 post로 오던지 상관없다		
-		String text = req.getParameter("text");
+		// 어떻게 가도 GET방식이라고 나온다 ㅠㅠ
 		
+//		// 여기서 doGet, doPost로 리턴하면 get으로 오던지 post로 오던지 상관없다		
+//		String text = req.getParameter("text");
+//		
 		StringBuffer sb = new StringBuffer();
-		// StringBuffer ?
-		
-		// sb.append는 String에 추가하는 것
-		sb.append("<html>");
-
-		sb.append("<head>");
-		sb.append("<title>제목</title>");
-		sb.append("</head>");
-
-		sb.append("<body>");
-		sb.append("<p>" + methodType + "방식 </p>");
-		sb.append("</body>");
-		
-		sb.append("</html>");
-		
-		// String 생성 후 이제까지 추가했던 걸 전부 리턴한다
+//		// StringBuffer ?
+//		
+//		// sb.append는 String에 추가하는 것
+//		sb.append("<html>");
+//
+//		sb.append("<head>");
+//		sb.append("<title>제목</title>");
+//		sb.append("</head>");
+//
+//		sb.append("<body>");
+//		sb.append("<p>" + methodType + "방식 </p>");
+//		sb.append("</body>");
+//		
+//		sb.append("</html>");
+//		
+//		// String 생성 후 이제까지 추가했던 걸 전부 리턴한다
 		return (new String(sb));
 	}
 
