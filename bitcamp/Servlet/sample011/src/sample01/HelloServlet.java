@@ -1,4 +1,4 @@
-package sample02;
+package sample01;
 
 import java.io.IOException;
 import java.io.PrintWriter;
