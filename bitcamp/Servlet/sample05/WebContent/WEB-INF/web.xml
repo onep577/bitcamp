@@ -17,7 +17,7 @@
   	<init-param>
   		<param-name>tax</param-name>
   		<param-value>0.15</param-value>
-  	</init-param>  	
+  	</init-param>
   </servlet>
   
   <servlet-mapping>

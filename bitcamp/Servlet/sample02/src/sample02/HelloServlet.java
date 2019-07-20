@@ -35,7 +35,7 @@ public class HelloServlet extends HttpServlet{
 		// form에서 넘어온 _name을 받는다
 		String name = req.getParameter("_name");
 		
-		// 요청과 응답 한글 깨지지 않게 설정
+		// Web Browser에 보낼 데이터가 Web Browser에서 깨지지 않도록 인코딩한다
 		req.setCharacterEncoding("utf-8");		
 		resp.setContentType("text/html; charset=utf-8");
 		

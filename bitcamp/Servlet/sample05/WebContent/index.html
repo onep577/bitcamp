@@ -7,7 +7,7 @@
 <body>
 
 <!--
-	html -- > Web Server : 4가지 방법
+	html에서 Web Server로 가는 방법은 4가지이다
 	
 	html
 		<a href=
@@ -38,9 +38,13 @@ form은 짐을 이동시키는 용도 : back end, table은 데이터를 정렬�
 	<td>
 		<select name="code">
 			<!-- selected="selected" 대신에 selected만 써도 된다 -->
+			<!-- 200 : 정상작동 -->
 			<option value="200" selected="selected">SC_OK</option>
+			<!-- 404 : 파일을 못 찾는다 -->
 			<option value="404">SC_NOT_FOUND</option>
+			<!-- 500 : 문법 오류 -->
 			<option value="500">SC_INTERNAL_SERVER_ERROR(문법에러)</option>
+			<!-- 403 : 접근금지 -->
 		</select>
 	</td>
 </tr>
@@ -48,14 +52,6 @@ form은 짐을 이동시키는 용도 : back end, table은 데이터를 정렬�
 
 <input type="submit" value="송신">
 </form>
-
-
-
-
-
-
-
-
 
 
 </body>
