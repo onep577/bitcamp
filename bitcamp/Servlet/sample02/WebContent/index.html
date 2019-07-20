@@ -45,17 +45,20 @@ web-app을 내가 만든 web.xml파일에 붙여넣기한다
 <h1>servlet 기본</h1>
 
 <!--
-버튼을 클릭하면 <servlet-mapping>의 <url-pattern>에 location이 이름인 web.xml파일로간다
-<servlet-mapping>의 <servlet-name> helloServlet과 이름이 같은 <servlet>의 <servlet-name> helloServlet을 찾는다
-찾은 <servlet>의 <servlet-class> sample01.HelloServlet를 자동 생성 후 이동한다
-get 방식이면 doGet post, 방식이면 doPost의 오버라이드 메소드를 실행한다
-콘솔창에 HelloServlet doGet 출력된다 즉, java까지 갔다
+1. form 안에 submit 버튼을 클릭하면 <servlet-mapping>의 <url-pattern>에 이름이
+   form의 action의 이름과 같은  web.xml파일로간다
+2. <servlet-mapping>의 <servlet-name> helloServlet과 이름이 같은
+   <servlet>의 <servlet-name> helloServlet을 찾는다
+3. 찾은 <servlet>의 <servlet-class> sample01.HelloServlet를 자동 생성한다
+4. get 방식이면 doGet, post 방식이면 doPost의 오버라이드 메소드를 실행한다
+5. 콘솔창에 HelloServlet doGet 출력된다
+즉, html의 submit 버튼을 클릭한걸로 Servlet( java )까지 갔다
 -->
 
 <!-- get방식은 default이다 안 적어도 된다 -->
-<!-- 버튼을 클릭하면 location으로 간다 즉, 서버로 가는 것 서블릿으로 가는 것 -->
+<!-- 버튼을 클릭하면 location으로 간다 즉, 서버로 가는 것. 서블릿으로 가는 것이다 -->
 <form action="location" method="get">
-	<input type="text" name="name"><br>
+	<input type="text" name="_name"><br>
 	<input type="submit" value="get 방식">
 </form>
 
@@ -64,14 +67,6 @@ get 방식이면 doGet post, 방식이면 doPost의 오버라이드 메소드를
 <form action="location" method="post">
 	<input type="submit" value="post 방식">
 </form>
-
-
-
-
-
-
-
-
 
 
 

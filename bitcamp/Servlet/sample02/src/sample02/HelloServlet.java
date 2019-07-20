@@ -23,16 +23,26 @@ public class HelloServlet extends HttpServlet{
 			servlet => java(html)
 			JSP => html(Java)
 		*/
-		String name = req.getParameter("name");
 		
-		req.setCharacterEncoding("utf-8");
 		
-		resp.setContentType("text/html; charset-utf-8");
 		
+		// 1. 요청이 오면 응답하기 위해 한글 깨짐 방지를 한다
+		// 2. getWriter() 메소드가 클라이언트에 문자를 보내기 위해 PrintWriter 객체로 리턴한다
+		// 3. println가 문자열의 형태로 밖으로 내보낸다
+
+		
+		
+		// form에서 넘어온 _name을 받는다
+		String name = req.getParameter("_name");
+		
+		// 요청과 응답 한글 깨지지 않게 설정
+		req.setCharacterEncoding("utf-8");		
+		resp.setContentType("text/html; charset=utf-8");
+		
+		// getWriter() : Returns a PrintWriter object that can send character text to the client
 		PrintWriter pw = resp.getWriter();
 
-		// println으로 밖으로 내보내는 것
-		
+		// println : 문자열의 형태로 밖으로 내보내는 것		
 		pw.println("<html>");
 
 		pw.println("<head>");

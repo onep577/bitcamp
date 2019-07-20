@@ -9,15 +9,12 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
   <servlet>
     <servlet-name>hello</servlet-name>
     <servlet-class>sample01.HelloServlet</servlet-class>
   </servlet>
-  
   <servlet-mapping>
     <servlet-name>hello</servlet-name>
     <url-pattern>/location</url-pattern>
   </servlet-mapping>
-  
 </web-app>
