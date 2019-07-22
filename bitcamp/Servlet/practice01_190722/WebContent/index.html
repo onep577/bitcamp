@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
+<body>
+
+<form action="infoServlet">
+이름 : <input type="text" name="name"><br>
+나이 : <select name="age">
+		<option value="10대" selected>10대</option>
+		<option value="20대">20대</option>
+		<option value="30대">30대</option>
+</select><br>
+남성 : <input type="radio" name="gender" value="남성">
+여성 : <input type="radio" name="gender" value="여성"><br>
+취미 : sleep <input type="checkbox" name="hobby" value="sleep">
+eat <input type="checkbox" name="hobby" value="eat"><br>
+생년월일 : <input type="text" id="date"><br>
+<input type="hidden" id="year" name="year">
+<input type="hidden" id="month" name="month">
+<input type="hidden" id="day" name="day">
+연봉 : <select name="pay">
+		<option>1000만원 이하</option>
+		<option>2000만원 이하</option>
+		<option>3000만원 이하</option>
+</select>
+<input type="submit" value="전송">
+</form>
+
+<script type="text/javascript">
+$(function () {
+	var week = ['일', '월', '화', '수', '목', '금', '토'];
+	var month = ["1월", "2월", "3월", "4월", "5월", "6월", "7월",
+		"8월", "9월", "10월", "11월", "12월"];
+	// java script 배열 초기화
+	
+	$("#date").datepicker({
+		// key값, value
+		dateFormat: "yy/mm/dd",
+		dayNamesMin: week,
+		monthNames: month,
+		onSelect: function ( d ) {
+		//	alert( d );
+			var arr = d.split('/');
+			
+			$("#year").val( arr[0].trim() );
+			$("#month").val( arr[1].trim() );
+			$("#day").val( arr[2].trim() );
+
+			var weekday = new Date( $("#date").datepicker({dateFormat : "yy/mm/dd"}).val() );
+			//alert( weekday );
+			//alert( weekday.getDay() );
+			
+			$("#week").val( week[weekday.getDay()] );
+		}
+	});
+	
+});
+</script>
+
+
+</body>
+</html>

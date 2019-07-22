@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<a href="location?id=abc&pwd=123">HelloServlet</a>
+<!-- a태그는 보낼 수는 있지만 입력할 순 없다. 무조건 get방식으로 간다 -->
+
+<form action="location" method="post">
+<input type="hidden" name="mydata" value="abc123">
+
+<table>
+<tr>
+	<td>id</td>
+	<td>
+		<input type="text" size="20" name="id" placeholder="id 입력">
+	</td>
+</tr>
+<tr>
+	<td>password</td>
+	<td>
+		<input type="password" size="20" name="pwd" placeholder="password 입력">
+	</td>
+</tr>
+<tr>
+	<td colspan="2">
+		<input type="submit" name="btn" value="로그인">
+		<!-- submit에서도 name으로 보낼 수 있다 '로그인'이 나온다 -->
+	</td>
+</tr>
+</table>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!--
+cookie : 저장공간(client) == String
+		 ex) id, password 저장하는 공간, 방문 횟수
+		 Java Script에서 접근이 가능
+		 아이디 기억하고 싶을 때 사용
+		 
+session : 저장공간(server) == Object		setAttribute, getAttribute
+		  ex) id, password, MemberDto
+		  
+		  저장기한, 방문 횟수(서버를 한 번 켜면 거의 끄지 않기 때문에 클라이언트에 저장하면 날릴 수 있기 때문이다)
+		  한글 사용 금지!!
+		  
+		  forward는 한번 가져가서 짐 풀고 끝
+		  session은 가져가서 풀고 저장 기한동안 저장해 놓는다 즉, 많이 사용할수록 서버가 무거워진다
+-->
+
+<a href="hello">hello servlet</a>
+<a href=visitedCookie>방문 횟수</a>
+
+</body>
+</html>

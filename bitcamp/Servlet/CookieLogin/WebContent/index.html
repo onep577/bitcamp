@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- jquery 쓰기 위해 만들어 놓은 것 -->
+<script src="http://lab.alexcican.com/set_cookies/cookie.js" type="text/javascript" ></script>
+<!-- java script에서 쓰기 위해 만들어 놓은 것 -->
+
+<style type="text/css">
+.center{
+	margin: auto;
+	width: 60%;
+	border: 3px solid #ff0000;
+	padding: 10px;
+}
+</style>
+
+</head>
+<body>
+
+<h1>Log-in</h1>
+
+<div class="center">
+<form id="frm"><!-- form을 id로 설정했다는 것은 submit을 사용하겠다는 것 -->
+
+<table border="1">
+<tr>
+	<td>ID</td>
+	<td>
+		<input type="text" id="id" size="20">
+		<input type="checkbox" id="chk_save_id">id 저장
+	</td>
+</tr>
+<tr>
+	<td>Password</td>
+	<td>
+		<input type="password" id="pwd" size="20">
+	</td>
+</tr>
+<tr>
+	<td colspan="2" style="height: 50px; text-align: center;">
+		<input type="button" id="_btnLogin" value="로그인">
+	</td>
+</tr>
+</table>
+
+</form>
+</div>
+
+<script type="text/javascript">
+$("#_btnLogin").click(function() {
+	
+	if( $("#id").val().trim() == "" ){
+		alert("id를 입력해주세요");
+		$("#id").focus();
+		// id로 포커스가 맞춰진다
+	}
+	else if( $("#pwd").val().trim() == "" ){
+		alert("password를 입력해주세요");
+		$("#pwd").focus();
+		// password로 포커스가 맞춰진다
+	}else{
+		$("#frm").attr({"action" : "loginAf", "target" : "_self" }).submit();
+		//$("#frm").attr({"action" : "loginAf", "target" : "_blank" }).submit();
+		// target _blank 새로운 창에 띄운다
+	}
+	
+});
+
+var user_id = $.cookie("user_id");
+if(user_id != null){	// 지정한 쿠키가 있을 때
+	alert("쿠키 있음");
+	$("#id").val( user_id );
+	$("#chk_save_id").attr("checked", "checked"); // 체크박스가 체크되는 것
+}
+
+$("#chk_save_id").click(function() {
+	
+	if( $("#chk_save_id").is(":checked") ){
+		// 체크박스가 체크 되었을 때
+		// alert("체크 됨");
+		if( $("#id").val().trim() == "" ){
+			alert("id를 입력해주세요");
+			$("#id").focus();
+			$("#chk_save_id").prop("checked", false);
+			// 강사님 왈 attr로 하니까 동작하지 않는다
+		}else{
+			// 정상 기입한 경우
+			$.cookie("user_id", $("#id").val().trim(), {expires: 7, path: '/'})
+			// 7은 일주일 '/'아무거나 모든것을 포함한다
+		}
+	}else{
+		// alert("체크 없어짐");
+		$.removeCookie("user_id", {path:'/'});
+	}
+});
+
+</script>
+
+
+
+
+</body>
+</html>

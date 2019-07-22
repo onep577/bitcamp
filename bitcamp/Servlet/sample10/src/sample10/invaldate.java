@@ -1,45 +1,58 @@
-package sample07;
+package sample10;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-public class forwardServlet extends HttpServlet {
+@WebServlet("/invalSession")
+public class invaldate extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("여기는 forwardServlet doGet 입니다");
+		System.out.println("여기는 invaldate get방식입니다");
 		
-		// 보낼 데이터가 깨지지 않도록 인코딩한다
-		req.setCharacterEncoding("utf-8");		
+		req.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html; charset=utf-8");
+		
+		
 
 		// 문자 형태로 데이터를 보낼 수 있도록 PrintWriter 객체로 리턴한다
 		PrintWriter pw = resp.getWriter();
-
+		
 		// println으로 밖으로 내보내는 것		
 		pw.println("<html>");
 
 		pw.println("<head>");
 		pw.println("<title>제목</title>");
-		pw.println("</head>");		
+		pw.println("</head>");
 
 		pw.println("<body>");
+		pw.println("<h3>InvalSession servlet</h3>");
 		
-		pw.println("<h1>여기는 forwardServlet get방식입니다</h1>");
+		HttpSession session = req.getSession();
+		
+		session.invalidate();	// logout 할 때 여기까지 하자
+		
+		if(req.getSession(false) == null) {
+			pw.println("<p>세션이 비어 있습니다</p>");
+		}
+		
 		pw.println("</body>");
-		
 		pw.println("</html>");
-		//pw.close();
+		pw.close();
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("여기는 forwardServlet doPost 입니다");
+		// TODO Auto-generated method stub
+		super.doPost(req, resp);
 	}
 
 }
