@@ -33,7 +33,7 @@ public class infoServlet extends HttpServlet {
 		String day = req.getParameter("day");
 		String pay = req.getParameter("pay");
 		
-		Member mem = new Member(name, age, gender, hobby, year, month, day, pay);
+		//Member mem = new Member(name, age, gender, hobby, year, month, day, pay);
 		
 		// 문자 형태로 데이터를 보낼 수 있도록 PrintWriter 객체로 리턴한다
 		PrintWriter pw = resp.getWriter();

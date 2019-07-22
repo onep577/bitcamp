@@ -43,28 +43,19 @@ public class ManServlet extends HttpServlet {
 		HttpSession session = req.getSession();
 		pw.println("<h3>여기는 ManServlet get방식입니다</h3>");
 		
-		Enumeration<String> enum_session = session.getAttributeNames();
+		Member mem = (Member)session.getAttribute("member");		
 		
-		while(enum_session.hasMoreElements()) {
-			String key = enum_session.nextElement();
-			Object val = session.getAttribute(key);
-			
-			pw.println("<p>" + key + " : " + val + "</p>");
-			pw.println("<input type='text' value=" + val + "><br>");
-		}
 		
-		/*
-		pw.println("이름 : <input type='text' value=" + name + "><br>");
+		pw.println("이름 : <input type='text' value=" + mem.getName() + "><br>");
 		pw.println("나이 : <input type='text' value=" + mem.getAge() + "><br>");
 		pw.println("성별 : <input type='text' value=" + mem.getGender() + "><br>");
 		for (int i = 0; i < mem.getHobby().length; i++) {
-			pw.println("취미" + i + " : <input type='text' value=" + mem.getHobby()[i] + "><br>");
+			pw.println("취미" + (i+1) + " : <input type='text' value=" + mem.getHobby()[i] + "><br>");
 		}
 		pw.println("생년월일 : <input type='text' value=" 
 				+ mem.getDateYear() + mem.getDateMonth() + mem.getDateDay() + "><br>");
 		pw.println("연봉 : <input type='text' value=" + mem.getPay() + "><br>");
 		/**/
-		pw.println();
 		pw.println("</body>");
 		
 		pw.println("</html>");
