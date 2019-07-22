@@ -48,8 +48,7 @@ public class helloServlet extends HttpServlet {
 		pw.println("<p>여기는 helloServlet Start Get방식입니다</p>");
 		
 		
-		// 아래코드는 Get방식으로 간다
-		
+		// 아래코드는 Get방식으로 간다		
 		RequestDispatcher dispatch = req.getRequestDispatcher("include");
 			// 불러오고자 하는 링크 즉, web.xml의 url-parttern
 		dispatch.include(req, resp);

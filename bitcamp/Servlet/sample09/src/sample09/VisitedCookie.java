@@ -37,17 +37,20 @@ public class VisitedCookie extends HttpServlet {
 		Cookie visitCookie = null;
 		
 		if(cookies != null) {
-			// 쿠키가 있음
+			// 쿠키가 있음 -> 검색, 갱신
 			
 			// 쿠키 검색
 			for(int i = 0; i < cookies.length; i++) {
 				if(cookies[i].getName().equals("visited")) {
 					// cookie의 key값이 visited와 같을 때
+					// visited는 HelloServlet에서 생성했다
 					visitCookie = cookies[i];
+					// key값이 visited일 때의 value값을 넣는다
 					// cookie는 중복 허용하지 않는다
 					break;
 				}
 			}
+			
 			// 찾음
 			if(visitCookie != null) {
 				int count = Integer.parseInt( visitCookie.getValue() ) + 1;
@@ -86,25 +89,6 @@ public class VisitedCookie extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("여기는VisitedCookie doPost입니다");
-		
-		req.setCharacterEncoding("utf-8");
-		resp.setContentType("text/html; charset=utf-8");
-		
-		PrintWriter pw = resp.getWriter();
-
-		// println으로 밖으로 내보내는 것		
-		pw.println("<html>");
-
-		pw.println("<head>");
-		pw.println("<title>제목</title>");
-		pw.println("</head>");
-
-		pw.println("<body>");
-		pw.println("<p>VisitedCookie doPost</p>");
-		pw.println("</body>");
-		
-		pw.println("</html>");
-		pw.close();
 	}
 
 }

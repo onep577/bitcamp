@@ -19,11 +19,12 @@ public class DispCookies extends HttpServlet {
 		System.out.println("여기는 DispCookies doGet입니다");
 		
 		req.setCharacterEncoding("utf-8");		
-		resp.setContentType("text/html; charset-utf-8");
-		
+		resp.setContentType("text/html; charset=utf-8");
+
+		// 문자 형태로 데이터를 보낼 수 있도록 PrintWriter 객체로 리턴한다
 		PrintWriter pw = resp.getWriter();
-		// println으로 밖으로 내보내는 것
 		
+		// println으로 밖으로 내보내는 것		
 		pw.println("<html>");
 
 		pw.println("<head>");
@@ -45,10 +46,11 @@ public class DispCookies extends HttpServlet {
 				pw.println(value);
 				pw.println("</p>");
 				// cookie를 전부 다 꺼낼 수 있다
+				
+				// key값 : getName(), value값 : getValue()
 			}
 		}
 		
-		//pw.println("<a href=visitedCookie>방문 횟수</a>");
 		pw.println("</body>");		
 		pw.println("</html>");
 		pw.close();
@@ -56,7 +58,7 @@ public class DispCookies extends HttpServlet {
 
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("여기는 DispCookies doPostt입니다");
+		System.out.println("여기는 DispCookies doPost입니다");
 	}
 
 }
