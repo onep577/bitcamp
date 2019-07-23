@@ -28,6 +28,7 @@
 
 
 <!-- 첫번째 방법 -->
+<!--  
 <script type="text/javascript">
 $(document).ready(function () {
 	$("#answerForm").hide();
@@ -39,27 +40,53 @@ $(document).ready(function () {
 	$("#okBtn").click(function () {
 		alert( $('#answer').val() );
 	});
-}
+});
 </script>
-
+-->
 
 
 <!-- 두번째 방법 -->
-<!--
 <script type="text/javascript">
-$(document).ready(function () {
+$(function () {
+
 	$("#btn").click(function () {
-		var text = "<br><p>답글 : <input type='text' id='answer'><br><br>"
-			+ "<button id='okBtn'>답글작성완료</button></p>";
+		var txt = "<br>답글:<input type='text' id='answer'>";
+		$("body").append(txt);
+		
+		var btn = "<br><br><button type='button' id='answerBtn'>답글작성완료</button>";
+		$("body").append(btn);
+	});	
+	/*
+	$("#answerBtn").click(function () {
+		alert("답글작성완료");
+	});
+	*/
+	/* 	1. div 태그에 resource를 모아 놓고 hide로 설정
+		   클릭시에 show로 설정되어 보여지도록 한다. */
+	
+	$(document).on("click", '#answerBtn', function () {
+	//	alert("on 답글작성완료");
+		alert( $("#answer").val() );
+	});	   
+
+	
+});
+</script>
+<!--  
+<script type="text/javascript">
+$(function () {
+	$("#btn").click(function () {
+		var text = "<br>답글:<input type='text' id='answer'>"
+			+ "<br><br><button type='button' id='answerBtn'>답글작성완료</button>";
 		$("body").append(text);
 		
 		// body 태그에 추가할 수 있고 div 태그에 추가할 수 있다
 	});
 	
-	$(document).on("click", "#okBtn", function () {
+	$(document).on("click", "#answerBtn", function () {
 		// 개발 하다보면 나중에 만들어진 코드를 가능하게 할 떄 유용
 		// 꼭 기억하자 필요한 순간이 온다
-		alert( $('#answer').val() );
+		alert( $("#answer").val() );
 	});
 	 
 });

@@ -10,7 +10,7 @@
 
 <p style="background-color: #ff0000" class="_color">p tag 1</p>
 <p style="background-color: #00ff00" class="_color">p tag 2</p>
-<p style="background-color: #0000ff" class="_color">p tag 3</p>
+<p style="background-color: #00aaff" class="_color">p tag 3</p>
 
 <!-- 클래스로 접근했을 때 구분자는 this이다 -->
 <script type="text/javascript">
@@ -23,6 +23,7 @@ $(function () {
 		
 		// setter
 		var color = $(this).css("background-color", "purple");
+		// 여기서 보라색으로 지정했지만 밑에서 덮어씌어진다
 		$(this).text("새로운 문자열");
 		
 		$(this).css({

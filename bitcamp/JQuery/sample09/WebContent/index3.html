@@ -21,10 +21,10 @@
 $(function () {
 	$("#btn").click(function () {
 		//$("*").remove();				// 전부다 삭제
-		//$("#div1").remove();			// 버튼 빼고 삭제
-		//$("#div1").empty();			// 버튼 빼고 녹백 div에 텍스트가 지워진다
-		//$(".cls").remove();
-		$("p").remove("#pid, .pcls");	// 
+		//$("#div1").remove();			// 버튼 빼고 전부 다 삭제
+		//$("#div1").empty();			// 버튼 빼고 녹백 div에 텍스트만 삭제
+		//$(".pcls").remove();			// 지정한 class만 삭제
+		$("p").remove("#pid, .pcls");	// 지정한 class와 id를 삭제
 	});
 });
 </script>
