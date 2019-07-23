@@ -45,7 +45,7 @@ public class VisitedCookie extends HttpServlet {
 					// cookie의 key값이 visited와 같을 때
 					// visited는 HelloServlet에서 생성했다
 					visitCookie = cookies[i];
-					// key값이 visited일 때의 value값을 넣는다
+					// key값이 visited일 때의 key값과 value값을 넣는다
 					// cookie는 중복 허용하지 않는다
 					break;
 				}
@@ -57,27 +57,27 @@ public class VisitedCookie extends HttpServlet {
 				pw.println("<p>" + count + "번째 방문입니다</p>");
 				
 				// 쿠키를 값을 갱신
-				visitCookie.setValue(count + "");
+				visitCookie.setValue(count + ""); // +1 한 count 넣는다
 				visitCookie.setMaxAge( 10 );
 				// 지속시간을 설정 할 수 있다
 				// 365 * 24 * 60 * 60 -> 1년
-				resp.addCookie(visitCookie);
+				resp.addCookie(visitCookie); // 갱신
 				// 갱신
 			}
 			// 못찾음
 			else {
 				// 쿠키가 없음 -> 생성
 				pw.println("<p>첫번째 방문입니다</p>");
-				Cookie newCookie = new Cookie("visited", "1");
-				resp.addCookie(newCookie);
+				Cookie newCookie = new Cookie("visited", "1"); // key값 value값
+				resp.addCookie(newCookie); // 갱신
 				// cookie에 집어넣은 이름으로 구분한다
 			}
 			
 		}else {
 			// 쿠키가 없음 -> 생성
 			pw.println("<p>첫번째 방문입니다</p>");
-			Cookie newCookie = new Cookie("visited", "1");
-			resp.addCookie(newCookie);
+			Cookie newCookie = new Cookie("visited", "1"); // key값 value값
+			resp.addCookie(newCookie); // 갱신
 			// cookie에 집어넣은 이름으로 구분한다
 		}
 		
