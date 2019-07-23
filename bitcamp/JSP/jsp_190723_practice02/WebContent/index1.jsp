@@ -20,7 +20,7 @@ num1++;
 <%for(int i = 0; i < num1; i++){
 %>
 <tr>
-	<%for(int j = 0; j < 11; j++){
+	<%for(int j = 0; j < num1; j++){
 		int result = i * j;
 	%>
 	<td>

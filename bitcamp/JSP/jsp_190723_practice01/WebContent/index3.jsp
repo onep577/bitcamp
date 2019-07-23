@@ -11,16 +11,19 @@
 <body>
 
 <p>-- 입력 페이지 --</p>
-이름 : <input type="text" id="name"><br>
-생년월일 : <input type="text" id="birth"><br>
+<form id="frm">
+이름 : <input type="text" id="_name" name="name"><br>
+생년월일 : <input type="text" id="_birth" name="birth"><br>
 <input type="button" id="btn" value="OK">
-
+</form>
 
 <script type="text/javascript">
 $("#btn").click(function () {
-	location.href = "index4.jsp?name=" + $("#name").val()
-	+ "&birth=" + $("#birth").val();
+	//location.href = "index4.jsp?name=" + $("#_name").val()
+	//+ "&birth=" + $("#_birth").val();
+	$("#frm").attr("action", "index4.jsp").submit();
 });
+
 
 </script>
 
