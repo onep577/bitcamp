@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<form id="frm" action="info">
+<form id="frm" action="info" method="post">
 아이디 : <input type="text" name="id"><br>
 패스워드 : <input type="password" name="pwd">
 
