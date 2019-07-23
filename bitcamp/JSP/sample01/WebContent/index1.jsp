@@ -1,4 +1,4 @@
-<%@page import="sample01.Utilclass"%>
+<%@page import="sample01.UtilClass"%>
 <%@page import="sample01.YouClass"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -23,14 +23,11 @@
 
 --%>
 
-<%!
-// 자바영역의 선언부
+<%!// 자바영역의 선언부
 // 전역변수, class선언(템플릿), function선언
-int glvar = 0;
-
-%>
+int glvar = 0;%>
 <%
-// 코드부
+	// 코드부
 glvar++;
 out.println("glvar : " + glvar);
 // 글로번 변수는 index1.jsp 즉, 현재 페이지의 전역변수이다
@@ -40,19 +37,17 @@ out.println("glvar : " + glvar);
 int var = 0;
 var++;
 out.println("var : " + var);
-
 %>
 <br><br>
 
 <%-- value부 --%>
-glvar : <%=glvar %>
-var : <%=var %>
+glvar : <%=glvar%>
+var : <%=var%>
 <br><br>
 
 
 
-<%!
-// 클래스 선언을 할 수 있지만 잘 안한다 java Resources에서 한다
+<%!// 클래스 선언을 할 수 있지만 잘 안한다 java Resources에서 한다
 // 선언이라는 것은 코드가 아니다 클래스를 선언하는 것은 템플릿 즉, 형태이기 때문이다
 class MyClass{
 	private int number;
@@ -69,14 +64,10 @@ class MyClass{
 
 public String func(){
 	return "func() 호출";
-}
-
-%>
+}%>
 
 <%
-
-
-MyClass mcls = new MyClass(1, "hgd");
+	MyClass mcls = new MyClass(1, "hgd");
 out.println( mcls.toString() );
 
 YouClass ycls = new YouClass(2, "ijm");
@@ -86,26 +77,10 @@ out.println( ycls.toString() );
 out.println( func() );
 // 바로 바로 써야하는 함수는 선언부에 넣는 경우도 있다
 // 클래스를 만들면 찾아 들어가야하는 번거로움이 있다
-out.println( Utilclass.func() );
-
+out.println( UtilClass.func() );
 %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 </body>
 </html>
-

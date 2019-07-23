@@ -25,7 +25,7 @@ String str = "Hello JSP";
 	
 	JSP : java server pages
 	
-	server( web )를 통해서 client form을 만들어내는 코드	
+	server( web )를 통해서 client form을 만들어내는 코드
 	서버에서 전송해줄 수 있는 문서를 만든다
 	항상 서버를 거쳐가야한다
 	
@@ -130,14 +130,6 @@ for(int i = 0; i < 5; i++){
 <script type="text/javascript">
 document.getElementById("demo").innerHTML = "change p tag";
 </script>
-
-
-
-
-
-
-
-
 
 
 
