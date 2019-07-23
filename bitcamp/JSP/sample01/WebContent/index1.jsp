@@ -16,18 +16,17 @@
 	
 	Java 영역 -> scriptlet
 	
-	JSP 목적 -> client code를 만들어 내는 것 결과를 db와 통신으로 작성한다
+	JSP 목적 -> client code를 만들어 내는 것. 결과를 db와 통신으로 작성한다
 
 	scriptlet
 	선언부, 코드부, value부
 
 --%>
 
-<%!// 자바영역의 선언부
+<%! // 자바영역의 선언부
 // 전역변수, class선언(템플릿), function선언
 int glvar = 0;%>
-<%
-	// 코드부
+<% // 자바영역의  코드부
 glvar++;
 out.println("glvar : " + glvar);
 // 글로번 변수는 index1.jsp 즉, 현재 페이지의 전역변수이다
@@ -38,7 +37,7 @@ int var = 0;
 var++;
 out.println("var : " + var);
 %>
-<br><br>
+<br>
 
 <%-- value부 --%>
 glvar : <%=glvar%>
@@ -67,18 +66,26 @@ public String func(){
 }%>
 
 <%
-	MyClass mcls = new MyClass(1, "hgd");
+MyClass mcls = new MyClass(1, "hgd");
 out.println( mcls.toString() );
+%>
+<p>------------------------------- 자바영역 코드부에서 선언한 클래스의 생성자에 값을 넣었다</p>
 
+<%
 YouClass ycls = new YouClass(2, "ijm");
 out.println( ycls.toString() );
 // 자동 inport된다 그러니까 자바 코드는 Java Resources에 있는 게 좋다
+out.println();
+%>
+<p>------------------------------- 프로젝트 Java Resources에서 선언한 클래스의 생성자에 값을 넣었다</p>
 
+<%
 out.println( func() );
 // 바로 바로 써야하는 함수는 선언부에 넣는 경우도 있다
 // 클래스를 만들면 찾아 들어가야하는 번거로움이 있다
 out.println( UtilClass.func() );
 %>
+<p>------------------------------- 자바영역 코드부에서 선언한 함수를 호출</p>
 
 
 

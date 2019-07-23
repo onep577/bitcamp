@@ -68,7 +68,7 @@ String str = "Hello JSP";
 
 <img alt="" src="d:\\tmp\\img.png">
 <!-- 안된다 왜? jsp는 서버 코드
-되는 방법 2가지 : 이미지가 웹에 있거나 리소스로 있다.
+되는 방법 2가지 : 이미지가 웹에 있거나 리소스로 있다. 즉, 프로젝트 안에 있다
 알ftp
 -->
 
@@ -82,15 +82,19 @@ String str = "Hello JSP";
 	JSP = html(java) 훨씬 편하다
 	
 	내장(암시) 객체 : new(생성)를 하지않고 바로 사용할 수 있는 object
+		out, request, response
 */
 System.out.println("System.out.println 내장객체가 아니다 console에 출력");
+// 콘솔에 찍힌다
 out.println("out.println 내장객체이다 out을 통해서 출력");
 // 웹에 내보낸다
-// html 코드에 '내장객체 out을 통해서 출력' 이라고 적는 것과 같다
+// html 코드에 '내장객체 out을 통해서 출력' 이라고 적는 것과 같다 아래 아래 코드와 같다
 
 out.println("<h2>내장객체 out을 통해서 출력</h2>");
 %>
-여기는 html코드 내장객체 out을 통해서 출력
+여기는 html코드 내장객체 out을 통해서 출력<br>
+-------------------------------------------------------- System과 out
+<!-- out.println("out.println 내장객체이다 out을 통해서 출력"); 와 동일한 결과 출력 -->
 
 
 
@@ -98,10 +102,12 @@ out.println("<h2>내장객체 out을 통해서 출력</h2>");
 out.println("<h3>str = " + str + " </h3>");
 %>
 <h3>str = <%=str %></h3>
-<!-- end값으로 나와야 한다 -->
+<!-- = 뒤에는 결과값으로 나와야 한다 -->
 <!-- 자바 영역이기 때문에 value값만 썼다 -->
-<!-- 위 아래 같은 결과를 다르게 표현했다 -->
-<input type="text" size="20" value="<%=str%>">
+<!-- 위의 코드와 위위의 코드는 같은 결과를 다르게 표현했다 -->
+
+<input type="text" size="20" value="<%=str%>"><br>
+-------------------------------------------------------- out, 일반태그, input태그
 <!-- 위는 일반태그, 아래는 input태그에 값 넣는 방법이다 -->
 
 
@@ -113,8 +119,7 @@ for(int i = 0; i < 5; i++){
 <%
 }
 %>
-<!-- java코드와 일반p 태그가 섞여있다 이것이 JSP의 대표적인 장점이다
-코드가 지저분해지는 단점이 있다-->
+<!-- java코드와 일반p 태그가 섞여있다 이것이 JSP의 대표적인 장점이다 코드가 지저분해지는 단점이 있다-->
 
 
 <!-- 위에 코드와 아래 코드는 동일한 코드이다 out 내장객체는 잘 쓰지 않는다 -->
@@ -123,6 +128,7 @@ for(int i = 0; i < 5; i++){
 	out.println("<p>hello p tag" + i + "</p>");
 }
 %>
+-------------------------------------------------------- for문
 
 
 
@@ -130,6 +136,7 @@ for(int i = 0; i < 5; i++){
 <script type="text/javascript">
 document.getElementById("demo").innerHTML = "change p tag";
 </script>
+-------------------------------------------------------- java script
 
 
 
