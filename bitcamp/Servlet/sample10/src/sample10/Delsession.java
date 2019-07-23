@@ -17,7 +17,9 @@ public class Delsession extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("여기는 Delsession get방식입니다");
-		
+
+		// 한글 인코딩 인코딩 안하면 우리가 쓰는 OS의 형태로 들어간다
+		// 우리는 window를 쓴다 ms94?
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html; charset=utf-8");
 		

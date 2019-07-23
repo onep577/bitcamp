@@ -35,33 +35,40 @@ public class WorldServlet extends HttpServlet {
 		pw.println("<title>제목</title>");
 		pw.println("</head>");
 
-		pw.println("<body>");
-		
+		pw.println("<body>");		
 		pw.println("<h3>world servlet</h3>");
 		
 		HttpSession session = null;
+		//HttpSession session = req.getSession(false);
 		
 		if(session == null) {
-			pw.println("<p>session을 등록합니다");
+			pw.println("<p>세션이 존재하지 않습니다. 세션을 시작합니다</p>");
+			pw.println("<p>----------------------------- 세션 등록</p>");
 			session = req.getSession(true);
 			
 			session.setAttribute("name", "홍길동");
 			session.setAttribute("age", "28");
+			// session의 key값 : name, value값 : 홍길동
+			// session의 key값 : age, value값 : 28
 		}
 		
 		
 
-		pw.println("<p>등록되어 있는 session을 object를 표시합니다</p>");
+		pw.println("<p>등록되어 있는 session의 object를 표시합니다</p>");
 		
 		String name = (String)session.getAttribute("name");
 		pw.println("<p>name : " + name + "</p>");
+		pw.println("----------------------- Enumeration");
 		
 		Enumeration<String> enum_session = session.getAttributeNames();
+		// getAttributeNames 이름이 포함된 모든 세션을 문자열 object로 리턴한다
 		
 		while(enum_session.hasMoreElements()) {
+			// 세션이 있으면 들어온다
 			String key = enum_session.nextElement();
+			// key는 세션의 name이다 nextElement는 값을 주고 다음 Element로 이동한다
 			String val = (String)session.getAttribute(key);
-			
+			// val은 세션의 value이다
 			pw.println("<p>" + key + " : " + val + "</p>");
 		}
 		
@@ -91,7 +98,7 @@ public class WorldServlet extends HttpServlet {
 		*/
 		
 		
-		pw.println("</body>");		
+		pw.println("</body>");
 		pw.println("</html>");
 		pw.close();
 	}

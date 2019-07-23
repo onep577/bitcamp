@@ -20,7 +20,9 @@
 </head>
 <body>
 
-<h1>Log-in</h1>
+
+
+<h1 align="center">Log-in</h1>
 
 <div class="center">
 <form id="frm"><!-- form을 id로 설정했다는 것은 submit을 사용하겠다는 것 -->
@@ -49,6 +51,8 @@
 </form>
 </div>
 
+
+
 <script type="text/javascript">
 $("#_btnLogin").click(function() {
 	
@@ -64,7 +68,7 @@ $("#_btnLogin").click(function() {
 	}else{
 		$("#frm").attr({"action" : "loginAf", "target" : "_self" }).submit();
 		//$("#frm").attr({"action" : "loginAf", "target" : "_blank" }).submit();
-		// target _blank 새로운 창에 띄운다
+		// target _blank 새로운 창에 띄운다 _self는 현재 창에 띄운다
 	}
 	
 });
@@ -76,8 +80,7 @@ if(user_id != null){	// 지정한 쿠키가 있을 때
 	$("#chk_save_id").attr("checked", "checked"); // 체크박스가 체크되는 것
 }
 
-$("#chk_save_id").click(function() {
-	
+$("#chk_save_id").click(function() {	
 	if( $("#chk_save_id").is(":checked") ){
 		// 체크박스가 체크 되었을 때
 		// alert("체크 됨");
@@ -89,7 +92,7 @@ $("#chk_save_id").click(function() {
 		}else{
 			// 정상 기입한 경우
 			$.cookie("user_id", $("#id").val().trim(), {expires: 7, path: '/'})
-			// 7은 일주일 '/'아무거나 모든것을 포함한다
+			// 여기서 쿠키가 저장된다. 7은 일주일 '/'아무거나 모든것을 포함한다
 		}
 	}else{
 		// alert("체크 없어짐");
@@ -98,8 +101,6 @@ $("#chk_save_id").click(function() {
 });
 
 </script>
-
-
 
 
 </body>

@@ -43,7 +43,7 @@ public class ManServlet extends HttpServlet {
 		HttpSession session = req.getSession();
 		pw.println("<h3>여기는 ManServlet get방식입니다</h3>");
 		
-		Member mem = (Member)session.getAttribute("member");		
+		Member mem = (Member)session.getAttribute("member");
 		
 		
 		pw.println("이름 : <input type='text' value=" + mem.getName() + "><br>");
