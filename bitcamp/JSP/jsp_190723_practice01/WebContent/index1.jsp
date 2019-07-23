@@ -12,10 +12,11 @@
 <body>
 
 <%
-Calendar cal = new GregorianCalendar();
+//Calendar cal = new GregorianCalendar();
 //Calendar cal = Calendar.getInstance();
+Date date = new Date();
 
-out.println("<p>현재 시간은 " + cal + "입니다</p>");
+out.println("<p>현재 시간은 " + date + "입니다</p>");
 %>
 
 </body>

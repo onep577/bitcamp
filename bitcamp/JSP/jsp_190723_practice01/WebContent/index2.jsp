@@ -13,7 +13,7 @@
 Date date = new Date();
 String str = null;
 
-date.setHours( 23 );
+date.setHours( 8 );
 
 if(date.getHours() >= 4 && date.getHours() < 12){
 	str = "안녕히 주무셨어요";

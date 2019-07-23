@@ -41,10 +41,5 @@
 <input type="button" value="취소">
 </form>
 
-<script type="text/javascript">
-</script>
-
-
-
 </body>
 </html>
