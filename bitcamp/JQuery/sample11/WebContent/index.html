@@ -56,11 +56,13 @@ $(function () {
 	$("button").click(function () {
 		// font color 변경
 		$("#q01").css("color", "#ff0000");
+		// 글자 빨간색
 		
 		// font color, background-color 변경
 		$("#q02").css({
 			"color" : "#00f",
 			"background-color" : "#ffff00"
+			// 글자는 파란색 배경은 노란색
 		});
 		
 		// 문자열 변경
@@ -77,7 +79,7 @@ $(function () {
 		//		html 방식
 		$("#q06").append("<li>오렌지</li>");
 		
-		//		j 방식
+		//		jquery 방식
 		var app = $("<li></li>").text("복숭아");
 		$("#q06").append(app);
 		
@@ -85,7 +87,7 @@ $(function () {
 		//$("#q06 li").remove();
 		
 		// 항목 추가
-		$("#q07").prepend("<p>끝까지</p>");		
+		$("#q07").prepend("<p>끝까지</p>");
 		$("#q07").append("<p>나는 성공할 것이다</p>");
 		
 		// 항목 추가
@@ -110,20 +112,6 @@ $(function () {
 	});
 });
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </body>
