@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dto.Member;
 
-@WebServlet("/info")
+//@WebServlet("/info")
 public class HelloServlet extends HttpServlet {
 
 	@Override
@@ -39,7 +39,7 @@ public class HelloServlet extends HttpServlet {
 		/*
 		2가지 방법
 		setAttribute로 데이터 묶고 getRequestDispatcher.(path).forward로 이동
-		session으로 데이터 저장 후 sendRedirect로 이동
+		session으로 데이터 저장 후 sendRedirect로 이동 or getRequestDispatcher.(path).forward로 이동
 		*/
 	}
 

@@ -1,8 +1,10 @@
 package dto;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class Member {
+// tcp나 web일 때 Serializable 해주자
+public class Member implements Serializable {
 	private String id;
 	private String pwd;
 	private String[] hobby;

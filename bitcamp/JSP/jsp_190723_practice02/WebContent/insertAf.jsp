@@ -22,7 +22,7 @@ String etc = request.getParameter("etc");
 %>
 
 
-아이디 : <%=mem.getId() %><br>
+아이디 : <input type="text" value="<%=mem.getId() %>"><br>
 패스워드 : <%=mem.getPwd() %><br>
 <%for(int i = 0; i < mem.getHobby().length; i++){ %>
 취미 : <%=mem.getHobby()[i] %><br>
