@@ -30,6 +30,7 @@ public boolean has$(String msg){
 %>
 
 
+
 <%
 Class.forName("oracle.jdbc.driver.OracleDriver");
 /* 패키지명과 함께 클래스명이다 */
@@ -59,8 +60,9 @@ System.out.println("count : " + count);
 // imployees 테이블이 아니다
 // 지금 가져오는 것은 테이블들을 가져왔다
 // 테이블들의 테이블명을 가져왔다
-
 %>
+
+
 
 <table border="1">
 <tr>
