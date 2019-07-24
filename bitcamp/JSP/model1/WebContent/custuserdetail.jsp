@@ -45,17 +45,7 @@ CustuserDto dto = dao.getOnelist(id);
 <button id="delete" name="delete" value="<%=dto.getId() %>">삭제</button>
 </form>
 
-<form action="custuserlist.jsp">
-<input type="submit" value="취소">
-</form>
-
-<script type="text/javascript">
-$("#delete").click( function () {
-	response.sendRedirect("muldel.jsp?id="+dto.getId());
-});
-
-</script>
-
+<input type="button" value="취소" onclick="location.href='custuserlist.jsp'">
 
 
 </body>

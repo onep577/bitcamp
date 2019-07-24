@@ -44,14 +44,10 @@ CustuserDto dto = dao.getOnelist(id);
 </table>
 
 <button type="submit" name="update" value="<%=dto.getAddress() %>">수정완료</button>
-<input type="button" id="move" value="취소">
+<input type="button" value="취소" onclick="location.href='custuserlist.jsp'">
+
 </form>
 
-<script type="text/javascript">
-$("#move").click( function () {
-	response.sendRedirect("custuserlist.jsp");
-});
-</script>
 
 </body>
 </html>

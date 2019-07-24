@@ -42,6 +42,7 @@ String pass = "hr";
 Connection conn = DriverManager.getConnection(url, user, pass);
 
 String sql = "SELECT * FROM TAB";
+// 모든 테이블들을 보여준다
 
 PreparedStatement psmt = conn.prepareStatement(sql);
 
@@ -87,10 +88,13 @@ while(rs.next()){
 
 	<%
 	for(int i = 1; i < count + 1; i++){
+		// i는 1, 2, 3
 		String cols = rs.getString(i);
+		
+		// 모든 테이블들의 결과값에서 첫번째 테이블을 가져온다
 		if(i == 1 && has$(cols) == false ){
 			// 정상적인 테이블일 때
-			// i라는 것은 컬럼의 첫번째 부분이다
+			// i라는 것은 컬럼의 첫번째 부분 즉, TNAME에 해당한다는 뜻이다
 			// 1은 TNAME이다 2는 TABTYPE이다
 			// cols가 테이블 이름이다
 			%>
