@@ -24,7 +24,7 @@ SELECT * FROM TAB
 <!-- contains("$") $가 포함되어 있는지 알아본다 왜? $가 있으면 테이블이 아니다 -->
 <%!
 public boolean has$(String msg){
-	return msg.contains("$");	
+	return msg.contains("$");
 }
 // UtilityClass를 만들어서 없어도 된다
 %>
@@ -89,6 +89,7 @@ while(rs.next()){
 	<%
 	for(int i = 1; i < count + 1; i++){
 		// i는 1, 2, 3
+		// rs.getString(1) = JOBS, rs.getString(2) = TABLE, rs.getString(3) = null
 		String cols = rs.getString(i);
 		
 		// 모든 테이블들의 결과값에서 첫번째 테이블을 가져온다

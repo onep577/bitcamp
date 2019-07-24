@@ -35,7 +35,7 @@ String pass = "hr";
 Connection conn = DriverManager.getConnection(url, user, pass);
 // 대문자로 넘어오지만 대문자로 안 넘어올 수 있다는 가정도 해야한다
 tname = (tname == null || tname.equals(""))?"TAB":tname.toUpperCase();
-// null이거나 ""이면 TAB로 대입하고 문제가 없으로 대문자로 바꿔라
+// null이거나 ""이면 TAB로 대입하고 문제가 없으로 대문자로 바꿔라 : 삼항연산자
 
 String sql = "SELECT * FROM " + tname;
 
@@ -54,6 +54,7 @@ int count = rsmd.getColumnCount();
 <tr>
 <%
 	for(int i = 1; i < count + 1; i++){
+		// JOB_ID, JOB_TITLE, MIN_SALARY, MAX_SALARY
 	%>
 		<td><%=rsmd.getColumnName(i) %></td>
 	<%
@@ -67,6 +68,9 @@ while(rs.next()){
 	<tr>
 	<%
 		for(int i = 1; i < count + 1; i++){
+			// 첫번째 값이 있을 때
+			// rs.getString(1) = AD_PRES, rs.getString(2) = President
+			// re.getString(3) = 20080, rs.getString(4) = 40000
 			%>
 			<td>
 				<%=rs.getString(i) %>
