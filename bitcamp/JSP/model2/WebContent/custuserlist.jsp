@@ -61,7 +61,7 @@ if(list.size() == 0){
 		%>
 		<tr bgcolor="#FFB2D9">
 			<td align="center" bgcolor="yellow">
-			<input type="checkbox" name="delck" value="<%=cust.getId() %>">
+			<input type="checkbox" name="id" value="<%=cust.getId() %>">
 			</td>
 			<td>
 				<%=cust.getId() %>
@@ -80,7 +80,8 @@ if(list.size() == 0){
 
 <tr>
 	<td align="center" height="1" bgcolor="#c0c0c0" colspan="3">
-		<input type="submit" value="고객정보 삭제">
+		<input type="hidden" name="command" value="">
+		<input type="submit" id="delBtn" value="고객정보 삭제">
 	</td>
 </tr>
 <tr>
@@ -88,8 +89,14 @@ if(list.size() == 0){
 </tr>
 
 <tr bgcolor="#f6f6f6">
-	<td colspan="3">
+	<td width="130px">
 		<a href="custusercontrol?command=insert">고객정보 추가</a>
+	</td>
+	<td>
+		<input type="text" name="sel">
+	</td>
+	<td>
+		<input type="button" name="command" value="select">
 	</td>
 </tr>
 
@@ -105,7 +112,7 @@ function frmsubmit(){
 	// 체크 되어있는 고객이 없을 때 submit을 막아준다
 	
 	//var count = 0;
-	for(var i = 0; i < document.frm.delck.length; i++){
+	for(var i = 0; i < document.frm.id.length; i++){
 		//alert(count);
 		//count++;
 		if( document.frm.delck[i].checked == true ){

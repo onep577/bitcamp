@@ -83,14 +83,6 @@ public class CustUserControl extends HttpServlet {
 		}
 		
 	} // doGet 함수
-	
-	
-	
-	
-	
-	
-	
-	
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -104,16 +96,28 @@ public class CustUserControl extends HttpServlet {
 
 		CustuserDao dao = CustuserDao.getInstance();
 
-		/*
-		 * if(command.equals("muldel")) {
-		 * //System.out.println("CustUserControl post");
-		 * dao.
-		 * 
-		 * // 짐 싸 req.setAttribute("custmuldel", list); // 잘가
-		 * req.getRequestDispatcher("custusermuldel.jsp").forward(req, resp); }
-		 */
 		
-		if(command.equals("insertAf")) {
+		if(command.equals("muldel")) {
+			System.out.println("CustUserControl muldel");
+			
+			String[] ids = req.getParameterValues("id");
+			
+			boolean b = dao.delcustusers(ids);
+			
+			if(b) {
+				System.out.println("삭제 성공");
+			}else {
+				System.out.println("삭제 실패");
+			}
+			
+			List<CustuserDto> list = dao.getCustuserList();
+				
+			// 짐 싸
+			req.setAttribute("custlist", list);
+			// 잘가
+			req.getRequestDispatcher("custuserlist.jsp").forward(req, resp);
+		
+		}else if(command.equals("insertAf")) {
 			System.out.println("CustUserControl insertAf");
 			
 			//String id = new String(req.getParameter("id").getBytes("8859_1"),"KSC5601");
@@ -169,6 +173,9 @@ public class CustUserControl extends HttpServlet {
 			req.setAttribute("custdto", dto);
 			// 잘가
 			req.getRequestDispatcher("custupdate.jsp").forward(req, resp);
+		}else if(command.equals("select")) {
+			System.out.println("CustUserControl select");
+			
 		}
 		
 		
