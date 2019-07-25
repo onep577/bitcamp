@@ -136,7 +136,7 @@ public class CustUserControl extends HttpServlet {
 			List<CustuserDto> list = dao.getCustuserList();
 			
 			// 짐 싸
-			req.setAttribute("custlist", list);			
+			req.setAttribute("custlist", list);
 			// 잘가
 			req.getRequestDispatcher("custuserlist.jsp").forward(req, resp);
 		}else if(command.equals("delete")) {
@@ -175,7 +175,17 @@ public class CustUserControl extends HttpServlet {
 			req.getRequestDispatcher("custupdate.jsp").forward(req, resp);
 		}else if(command.equals("select")) {
 			System.out.println("CustUserControl select");
+			String str = req.getParameter("selText");
+			//System.out.println("str : " + str);
+			String select = req.getParameter("sel");
+			//System.out.println("select : " + select);
 			
+			List<CustuserDto> list = dao.selectList(str, select);
+			
+			// 짐 싸
+			req.setAttribute("custlist", list);			
+			// 잘가
+			req.getRequestDispatcher("custuserlist.jsp").forward(req, resp);
 		}
 		
 		

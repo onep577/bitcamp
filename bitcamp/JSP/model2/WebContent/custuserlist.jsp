@@ -79,7 +79,12 @@ if(list.size() == 0){
 %>
 
 <tr>
-	<td align="center" height="1" bgcolor="#c0c0c0" colspan="3">
+	<td bgcolor="yellow">
+	</td>
+	<td align="center" bgcolor="#c0c0c0">
+		<a href="custusercontrol?command=insert">고객정보 추가</a>
+	</td>
+	<td align="center" height="1" bgcolor="#c0c0c0">
 		<input type="hidden" name="command" value="">
 		<input type="submit" id="delBtn" value="고객정보 삭제">
 	</td>
@@ -87,23 +92,32 @@ if(list.size() == 0){
 <tr>
 	<td height="2" bgcolor="#0000ff" colspan="3"></td>
 </tr>
+</table>
+</form>
 
-<tr bgcolor="#f6f6f6">
-	<td width="130px">
-		<a href="custusercontrol?command=insert">고객정보 추가</a>
+
+
+<form action="custusercontrol" method="post">
+<table>
+<tr bgcolor="#aabb44">
+	<td colspan="2">
+		<select name="sel">
+			<option value="id" selected>id 검색</option>
+			<option value="name">name 검색</option>
+		</select>
+		<input type="text" name="selText">
 	</td>
 	<td>
-		<input type="text" name="sel">
-	</td>
-	<td>
-		<input type="button" name="command" value="select">
+		<input type="hidden" name="command" value="select">
+		<input type="submit" value="검색">
 	</td>
 </tr>
-
 </table>
-
 </form>
 </div>
+
+
+
 
 
 

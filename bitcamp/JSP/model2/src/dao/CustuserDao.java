@@ -275,6 +275,53 @@ public class CustuserDao {
 		
 	} // delcustuser 함수
 	
+	// 검색한 아이디를 가져온다
+	public List<CustuserDto> selectList(String str, String select) {
+		String sql = " SELECT ID, NAME, ADDRESS "
+					+ " FROM CUSTUSER "
+					+ " WHERE 1=1 ";
+		
+		if(select.equals("id")) {
+			//System.out.println("sql id");
+			sql = sql + " AND ID LIKE '%" + str + "%' ";
+		}else if(select.equals("name")) {
+			//System.out.println("sql name");
+			sql = sql + " AND NAME LIKE '%" + str + "%' ";
+		}
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		
+		// 디비정보 얻어올 때. sql구문을 넣을 때.
+		
+		List<CustuserDto> list = new ArrayList<CustuserDto>();
+		
+		try {
+			conn = this.getConnection();
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				String id = rs.getString("ID");
+				String name = rs.getString("NAME");
+				String address = rs.getString("ADDRESS");
+				
+				CustuserDto dto = new CustuserDto(id, name, address);
+				list.add(dto);
+			}			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			// 익센션이 발생해도 프로그램이 종료하는 것은 아니다
+			// 원하는 다른걸로 출력할 수 있다
+		} finally {
+			this.close(conn, psmt, rs);
+		}
+		return list;
+		
+	} // selectList 함수
+	
 	
 	
 	
