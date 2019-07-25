@@ -43,7 +43,6 @@ INDEX VERSION 1.131+E:\github\bitcamp\JQuery\.metadata\.plugins\org.eclipse.jdt.
 406929570.index
 2561068381.index
 797971913.index
-2760228288.index
 3421819425.index
 713673492.index
 3066167984.index
