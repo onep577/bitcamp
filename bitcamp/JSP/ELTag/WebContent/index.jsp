@@ -44,27 +44,26 @@
 <%
 out.println("s = " + s);
 %>
-
-<br><br>
+<br>
 
 s=<%=s %>
-
-<br><br>
+<br>
 
 <!-- EL -->
 s = ${ _str }
 
 <%='값' %>
-
+<br>
+------------------------------------------
 <br><br>
 
 ${ '값' }
 <!-- EL태그 %의 블록안에 값을 넣는 것 -->
-
-<br><br>
+<br>
 
 ${ 3>2?100:200 }
-
+<br>
+------------------------------------------
 <br><br>
 
 <%
@@ -75,31 +74,34 @@ String data2 = request.getParameter("data");
 %>
 
 ${ data }
-
-<br><br>
+<br>
 
 변수(Object)의 data가 있는지? (null?)
-
+<br>
+------------------------------------------
 <br><br>
 
 empty가 참이냐고 물어본다
+<br>
 data = ${ empty data }		<!-- data == null -->
+<br>
 
-<br><br>
 data = ${ not empty data }		<!-- data != null -> true -->
+<br>
 
-<br><br>
 1 < 9 : ${ 1 < 9 }			<!-- true/false -->
+<br>
 
-<br><br>
 2 + 3 : ${ 2 + 3 }				<!-- value -->
-
+<br>
+------------------------------------------
+<br><br>
 
 
 
 
 <%
-/* setAttribute에는 int가 들어갈 수 없다 */
+/* setAttribute에는 int가 들어갈 수 없다 Integer로 들어가야한다 */
 Integer a, b;
 a = 10;
 b = 3;
@@ -145,8 +147,15 @@ c:${ !_c }
 ${ _a == 10 && !_c }
 
 </pre>
-
+<br>
+------------------------------------------
 <br><br>
+
+
+
+
+
+
 <%
 MemberDto mem = new MemberDto();
 mem.setMessage("Hello El");
@@ -155,14 +164,14 @@ request.setAttribute("_mem", mem);
 %>
 
 <%=mem.getMessage() %>
-
-<br><br>
+<br>
 
 ${ _mem.message }
 <br><br>
 객체를 통해 접근할 때는 setAttribute에 넣은 문자열을 통해서
 setter getter
-
+<br>
+------------------------------------------
 <br><br>
 
 <%
@@ -172,11 +181,11 @@ request.setAttribute("_array", array);
 %>
 
 <%=array[0] %>
-
-<br><br>
+<br>
 
 ${ _array[1] }
-
+<br>
+------------------------------------------
 <br><br>
 
 <%
@@ -194,8 +203,12 @@ ${ _list[0] }
 <br>
 
 ${ _list[1] }
-
+<br>
+------------------------------------------
 <br><br>
+
+
+
 <%
 List<MemberDto> memlist = new ArrayList<>();
 
@@ -204,7 +217,7 @@ dto.setMessage("메시지 one");
 memlist.add(dto);
 
 dto = new MemberDto();
-dto.setMessage("메시지 one");
+dto.setMessage("메시지 two");
 memlist.add(dto);
 
 request.setAttribute("_memlist", memlist);
@@ -219,8 +232,10 @@ ${ _memlist[1].message }
 
 <br><br>
 
-El태그 -> setAttribute -> 
-
+El태그 -> setAttribute로 넣자
+<br>
+------------------------------------------
+<br><br><br><br>
 </body>
 </html>
 
