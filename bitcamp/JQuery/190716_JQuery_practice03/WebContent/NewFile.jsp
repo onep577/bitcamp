@@ -24,15 +24,15 @@ String magazine = request.getParameter("magazine");
 System.out.println("bills : " + bills);
 
 
-if(bills.equals("true")){
-	bills = "영수증 요청";
-}else{
+if(bills == null){
 	bills = "영수증 비요청";
+}else{
+	bills = "영수증 요청";
 }
 
 if(delivery != null && delivery.length > 0){
 	for(int i = 0;i < delivery.length; i++){
-		System.out.println(delivery[i]);		
+		System.out.println("배달 : " + delivery[i]);
 	}
 }
 
@@ -40,7 +40,6 @@ System.out.println("이름 : " + name
 					+ " 우편번호 : " + zip1 + "-" + zip2
 					+ ", 주소 : " + address
 					+ ", 전화번호 : " + phone1 + "-" + phone2 + "-" + phone3
-					+ ", 배달 : " + delivery
 					+ ", 영수증 : " + bills + ", 매거진 : " + magazine);
 %>
 <!DOCTYPE html>
