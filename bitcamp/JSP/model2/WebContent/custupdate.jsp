@@ -16,8 +16,8 @@
 CustuserDto dto = (CustuserDto)request.getAttribute("custdto");
 %>
 
-<form action="custupdateAf.jsp">
-
+<form action="custusercontrol">
+	<input type="hidden" name="command" value="updateAf">
 <table>
 <tr>
 	<td height="2" bgcolor="#0000ff" colspan="3"></td>
@@ -55,8 +55,8 @@ CustuserDto dto = (CustuserDto)request.getAttribute("custdto");
 		<table>
 		<tr>
 			<td>
-				<button type="submit" name="update" value="<%=dto.getAddress() %>">수정완료</button>
-				<input type="button" value="취소" onclick="location.href='custuserlist.jsp'">
+				<input type="submit" value="수정완료">
+				<button name="command" value="cancel">취소</button>
 			</td>
 		</tr>
 		</table>
@@ -66,9 +66,6 @@ CustuserDto dto = (CustuserDto)request.getAttribute("custdto");
 	<td height="2" bgcolor="#0000ff" colspan="3"></td>
 </tr>
 </table>
-
-
-
 </form>
 
 

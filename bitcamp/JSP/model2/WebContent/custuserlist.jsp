@@ -4,10 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-CustuserDao dao = CustuserDao.getInstance();
-// 싱글톤
-List<CustuserDto> list = dao.getCustuserList();
-// db로 들어가서 정보를 가져왔다
+List<CustuserDto> list = (List<CustuserDto>)request.getAttribute("custlist");
 %>
 
 <!DOCTYPE html>
@@ -23,7 +20,9 @@ List<CustuserDto> list = dao.getCustuserList();
 <body>
 
 <div align="center">
-<form action="muldel.jsp" name="frm" onsubmit="return frmsubmit()" method="post">
+<form action="custusercontrol" name="frm" onsubmit="return frmsubmit()" method="post">
+	<input type="hidden" name="command" value="muldel">
+	<!-- 파라미터로 넘어가는 것 -->
 
 <table style="width: 700">
 <col width="100"><col width="300"><col width="300">
@@ -68,7 +67,7 @@ if(list.size() == 0){
 				<%=cust.getId() %>
 			</td>
 			<td>
-				<a href="custuserdetail.jsp?id=<%=cust.getId() %>"><%=cust.getName() %></a>  
+				<a href="custusercontrol?command=detail&id=<%=cust.getId() %>"><%=cust.getName() %></a>
 			</td>
 		</tr>
 		<tr>
@@ -90,7 +89,7 @@ if(list.size() == 0){
 
 <tr bgcolor="#f6f6f6">
 	<td colspan="3">
-		<a href="custadd.jsp">고객정보 추가</a>
+		<a href="custusercontrol?command=insert">고객정보 추가</a>
 	</td>
 </tr>
 

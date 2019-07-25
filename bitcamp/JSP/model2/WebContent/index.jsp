@@ -4,14 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>index.jsp</title>
+<title>Insert title here</title>
 </head>
 <body>
 
-<a href="custuserlist.jsp">고객목록</a>
+<!-- <a href="custuserlist.jsp">고객목록</a> -->
 
 <%
-response.sendRedirect("custuserlist.jsp");
+response.sendRedirect("custusercontrol?command=list");
+// list로 구분한다
 %>
 
 </body>

@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="javax.websocket.SendResult"%>
 <%@page import="dto.CustuserDto"%>
 <%@page import="dao.CustuserDao"%>
@@ -14,12 +15,8 @@
 <body>
 
 <%
-String id = request.getParameter("id");
-//System.out.println("id : " + id);
-
-CustuserDao dao = CustuserDao.getInstance();
-CustuserDto dto = dao.getOnelist(id);
-
+CustuserDto dto = (CustuserDto)request.getAttribute("custdto");
+System.out.println(dto.getId() + ", " + dto.getName() + ", " + dto.getAddress());
 %>
 
 <table>
@@ -54,20 +51,22 @@ CustuserDto dto = dao.getOnelist(id);
 		<table>
 		<tr>
 			<td>
-				<form action="custupdate.jsp" method="get">
-					<input type="hidden" name="update" value="<%=dto.getId() %>">
+				<form action="custusercontrol" method="post">
+					<input type="hidden" name="command" value="update">
+					<input type="hidden" name="id" value="<%=dto.getId() %>">
 					<input type="submit" value="수정">
 				</form>
 			</td>
 			<td>
-				<form action="custdelete.jsp" method="get">
-					<input type="hidden" name="delete" value="<%=dto.getId() %>">
+				<form action="custusercontrol" method="post">
+					<input type="hidden" name="command" value="delete">
+					<input type="hidden" name="id" value="<%=dto.getId() %>">
 					<input type="submit" value="삭제">
 				</form>
 			</td>
 			<td>
 				<form action="custuserlist.jsp" method="get">
-					<input type="button" value="취소" onclick="location.href='custuserlist.jsp'">
+					<input type="button" value="취소" onclick="location.href='custusercontrol?command=cancel'">
 				</form>
 			</td>
 		</tr>
