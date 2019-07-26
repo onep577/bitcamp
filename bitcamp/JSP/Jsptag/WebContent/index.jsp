@@ -19,6 +19,7 @@
 
 <!-- forward -->
 <%-- <jsp:forward page="NewFile.jsp"></jsp:forward> --%>
+<!-- 앞으로 전진해서 NewFile.jsp 라고만 나온다 -->
 
 <%
 MemberDto mem = new MemberDto();
@@ -28,17 +29,17 @@ String msg = mem.getMessage();
 request.setAttribute("mem", mem);
 %>
 
-mem:${mem.message }
+mem:${mem.message } 
+<br>
 
-
-<jsp:useBean id="_mem" class=dto.MemberDto></jsp:useBean>
+<jsp:useBean id="_mem" class="dto.MemberDto"></jsp:useBean>
 
 <!-- preperty는 변수명이다  name은 인스턴스이다 -->
 <!-- mem.setMessage이다 -->
 <jsp:setProperty property="message" name="_mem" value="반갑습니다"/>
 
 <jsp:getProperty property="message" name="_mem"/>
-
+<br>
 _mem:${_mem.message }
 
 
