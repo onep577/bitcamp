@@ -19,26 +19,16 @@
 <script type="text/javascript">
 $(document).ready(function () {	
 	var len = $("ul#q26 li").length;
-	alert( len );
+	//alert( len ); // 5
 	
 	for(i = 0; i < len; i++){
-		alert( i );
+		//alert( i ); // 0, 1, 2, 3, 4
 		$("ul#q26 li").eq(i).text(
 				(i+1) + ", " + $("ul#q26 li").eq(i).text() );
 	}
 
 });
 </script>
-
-
-
-
-
-
-
-
-
-
 
 
 </body>
