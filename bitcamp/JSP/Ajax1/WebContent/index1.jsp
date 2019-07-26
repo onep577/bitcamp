@@ -15,6 +15,8 @@
 
 <button type="button">click</button>
 
+<!-- 로그인 화면에서 id 있는지 체크할 때 Ajax쓴다 -->
+
 <script type="text/javascript">
 $(function () {
 	
@@ -23,7 +25,7 @@ $(function () {
 		$.ajax({
 			// ------------------------------------------ 이동할 때 setting
 			// key값 value값
-			url: "data.jsp",				// 가야 할 곳 즉, 데이터나 정보를 가져오는 곳
+			url: "data1.jsp",				// 가야 할 곳 즉, 데이터나 정보를 가져오는 곳
 			type: "get",					// get/post 방식을 정한다
 			//data: "t1=ABC&t2=가나다",		// Parameter(넘겨주는 값)
 			data: { t1:"bcd", t2:"나다라" },
