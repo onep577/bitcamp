@@ -1,3 +1,5 @@
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dto.MemberDto"%>
 <%@page import="java.util.List"%>
@@ -6,6 +8,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- jar 파일 두개 추가, 링크 추가 -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,6 +35,10 @@ ${ _data }
 <!-- 위 아래가 같은 코드다 -->
 <c:set var="_cdata" value="core JSTL입니다"/>
 ${ _cdata }
+<!-- 
+자바 대체용으로 만든 게 CoreTag이다 위의 코드와 같다
+String _cdata = "core JSTL입니다"
+-->
 <br>
 
 <!-- out == 내장객체 -->
@@ -45,6 +52,8 @@ ${ _cdata }
 <!-- session -->
 <%
 session.setAttribute("sessionData", "저장된 데이터");
+/* request.setAttribute("sessionData", "저장된 데이터");
+위의 코드와 같다 session으로 바꾼 것 뿐이다*/
 %>
 
 <c:set var="sdata" value="${sessionData}"></c:set>
@@ -92,6 +101,8 @@ if(count >= 10){
 request.setAttribute("name", "홍길동");
 %>
 
+<%-- <c:if test="${name == '홍길동123'}"> --%>
+<!-- 위 아래 코드가 같은 의미이다 -->
 <c:if test="${name eq '홍길동123'}">
 	이름은 홍길동123 맞습니다
 </c:if>
@@ -108,6 +119,7 @@ request.setAttribute("name", "일지매");
 %>
 
 <c:if test="${name == '일지매'}" var="flg"></c:if>
+<!-- flg에는 true나 false가 들어간다 -->
 
 <c:if test="${!flg}">
 	제 이름은 일지매입니다
@@ -143,6 +155,7 @@ for(int i = 0; i < 10; i++){
 
 
 <%
+// 리스트는 배열과 똑같이 사용할 수 있다
 List<MemberDto> list = new ArrayList<>();
 
 MemberDto mem = new MemberDto();
@@ -173,6 +186,26 @@ for(MemberDto m : list){
 index:<c:out value="${i.index }"></c:out>
 data:<c:out value="${m.message }"/>
 <br>
+</c:forEach>
+<br>
+------------------------------------------
+<br><br>
+
+
+<!-- Map 중요!! -->
+<%
+Map<String, String> map = new HashMap<>();
+
+map.put("apple", "사과");
+map.put("pear", "배");
+map.put("banana", "바나나");
+
+request.setAttribute("_map", map);
+%>
+
+<c:forEach var="obj" items="${ _map }">
+key:<c:out value="${ obj.key }"></c:out>
+value:<c:out value="${ obj.value }"></c:out><br>
 </c:forEach>
 
 
