@@ -13,7 +13,7 @@ import dao.CoffeeDao;
 import dto.CustomerDto;
 import dto.PriceDto;
 
-public class CoffeeServlet extends HttpServlet {
+public class CustomerServlet extends HttpServlet {
 	
 	CoffeeDao dao = new CoffeeDao();
 

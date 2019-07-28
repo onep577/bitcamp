@@ -132,7 +132,7 @@
 
 <div id="wrapper2">
 <br><br>
-<form>
+<form action="coffee">
 커피 종류 <select name="">
 	<option value="아메리카노">아메리카노</option>
 	<option value="프라프치노">프라프치노</option>
@@ -155,10 +155,11 @@
 샷 추가 <input type="checkbox" name="shot">
 <br><br>
 
-휘핑크림 추가 <input type="radio" name="whip">
-
+휘핑크림 추가 <input type="radio" name="whip"> 비추가 <input type="radio" name="whip">
 <br><br>
 
+<input type="hidden" name="command" value="payment">
+<input type="submit" value="결제">
 </form>
 </div>
 

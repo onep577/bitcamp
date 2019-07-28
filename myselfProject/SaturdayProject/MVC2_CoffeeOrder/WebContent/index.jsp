@@ -9,7 +9,7 @@
 <body>
 
 <%
-response.sendRedirect("coffee?command=login");
+response.sendRedirect("customer?command=login");
 %>
 
 </body>

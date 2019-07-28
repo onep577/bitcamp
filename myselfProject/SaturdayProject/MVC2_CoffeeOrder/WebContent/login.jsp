@@ -1,4 +1,4 @@
-<%@page import="servlet.CoffeeServlet"%>
+<%@page import="servlet.CustomerServlet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,7 +12,7 @@
 
 
 
-<form action="coffee" name="frm" onsubmit="return frmsubmit()" method="post">
+<form action="customer" name="frm" onsubmit="return frmsubmit()" method="post">
 <input type="hidden" name="command" value="loginAf">
 ID : <input type="text" name="id" id="userid"><br>
 PW : <input type="text" name="password" id="userpw"><br><br>
@@ -39,7 +39,7 @@ function frmsubmit(){
 $(document).ready(function () {
 	$("#account").on("click", function () {
 		alert("회원가입");
-		location.href= "coffee?command=account";
+		location.href= "customer?command=account";
 	});
 		
 });

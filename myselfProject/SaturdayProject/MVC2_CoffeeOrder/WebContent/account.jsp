@@ -14,7 +14,7 @@
 String id = request.getParameter("id");
 %>
 
-<form action="coffee" name="frm" method="post" onsubmit="return frmsubmit()">
+<form action="customer" name="frm" method="post" onsubmit="return frmsubmit()">
 <input type="hidden" name="command" value="accountAf">
 ID : <input type="text" name="id" id="a_id">
 <input type="button" id="checkid" value="id중복확인"><br>
