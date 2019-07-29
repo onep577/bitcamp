@@ -23,6 +23,9 @@ List<BbsDto> list = dao.search(search, searchText);
 
 session.setAttribute("id", id);
 session.setAttribute("list", list);
+
+
+pageContext.forward("bbssearchList.jsp");
 %>
 
 </body>
