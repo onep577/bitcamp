@@ -3,11 +3,12 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import DB.DBClose;
-import DB.DBConnection;
+import db.DBClose;
+import db.DBConnection;
 import dto.BbsDto;
 
 public class BbsDao implements iBbsDao {
@@ -73,5 +74,144 @@ public class BbsDao implements iBbsDao {
 		
 		return list;
 	}
+	
+	@Override
+	public boolean bbsWrite(String id, String title, String content) {
+		String sql =  " INSERT INTO BBS(SEQ, ID, REF, STEP, DEPTH, TITLE, CONTENT, "
+					+ " WDATE, PARENT, DEL, READCOUNT) "
+					+ " VALUES(SEQ_BBS.NEXTVAL,?,0,0,0,?,?,SYSDATE,0,1,0) ";
+		
+		//System.out.println("sql : " + sql);
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		int count = 0;
+		
+		try {
+			conn = DBConnection.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id.trim());
+			psmt.setString(2, title.trim());
+			psmt.setString(3, content.trim());
+			count = psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBClose.close(conn, psmt, null);
+		}
+		
+		return count>0?true:false;
+	}
+	
+	@Override
+	public BbsDto getWrite(int seq) {
+		String sql =  " SELECT ID, TITLE, CONTENT, WDATE, READCOUNT "
+					+ " FROM BBS "
+					+ " WHERE SEQ=? ";
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		BbsDto dto = null;
+		
+		try {
+			conn = DBConnection.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, seq);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				dto = new BbsDto(rs.getString(1), rs.getString(2), rs.getString(3), 
+								rs.getString(4), rs.getInt(5) );
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBClose.close(conn, psmt, rs);
+		}
+				
+		return dto;
+	}
+	
+	@Override
+	public boolean update(int seq, String title, String content) {
+		String sql =  " UPDATE BBS "
+					+ " SET TITLE=?, CONTENT=? "
+					+ " WHERE SEQ=" + seq + " " ;
+		
+		System.out.println("sql : " + sql);
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		int count = 0;
+		
+		try {
+			conn = DBConnection.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, title.trim());
+			psmt.setString(2, content.trim());
+			count = psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBClose.close(conn, psmt, null);
+		}		
+				
+		return count>0?true:false;
+	}
+	
+	@Override
+	public boolean readcount(int seq) {
+		String sql =  " UPDATE BBS "
+					+ " SET READCOUNT = READCOUNT + 1 "
+					+ " WHERE SEQ=" + seq + " ";
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		int count = 0;
+		
+		try {
+			conn = DBConnection.getConnection();
+			psmt = conn.prepareStatement(sql);
+			count = psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBClose.close(conn, psmt, null);
+		}
+		
+		return count>0?true:false;
+	}
+	
+	@Override
+	public boolean delete(int seq) {
+		String sql =  " UPDATE BBS "
+					+ " SET DEL=0 "
+					+ " WHERE SEQ=" + seq + " ";
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		int count = 0;
+		
+		try {
+			conn = DBConnection.getConnection();
+			psmt = conn.prepareStatement(sql);
+			count = psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBClose.close(conn, psmt, null);
+		}		
+		
+		return count>0?true:false;
+	}
+	
+	
+	
 
 }

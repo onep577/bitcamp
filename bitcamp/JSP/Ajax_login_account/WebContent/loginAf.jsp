@@ -1,3 +1,4 @@
+<%@page import="db.DBConnection"%>
 <%@page import="dto.MemberDto"%>
 <%@page import="dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -24,9 +25,15 @@ if(b){
 	if(b2){
 		// 원하는 아이디와 비밀번호가 있을 때
 		msg = "로그인 성공";
+		
+		MemberDto mem = dao.checkLogin(id, password);
+		session.setAttribute("login", mem);
+		session.setMaxInactiveInterval(30*60*60);
+		
 		%>
 		<script type="text/javascript">
 		alert("로그인 성공");
+		location.href = "bbslist.jsp";
 		</script>
 		<%
 	}else{

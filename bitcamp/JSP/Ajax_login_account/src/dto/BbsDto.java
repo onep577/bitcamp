@@ -63,6 +63,15 @@ public class BbsDto implements Serializable {
 		this.content = content;
 	}
 
+	public BbsDto(String id, String title, String content, String wdate, int readcount) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.content = content;
+		this.wdate = wdate;
+		this.readcount = readcount;
+	}
+
 	public BbsDto(int seq, String id, int ref, int step, int depth, String title, String content, String wdate,
 			int parent, int del, int readcount) {
 		super();
