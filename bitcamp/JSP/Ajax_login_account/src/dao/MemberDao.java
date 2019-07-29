@@ -115,7 +115,6 @@ public class MemberDao {
 		
 		Connection conn = null;
 		PreparedStatement psmt = null;
-		ResultSet rs = null;
 		int count = 0;
 		
 		try {
@@ -133,6 +132,34 @@ public class MemberDao {
 		return count>0?true:false;
 		
 	} // getUserId 함수
+	
+	
+	
+	// id 있는지 확인 후 password 있는지 확인
+	public boolean getUserpw(String id, String pw){
+		String sql =  " SELECT ID, PASSWORD "
+					+ " FROM MEMBER "
+					+ " WHERE ID=? AND PASSWORD=? ";
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		int count = 0;
+		
+		try {
+			conn = this.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			psmt.setString(2, pw);
+			count = psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			this.close(conn, psmt, null);
+		}
+		
+		return count>0?true:false;
+	}
 	
 	
 	

@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%! String msg = ""; %>
 
 <%
 String id = request.getParameter("id");
@@ -19,13 +20,22 @@ MemberDao dao = MemberDao.getInstance();
 boolean b = dao.addMember(id, password, name, email);
 
 if(b){
-	System.out.println("가입 성공");
+	msg = "회원가입 성공";
 }else{
-	System.out.println("가입 실패");
+	msg = "회원가입 실패";
 }
-
-response.sendRedirect("login.jsp");
+out.println(msg);
+System.out.println("회원가입 : " + msg);
 %>
+
+<script type="text/javascript">
+if("<%=msg %>" == "회원가입 성공"){
+	alert("회원가입 성공");
+	location.href = "login.jsp";
+}else{
+	alert("회원가입 실패");
+}
+</script>
 
 </body>
 </html>
