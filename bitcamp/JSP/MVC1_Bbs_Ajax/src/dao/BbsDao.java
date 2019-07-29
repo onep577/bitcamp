@@ -211,7 +211,42 @@ public class BbsDao implements iBbsDao {
 		return count>0?true:false;
 	}
 	
-	
+	@Override
+	public List<BbsDto> search(String search, String searchText) {
+		String sql =  " SELECT TITLE, ID "
+					+ " FROM BBS "
+					+ " WHERE 1=1 ";
+					
+		if(search.equals("제목")) {
+				sql = sql + " AND TITLE LIKE '%" + searchText + "%' ";
+		}else if(search.equals("작성자")){
+			sql = sql + " AND ID LIKE '%" + searchText + "%' ";
+		}
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		BbsDto dto = null;
+		List<BbsDto> list = new ArrayList<BbsDto>();
+		
+		try {
+			conn = DBConnection.getConnection();
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				dto = new BbsDto(rs.getString(1), rs.getString(2), null) ;
+				list.add(dto);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBClose.close(conn, psmt, null);
+		}	
+		
+		return list;
+	}
 	
 
 }

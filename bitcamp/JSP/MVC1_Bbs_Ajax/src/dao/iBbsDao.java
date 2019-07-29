@@ -17,5 +17,7 @@ public interface iBbsDao {
 	public boolean readcount(int seq);
 	
 	public boolean delete(int seq);
+	
+	public List<BbsDto> search(String search, String searchText);
 
 }

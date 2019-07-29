@@ -56,7 +56,6 @@ mem = (MemberDto)ologin;
 
 <%
 iBbsDao dao = BbsDao.getInstance();
-
 List<BbsDto> list = dao.getBbsList();
 
 session.setAttribute("id", mem.getId());
@@ -122,15 +121,20 @@ if(list == null || list.size() == 0){
 %>
 
 </table>
-<br><br>
-<input type="button" id="write" value="글쓰기">
-</div>
+<a href="bbswrite.jsp">글쓰기</a>
 
-<script type="text/javascript">
-$("#write").click(function () {
-	location.href = "bbswrite.jsp";
-});
-</script>
+<br><br> 
+<form action="bbssearch.jsp"> 
+<select name="search">
+	<option selected="selected">검색 할 것</option>
+	<option value="title">제목</option>
+	<option value="person">작성자</option>
+</select>
+<input type="text" name="searchText">
+<input type="button" value="검색">&nbsp;&nbsp;&nbsp;&nbsp; 
+</form>
+
+</div>
 
 </body>
 </html>
