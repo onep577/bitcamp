@@ -64,6 +64,12 @@ session.setAttribute("id", mem.getId());
 <h4 align="right" style="background-color: #f0f0f0"><%=mem.getId() %>님 환영합니다
 </h4>
 
+<div align="right">
+<a href="bbswrite.jsp">새로 글쓰기</a>
+<br><br>
+</div>
+
+
 
 <div align="center">
 
@@ -93,7 +99,6 @@ if(list == null || list.size() == 0){
 	<tr>
 		<th><%=i + 1 %></th>
 		<!-- 그냥 번호다 시퀀스가 아니다 -->
-		<td class="seqclick" seq<%=bbs.getSeq() %>>
 		<!-- class로 넣으면 기본글 or 답글 or 답글의 답글 중 하나를 클릭했을 때 this로 접근할 수 있다
 		id로 넣으면 안된다 한번에 접근할 수 없다 -->
 		<%-- 
@@ -103,11 +108,14 @@ if(list == null || list.size() == 0){
 		<%
 		if(list.get(i).getDel() == 0){
 			%>
-			<p id="del">&nbsp;&nbsp;-- 이 글은 작성자에 의해서 삭제되었습니다</p>
+			<td><b id="del">&nbsp;&nbsp;-- 이 글은 작성자에 의해서 삭제되었습니다</b></td>
 			<%
+			
 		}else{
 		%>
-		<a href="bbsdtail.jsp?seq=<%=bbs.getSeq() %>"><%=bbs.getTitle() %></a>
+		<td class="seqclick" seq="<%=bbs.getSeq() %>">
+		<%-- <a href="bbsdtail.jsp?seq=<%=bbs.getSeq() %>"> --%>
+		<%=arrow(bbs.getDepth()) %><%=bbs.getTitle() %>
 		<%
 		}
 		%>
@@ -120,21 +128,46 @@ if(list == null || list.size() == 0){
 }
 %>
 
+
+
 </table>
-<a href="bbswrite.jsp">글쓰기</a>
+
 
 <br><br> 
-<form action="bbssearch.jsp"> 
+<form id="frm">
+<input type="hidden">
 <select name="search">
 	<option selected="selected">검색 할 것</option>
-	<option value="title">제목</option>
-	<option value="person">작성자</option>
+	<option value="제목">제목</option>
+	<option value="작성자">작성자</option>
 </select>
 <input type="text" name="searchText">
-<input type="button" value="검색">&nbsp;&nbsp;&nbsp;&nbsp; 
+<input type="button" id="search" value="검색">
 </form>
 
 </div>
+
+<script type="text/javascript">
+$("#search").click(function () {
+	$("#frm").attr({"action" : "bbssearch.jsp"}).submit();
+});
+
+
+$(function () {	
+	$(".seqclick").mousedown(function() {
+		alert("seq : " + $(this).attr("seq"));
+		location.href = "bbsdtail.jsp?seq=" + $(this).attr("seq");
+	});
+	
+	$(".seqclick").mouseover(function() {		
+		$(this).css("background", "#e0e0e0");
+	});
+	$(".seqclick").mouseout(function() {
+		$(this).css("background", "#ffffff");
+	});
+	
+});
+</script>
 
 </body>
 </html>

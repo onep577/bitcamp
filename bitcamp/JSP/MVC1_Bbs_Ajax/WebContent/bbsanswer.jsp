@@ -1,5 +1,5 @@
-<%@page import="dto.BbsDto"%>
 <%@page import="dao.BbsDao"%>
+<%@page import="dto.BbsDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,26 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
-
 <%
-String sessionid = (String)session.getAttribute("id");
-String _seq = request.getParameter("seq");
-int seq = Integer.parseInt(_seq);
-
+int seq = Integer.parseInt(request.getParameter("seq"));
 BbsDao dao = BbsDao.getInstance();
-
-boolean b = dao.readcount(seq);
-System.out.println("b : " + b);
-
 BbsDto dto = dao.getWrite(seq);
-
-session.setAttribute("id", sessionid);
 %>
 
-<form action="bbsupdate.jsp">
+<form action="bbsanswerAf.jsp">
 <table>
 <col width="100px"><col width="100px"><col width="100px">
 <tr>
@@ -43,7 +32,7 @@ session.setAttribute("id", sessionid);
 	Title
 	</td>
 	<td colspan="2">
-	<input type="text" name="title" value="<%=dto.getTitle() %>" readonly="readonly">
+	<input type="text" name="title" value="<%=dto.getTitle() %>">
 	</td>
 </tr>
 <tr>
@@ -69,43 +58,19 @@ session.setAttribute("id", sessionid);
 </tr>
 <tr>
 	<td colspan="3">
-	<textarea name="content" cols="50" rows="15" readonly="readonly"><%=dto.getContent() %></textarea>
+	<textarea name="content" cols="50" rows="15"><%=dto.getContent() %></textarea>
 	</td>
 </tr>
 <tr>
 	<td>
 	</td>
 	<td colspan="2">
-	<input type="button" id="reply" value="댓글">
-	<b><input type="submit" value="수정"></b>
-	<b><input type="button" id="delete" value="삭제"></b>
+	<input type="submit" value="댓글완료">
 	<input type="button" value="목록으로 돌아가기" onclick="location.href='bbslist.jsp'">
 	</td>
 </tr>
 </table>
 </form>
-
-
-<script type="text/javascript">
-$("b").hide();
-<%
-if(sessionid.equals(dto.getId())){
-	%>
-	$("b").show();
-	<%
-}
-%>
-
-$("#delete").click(function () {
-	location.href="bbsdelete.jsp?seq="+<%=seq %>;
-});
-
-$("#reply").click(function () {
-	location.href="bbsanswer.jsp?seq="+<%=seq %>;
-});
-</script>
-
-
 
 </body>
 </html>

@@ -19,5 +19,7 @@ public interface iBbsDao {
 	public boolean delete(int seq);
 	
 	public List<BbsDto> search(String search, String searchText);
+	
+	public boolean answer(int seq, BbsDto bbs);
 
 }
