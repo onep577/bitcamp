@@ -64,12 +64,19 @@ session.setAttribute("id", mem.getId());
 <h4 align="right" style="background-color: #f0f0f0"><%=mem.getId() %>님 환영합니다
 </h4>
 
+
+<ul>
+	<li><a href="./bbslist_css.jsp">게시판</a>
+	<li><a href="./calendar.jsp">일정관리</a>
+	<li><a href="./pdslist.jsp">자료실</a>
+</ul>
+
+<!-- <a href="calendar.jsp">일정관리</a> -->
+
 <div align="right">
 <a href="bbswrite.jsp">새로 글쓰기</a>
 <br><br>
 </div>
-
-
 
 <div align="center">
 
