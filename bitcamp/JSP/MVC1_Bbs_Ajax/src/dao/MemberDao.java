@@ -28,7 +28,7 @@ public class MemberDao {
 	} // MemberDao 기본 생성자
 	
 	public Connection getConnection() {
-		String url = "jdbc:oracle:thin:@192.168.0.26:1521:xe";
+		String url = "jdbc:oracle:thin:@192.168.0.12:1521:xe";
 		String user = "hr";
 		String pass = "hr";
 		

@@ -68,7 +68,7 @@ session.setAttribute("id", mem.getId());
 <ul>
 	<li><a href="./bbslist_css.jsp">게시판</a>
 	<li><a href="./calendar.jsp">일정관리</a>
-	<li><a href="./pdslist.jsp">자료실</a>
+	<li><a href="./Pds/pdslist.jsp">자료실</a>
 </ul>
 
 <!-- <a href="calendar.jsp">일정관리</a> -->
