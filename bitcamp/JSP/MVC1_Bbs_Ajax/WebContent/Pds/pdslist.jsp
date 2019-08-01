@@ -44,7 +44,7 @@ for(int i = 0; i < list.size(); i++){
 		</td>
 		<td>
 			<input type="button" name="btnDown" value="파일"
-			onclick="location.href='filedown?filename=<%=pds.getFilename() %>&seq=<%=pds.getSeq() %>'">
+			onclick="location.href='../filedown?filename=<%=pds.getFilename() %>&seq=<%=pds.getSeq() %>'">
 				<!-- 확장자가 없다 즉, servlet이다 java코드를 쓰겠다는 것 -->
 		</td>
 		<td><%=pds.getReadcount() %></td>

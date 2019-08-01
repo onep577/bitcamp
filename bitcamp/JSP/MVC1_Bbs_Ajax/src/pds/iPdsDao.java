@@ -11,5 +11,7 @@ public interface iPdsDao {
 	public PdsDto getOnePds(int seq);
 	
 	public boolean readcount(int seq);
+	
+	public boolean deletePds(int seq);
 
 }

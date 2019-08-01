@@ -190,7 +190,34 @@ public class PdsDao implements iPdsDao {
 	
 	
 	
-	
+	@Override
+	public boolean deletePds(int seq) {
+		String sql =  " DELETE PDS "
+					+ " WHERE SEQ=? ";
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		int count = 0;
+		
+		try {
+			conn = DBConnection.getConnection();
+			System.out.println("1/6 deletePds success");
+			
+			psmt = conn.prepareStatement(sql);
+			System.out.println("2/6 deletePds success");
+			
+			psmt.setInt(1, seq);
+			count = psmt.executeUpdate();
+			System.out.println("3/6 deletePds success");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBClose.close(conn, psmt, null);
+		}				
+				
+		return count>0?true:false;
+	}
 	
 	
 	
