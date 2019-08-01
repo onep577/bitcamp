@@ -36,9 +36,12 @@ public class FileDownLoader extends HttpServlet {
 		System.out.println("FileDownLoader doGet");
 		
 		String filename = req.getParameter("filename");
-		String seq = req.getParameter("seq");
+		int seq = Integer.parseInt(req.getParameter("seq"));
 		
 		// down 회수 증가(DB)
+		PdsDao dao = PdsDao.getInstance();
+		boolean b = dao.downcount(seq);
+		System.out.println("down count : " + b);
 		
 		BufferedOutputStream out = new BufferedOutputStream(resp.getOutputStream());
 		

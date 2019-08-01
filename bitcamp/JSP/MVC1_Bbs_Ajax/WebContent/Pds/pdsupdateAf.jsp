@@ -75,9 +75,12 @@ int yourMaxMemorySize = 100 * 1024;			// 1 KByte
 // 1 MByte로 전송, yourMaxMemorySize는 메모리에 잠깐 저장
 
 // form field의 데이터를 저장할 변수
-String id = "";
+String _seq = "";
 String title = "";
 String content = "";
+
+String file1 = "";
+String file2 = "";
 
 // file name
 String filename = "";
@@ -112,8 +115,8 @@ if(isMultipart){
 		// item은 String일지 byte일지 모른다
 		
 		if(item.isFormField()){		// id, title, content가 여기로 넘어온다
-			if(item.getFieldName().equals("filename1")){
-				id = item.getString("utf-8"); // utf-8형식으로 넘겨라
+			if(item.getFieldName().equals("file1")){
+				file1 = item.getString("utf-8"); // utf-8형식으로 넘겨라
 				
 			}else if(item.getFieldName().equals("title")){
 				title = item.getString("utf-8");
@@ -122,12 +125,12 @@ if(isMultipart){
 				content = item.getString("utf-8");
 				
 			}else if(item.getFieldName().equals("seq")){
-				content = item.getString("utf-8");
+				_seq = item.getString("utf-8");
 			}
 		}else{						// fileload가 여기로 넘어온다
-			if(item.getFieldName().equals("filename2")){
+			if(item.getFieldName().equals("file2")){
 				// 지금은 하나만 있어서 빼도 된다
-				filename = processUploadFile(item, fupload);
+				file2 = processUploadFile(item, fupload);
 				System.out.println("fupload : " + fupload);
 			}
 		}
@@ -138,15 +141,22 @@ if(isMultipart){
 	System.out.println("multipart 아님");
 }
 
-if(filename2 == ""){
-	
+
+System.out.println("file1 : " + file1);
+System.out.println("file2 : " + file2);
+
+if(file2 == ""){
+	filename = file1;
 }else{
-	
+	filename = file2;
 }
+
+System.out.println("_seq : " + _seq);
+int seq = Integer.parseInt(_seq);
 
 // DB
 PdsDao dao = PdsDao.getInstance();
-boolean b = dao.addPds(id, title, content, filename2);
+boolean b = dao.updatePds(seq, title, content, filename);
 
 if(b){
 	%>

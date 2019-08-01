@@ -34,7 +34,7 @@ PdsDto dto = dao.getOnePds(seq);
 	<th>아이디</th>
 	<td>&nbsp;<%=dto.getId() %>
 		<input type="hidden" name="id" value="<%=dto.getId() %>">
-		<input type="hidden" name="seq" value="<%=dto.getSeq() %>">
+		<input type="hidden" name="seq" value="<%=seq %>">
 	</td>
 </tr>
 
@@ -48,14 +48,14 @@ PdsDto dto = dao.getOnePds(seq);
 <tr>
 	<th>업로드된 파일</th>
 	<td>&nbsp;<%=dto.getFilename() %>
-		<input type="hidden" name="filename1" value="<%=dto.getFilename() %>">
+		<input type="hidden" name="file1" value="<%=dto.getFilename() %>">
 	</td>
 </tr>
  
 <tr>
 	<th>업로드할 파일</th>
 	<td>
-		<input type="file" name="filename2" value="<%=dto.getDowncount() %>">
+		<input type="file" name="file2" value="<%=dto.getDowncount() %>">
 	</td>
 </tr>
 

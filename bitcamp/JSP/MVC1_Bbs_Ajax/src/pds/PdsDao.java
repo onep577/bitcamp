@@ -211,6 +211,7 @@ public class PdsDao implements iPdsDao {
 			System.out.println("3/6 deletePds success");
 			
 		} catch (SQLException e) {
+			System.out.println("deletePds fail");
 			e.printStackTrace();
 		} finally {
 			DBClose.close(conn, psmt, null);
@@ -218,6 +219,80 @@ public class PdsDao implements iPdsDao {
 				
 		return count>0?true:false;
 	}
+	
+	
+	
+	@Override
+	public boolean updatePds(int seq, String title, String content, String filename) {
+		String sql =  " UPDATE PDS "
+					+ " SET TITLE=?, CONTENT=?, FILENAME=? "
+					+ " WHERE SEQ=? ";
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		int count = 0;
+		
+		try {
+			conn = DBConnection.getConnection();
+			System.out.println("1/6 updatePds success");
+			
+			psmt = conn.prepareStatement(sql);
+			System.out.println("2/6 updatePds success");
+			
+			psmt.setString(1, title.trim());
+			psmt.setString(2, content.trim());
+			psmt.setString(3, filename.trim());
+			psmt.setInt(4, seq);
+			count = psmt.executeUpdate();
+			System.out.println("3/6 updatePds success");
+			
+		} catch (SQLException e) {
+			System.out.println("updatePds fail");
+			e.printStackTrace();
+		} finally {
+			DBClose.close(conn, psmt, null);
+		}				
+				
+		return count>0?true:false;
+	}
+	
+	
+	
+	@Override
+	public boolean downcount(int seq) {
+		String sql =  " UPDATE PDS "
+					+ " SET DOWNCOUNT=DOWNCOUNT+1 "
+					+ " WHERE SEQ=? ";
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		int count = 0;
+		
+		try {
+			conn = DBConnection.getConnection();
+			System.out.println("1/6 downcount success");
+			
+			psmt = conn.prepareStatement(sql);
+			System.out.println("2/6 downcount success");
+			
+			psmt.setInt(1, seq);
+			count = psmt.executeUpdate();
+			System.out.println("3/6 downcount success");
+			
+			
+		} catch (SQLException e) {
+			System.out.println("downcount fail");
+			e.printStackTrace();
+		} finally {
+			DBClose.close(conn, psmt, null);
+		}		
+
+		return count>0?true:false;
+	}
+	
+	
+	
+	
 	
 	
 	

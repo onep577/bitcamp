@@ -13,5 +13,9 @@ public interface iPdsDao {
 	public boolean readcount(int seq);
 	
 	public boolean deletePds(int seq);
+	
+	public boolean updatePds(int seq, String title, String content, String filename);
+	
+	public boolean downcount(int seq);
 
 }
