@@ -26,12 +26,15 @@
   </build>
   
 <dependencies>
+
+	<!-- 스프링 프레임웍을 사용하는데 필요하다 -->
 	<dependency>
 	  <groupId>org.springframework</groupId>
 	  <artifactId>spring-webmvc</artifactId>
 	  <version>5.1.5.RELEASE</version>
 	</dependency>
 	
+	<!-- log4j와 slf4j는 logger 찍는데 필요하다 -->	
 	<dependency>
 	  <groupId>log4j</groupId>
 	  <artifactId>log4j</artifactId>
@@ -43,6 +46,8 @@
 	  <artifactId>slf4j-simple</artifactId>
 	  <version>1.7.25</version>
 	</dependency>
+	
+	
 	
 	
 	
@@ -115,6 +120,7 @@
   		<artifactId>mybatis</artifactId>
   		<version>3.4.0</version>
   	</dependency>
+  	
 	<!-- 마이 SQL 사용시 -->	
   	<dependency>
   		<groupId>mysql</groupId>

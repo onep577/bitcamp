@@ -25,7 +25,7 @@ public class HelloController {
 	
 	@RequestMapping(value = "hello.do", method = RequestMethod.GET)
 	public String hello(Model model) {
-		// 리퀘스트를 추가하는 이유는 sesion에 접근할 때
+		// 리퀘스트를 추가하는 이유는 session에 접근할 때
 		
 		// system.out.println 보다 가벼워서 권장한다 강요는 아니다
 		logger.info("HelloController hello()");

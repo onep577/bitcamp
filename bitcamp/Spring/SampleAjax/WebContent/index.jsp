@@ -14,4 +14,3 @@ response.sendRedirect("hello.do");
 
 </body>
 </html>
-

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Member">
+
+<!-- Query -->
+
+<select id="idcheck" parameterType="bit.com.a.model.BbsMemberDto" resultType="java.lang.Integer">
+	SELECT COUNT(*)
+	FROM MEMBER
+	WHERE ID=#{id}
+</select>
+
+<insert id="addmember" parameterType="bit.com.a.model.BbsMemberDto">
+	INSERT INTO MEMBER(ID, PWD, NAME, EMAIL, AUTH)
+	VALUES( #{id}, #{pwd}, #{name}, #{email}, 3)
+</insert>
+
+
+
+</mapper>
