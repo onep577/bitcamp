@@ -14,7 +14,7 @@
 }
 .bbsWrite{
 	background-color: purple;
-	padding-right: 100px;
+	padding-right: 20px;
 }
 .bbsList{
 	/* background-color: blue; */

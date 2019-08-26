@@ -20,6 +20,9 @@
 	</section>
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="SpringBbs"/>
+			<item value="springBbs"/>
+			<item value="SampleAjax"/>
 			<item value="Sample03"/>
 			<item value="Sample02"/>
 			<item value="Sample01"/>
@@ -27,6 +30,9 @@
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="SpringBbs"/>
+			<item value="springBbs"/>
+			<item value="SampleAjax"/>
 			<item value="Sample03"/>
 			<item value="Sample02"/>
 			<item value="Sample01"/>

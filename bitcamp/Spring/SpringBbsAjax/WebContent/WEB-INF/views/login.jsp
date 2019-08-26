@@ -37,6 +37,7 @@ function frmsubmit(){
 }
 /**/
 
+/*
 $("#login").click(function () {
 	//location.href="bbsList.do";
 	var id = $("#id").val().trim();
@@ -68,8 +69,15 @@ $("#login").click(function () {
 		}
 	});
 });
+/**/
 
-
+$("#login").click(function () {
+	var id = $("#id").val().trim();
+	var pwd = $("#pwd").val().trim();
+	//alert(id + pwd);
+	
+	
+});
 
 $("#account").click(function () {
 	location.href="account.do";

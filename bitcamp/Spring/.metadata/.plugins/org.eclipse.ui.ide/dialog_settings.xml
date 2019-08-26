@@ -102,4 +102,8 @@
 		<item value="org.springsource.sts.package:3.9.9.201906181741-RELEASE-e412"/>
 		<item value="org.springsource.sts:3.9.9.201906181741-RELEASE"/>
 	</list>
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="E:\github\bitcamp\Spring\SpringBbsAjax"/>
+		<item value="E:\github\bitcamp\Spring\Sample03"/>
+	</list>
 </section>
