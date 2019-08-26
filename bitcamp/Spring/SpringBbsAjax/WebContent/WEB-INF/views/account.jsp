@@ -60,13 +60,14 @@ $(document).ready(function(){
 			data: "id="+id,
 
 			success: function( msg ) {
-				alert(msg);
+				//alert(msg);
+				
 				$("p").show();
 				$("p").css({"color":"red", 
 							"font-size":"12px"});  
-				$("p").html( msg.trim() );			
+				$("p").html( msg.trim() );
 				
-				if( msg.trim().equals("사용 불가능합니다") ){
+				if( msg == "아이디로 사용 불가능합니다" ){
 					$("p").css("color", "red");
 					$("#id").focus();
 					$("#id").val("");

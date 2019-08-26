@@ -1,6 +1,6 @@
 package bit.com.a.dao;
 
-import bit.com.a.model.BbsMemberDto;
+import bit.com.a.model.MemberDto;
 
 public interface BbsDao {
 
@@ -8,6 +8,9 @@ public interface BbsDao {
 	boolean idCheck(String id);
 	
 	// 회원가입 페이지에서 회원가입 클릭
-	boolean account(BbsMemberDto dto);
+	boolean account(MemberDto dto);
+	
+	// 로그인 페이지에서 로그인 성공하면 게시판으로 이동
+	boolean loginAf(MemberDto dto);
 
 }

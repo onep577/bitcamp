@@ -18,6 +18,12 @@
 	VALUES( #{id}, #{pwd}, #{name}, #{email}, 3)
 </insert>
 
+<select id="loginAf" parameterType="bit.com.a.model.BbsMemberDto" resultType="java.lang.Integer">
+	SELECT COUNT(*)
+	FROM MEMBER
+	WHERE ID=#{id} AND PWD=#{pwd}
+</select>
+
 
 
 </mapper>

@@ -2,17 +2,17 @@ package bit.com.a.model;
 
 import java.io.Serializable;
 
-public class BbsMemberDto implements Serializable {
+public class MemberDto implements Serializable {
 	private String id;
 	private String pwd;
 	private String name;
 	private String email;
 	private int auth;
 	
-	public BbsMemberDto() {
+	public MemberDto() {
 	}
 
-	public BbsMemberDto(String id, String pwd, String name, String email, int auth) {
+	public MemberDto(String id, String pwd, String name, String email, int auth) {
 		super();
 		this.id = id;
 		this.pwd = pwd;

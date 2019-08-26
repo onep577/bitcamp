@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import bit.com.a.dao.BbsDao;
-import bit.com.a.model.BbsMemberDto;
+import bit.com.a.model.MemberDto;
 
 //org.springframework를 pom.xml에 넣으면 @Repository를 사용할 수 있다
 @Repository		// 저장소
@@ -35,12 +35,21 @@ public class BbsDaoImpl implements BbsDao {
 
 	// 회원가입 페이지에서 회원가입 클릭
 	@Override
-	public boolean account(BbsMemberDto dto) {
+	public boolean account(MemberDto dto) {
 		logger.info("BbsDaoImpl account : " + dto.toString());
 		int count = sqlSession.insert(namespace + "addmember", dto);
 		
 		logger.info("daoImpl account : " + count);
 
+		return count>0?true:false;
+	}
+
+	// 로그인 페이지에서 로그인 성공하면 게시판으로 이동
+	@Override
+	public boolean loginAf(MemberDto dto) {
+		logger.info("BbsDaoImpl loginAf : " + dto.getId() + ", " + dto.getPwd());
+		int count = sqlSession.selectOne(namespace + "loginAf", dto);		
+		
 		return count>0?true:false;
 	}
 

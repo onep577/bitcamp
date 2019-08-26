@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import bit.com.a.dao.BbsDao;
-import bit.com.a.model.BbsMemberDto;
+import bit.com.a.model.MemberDto;
 import bit.com.a.service.BbsService;
 
 @Service
@@ -28,9 +28,18 @@ public class BbsServiceImpl implements BbsService {
 
 	// 회원가입 페이지에서 회원가입 클릭
 	@Override
-	public boolean account(BbsMemberDto dto) {
+	public boolean account(MemberDto dto) {
 		boolean b = bbsDao.account(dto);
 		logger.info("BbsServiceImpl account : " + b);
+
+		return b;
+	}
+
+	// 로그인 페이지에서 로그인 성공하면 게시판으로 이동
+	@Override
+	public boolean loginAf(MemberDto dto) {
+		boolean b = bbsDao.loginAf(dto);
+		logger.info("BbsServiceImpl loginAf : " + b);
 
 		return b;
 	}
