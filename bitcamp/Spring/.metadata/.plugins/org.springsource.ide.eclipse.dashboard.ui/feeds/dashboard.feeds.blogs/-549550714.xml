@@ -5,7 +5,276 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2019-08-20T17:23:07Z</updated>
+  <updated>2019-08-23T19:58:54Z</updated>
+  <entry>
+    <title>A Bootiful Podcast: Google's James Ward, Okta's Matt Raible and Grand Cloud's Ryan Knight on the Simplicity Continuum</title>
+    <link rel="alternate" href="https://spring.io/blog/2019/08/23/a-bootiful-podcast-google-s-james-ward-okta-s-matt-raible-and-grand-cloud-s-ryan-knight-on-the-simplicity-continuum" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2019-08-23:3780</id>
+    <updated>2019-08-23T19:58:54Z</updated>
+    <content type="html">&lt;p&gt;Hi Spring fans and welcome to another installment of a Bootiful Podcast! This week I had the pleasure of talking with Ryan Knight and with the two people with whom I am copresenting at SpringOne Platform 2019, James Ward and Matt Raible.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;James Ward on Twitter: &lt;a href="http://twitter.com/_JamesWard"&gt;@_JamesWard&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Matt Raible on Twitter: &lt;a href="http://twitter.com/MRaible"&gt;@mraible&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Ryan Knight on Twitter: &lt;a href="http://twitter.com/Knight_Cloud"&gt;@knight_cloud&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/670101815&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"&gt;&lt;/iframe&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Boot for Apache Geode &amp; Pivotal GemFire 1.1.0.RELEASE &amp; 1.2.0.M1 Released!</title>
+    <link rel="alternate" href="https://spring.io/blog/2019/08/23/spring-boot-for-apache-geode-pivotal-gemfire-1-1-0-release-1-2-0-m1-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>John Blum</name>
+    </author>
+    <id>tag:spring.io,2019-08-23:3779</id>
+    <updated>2019-08-23T19:09:33Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;On behalf of the Spring and Apache Geode communities, it is my pleasure to announce the release of &lt;em&gt;Spring Boot for Apache Geode &amp;amp; Pivotal GemFire&lt;/em&gt; (SBDG) &lt;code&gt;1.1.0.RELEASE&lt;/code&gt; and the &lt;code&gt;1.2.0.M1&lt;/code&gt; release.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;SBDG &lt;code&gt;1.1.0.RELEASE&lt;/code&gt; is available in &lt;a href="https://search.maven.org/search?q=spring-geode-starter"&gt;Maven Central&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;SBDG &lt;code&gt;1.2.0.M1&lt;/code&gt; is available in the &lt;a href="https://repo.spring.io/milestone/org/springframework/geode/spring-geode-starter/1.2.0.M1/"&gt;Spring Milestone&lt;/a&gt; repository.&lt;/p&gt;
+&lt;/div&gt;
+&lt;h1 id="whats-new-120M1" class="sect0"&gt;&lt;a class="anchor" href="#whats-new-120M1"&gt;&lt;/a&gt;What&amp;#8217;s New in &lt;code&gt;1.2.0.M1&lt;/code&gt;&lt;/h1&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;em&gt;Spring Boot for Apache Geode &amp;amp; Pivotal GemFire&lt;/em&gt; (SBDG) &lt;code&gt;1.2.0.M1&lt;/code&gt; was a baseline release to align SBDG on latest GemFire/Geode and Spring bits:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Spring Framework 5.2.0.RC1&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spring Boot 2.2.0.M5&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spring Data Moore-RC2/2.2.0.RC2&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spring Session Corn-M3/2.2.0.M3&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;With Spring Data Moore, this additionally pulls in:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Apache Geode 1.9.0&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pivotal GemFire 9.8.3&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;h1 id="looking-back" class="sect0"&gt;&lt;a class="anchor" href="#looking-back"&gt;&lt;/a&gt;Looking Back&lt;/h1&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;em&gt;Spring Boot for Apache Geode &amp;amp; Pivotal GemFire&lt;/em&gt; (SBDG) &lt;code&gt;1.1&lt;/code&gt; covered a lot of ground.  In this release line we included many important changes and features to help developers stay productive and solve important and relevant problems.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Let&amp;#8217;s have a look back at a few highlights and worthy mentions.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="oneone-dependencies"&gt;&lt;a class="anchor" href="#oneone-dependencies"&gt;&lt;/a&gt;New Dependencies&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;SBDG &lt;code&gt;1.1&lt;/code&gt; is based on:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Spring Framework 5.1.9.RELEASE&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spring Boot 2.1.7.RELEASE&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spring Data Lovelace-SR10/2.1.10.RELEASE&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spring Session Bean-SR7/2.1.7.RELEASE&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;With Spring Data Lovelace, this pulls in:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Apache Geode 1.6.0&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pivotal GemFire 9.5.4&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;See the SBDG &lt;a href="https://github.com/spring-projects/spring-boot-data-geode/wiki/Spring-Boot-for-Apache-Geode-and-Pivotal-GemFire-Version-Compatibility-Matrix"&gt;Version Compatibility Matrix&lt;/a&gt; for more details with regard to versions.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="caching"&gt;&lt;a class="anchor" href="#caching"&gt;&lt;/a&gt;Support for Caching Use Cases &amp;amp; Patterns&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;SBDG &lt;code&gt;1.1&lt;/code&gt; now includes dedicated support for 3 of the most common &lt;a href="https://docs.spring.io/spring-boot-data-geode-build/1.1.x/reference/html5/#geode-caching-provider-look-aside-near-inline"&gt;Caching Design Patterns&lt;/a&gt;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://docs.spring.io/spring-boot-data-geode-build/1.1.x/reference/html5/#geode-caching-provider-look-aside-caching"&gt;Look-Aside Caching&lt;/a&gt; along with a &lt;a href="https://docs.spring.io/spring-boot-data-geode-build/1.1.x/reference/html5/guides/caching-look-aside.html"&gt;Guide&lt;/a&gt; and &lt;a href="https://github.com/spring-projects/spring-boot-data-geode/tree/1.1.0.RELEASE/spring-geode-samples/caching/look-aside"&gt;Example Code&lt;/a&gt; to help you apply this pattern.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://docs.spring.io/spring-boot-data-geode-build/1.1.x/reference/html5/#geode-caching-provider-inline-caching"&gt;Inline Caching&lt;/a&gt;, combined with the amazing power of &lt;a href="https://docs.spring.io/spring-boot-data-geode-build/1.1.x/reference/html5/#geode-caching-provider-inline-caching-using-spring-data-repositories"&gt;Spring Data Repositories&lt;/a&gt;, also complete with a &lt;a href="https://docs.spring.io/spring-boot-data-geode-build/1.1.x/reference/html5/guides/caching-inline.html"&gt;Guide&lt;/a&gt; and &lt;a href="https://github.com/spring-projects/spring-boot-data-geode/tree/1.1.0.RELEASE/spring-geode-samples/caching/inline"&gt;Example Code&lt;/a&gt; to help you apply this pattern.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://docs.spring.io/spring-boot-data-geode-build/1.1.x/reference/html5/#geode-caching-provider-near-caching"&gt;Near Caching&lt;/a&gt; along with a &lt;a href="https://docs.spring.io/spring-boot-data-geode-build/1.1.x/reference/html5/guides/caching-near.html"&gt;Guide&lt;/a&gt; and &lt;a href="https://github.com/spring-projects/spring-boot-data-geode/tree/1.1.0.RELEASE/spring-geode-samples/caching/near"&gt;Example Code&lt;/a&gt; to help you apply this pattern.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;In addition, we cover 1 of the most common use cases for caching, &lt;a href="https://docs.spring.io/spring-boot-data-geode-build/1.1.x/reference/html5/#geode-session"&gt;HTTP Session State Caching&lt;/a&gt;, which again, includes a &lt;a href="https://docs.spring.io/spring-boot-data-geode-build/1.1.x/reference/html5/guides/caching-http-session.html"&gt;Guide&lt;/a&gt; and &lt;a href="https://github.com/spring-projects/spring-boot-data-geode/tree/1.1.0.RELEASE/spring-geode-samples/caching/http-session"&gt;Example Code&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;It&amp;#8217;s hard to argue that with the proliferation of Microservices in a Cloud context, caching will be 1 of the most common and important patterns used for Cloud-Native development.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;No longer is caching only needed to improve on performance when accessing data from a relational database.  Caching will be increasingly common and critical when a Microservice becomes the &lt;strong&gt;new&lt;/strong&gt; data source by which your application accesses information.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This is because networks are inherently prone to failures and incur a significant latency penalty anytime a network-hop happens.  This can prove to be fatal for applications under intense load, leading to all sorts of cascading failures (e.g. memory problems).  The goal is to minimize the unnecessary network calls as much as possible, which is quite easy to do especially when the proportion of reads far exceeds writes.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Caching (HTTP) Session state will continue to be the most common form of caching.  Fortunately, the awesome power of &lt;a href="https://spring.io/projects/spring-session"&gt;Spring Session&lt;/a&gt;, and in particular &lt;a href="https://github.com/spring-projects/spring-session-data-geode#spring-session-for-apache-geode&amp;#8212;&amp;#8203;pivotal-gemfire"&gt;Spring Session for Apache Geode &amp;amp; Pivotal GemFire&lt;/a&gt;, to manage your Spring Boot application&amp;#8217;s Session state, for all types of Sessions (HTTP, &lt;em&gt;WebSockets&lt;/em&gt; and &lt;em&gt;WebSessions&lt;/em&gt; (Reactive)) is really simple.  Plus, &lt;a href="https://spring.io/projects/spring-session"&gt;Spring Session&lt;/a&gt;, with its support for a wide variety of backing stores (&lt;strong&gt;JDBC&lt;/strong&gt;, &lt;strong&gt;Redis&lt;/strong&gt;, &lt;strong&gt;MongoDB&lt;/strong&gt;, &lt;strong&gt;Hazelcast&lt;/strong&gt;, and of course, &lt;strong&gt;GemFire/Geode&lt;/strong&gt;) makes it stupid simple to switch providers if/when your requirements change.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="hybrid-cloud"&gt;&lt;a class="anchor" href="#hybrid-cloud"&gt;&lt;/a&gt;Hybrid Cloud Deployments&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;With SBDG &lt;code&gt;1.1&lt;/code&gt;, you can now deploy your Spring Boot applications to &lt;a href="https://pivotal.io/platform"&gt;Pivotal CloudFoundry (PCF)&lt;/a&gt;, yet still connect those apps to external data sources.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Hybrid Cloud arrangements are common when data must be protected and kept on-prem.  It is also a very common intermediate step for companies trying to migrate to the cloud and modernize their stack.  Hybrid deployments enable companies to take an incremental approach to cloud adoption as opposed to an all or nothing approach.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Therefore SBDG includes &lt;a href="https://docs.spring.io/spring-boot-data-geode-build/1.1.x/reference/html5/#cloudfoundry-geode"&gt;first-class support&lt;/a&gt; for running your Spring Boot applications in PCF, yet connect those apps to externally managed, standalone Apache Geode or Pivotal GemFire clusters.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;On a related note, in addition to Hybrid Cloud Deployments, SBDG additionally supports:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://docs.spring.io/spring-boot-data-geode-build/1.1.x/reference/html5/#cloudfoundry-cloudcache-multi-instance-using"&gt;Connecting to Multiple Pivotal Cloud Cache Instances&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://docs.spring.io/spring-boot-data-geode-build/1.1.x/reference/html5/#cloudfoundry-cloudcache-multi-instance-target"&gt;Pivotal Cloud Cache Instance Targeting&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="making-the-switch"&gt;&lt;a class="anchor" href="#making-the-switch"&gt;&lt;/a&gt;Making the Switch&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;SBDG &lt;code&gt;1.1&lt;/code&gt; (even before 1.1), has been focused on &lt;em&gt;developer productivity&lt;/em&gt;: helping users &lt;strong&gt;get up and running&lt;/strong&gt; as &lt;strong&gt;easily&lt;/strong&gt; and &lt;strong&gt;quickly&lt;/strong&gt; and &lt;strong&gt;reliably&lt;/strong&gt; as possible!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Part of the strategy is rooted in helping users and customers:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="olist arabic"&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;
+&lt;p&gt;Switch from &lt;em&gt;Open Source&lt;/em&gt; (&lt;a href="https://geode.apache.org/"&gt;Apache Geode&lt;/a&gt;) to &lt;em&gt;Commercial&lt;/em&gt; (&lt;a href="https://pivotal.io/pivotal-cloud-cache"&gt;Pivotal Cloud Cache&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Move from &lt;em&gt;Non-Managed&lt;/em&gt; (&lt;em&gt;Standalone, External&lt;/em&gt;) to &lt;em&gt;Managed&lt;/em&gt; environments (&lt;a href="https://pivotal.io/platform"&gt;Pivotal Cloud Foundry&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;With &lt;strong&gt;Little&lt;/strong&gt; to &lt;strong&gt;No&lt;/strong&gt; &lt;em&gt;code or configuration&lt;/em&gt; changes; It should just work!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In fact, it is equally important that you can move both ways.  From &lt;em&gt;Managed&lt;/em&gt; back to &lt;em&gt;Standalone&lt;/em&gt; environments and from &lt;em&gt;Commercial&lt;/em&gt; back to &lt;em&gt;Open Source&lt;/em&gt;.  Again, it should just work!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;That is what the &lt;a href="https://docs.spring.io/spring-boot-data-geode-build/1.1.x/reference/html5/#geode-gemfire-switch"&gt;switch&lt;/a&gt; is all about&amp;#8230;&amp;#8203; "&lt;em&gt;choice&lt;/em&gt;", and specifically, "your" &lt;em&gt;choice&lt;/em&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect3"&gt;
+&lt;h4 id="more-changes"&gt;&lt;a class="anchor" href="#more-changes"&gt;&lt;/a&gt;Many More Changes&lt;/h4&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Along with the changes mentioned above, there were several other changes that went into SBDG &lt;code&gt;1.1&lt;/code&gt; as well.  See the &lt;a href="https://github.com/spring-projects/spring-boot-data-geode/blob/master/spring-geode/src/main/resources/changelog.txt#L22-L128"&gt;changelog&lt;/a&gt; for complete details.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h1 id="whats-next" class="sect0"&gt;&lt;a class="anchor" href="#whats-next"&gt;&lt;/a&gt;What&amp;#8217;s Next&lt;/h1&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;All focus now shifts to SBDG &lt;code&gt;1.2&lt;/code&gt;.  There are several areas we will continue to invest in.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;First and foremost, &lt;em&gt;developer productivity&lt;/em&gt;, which cannot be overstated.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;What does this mean technically?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;We are planning to introduce a new annotation, &lt;code&gt;@EnableClusterAware&lt;/code&gt;, that when declared along with your &lt;code&gt;@SpringBootApplication&lt;/code&gt; class, will enable you to move from a local development context (e.g. your IDE) to &lt;em&gt;client/server&lt;/em&gt; without needing to worry about connections details and configuration of your cluster.  SBDG will figure it out for you!  This will make "&lt;em&gt;switching&lt;/em&gt;" between environments (e.g. DEV &amp;amp; TEST/STAGING) even easier, especially as you are quickly iterating in development when debugging and testing your code.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Targeted Runtime User Support&lt;/em&gt; (See &lt;a href="https://github.com/spring-projects/spring-boot-data-geode/issues/44"&gt;Issue #44&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Additionally, we will enable developers in a PCF context to assign users with specific roles to their deployed Spring Boot applications when running the app.  This is important for certain UCs where the application must be ran in &lt;em&gt;read-only&lt;/em&gt; mode, where the app can only read data, but not modify it.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Multi-Site Caching&lt;/em&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;To compliment the &lt;em&gt;Look-Aside&lt;/em&gt;, &lt;em&gt;Inline&lt;/em&gt; and &lt;em&gt;Near Caching Patterns&lt;/em&gt;, we will provide another Guide along with Example Code showcasing the power of Multi-Site, WAN topologies as applied to caching, and how this helps further increase the availability and resilience of your application architecture (think &lt;em&gt;Active-Active&lt;/em&gt;, &lt;em&gt;Active-Passive&lt;/em&gt; , &lt;em&gt;Availability Zones&lt;/em&gt;, etc).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Inclusion on &lt;em&gt;Spring Initializer&lt;/em&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;SBDG &lt;code&gt;1.2&lt;/code&gt; bits are making their way to &lt;a href="https://start.spring.io"&gt;start.spring.io&lt;/a&gt;.  In the near future, you will be able to select Apache Geode as an option when developing Spring Boot applications, which will conveniently provide you with the &lt;code&gt;spring-geode-starter&lt;/code&gt; dependency.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;All this and much more to come.&lt;/p&gt;
+&lt;/div&gt;
+&lt;h1 id="feedback" class="sect0"&gt;&lt;a class="anchor" href="#feedback"&gt;&lt;/a&gt;Feedback&lt;/h1&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;As always your continued feedback is highly appreciated and welcomed.  It is your contributions that make SBDG a valuable project.  Thank you.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="https://github.com/spring-projects/spring-boot-data-geode/issues"&gt;Issues&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot-data-geode/pulls"&gt;PR&lt;/a&gt; | &lt;a href="https://stackoverflow.com/questions/tagged/spring-boot"&gt;StackOverflow&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;P.S. Don¡¯t miss your opportunity to learn from the very best at this year¡¯s &lt;a href="https://springoneplatform.io/"&gt;SpringOne Platform 2019&lt;/a&gt; in &lt;strong&gt;Austin, TX&lt;/strong&gt; from &lt;strong&gt;October 7th&lt;/strong&gt; to the &lt;strong&gt;10th&lt;/strong&gt;. Looking forward to seeing all of you there!&lt;/p&gt;
+&lt;/div&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>This Week in Spring - August 20th, 2019</title>
     <link rel="alternate" href="https://spring.io/blog/2019/08/20/this-week-in-spring-august-20th-2019" />
@@ -1320,137 +1589,6 @@ intensive.&lt;/p&gt;
     <content type="html">&lt;p&gt;As mentioned in the &lt;a href="https://spring.io/blog/2018/07/30/spring-boot-1-x-eol-aug-1st-2019"&gt;announcement&lt;/a&gt; last year, the Spring Boot 1.x line has reached end of life. Spring Boot 1.5.22 which was released earlier today will be the last release in the 1.x. line.&lt;/p&gt;
 &lt;p&gt;We expect most users to have upgraded their applications to Spring Boot 2.x. For those that haven&amp;rsquo;t migrated yet, we strongly advise doing so as soon as possible. There are detailed instructions on how to migrate from 1.x to 2.x in the &lt;a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.0-Migration-Guide"&gt;migration guide&lt;/a&gt;. For a smooth upgrade experience, we recommend upgrading in phases instead of jumping straight to the latest stable release. Once the upgrade from the latest 1.5.x version to the latest 2.0.x version is complete, you should upgrade to the latest release in the 2.1.x line.&lt;/p&gt;
 &lt;p&gt;For any questions regarding the migration process, join us on &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;. If you think there&amp;rsquo;s something missing in the migration guide, feel free to raise an issue in our &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;issue tracker&lt;/a&gt;.&lt;/p&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Security 5.1.6 and 5.0.13 Released</title>
-    <link rel="alternate" href="https://spring.io/blog/2019/08/05/spring-security-5-1-6-and-5-0-13-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Josh Cummings</name>
-    </author>
-    <id>tag:spring.io,2019-08-05:3761</id>
-    <updated>2019-08-05T23:54:25Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;On behalf of the community I am pleased to announce the release of Spring Security 5.1.6 (&lt;a href="https://github.com/spring-projects/spring-security/milestone/144?closed=1"&gt;changelog&lt;/a&gt;) and 5.0.13 (&lt;a href="https://github.com/spring-projects/spring-security/milestone/145?closed=1"&gt;changelog&lt;/a&gt;). These releases deliver bug fixes along with some minor improvements. Users are encouraged to update to the latest patch release.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-security/"&gt;Project Site&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/"&gt;Reference&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-security"&gt;Help&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Security 5.2.0.M4 Released</title>
-    <link rel="alternate" href="https://spring.io/blog/2019/08/05/spring-security-5-2-0-m4-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Filip Hanik</name>
-    </author>
-    <id>tag:spring.io,2019-07-25:3750</id>
-    <updated>2019-08-05T18:32:57Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;On behalf of the community, I¡¯m pleased to announce the release of
-Spring Security 5.2.0.M4! You can find the complete details in the &lt;a href="https://github.com/spring-projects/spring-security/milestone/142?closed=1"&gt;changelog&lt;/a&gt; and the highlights below:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="oauth-2-0"&gt;&lt;a class="anchor" href="#oauth-2-0"&gt;&lt;/a&gt;OAuth 2.0&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="sect4"&gt;
-&lt;h5 id="gh-6811-for-servlets-introduce-oauth2authorizedclient-managerprovider"&gt;&lt;a class="anchor" href="#gh-6811-for-servlets-introduce-oauth2authorizedclient-managerprovider"&gt;&lt;/a&gt;&lt;a href="https://github.com/spring-projects/spring-security/pull/6845"&gt;gh-6811 for Servlets&lt;/a&gt; - Introduce OAuth2AuthorizedClient Manager/Provider&lt;/h5&gt;
-
-&lt;/div&gt;
-&lt;div class="sect4"&gt;
-&lt;h5 id="gh-6886-openid-connect-userinfo-not-fetched-for-custom-claims"&gt;&lt;a class="anchor" href="#gh-6886-openid-connect-userinfo-not-fetched-for-custom-claims"&gt;&lt;/a&gt;&lt;a href="https://github.com/spring-projects/spring-security/issues/6886"&gt;gh-6886&lt;/a&gt; - OpenID Connect Userinfo not fetched for custom claims&lt;/h5&gt;
-
-&lt;/div&gt;
-&lt;div class="sect4"&gt;
-&lt;h5 id="gh-7033-add-resource-server-jwe-sample"&gt;&lt;a class="anchor" href="#gh-7033-add-resource-server-jwe-sample"&gt;&lt;/a&gt;&lt;a href="https://github.com/spring-projects/spring-security/issues/7033"&gt;gh-7033&lt;/a&gt; - Add Resource Server JWE Sample&lt;/h5&gt;
-
-&lt;/div&gt;
-&lt;div class="sect4"&gt;
-&lt;h5 id="gh-7034-nimbus-jwt-decoders-should-not-force-signedjwt"&gt;&lt;a class="anchor" href="#gh-7034-nimbus-jwt-decoders-should-not-force-signedjwt"&gt;&lt;/a&gt;&lt;a href="https://github.com/spring-projects/spring-security/issues/7034"&gt;gh-7034&lt;/a&gt; - Nimbus Jwt decoders should not force SignedJWT&lt;/h5&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="core"&gt;&lt;a class="anchor" href="#core"&gt;&lt;/a&gt;Core&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="sect4"&gt;
-&lt;h5 id="gh-6506-add-generic-authenticationfilter"&gt;&lt;a class="anchor" href="#gh-6506-add-generic-authenticationfilter"&gt;&lt;/a&gt;&lt;a href="https://github.com/spring-projects/spring-security/issues/6506"&gt;gh-6506&lt;/a&gt; - Add Generic &lt;a href="https://github.com/spring-projects/spring-security/blob/f1187bdfc2c248291df9981bbbdb9f68d53e759c/web/src/main/java/org/springframework/security/web/authentication/AuthenticationFilter.java#L65-L86"&gt;&lt;code&gt;AuthenticationFilter&lt;/code&gt;&lt;/a&gt;&lt;/h5&gt;
-
-&lt;/div&gt;
-&lt;div class="sect4"&gt;
-&lt;h5 id="gh-5300-allow-configuration-of-sessionauthenticationstrategy-for-csrf"&gt;&lt;a class="anchor" href="#gh-5300-allow-configuration-of-sessionauthenticationstrategy-for-csrf"&gt;&lt;/a&gt;&lt;a href="https://github.com/spring-projects/spring-security/pull/7083"&gt;gh-5300&lt;/a&gt; - Allow configuration of SessionAuthenticationStrategy for CSRF&lt;/h5&gt;
-
-&lt;/div&gt;
-&lt;div class="sect4"&gt;
-&lt;h5 id="gh-5557-dsl-nested-builder-for-http-security"&gt;&lt;a class="anchor" href="#gh-5557-dsl-nested-builder-for-http-security"&gt;&lt;/a&gt;&lt;a href="https://github.com/spring-projects/spring-security/issues/5557"&gt;gh-5557&lt;/a&gt; - DSL nested builder for HTTP security&lt;/h5&gt;
-
-&lt;/div&gt;
-&lt;div class="sect4"&gt;
-&lt;h5 id="gh-7082-add-chinese-traditional-localized-messages"&gt;&lt;a class="anchor" href="#gh-7082-add-chinese-traditional-localized-messages"&gt;&lt;/a&gt;&lt;a href="https://github.com/spring-projects/spring-security/pull/7082"&gt;gh-7082&lt;/a&gt; - Add Chinese Traditional localized messages&lt;/h5&gt;
-
-&lt;/div&gt;
-&lt;div class="sect4"&gt;
-&lt;h5 id="gh-7042-allow-upgrading-between-different-bcrypt-encodings"&gt;&lt;a class="anchor" href="#gh-7042-allow-upgrading-between-different-bcrypt-encodings"&gt;&lt;/a&gt;&lt;a href="https://github.com/spring-projects/spring-security/pull/7042"&gt;gh-7042&lt;/a&gt; - Allow upgrading between different BCrypt encodings&lt;/h5&gt;
-
-&lt;/div&gt;
-&lt;div class="sect4"&gt;
-&lt;h5 id="gh-7057-allow-upgrading-between-different-scrypt-encodings"&gt;&lt;a class="anchor" href="#gh-7057-allow-upgrading-between-different-scrypt-encodings"&gt;&lt;/a&gt;&lt;a href="https://github.com/spring-projects/spring-security/pull/7057"&gt;gh-7057&lt;/a&gt; - Allow upgrading between different SCrypt encodings&lt;/h5&gt;
-
-&lt;/div&gt;
-&lt;div class="sect4"&gt;
-&lt;h5 id="from-previous-5-2-0-m3-release-add-nohttp-to-build"&gt;&lt;a class="anchor" href="#from-previous-5-2-0-m3-release-add-nohttp-to-build"&gt;&lt;/a&gt;From previous, 5.2.0.M3, release - Add nohttp to build&lt;/h5&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;For more information about the nohttp project see this &lt;a href="https://spring.io/blog/2019/06/10/announcing-nohttp"&gt;blog post&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="web"&gt;&lt;a class="anchor" href="#web"&gt;&lt;/a&gt;Web&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="sect4"&gt;
-&lt;h5 id="gh-4310-added-hostname-features-to-stricthttpfirewall"&gt;&lt;a class="anchor" href="#gh-4310-added-hostname-features-to-stricthttpfirewall"&gt;&lt;/a&gt;&lt;a href="https://github.com/spring-projects/spring-security/issues/4310"&gt;gh-4310&lt;/a&gt; - Added Hostname Features to StrictHttpFirewall&lt;/h5&gt;
-
-&lt;/div&gt;
-&lt;div class="sect4"&gt;
-&lt;h5 id="gh-7168-basic-authentication-case-sensitivity"&gt;&lt;a class="anchor" href="#gh-7168-basic-authentication-case-sensitivity"&gt;&lt;/a&gt;&lt;a href="https://github.com/spring-projects/spring-security/issues/7163"&gt;gh-7168&lt;/a&gt; - BASIC authentication case sensitivity&lt;/h5&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="webflux"&gt;&lt;a class="anchor" href="#webflux"&gt;&lt;/a&gt;WebFlux&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="sect4"&gt;
-&lt;h5 id="gh-7107-support-nested-builder-in-dsl-for-reactive-apps"&gt;&lt;a class="anchor" href="#gh-7107-support-nested-builder-in-dsl-for-reactive-apps"&gt;&lt;/a&gt;&lt;a href="https://github.com/spring-projects/spring-security/issues/7107"&gt;gh-7107&lt;/a&gt; - Support nested builder in DSL for reactive apps&lt;/h5&gt;
-
-&lt;/div&gt;
-&lt;div class="sect4"&gt;
-&lt;h5 id="gh-7113-support-disabled-users"&gt;&lt;a class="anchor" href="#gh-7113-support-disabled-users"&gt;&lt;/a&gt;&lt;a href="https://github.com/spring-projects/spring-security/issues/7113"&gt;gh-7113&lt;/a&gt; - Support disabled users&lt;/h5&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="dependencies-and-ci"&gt;&lt;a class="anchor" href="#dependencies-and-ci"&gt;&lt;/a&gt;Dependencies and CI&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="sect4"&gt;
-&lt;h5 id="gh-7147-upgrade-external-dependencies"&gt;&lt;a class="anchor" href="#gh-7147-upgrade-external-dependencies"&gt;&lt;/a&gt;&lt;a href="https://github.com/spring-projects/spring-security/pull/7147"&gt;gh-7147&lt;/a&gt; - Upgrade external dependencies&lt;/h5&gt;
-
-&lt;/div&gt;
-&lt;div class="sect4"&gt;
-&lt;h5 id="travis-ci-build-using-openjdk8-on-travis-ci"&gt;&lt;a class="anchor" href="#travis-ci-build-using-openjdk8-on-travis-ci"&gt;&lt;/a&gt;&lt;a href="https://github.com/spring-projects/spring-security/pull/7147/commits/a8936189bea1a5726df35a75fd7a4501b44717d7"&gt;travis-ci&lt;/a&gt; - Build using OpenJDK8 on Travis CI&lt;/h5&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-security/"&gt;Project Site&lt;/a&gt; |
-&lt;a href="https://docs.spring.io/spring-security/site/docs/5.2.0.M2/reference/htmlsingle/"&gt;Reference&lt;/a&gt;
-| &lt;a href="http://stackoverflow.com/questions/tagged/spring-security"&gt;Help&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
 </feed>
