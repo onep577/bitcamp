@@ -1,0 +1,11 @@
+package dto;
+
+import java.io.Serializable;
+
+public class BbsParam implements Serializable {
+	
+	private String keyword;
+	private String content;
+	private String s_category;
+
+}

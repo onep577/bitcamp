@@ -1,0 +1,15 @@
+package bit.com.a.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import bit.com.a.service.BitMemberService;
+
+@Controller
+public class BitMemberController {
+	
+	@Autowired
+	private BitMemberService bitMemberService;
+	
+
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.m2e.core.pom.overview">
+		<list key="ciManagementUrl">
+		</list>
+		<list key="ciManagementSystem">
+		</list>
+		<list key="issueManagementSystem">
+		</list>
+		<list key="issueManagementUrl">
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="org.eclipse.m2e.core.ui.internal.dialogs.MavenRepositorySearchDialog">
+		<item key="width" value="480"/>
+		<item key="height" value="531"/>
+		<item key="x" value="195"/>
+		<item key="y" value="169"/>
+	</section>
+	<section name="wizardPage">
+		<list key="groupId">
+			<item value="Sample03"/>
+			<item value="Sample02"/>
+			<item value="Sample01"/>
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+			<item value="Sample03"/>
+			<item value="Sample02"/>
+			<item value="Sample01"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.ui.internal.dialogs.EditDependencyDialog">
+		<item key="width" value="480"/>
+		<item key="height" value="450"/>
+		<item key="x" value="206"/>
+		<item key="y" value="223"/>
+	</section>
+</section>

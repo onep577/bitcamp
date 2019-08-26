@@ -1,0 +1,6 @@
+package bit.com.a;
+
+@Con
+public class HomeController {
+
+}

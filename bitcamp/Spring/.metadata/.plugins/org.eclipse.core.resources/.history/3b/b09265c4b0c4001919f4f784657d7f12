@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.MemberMapper">
+
+<!-- 파라미터 타입은 외부에서 데이터가 들어온다는 것 파라미터명을 패키지명과 함께 적어야한다 -->
+<insert id="add" parameterType="dto.MemberDto">
+	INSERT INTO MEMBERDTO(ID, PWD, EMAIL)
+	VALUES( #{id}, #{pwd}, #{email} )
+</insert>
+
+<delete id="remove" parameterType="java.lang.String">
+	DELETE FROM MEMBERDTO
+	WHERE ID=#{id}
+</delete>
+
+<delete id="removeobj" parameterType="dto.MemberDto">
+	DELETE FROM MEMBERDTO
+	WHERE ID=#{id}
+</delete>
+
+<update id="update" parameterType="dto.MemberDto">
+	UPDATE MEMBERDTO
+	SET PWD=#{pwd}, EMAIL=#{email}
+	WHERE ID=#{id}
+</update>
+
+<select id="find" parameterType="java.lang.String"
+	resultType="dto.MemberDto">
+	SELECT * FROM MEMBERDTO
+	WHERE ID=#{id}
+</select>
+
+<select id="alllist" resultType="dto.MemberDto">
+	SELECT ID, PWD, EMAIL
+	FROM MEMBERDTO
+</select>
+
+<select id="search" parameterType="dto.BbsParam"
+	resultType="dto.MemberDto">
+	SELECT *
+	FROM BBS
+	WHERE
+	<if test=""
+</select>
+
+</mapper>

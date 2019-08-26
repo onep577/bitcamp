@@ -1,0 +1,12 @@
+package bit.com.a.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import bit.com.a.dao.BitMemberDao;
+
+public interface BitMemberService {
+	
+	@Autowired		// DI
+	private BitMemberDao bitMemberDao;
+
+}

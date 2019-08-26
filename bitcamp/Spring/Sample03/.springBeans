@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[3.9.9.201906180643-RELEASE]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[false]]></enableImports>
+	<configs>
+		<config>WebContent/WEB-INF/spring/aop-context.xml</config>
+		<config>WebContent/WEB-INF/spring/applicationContext.xml</config>
+		<config>WebContent/WEB-INF/spring/servlet-context.xml</config>
+	</configs>
+	<autoconfigs>
+	</autoconfigs>
+	<configSets>
+	</configSets>
+</beansProjectDescription>

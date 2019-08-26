@@ -1,0 +1,13 @@
+//com.springsource.config.ui.prefs.activePageIndex\:/Sample01/WebContent/WEB-INF/spring/dispatcherServlet.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/Sample02/WebContent/WEB-INF/lib/spring/aop-context.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/Sample02/WebContent/WEB-INF/lib/spring/applicationContext.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/Sample02/WebContent/WEB-INF/lib/spring/dispatcherServlet.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/Sample02/WebContent/WEB-INF/lib/spring/servlet-context.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/Sample02/WebContent/WEB-INF/spring/aop-context.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/Sample02/WebContent/WEB-INF/spring/applicationContext.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/Sample02/WebContent/WEB-INF/spring/dispatcherServlet.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/Sample02/WebContent/WEB-INF/spring/servlet-context.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/Sample03/WebContent/WEB-INF/spring/aop-context.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/Sample03/WebContent/WEB-INF/spring/applicationContext.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/Sample03/WebContent/WEB-INF/spring/servlet-context.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+eclipse.preferences.version=1

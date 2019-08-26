@@ -1,0 +1,9 @@
+package bit.com.a.dao;
+
+public interface BitMemberDao {
+	
+	public boolean addmember(MemberDto mem) throws Exception{
+		return false;
+	}
+
+}

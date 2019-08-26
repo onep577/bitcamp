@@ -1,0 +1,3 @@
+# Local DB
+jdbc.driverClassName = oracle.jdbc.driver.OracleDriver
+

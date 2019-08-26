@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+
+	<!-- DataBase 설정 -->
+	
+	<!-- db 설정 파일위치 -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<list>
+				<!-- src안에 패키지안에 파일명 -->
+				<value>classpath:properties/jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- DBMS -->
+	<!-- DB가 변경될때마다 하나하나 고치면 힘들어서 파일을 불러오는 것이 편하다 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}"/>
+		<property name="url" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
+		<property name="initialSize" value="${jdbc.initialSize}"/>
+		<property name="maxActive" value="${jdbc.maxActive}"/>
+		<property name="minIdle" value="${jdbc.initialSize}"/>
+		<property name="maxWait" value="3000"/>
+		<property name="poolPreparedStatements" value="true"/>
+		<property name="maxOpenPreparedStatements" value="50"/>
+		<!-- value가 50이라는 것은 최대 쿼리문 50개까지 통과해라이다 -->
+	</bean>
+	
+	<!-- mybatis setting -->
+	
+	
+</beans>
