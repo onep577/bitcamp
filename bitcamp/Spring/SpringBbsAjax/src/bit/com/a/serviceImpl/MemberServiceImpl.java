@@ -21,7 +21,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public boolean idCheck(String id) {
 		boolean b = memDao.idCheck(id);
-		logger.info("BbsServiceImpl idCheck : "+b);
+		logger.info("MemberServiceImpl idCheck : "+b);
 		
 		return b;
 	}
@@ -30,16 +30,17 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public boolean account(MemberDto dto) {
 		boolean b = memDao.account(dto);
-		logger.info("BbsServiceImpl account : " + b);
+		logger.info("MemberServiceImpl account : " + b);
 
 		return b;
 	}
 
-	// 로그인 페이지에서 로그인 성공하면 게시판으로 이동
+	// 로그인 페이지에서 로그인 성공하면 게시판으로 실패하면 로그인 창으로
 	@Override
 	public boolean loginAf(MemberDto dto) {
+		logger.info("MemberServiceImpl loginAf");
 		boolean b = memDao.loginAf(dto);
-		logger.info("BbsServiceImpl loginAf : " + b);
+		logger.info("MemberServiceImpl loginAf : " + b);
 
 		return b;
 	}

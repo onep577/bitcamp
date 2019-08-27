@@ -6,7 +6,9 @@ import java.io.Serializable;
 DROP TABLE BBS
 CASCADE CONSTRAINTS;
 --무결성도 지우자
+
 DROP SEQUENCE SEQ_BBS;
+
 CREATE TABLE BBS(
 	SEQ NUMBER(8) PRIMARY KEY,
 	ID VARCHAR2(50) NOT NULL,
@@ -23,9 +25,11 @@ CREATE TABLE BBS(
 	DEL NUMBER(1) NOT NULL,
 	READCOUNT NUMBER(8) NOT NULL	
 );
+
 CREATE SEQUENCE SEQ_BBS
 START WITH 1
 INCREMENT BY 1;
+
 ALTER TABLE BBS
 ADD CONSTRAINT FK_BBS_ID FOREIGN KEY(ID)
 REFERENCES MEMBER(ID);
@@ -44,7 +48,6 @@ public class BbsDto implements Serializable {
 	private String title;
 	private String content;
 	private String wdate;	// 작성한 날짜 (date로 넣어도 되지만 String으로 넣는 게 우리가 편하다)
-	private int parent;		// 부모글 번호
 	
 	private int del;		// db에서 지우는 게 아니다
 	private int readcount;	// 조회수
@@ -61,8 +64,8 @@ public class BbsDto implements Serializable {
 		this.readcount = readcount;
 	}
 
-	public BbsDto(int seq, String id, int ref, int step, int depth, String title, String content, String wdate,
-			int parent, int del, int readcount) {
+	public BbsDto(int seq, String id, int ref, int step, int depth, String title, String content, String wdate, int del,
+			int readcount) {
 		super();
 		this.seq = seq;
 		this.id = id;
@@ -72,7 +75,6 @@ public class BbsDto implements Serializable {
 		this.title = title;
 		this.content = content;
 		this.wdate = wdate;
-		this.parent = parent;
 		this.del = del;
 		this.readcount = readcount;
 	}
@@ -141,14 +143,6 @@ public class BbsDto implements Serializable {
 		this.wdate = wdate;
 	}
 
-	public int getParent() {
-		return parent;
-	}
-
-	public void setParent(int parent) {
-		this.parent = parent;
-	}
-
 	public int getDel() {
 		return del;
 	}
@@ -165,15 +159,12 @@ public class BbsDto implements Serializable {
 		this.readcount = readcount;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	@Override
 	public String toString() {
 		return "BbsDto [seq=" + seq + ", id=" + id + ", ref=" + ref + ", step=" + step + ", depth=" + depth + ", title="
-				+ title + ", content=" + content + ", wdate=" + wdate + ", parent=" + parent + ", del=" + del
-				+ ", readcount=" + readcount + "]";
+				+ title + ", content=" + content + ", wdate=" + wdate + ", del=" + del + ", readcount=" + readcount
+				+ "]";
 	}
+
 
 }

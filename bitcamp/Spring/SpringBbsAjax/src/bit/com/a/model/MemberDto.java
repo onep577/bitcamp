@@ -2,6 +2,20 @@ package bit.com.a.model;
 
 import java.io.Serializable;
 
+/*
+DROP TABLE MEMBER
+CASCADE CONSTRAINTS;
+--무결성도 지우자
+
+CREATE TABLE MEMBER(
+	ID VARCHAR2(50) PRIMARY KEY,
+	PWD VARCHAR2(50) NOT NULL,
+	NAME VARCHAR2(50) NOT NULL,
+	EMAIL VARCHAR2(50) NOT NULL,	
+	AUTH NUMBER(8) NOT NULL
+);
+*/
+
 public class MemberDto implements Serializable {
 	private String id;
 	private String pwd;

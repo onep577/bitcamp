@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,17 +14,17 @@
 
 <style type="text/css">
 .bbsTitle{
-	background-color: red;
+	/* background-color: red; */
 }
 .bbsWrite{
-	background-color: purple;
+	/* background-color: purple; */
 	padding-right: 20px;
 }
 .bbsList{
 	/* background-color: blue; */
 }
 .tb{
-	background-color: yellow;
+	/* background-color: yellow; */
 	width: 100%;
 	text-align: center;
 }
@@ -30,9 +34,10 @@
 <body>
 
 <h1 class="bbsTitle" align="center">게시판</h1>
+<h3 align="right">${userId }님 환영합니다</h3>
 
 <div class="bbsWrite" align="right">
-<input type="button" style="width: 120px; height: 40px; font-size: 20px;" id="bbsWrite" value="글쓰기">
+<input type="button" style="width: 60px; height: 40px; font-size: 15px; padding-bottom: 10px;" id="bbsWrite" value="글쓰기">
 </div>
 
 <div class="bbsList" align="center">
@@ -41,12 +46,27 @@
 	<tr>
 		<th>번호</th><th>제목</th><th>조회수</th><th>작성자</th>
 	</tr>
+	
+	<c:if test="${empty list }">
 	<tr>
-		<td>1</td><td>11</td><td>111</td><td>1111</td>
+		<td colspan="4">작성한 게시글이 없습니다</td>
 	</tr>
+	</c:if>
+	
+	<c:if test="${not empty list }">
+	<c:forEach begin="0" end="${fn:length(list) -1 }" step="1" varStatus="i">
 	<tr>
-		<td>2</td><td>22</td><td>222</td><td>2222</td>
+		<td>${i.index +1 }</td>
+		<td class="bbsData">
+			<a style="cursor: pointer;">${list[i.index].title }</a>
+			<input type="hidden" value="${list[i.index].seq }">
+		</td>
+		<td>${list[i.index].readcount }</td>
+		<td>${userId }</td>
 	</tr>
+	</c:forEach>
+	</c:if>
+	
 </table>
 </div>
 
@@ -60,6 +80,26 @@ $(document).ready(function () {
 	$("#bbsWrite").click(function () {
 		//alert("click");
 		location.href="bbsWrite.do";
+	});
+
+	
+	
+	$(".bbsData").hover(function () {
+			$(this).css("background","#ffaaff");
+		}
+	);	
+	$(".bbsData").mouseout(function () {
+			$(this).css("background","#ffffff");
+		}
+	);
+	
+	
+	$(".bbsData").click(function () {
+		// find 찾는 함수
+		var seq = $(this).find("input[type='hidden']").val();
+		//alert(seq);
+		
+		location.href="bbsDetail.do?seq="+seq;
 	});
 });
 </script>

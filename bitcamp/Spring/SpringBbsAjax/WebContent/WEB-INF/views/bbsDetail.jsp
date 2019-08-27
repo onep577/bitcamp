@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +28,7 @@
 </head>
 <body>
 
-<h1 class="bbsTitle" align="center">게시판 글쓰기</h1>
+<h1 class="bbsTitle" align="center">게시판 글 보기</h1>
 
 <div class="bbsWrite" align="center">
 <form id="frm">
@@ -33,25 +37,39 @@
 	<tr>
 		<th>아이디</th>
 		<td>
-			<label id="id">${userId }</label>
-			<input type="hidden" name="id" value="${userId }">
+			<label id="id">${dto.id }</label>
 		</td>
 	</tr>
 	<tr>
 		<th>제목</th>
 		<td>
-			<input type="text" name="title" id="title">
+			<label id="title">${dto.title }</label>
+		</td>
+	</tr>
+	<tr>
+		<th>조회수</th>
+		<td>
+			<label>${dto.readcount }</label>
+		</td>
+	</tr>
+	<tr>
+		<th>작성일</th>
+		<td>
+			<label>${dto.wdate }</label>
 		</td>
 	</tr>
 	<tr height="250px">
 		<th>내용</th>
 		<td>
-			<textarea rows="20%" cols="90%" name="content" id="content"></textarea>
+			<label id="content">${dto.content }</label>
 		</td>
 	</tr>
 	<tr>
 		<td colspan="2" align="center">
-			<input type="button" id="write" value="글쓰기">&nbsp;&nbsp;
+		<c:if test="${userId eq dto.id }">
+			<input type="button" id="update" value="수정">&nbsp;&nbsp;
+			<input type="button" id="delete" value="삭제">&nbsp;&nbsp;
+		</c:if>
 			<input type="button" onclick="location.href='bbsList.do'" value="게시판으로">
 		</td>
 	</tr>
@@ -62,30 +80,18 @@
 
 
 <script type="text/javascript">
-$(document).ready(function () {
-
-	$("#write").click(function () {
-		//alert("click");
-		
-		var id = $("#id").html();
-		var title = $("#title").val().trim();
-		var content = $("#content").val().trim();
-		//alert(id + ", " + title + ", " + content);
-		
-		$("#frm").attr("action","bbsWriteAf.do").submit();
+$(document).ready(function () {	
+	$("#update").click(function () {
+		//alert(seq);
+		location.href="bbsUpdate.do?seq="+${dto.seq };
 	});
-
+	
+	$("#delete").click(function () {
+		//alert(seq);
+		location.href="bbsDelete.do?seq="+${dto.seq };
+	});
 });
 </script>
-
-
-
-
-
-
-
-
-
 
 
 

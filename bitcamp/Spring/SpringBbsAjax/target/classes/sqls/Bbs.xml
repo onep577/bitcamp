@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Bbs">
+
+<!-- Query -->
+
+<select id="bbsList" resultType="bit.com.a.model.BbsDto">
+	SELECT *
+	FROM BBS
+	ORDER BY WDATE DESC
+</select>
+
+ <insert id="insert" parameterType="bit.com.a.model.BbsDto">
+	INSERT INTO BBS
+	VALUES( SEQ_BBS.nextval, #{id}, (SELECT NVL(MAX(REF), 0)+1 FROM BBS),
+			(SELECT NVL(MAX(STEP), 0)+1 FROM BBS), 0, #{title}, #{content}, SYSDATE ,1 ,0)
+</insert>
+
+<update id="readCount" parameterType="java.lang.Integer">
+	UPDATE BBS
+	SET READCOUNT = READCOUNT + 1
+	WHERE SEQ=#{seq}
+</update>
+
+<select id="getBbs" parameterType="java.lang.Integer" resultType="bit.com.a.model.BbsDto">
+	SELECT *
+	FROM BBS
+	WHERE SEQ=#{seq}
+</select>
+
+<delete id="delete">
+	DELETE BBS
+	WHERE SEQ=#{seq}
+</delete>
+
+<update id="update" parameterType="bit.com.a.model.BbsDto">
+	UPDATE BBS
+	SET TITLE = #{title}, CONTENT = #{content}
+	WHERE SEQ=#{seq}
+</update>
+
+</mapper>

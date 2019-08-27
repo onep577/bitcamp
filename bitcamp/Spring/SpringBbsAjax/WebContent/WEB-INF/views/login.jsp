@@ -74,9 +74,9 @@ $("#login").click(function () {
 $("#login").click(function () {
 	var id = $("#id").val().trim();
 	var pwd = $("#pwd").val().trim();
-	//alert(id + pwd);
+	alert(id + pwd);
 	
-	
+	$("#frm").attr("action","loginAf.do").submit();
 });
 
 $("#account").click(function () {
