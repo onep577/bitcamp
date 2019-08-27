@@ -26,6 +26,15 @@
   </build>
   
 <dependencies>
+	
+	<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+	<dependency>
+	    <groupId>org.projectlombok</groupId>
+	    <artifactId>lombok</artifactId>
+	    <version>1.16.20</version>
+	    <scope>provided</scope>
+	</dependency>
+
 
 	<!-- 스프링 프레임웍을 사용하는데 필요하다 -->
  	<dependency>

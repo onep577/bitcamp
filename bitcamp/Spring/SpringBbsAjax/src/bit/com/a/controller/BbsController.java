@@ -111,9 +111,14 @@ public class BbsController {
 	}
 
 	// 댓글로 이동만
-	@RequestMapping(value = "bbsAnswer", method = RequestMethod.GET)
+	@RequestMapping(value = "bbsAnswer.do", method = RequestMethod.GET)
 	public String bbsAnswer(Model model, int seq) throws Exception {
 		logger.info("BbsController bbsAnswer() seq : " + seq);
+		
+		BbsDto dto = bbsService.getBbs(seq);
+		model.addAttribute("dto", dto);
+		
+		Ajax
 		
 		return "bbsAnswer";
 	}
