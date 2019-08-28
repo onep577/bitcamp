@@ -37,7 +37,7 @@ public class MemberController {
 	@RequestMapping(value = "account.do", method = RequestMethod.GET)
 	public String account() throws Exception {
 		logger.info("MemberController account()");
-		return "account";
+		return "account.tiles";
 	}
 	
 	// 회원가입 페이지에서 아이디 중복확인
@@ -71,10 +71,10 @@ public class MemberController {
 		
 		if(b) {
 			logger.info("회원가입 성공");
-			return "login";
+			return "redirect:/login.do";
 		}else {
 			logger.info("회원가입 실패");
-			return "account";
+			return "account.tiles";
 		}
 	}
 	

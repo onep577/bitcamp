@@ -10,7 +10,7 @@
 <select id="bbsList" resultType="bit.com.a.model.BbsDto">
 	SELECT *
 	FROM BBS
-	ORDER BY WDATE DESC
+	ORDER BY REF ASC, STEP ASC
 </select>
 
  <insert id="insert" parameterType="bit.com.a.model.BbsDto">
@@ -44,11 +44,18 @@
 </update>
 
 <update id="answer" parameterType="java.lang.Integer">
-	
+	UPDATE BBS
+	SET STEP = STEP + 1
+	WHERE REF=(SELECT REF FROM BBS WHERE SEQ=#{seq})
+		AND STEP > (SELECT REF FROM BBS WHERE SEQ=#{seq})
 </update>
 
 <insert id="answer2" parameterType="bit.com.a.model.BbsDto">
-
+	INSERT INTO BBS
+	VALUES(SEQ_BBS.NEXTVAL, #{id}, (SELECT REF FROM BBS WHERE SEQ=#{seq}),
+									(SELECT STEP FROM BBS WHERE SEQ=#{seq}) +1,
+									(SELECT DEPTH FROM BBS WHERE SEQ=#{seq}) +1,
+									#{title}, #{content}, SYSDATE, 0, 0)
 </insert>
 
 </mapper>

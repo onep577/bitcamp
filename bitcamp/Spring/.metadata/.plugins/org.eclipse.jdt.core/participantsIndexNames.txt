@@ -37,6 +37,8 @@ E:\github\bitcamp\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3
 \SampleAjax\src
 E:\github\bitcamp\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1397904811.index
 \springBbs\src
+E:\github\bitcamp\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2085625301.index
+\SampleTiles\src
 E:\springSample\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3253809250.index
 \LegacySample01\src\main\java
 E:\springSample\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\677160518.index

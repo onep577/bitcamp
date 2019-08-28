@@ -8,10 +8,22 @@
 <definition name="login.tiles" template="/WEB-INF/views/layouts-tiles.jsp">
 	<!-- <tiles:insertAttribute name="header"/>의 name이 여기서 name이다 -->
 	<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
-	<put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>
-	<put-attribute name="content" value="/WEB-INF/views/content.jsp"/>
+	<put-attribute name="menu" value="/WEB-INF/views/login/login.jsp"/>
+	<put-attribute name="content" value="/WEB-INF/views/login/content.jsp"/>
 	<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
 </definition>
 
+<!--
+<definition name="account.tiles" template="/WEB-INF/views/layouts-tiles.jsp">
+	<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+	<put-attribute name="menu" value="/WEB-INF/views/login/login.jsp"/>
+	<put-attribute name="content" value="/WEB-INF/views/login/account.jsp"/>
+	<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+</definition>
+-->
+
+<definition name="account.tiles" extends="login.tiles">
+	<put-attribute name="content" value="/WEB-INF/views/login/account.jsp"/>
+</definition>
 
 </tiles-definitions>
