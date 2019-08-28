@@ -69,7 +69,7 @@
 	<c:if test="${list[i.index].del ne 0 }">
 	<tr>
 		<td>${i.index +1 }</td>
-		<td class="bbsData">
+		<td class="bbsData" align="left">
 			<a style="cursor: pointer;">${list[i.index].title }</a>
 			<input type="hidden" value="${list[i.index].seq }">
 		</td>
@@ -86,13 +86,13 @@
 
 
 <form id="frm">
-<select name="s_category" id="s_category">
+<select name="s_category">
 	<option value="id">아이디</option>
 	<option value="title">제목</option>
 	<option value="content">내용</option>
 </select>
 <input type="text" name="keyword" id="keyword">
-<input type="button" id="btn">
+<input type="button" id="btn" value="검색">
 </form>
 
 
@@ -121,8 +121,17 @@ $(document).ready(function () {
 		var seq = $(this).find("input[type='hidden']").val();
 		//alert(seq);
 		
-		//location.href="bbsDetail.do?seq="+seq;
-		$("#frm").attr("action","search.do").submit();
+		location.href="bbsDetail.do?seq="+seq;
+	});
+	
+	
+	$("#btn").click(function () {
+		if(keyword == null){
+			alert("검색어를 입력해주세요");
+			return;
+		}else {
+			$("#frm").attr("action","bbsList.do").submit();
+		}
 	});
 });
 </script>

@@ -30,6 +30,7 @@ public class BbsDaoImpl implements BbsDao {
 	@Override
 	public List<BbsDto> bbsList(BbsParam param) {
 		logger.info("BbsDaoImpl bbsList()");
+		logger.info("BbsDaoImpl param : " + param.toString());
 		List<BbsDto> list = sqlSession.selectList(namespace + "bbsList", param);
 
 		return list;

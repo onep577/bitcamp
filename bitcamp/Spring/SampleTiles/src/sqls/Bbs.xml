@@ -7,7 +7,7 @@
 
 <!-- Query -->
 
-<select id="bbsList" resultType="bit.com.a.model.BbsDto">
+<select id="bbsList" parameterType="bit.com.a.model.BbsParam" resultType="bit.com.a.model.BbsDto">
 	SELECT *
 	FROM BBS
 	WHERE 1=1
@@ -22,7 +22,7 @@
 	AND CONTENT LIKE '%'||#{content}||'%'
 	</if>
 	
-	ORDER BY REF ASC, STEP ASC
+	ORDER BY REF ASC, STEP DESC
 </select>
 
  <insert id="insert" parameterType="bit.com.a.model.BbsDto">

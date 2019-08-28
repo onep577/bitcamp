@@ -70,7 +70,7 @@
 			<input type="button" id="update" value="수정">&nbsp;&nbsp;
 			<input type="button" id="delete" value="삭제">&nbsp;&nbsp;
 		</c:if>
-			<input type="button" id="answer" value="댓글쓰기">&nbsp;&nbsp;
+			<input type="button" id="answer" value="답글쓰기">&nbsp;&nbsp;
 			<input type="button" onclick="location.href='bbsList.do'" value="게시판으로">
 		</td>
 	</tr>
