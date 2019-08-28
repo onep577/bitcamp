@@ -64,7 +64,7 @@ public class BbsDaoImpl implements BbsDao {
 	// 게시글 삭제
 	@Override
 	public boolean bbsDelete(int seq) {
-		int count = sqlSession.delete(namespace + "delete", seq);
+		int count = sqlSession.update(namespace + "delete", seq);
 
 		return count>0?true:false;
 	}
@@ -78,8 +78,8 @@ public class BbsDaoImpl implements BbsDao {
 	}
 
 	@Override
-	public boolean answer(BbsDto dto, int seq) {
-		int count = sqlSession.update(namespace + "answerupdate", seq);
+	public boolean answer(BbsDto dto) {
+		int count = sqlSession.update(namespace + "answerupdate", dto.getSeq());
 		
 		int count2 = sqlSession.insert(namespace + "answerinsert", dto);
 		

@@ -25,5 +25,5 @@ public interface BbsDao {
 	public boolean bbsUpdate(BbsDto dto);
 	
 	// 게시글 댓글
-	public boolean answer(BbsDto dto, int seq);
+	public boolean answer(BbsDto dto);
 }

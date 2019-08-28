@@ -28,6 +28,9 @@
 	width: 100%;
 	text-align: center;
 }
+.bbsDel{
+	color: red;
+}
 </style>
 
 </head>
@@ -55,6 +58,11 @@
 	
 	<c:if test="${not empty list }">
 	<c:forEach begin="0" end="${fn:length(list) -1 }" step="1" varStatus="i">
+	<c:if test="${list[i.index].del == 0 }">
+	<tr>
+		<td class="bbsDel" colspan="3">작성자에 의해 삭제된 게시글입니다</td>
+	</tr>
+	</c:if>
 	<tr>
 		<td>${i.index +1 }</td>
 		<td class="bbsData">

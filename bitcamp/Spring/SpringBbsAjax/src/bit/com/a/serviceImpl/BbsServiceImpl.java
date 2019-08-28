@@ -71,8 +71,8 @@ public class BbsServiceImpl implements BbsService {
 
 	// 게시글 댓글
 	@Override
-	public boolean answer(BbsDto dto, int seq) {
-		boolean b = bbsDao.answer(dto, seq);
+	public boolean answer(BbsDto dto) {
+		boolean b = bbsDao.answer(dto);
 
 		return b;
 	}

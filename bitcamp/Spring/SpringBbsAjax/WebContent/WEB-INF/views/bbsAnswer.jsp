@@ -82,6 +82,7 @@
 		<td>
 			<label id="answerid">${userId }</label>
 			<input type="hidden" name="id" value="${userId }">
+			<input type="hidden" name="seq" value="${dto.seq }">
 		</td>
 	</tr>
 	<tr>

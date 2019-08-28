@@ -123,10 +123,10 @@ public class BbsController {
 	
 	// 댓글 쓰기
 	@RequestMapping(value = "bbsAnswerAf.do", method = RequestMethod.GET)
-	public String bbsAnswerAf(Model model, BbsDto dto, int seq) throws Exception {
+	public String bbsAnswerAf(Model model, BbsDto dto) throws Exception {
 		logger.info("BbsController bbsAnswer() dto : " + dto.toString());
 		
-		boolean b = bbsService.answer(dto, seq);
+		boolean b = bbsService.answer(dto);
 		
 		if(b) {
 			logger.info("BbsController bbsAnswer() : " + b);

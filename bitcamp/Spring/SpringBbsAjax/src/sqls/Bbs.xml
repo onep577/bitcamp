@@ -31,10 +31,11 @@
 	WHERE SEQ=#{seq}
 </select>
 
-<delete id="delete">
-	DELETE BBS
+<update id="delete">
+	UPDATE BBS
+	SET DEL = 0
 	WHERE SEQ=#{seq}
-</delete>
+</update>
 
 <update id="update" parameterType="bit.com.a.model.BbsDto">
 	UPDATE BBS
@@ -42,8 +43,12 @@
 	WHERE SEQ=#{seq}
 </update>
 
-<update id="answer" parameterType="bit.com.a.model.BbsDto">
+<update id="answer" parameterType="java.lang.Integer">
 	
 </update>
+
+<insert id="answer2" parameterType="bit.com.a.model.BbsDto">
+
+</insert>
 
 </mapper>
