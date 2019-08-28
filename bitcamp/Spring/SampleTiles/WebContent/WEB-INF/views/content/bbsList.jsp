@@ -58,11 +58,12 @@
 	
 	<c:if test="${not empty list }">
 	<c:forEach begin="0" end="${fn:length(list) -1 }" step="1" varStatus="i">
-	<c:if test="${list[i.index].del == 0 }">
+	<c:if test="${list[i.index].del eq 0 }">
 	<tr>
 		<td class="bbsDel" colspan="4">작성자에 의해 삭제된 게시글입니다</td>
 	</tr>
 	</c:if>
+	<c:if test="${list[i.index].del ne 0 }">
 	<tr>
 		<td>${i.index +1 }</td>
 		<td class="bbsData">
@@ -72,6 +73,7 @@
 		<td>${list[i.index].readcount }</td>
 		<td>${list[i.index].id }</td>
 	</tr>
+	</c:if>
 	</c:forEach>
 	</c:if>
 	

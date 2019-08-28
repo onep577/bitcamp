@@ -2,10 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 
-<c:if test="${not empty login }">
-${login.id }님 안녕하세요
+<c:if test="${not empty userId }">
+${userId }님 안녕하세요
 
-<table border="1" style="background-color: purple;">
+<table border="1" style="background-color: #ffaaff;">
 <col width="200">
 <tr>
 	<td>
@@ -14,7 +14,12 @@ ${login.id }님 안녕하세요
 </tr>
 <tr>
 	<td>
-		<a href="bbsList.do">글쓰기</a>
+		<a href="bbsWrite.do">글쓰기</a>
+	</td>
+</tr>
+<tr>
+	<td>
+		<a href="logout.do">로그아웃</a>
 	</td>
 </tr>
 </table>
@@ -22,7 +27,7 @@ ${login.id }님 안녕하세요
 
 
 
-<c:if test="${empty login }">
+<c:if test="${empty userId }">
 
 <form action="loginAf.do" method="post">
 <table border="1">

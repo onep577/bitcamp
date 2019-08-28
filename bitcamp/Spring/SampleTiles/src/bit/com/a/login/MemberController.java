@@ -41,6 +41,7 @@ public class MemberController {
 	}
 	
 	// 회원가입 페이지에서 아이디 중복확인
+	/*
 	@ResponseBody
 	@RequestMapping(value = "idCheck.do",
 					produces = "application/String; charset=utf-8",
@@ -62,6 +63,7 @@ public class MemberController {
 		
 		return str;
 	}
+	/**/
 	
 	// 회원가입 페이지에서 회원가입 클릭
 	@RequestMapping(value = "accountAf.do", method = RequestMethod.POST)
@@ -81,7 +83,7 @@ public class MemberController {
 	// 로그인 페이지에서 로그인 성공하면 게시판으로 실패하면 로그인 창으로
 	@RequestMapping(value = "loginAf.do",
 					produces = "application/String; charset=utf-8",
-					method = RequestMethod.GET)
+					method = RequestMethod.POST)
 	public String loginAf(MemberDto dto, HttpServletRequest req) throws Exception {
 		logger.info("MemberController loginAf() : " + dto.getId() + ", " + dto.getPwd());
 		boolean b = memService.loginAf(dto);
@@ -91,7 +93,7 @@ public class MemberController {
 			
 			// session 저장
 			req.getSession().setAttribute("userId", dto.getId());
-			req.getSession().setMaxInactiveInterval(30); // 30초이다
+			req.getSession().setMaxInactiveInterval(60 * 60); // 60분이다
 			
 			logger.info("MemberController session id : " + dto.toString());
 			return "redirect:/bbsList.do";
@@ -103,10 +105,12 @@ public class MemberController {
 	
 	// 세션이 null값일 때 로그아웃
 	@RequestMapping(value = "logout.do", method = RequestMethod.GET)
-	public String logout() throws Exception {
+	public String logout(HttpServletRequest req) throws Exception {
 		logger.info("MemberController logout()");
 		
-		return "logout";
+		req.getSession().invalidate();
+		
+		return "logout.tiles";
 	}
 
 

@@ -55,7 +55,7 @@
 	VALUES(SEQ_BBS.NEXTVAL, #{id}, (SELECT REF FROM BBS WHERE SEQ=#{seq}),
 									(SELECT STEP FROM BBS WHERE SEQ=#{seq}) +1,
 									(SELECT DEPTH FROM BBS WHERE SEQ=#{seq}) +1,
-									#{title}, #{content}, SYSDATE, 0, 0)
+									#{title}, #{content}, SYSDATE, 1, 0)
 </insert>
 
 </mapper>

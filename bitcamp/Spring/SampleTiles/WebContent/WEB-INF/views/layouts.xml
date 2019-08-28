@@ -8,8 +8,8 @@
 <definition name="login.tiles" template="/WEB-INF/views/layouts-tiles.jsp">
 	<!-- <tiles:insertAttribute name="header"/>의 name이 여기서 name이다 -->
 	<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
-	<put-attribute name="menu" value="/WEB-INF/views/login/login.jsp"/>
-	<put-attribute name="content" value="/WEB-INF/views/login/content.jsp"/>
+	<put-attribute name="menu" value="/WEB-INF/views/content/login.jsp"/>
+	<put-attribute name="content" value="/WEB-INF/views/content/content.jsp"/>
 	<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
 </definition>
 
@@ -23,7 +23,35 @@
 -->
 
 <definition name="account.tiles" extends="login.tiles">
-	<put-attribute name="content" value="/WEB-INF/views/login/account.jsp"/>
+	<put-attribute name="content" value="/WEB-INF/views/content/account.jsp"/>
 </definition>
+
+<definition name="bbsList.tiles" extends="login.tiles">
+	<put-attribute name="content" value="/WEB-INF/views/content/bbsList.jsp"/>
+</definition>
+
+<definition name="bbsWrite.tiles" extends="login.tiles">
+	<put-attribute name="content" value="/WEB-INF/views/content/bbsWrite.jsp"/>
+</definition>
+
+<definition name="bbsDetail.tiles" extends="login.tiles">
+	<put-attribute name="content" value="/WEB-INF/views/content/bbsDetail.jsp"/>
+</definition>
+
+<definition name="bbsUpdate.tiles" extends="login.tiles">
+	<put-attribute name="content" value="/WEB-INF/views/content/bbsUpdate.jsp"/>
+</definition>
+
+<definition name="bbsAnswer.tiles" extends="login.tiles">
+	<put-attribute name="content" value="/WEB-INF/views/content/bbsAnswer.jsp"/>
+</definition>
+
+<definition name="logout.tiles" extends="login.tiles">
+	<put-attribute name="content" value="/WEB-INF/views/content/logout.jsp"/>
+</definition>
+
+
+
+
 
 </tiles-definitions>
