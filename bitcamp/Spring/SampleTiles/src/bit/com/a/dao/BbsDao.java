@@ -3,11 +3,12 @@ package bit.com.a.dao;
 import java.util.List;
 
 import bit.com.a.model.BbsDto;
+import bit.com.a.model.BbsParam;
 
 public interface BbsDao {
 	
 	// 전체 리스트 갖고 게시판으로 이동
-	public List<BbsDto> bbsList();
+	public List<BbsDto> bbsList(BbsParam param);
 
 	// 게시판 글쓰기
 	public boolean bbsWrite(BbsDto dto);

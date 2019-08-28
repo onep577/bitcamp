@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import bit.com.a.model.BbsDto;
+import bit.com.a.model.BbsParam;
 import bit.com.a.service.BbsService;
 
 @Controller
@@ -26,10 +27,10 @@ public class BbsController {
 	
 	// 게시판으로 이동만
 	@RequestMapping(value = "bbsList.do", method = RequestMethod.GET)
-	public String bbsList(Model model, HttpSession session) throws Exception {
+	public String bbsList(Model model, BbsParam param, HttpSession session) throws Exception {
 		logger.info("BbsController bbsList()");
 		logger.info("session id : " + session.getAttribute("userId"));
-		List<BbsDto> list = bbsService.bbsList();
+		List<BbsDto> list = bbsService.bbsList(param);
 		
 		model.addAttribute("list", list);
 		

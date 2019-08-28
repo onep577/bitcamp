@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import bit.com.a.dao.BbsDao;
 import bit.com.a.model.BbsDto;
+import bit.com.a.model.BbsParam;
 
 //org.springframework를 pom.xml에 넣으면 @Repository를 사용할 수 있다
 @Repository		// 저장소
@@ -27,9 +28,9 @@ public class BbsDaoImpl implements BbsDao {
 
 	// 전체 리스트 갖고 게시판으로 이동
 	@Override
-	public List<BbsDto> bbsList() {
+	public List<BbsDto> bbsList(BbsParam param) {
 		logger.info("BbsDaoImpl bbsList()");
-		List<BbsDto> list = sqlSession.selectList(namespace + "bbsList");
+		List<BbsDto> list = sqlSession.selectList(namespace + "bbsList", param);
 
 		return list;
 	}

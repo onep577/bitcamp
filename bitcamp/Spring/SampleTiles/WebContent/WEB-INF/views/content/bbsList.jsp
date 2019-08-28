@@ -60,7 +60,10 @@
 	<c:forEach begin="0" end="${fn:length(list) -1 }" step="1" varStatus="i">
 	<c:if test="${list[i.index].del eq 0 }">
 	<tr>
-		<td class="bbsDel" colspan="4">작성자에 의해 삭제된 게시글입니다</td>
+		<td>${i.index +1 }</td>
+		<td class="bbsDel">작성자에 의해 삭제된 게시글입니다</td>
+		<td>${list[i.index].readcount }</td>
+		<td>${list[i.index].id }</td>
 	</tr>
 	</c:if>
 	<c:if test="${list[i.index].del ne 0 }">
@@ -82,6 +85,15 @@
 
 
 
+<form id="frm">
+<select name="s_category" id="s_category">
+	<option value="id">아이디</option>
+	<option value="title">제목</option>
+	<option value="content">내용</option>
+</select>
+<input type="text" name="keyword" id="keyword">
+<input type="button" id="btn">
+</form>
 
 
 
@@ -109,7 +121,8 @@ $(document).ready(function () {
 		var seq = $(this).find("input[type='hidden']").val();
 		//alert(seq);
 		
-		location.href="bbsDetail.do?seq="+seq;
+		//location.href="bbsDetail.do?seq="+seq;
+		$("#frm").attr("action","search.do").submit();
 	});
 });
 </script>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import bit.com.a.dao.BbsDao;
 import bit.com.a.model.BbsDto;
+import bit.com.a.model.BbsParam;
 import bit.com.a.service.BbsService;
 
 @Service
@@ -23,8 +24,8 @@ public class BbsServiceImpl implements BbsService {
 
 	// 전체 리스트 갖고 게시판으로 이동
 	@Override
-	public List<BbsDto> bbsList() {
-		List<BbsDto> list = bbsDao.bbsList();
+	public List<BbsDto> bbsList(BbsParam param) {
+		List<BbsDto> list = bbsDao.bbsList(param);
 
 		return list;
 	}

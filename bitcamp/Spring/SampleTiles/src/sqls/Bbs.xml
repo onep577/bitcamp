@@ -10,6 +10,18 @@
 <select id="bbsList" resultType="bit.com.a.model.BbsDto">
 	SELECT *
 	FROM BBS
+	WHERE 1=1
+	
+	<if test="s_category == 'id'">
+	AND ID LIKE '%'||#{id}||'%'
+	</if>
+	<if test="s_category == 'title'">
+	AND TITLE LIKE '%'||#{title}||'%'
+	</if>
+	<if test="s_category == 'content'">
+	AND CONTENT LIKE '%'||#{content}||'%'
+	</if>
+	
 	ORDER BY REF ASC, STEP ASC
 </select>
 
