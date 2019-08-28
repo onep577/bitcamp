@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="bbsList"/>
+		<item key="selection" value="bbsList.do"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="bbsList.do"/>
+			<item value="bbsAnswerAf"/>
+			<item value="textAspect"/>
+			<item value="aop"/>
+			<item value="id"/>
 			<item value="bbsList"/>
 			<item value="find"/>
 			<item value="bbsWrite"/>
@@ -18,11 +23,6 @@
 			<item value="redirect/"/>
 			<item value="@Autowired"/>
 			<item value="com.google.code.gson"/>
-			<item value="gson"/>
-			<item value="a_"/>
-			<item value="회원가입"/>
-			<item value="sqls"/>
-			<item value="ContextLoaderListener"/>
 		</list>
 		<list key="replacehistory">
 		</list>
