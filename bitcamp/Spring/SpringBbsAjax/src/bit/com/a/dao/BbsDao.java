@@ -23,4 +23,7 @@ public interface BbsDao {
 	
 	// 게시글 수정
 	public boolean bbsUpdate(BbsDto dto);
+	
+	// 게시글 댓글
+	public boolean answer(BbsDto dto, int seq);
 }

@@ -94,7 +94,7 @@ $(document).ready(function () {
 	
 	$("#answer").click(function () {
 		var seq = ${dto.seq };
-		alert(seq);
+		//alert(seq);
 		location.href="bbsAnswer.do?seq="+${dto.seq };
 	});
 });

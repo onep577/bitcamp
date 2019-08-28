@@ -42,4 +42,8 @@
 	WHERE SEQ=#{seq}
 </update>
 
+<update id="answer" parameterType="bit.com.a.model.BbsDto">
+	
+</update>
+
 </mapper>

@@ -76,5 +76,19 @@ public class BbsDaoImpl implements BbsDao {
 
 		return count>0?true:false;
 	}
+
+	@Override
+	public boolean answer(BbsDto dto, int seq) {
+		int count = sqlSession.update(namespace + "answerupdate", seq);
+		
+		int count2 = sqlSession.insert(namespace + "answerinsert", dto);
+		
+		boolean b = false;
+		if(count > 0 && count2 > 0) {
+			b = true;
+		}
+
+		return b;
+	}
 	
 }

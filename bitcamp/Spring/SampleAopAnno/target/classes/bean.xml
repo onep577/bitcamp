@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+<!-- xml은 거의 자동으로 실행되는데 이것은 main에서 실행된다 -->
+<!-- jsp 파일에서 객체 생성할 때는 jsp:usebean으로 한다 -->
+<!-- xml 파일에서 객체 생성할 때는 bean으로 한다 -->
+<!-- 	xml: <bean	tag:	<jsp:usebean -->
+
+
+	<!-- aop annotation -->
+	<aop:aspectj-autoproxy/>
+
+
+	<!-- 감시자 만들기 -->
+	<!-- 원래대로라면 classpath가 앞에 붙어야한다 -->
+	<!-- aop object 생성 -->
+	<!-- 인스턴스 클래스명 -->
+	<bean id="logApp" class="com.aopex.logAOP" />
+	<!-- logAOP logApp = new logAOP(); -->
+
+
+	
+	<!-- Cat.java 생성한다 -->
+	<!-- xml에서도 객체를 생성할 수 있다 -->
+	<bean id="myCat" class="com.aopex.Cat">
+		<property name="name" value="야옹야옹"/>
+		<property name="age" value="9"/>
+		<property name="color" value="초록"/>
+	</bean>
+
+</beans>

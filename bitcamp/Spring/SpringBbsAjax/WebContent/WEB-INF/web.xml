@@ -21,6 +21,7 @@
   		<param-name>contextConfigLocation</param-name>
   		<param-value>
   			/WEB-INF/spring/servlet-context.xml
+  			/WEB-INF/spring/aop-context.xml
   		</param-value>
   	</init-param>
   	

@@ -14,10 +14,10 @@
 
 <style type="text/css">
 .bbsTitle{
-	background-color: red;
+	/* background-color: red; */
 }
 .bbsWrite{
-	background-color: yellow;
+	/* background-color: yellow; */
 }
 .tb{
 	width: 80%;
@@ -28,7 +28,7 @@
 </head>
 <body>
 
-<h1 class="bbsTitle" align="center">부모 글</h1>
+<h1 class="bbsTitle" align="center">게시글</h1>
 
 <div class="bbsWrite" align="center">
 <form id="frm">
@@ -64,15 +64,6 @@
 			<label id="content">${dto.content }</label>
 		</td>
 	</tr>
-	<tr>
-		<td colspan="2" align="center">
-		<c:if test="${userId eq dto.id }">
-			<input type="button" id="update" value="수정">&nbsp;&nbsp;
-			<input type="button" id="delete" value="삭제">&nbsp;&nbsp;
-		</c:if>
-			<input type="button" onclick="location.href='bbsList.do'" value="게시판으로">
-		</td>
-	</tr>
 </table>
 </form>
 </div>
@@ -83,26 +74,26 @@
 <h1 class="bbsTitle" align="center">댓글쓰기</h1>
 
 <div class="bbsWrite" align="center">
-<form id="frm">
+<form id="answerfrm">
 <table class="tb" border="1">
 <col width="20%"><col width="80%">
 	<tr>
 		<th>아이디</th>
 		<td>
-			<label id="id">${userId }</label>
+			<label id="answerid">${userId }</label>
 			<input type="hidden" name="id" value="${userId }">
 		</td>
 	</tr>
 	<tr>
 		<th>제목</th>
 		<td>
-			<input type="text" name="title" id="title">
+			<input type="text" name="title" id="answertitle">
 		</td>
 	</tr>
 	<tr height="250px">
 		<th>내용</th>
 		<td>
-			<textarea rows="20%" cols="90%" name="content" id="content"></textarea>
+			<textarea rows="20%" cols="90%" name="content" id="answercontent"></textarea>
 		</td>
 	</tr>
 	<tr>
@@ -121,14 +112,8 @@
 
 <script type="text/javascript">
 $(document).ready(function () {	
-	$("#update").click(function () {
-		//alert(seq);
-		location.href="bbsUpdate.do?seq="+${dto.seq };
-	});
-	
-	$("#delete").click(function () {
-		//alert(seq);
-		location.href="bbsDelete.do?seq="+${dto.seq };
+	$("#write").click(function () {
+		$("#answerfrm").attr("action", "bbsAnswerAf.do").submit();
 	});
 });
 </script>

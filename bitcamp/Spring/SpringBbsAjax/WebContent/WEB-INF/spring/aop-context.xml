@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
+	<!-- service로 끝나는 모든 bean을 기본 트랜잭션 설정을 활성화한다 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<!-- AOP 관점지향 프로그래밍 -->
+	<aop:aspectj-autoproxy/>
+
+	<!-- aop 해당 클래스를 생성 -->
+	<!-- LogAop는 클래스명이다 -->
+	<bean id="textAspect" class="bit.com.a.aop.LogAop"></bean>
+
+
+</beans>

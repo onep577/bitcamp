@@ -1,7 +1,8 @@
-package bit.com.a.controller;
+package bit.com.a.login;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -81,29 +82,32 @@ public class MemberController {
 	@RequestMapping(value = "loginAf.do",
 					produces = "application/String; charset=utf-8",
 					method = RequestMethod.GET)
-	public String loginAf(MemberDto dto, HttpSession session) throws Exception {
+	public String loginAf(MemberDto dto, HttpServletRequest req) throws Exception {
 		logger.info("MemberController loginAf() : " + dto.getId() + ", " + dto.getPwd());
 		boolean b = memService.loginAf(dto);
 		
 		if(b) {
 			logger.info("로그인 성공");
-			session.setAttribute("userId", dto.getId());
-			logger.info("MemberController session id : " + session.getId());
-			logger.info("MemberController session id : " + dto.getId());
+			
+			// session 저장
+			req.getSession().setAttribute("userId", dto.getId());
+			req.getSession().setMaxInactiveInterval(30); // 30초이다
+			
+			logger.info("MemberController session id : " + dto.toString());
 			return "redirect:/bbsList.do";
 		}else {
 			logger.info("로그인 실패");
-			return "redirect:/login";
+			return "redirect:/login.do";
 		}
 	}
-
 	
-	
-	
-
-
-
-
+	// 세션이 null값일 때 로그아웃
+	@RequestMapping(value = "logout.do", method = RequestMethod.GET)
+	public String logout() throws Exception {
+		logger.info("MemberController logout()");
+		
+		return "logout";
+	}
 
 
 }
