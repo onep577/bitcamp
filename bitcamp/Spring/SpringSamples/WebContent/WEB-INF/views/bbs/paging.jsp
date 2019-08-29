@@ -55,6 +55,8 @@ int screenStartPageIndex = ((pageNumber + 1) / pageCountPerScreen) * pageCountPe
 // 끝페이지
 int screenEndPageIndex = (((pageNumber + 1) / pageCountPerScreen) * pageCountPerScreen) + pageCountPerScreen;
 
+
+
 // 끝페이지는 다시 계산
 if(screenEndPageIndex > totalPageCount){
 	// 맨 마지막 페이지

@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="bbsList.do"/>
+		<item key="selection" value=""/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value=".ac"/>
+			<item value="center"/>
+			<item value="_hover_tr"/>
+			<item value="list_table"/>
+			<item value="class"/>
+			<item value="left"/>
+			<item value="bbsList"/>
+			<item value="loginAf"/>
+			<item value="login"/>
+			<item value="_rgetid"/>
+			<item value="backa"/>
+			<item value="login_title_wrap"/>
+			<item value="aspectj"/>
 			<item value="bbsList.do"/>
 			<item value="bbsAnswerAf"/>
-			<item value="textAspect"/>
-			<item value="aop"/>
-			<item value="id"/>
-			<item value="bbsList"/>
-			<item value="find"/>
-			<item value="bbsWrite"/>
-			<item value="bbsWriteAf"/>
-			<item value="bbsWrite.do"/>
-			<item value="alllist"/>
-			<item value="redirect"/>
-			<item value="redirect/"/>
-			<item value="@Autowired"/>
-			<item value="com.google.code.gson"/>
 		</list>
 		<list key="replacehistory">
 		</list>

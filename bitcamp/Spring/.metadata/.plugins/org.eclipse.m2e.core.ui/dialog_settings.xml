@@ -20,6 +20,7 @@
 	</section>
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="SpringSamples"/>
 			<item value="SampleTiles"/>
 			<item value="SampleAopAnno"/>
 			<item value="SampleAopXml"/>
@@ -34,6 +35,7 @@
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="SpringSamples"/>
 			<item value="SampleTiles"/>
 			<item value="SampleAopAnno"/>
 			<item value="SampleAopXml"/>
