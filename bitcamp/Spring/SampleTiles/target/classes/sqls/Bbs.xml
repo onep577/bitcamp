@@ -10,16 +10,16 @@
 <select id="bbsList" parameterType="bit.com.a.model.BbsParam" resultType="bit.com.a.model.BbsDto">
 	SELECT *
 	FROM BBS
-	WHERE 1=1
+	WHERE DEL = 1
 	
 	<if test="s_category == 'id'">
-	AND ID LIKE '%'||#{id}||'%'
+	AND ID LIKE '%'||#{keyword}||'%'
 	</if>
 	<if test="s_category == 'title'">
-	AND TITLE LIKE '%'||#{title}||'%'
+	AND TITLE LIKE '%'||#{keyword}||'%'
 	</if>
 	<if test="s_category == 'content'">
-	AND CONTENT LIKE '%'||#{content}||'%'
+	AND CONTENT LIKE '%'||#{keyword}||'%'
 	</if>
 	
 	ORDER BY REF ASC, STEP DESC
