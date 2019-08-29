@@ -8,7 +8,7 @@
 <!-- Query -->
 
 <select id="idcheck" parameterType="bit.com.a.model.MemberDto" resultType="java.lang.Integer">
-	SELECT COUNT(*)
+	SELECT NVL(COUNT(*), 0)
 	FROM MEMBER
 	WHERE ID=#{id}
 </select>

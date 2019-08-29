@@ -8,6 +8,11 @@
 <definition name="login.tiles" template="/WEB-INF/views/login/login.jsp">
 </definition>
 
+<definition name="account.tileS" template="/WEB-INF/views/login/account.jsp">
+</definition>
+
+<definition name="bbsList.tiles" template="/WEB-INF/views/bbs/bbsList.jsp">
+</definition>
 
 
 </tiles-definitions>
