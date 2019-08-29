@@ -14,6 +14,5 @@ INDEX VERSION 1.4+E:\github\bitcamp\Spring\.metadata\.plugins\org.eclipse.wst.js
 2320537029.index
 3450525368.index
 2026610250.index
-2519070323.index
 825825912.index
 2807532584.index
