@@ -91,8 +91,15 @@ public class MemberController {
 		}
 	}
 	
-	
-	
+	// 세션이 null값일 때 로그아웃
+	@RequestMapping(value = "logout.do", method = RequestMethod.GET)
+	public String logout(HttpServletRequest req) throws Exception {
+		logger.info("MemberController logout()");
+		
+		req.getSession().invalidate();
+		
+		return "logout.tiles";
+	}
 	
 }
 

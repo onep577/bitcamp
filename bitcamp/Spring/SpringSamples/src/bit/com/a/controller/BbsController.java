@@ -33,18 +33,17 @@ public class BbsController {
 		List<BbsDto> list = bbsService.bbsList(param);
 		
 		model.addAttribute("list", list);
+		model.addAttribute("doc_title", "글목록");
 		logger.info("리스트 전");
 		
 		return "bbsList.tiles";
 	}
 	
 	// 게시판 글쓰기로 이동만
-	/*
 	@RequestMapping(value = "bbsWrite.do", method = RequestMethod.GET)
 	public String bbsWrite() throws Exception {
 		return "bbsWrite.tiles";
 	}
-	/**/
 	
 	// 게시판 글쓰기
 	/*

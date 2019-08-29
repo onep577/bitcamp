@@ -11,8 +11,22 @@
 <definition name="account.tileS" template="/WEB-INF/views/login/account.jsp">
 </definition>
 
-<definition name="bbsList.tiles" template="/WEB-INF/views/bbs/bbsList.jsp">
+<definition name="bbsList.tiles" template="/WEB-INF/views/layouts-tiles.jsp">
+	<put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
+	<put-attribute name="top_inc" value="/WEB-INF/views/common/top_inc.jsp"/>
+	<put-attribute name="top_menu" value="/WEB-INF/views/common/top_menu.jsp"/>
+	<put-attribute name="left_menu" value="/WEB-INF/views/bbs/left_bbslist.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/bbs/bbsList.jsp"/>
+	<put-attribute name="bottom_inc" value="/WEB-INF/views/common/bottom_inc.jsp"/>
 </definition>
+
+<definition name="logout.tiles" template="/WEB-INF/views/login/logout.jsp">
+</definition>
+
+<definition name="bbsWrite.tiles" extends="bbsList.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/bbs/bbsWrite.jsp"/>
+</definition>
+
 
 
 </tiles-definitions>
