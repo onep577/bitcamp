@@ -4,9 +4,11 @@ import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import bit.com.a.dao.CalendarDao;
 
+@Repository
 public class CalendarDaoImpl implements CalendarDao {
 
 	// org.springframework를 pom.xml에 넣으면 @Autowired를 사용할 수 있다

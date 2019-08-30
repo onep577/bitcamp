@@ -39,6 +39,17 @@
 	<put-attribute name="main" value="/WEB-INF/views/bbs/bbsAnswer.jsp"/>
 </definition>
 
+<definition name="calendar.tiles" extends="bbsList.tiles">
+	<put-attribute name="left_menu" value="/WEB-INF/views/calendar/left_calendarlist.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/calendar/calendar.jsp"/>
+</definition>
+
+
+
+
+
+
+
 
 
 </tiles-definitions>
