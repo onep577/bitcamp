@@ -17,7 +17,7 @@ public class Util {
 		
 		// %s는 string으로 들어간다
 		str += String.format("<a href='%s?year=%d&month=%d&day=%d'>" ,
-								"callist.jsp", year, month, day );
+								"callist.do", year, month, day );
 		str += String.format("%2d", day);
 		// %2d : 4일이면 한글자니까 숫자 표현할 때 두칸으로 잡아라
 		str += "</a>";
@@ -31,10 +31,10 @@ public class Util {
 	public String showPen(int year, int month, int day){
 		String str = "";
 		
-		String image = "<img src='images/pen.gif'>";
+		String image = "<img src='image/pen.gif'>";
 		
 		str = String.format("<a href='%s?year=%d&month=%d&day=%d'>%s</a>",
-								"calwrite.jsp", year, month, day, image);
+								"calwrite.do", year, month, day, image);
 		/*
 			<a href='calwrite.jsp?year=2019&month=07&day=31'>
 				<img str'image/pen.gif'>
@@ -62,7 +62,7 @@ public class Util {
 				str += "<tr bgcolor='white'>";
 				str += "<td style='border: hidden;'>";
 				
-				str += "<a href='caldetail.jsp?seq=" + dto.getSeq() + "'>";
+				str += "<a href='caldetail.do?seq=" + dto.getSeq() + "'>";
 				// <a href='caldetail.jsp?seq=5'>
 				str += "<font style='font-size:8;color:red'>";
 				str += dot3(dto.getTitle());

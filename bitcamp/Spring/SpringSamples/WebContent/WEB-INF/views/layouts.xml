@@ -44,7 +44,9 @@
 	<put-attribute name="main" value="/WEB-INF/views/calendar/calendar.jsp"/>
 </definition>
 
-
+<definition name="calDetail.tiles" extends="calendar.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/calendar/calDetail.jsp"/>
+</definition>
 
 
 

@@ -6,6 +6,13 @@
 <mapper namespace="Calendar">
 
 <!-- Query -->
+<select id="callist" parameterType="bit.com.a.model.CalendarParam" resultType="bit.com.a.model.CalendarDto">
+	SELECT *
+	FROM CALENDAR
+	WHERE ID=${id} AND RDATE=${yyyydd}
+</select>
+
+
 
 
 </mapper>

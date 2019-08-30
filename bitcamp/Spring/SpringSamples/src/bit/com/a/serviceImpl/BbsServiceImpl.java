@@ -30,6 +30,7 @@ public class BbsServiceImpl implements BbsService {
 		return list;
 	}
 	
+	//
 	@Override
 	public int getBbsCount(BbsParam param) {
 		return bbsDao.getBbsCount(param);

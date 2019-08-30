@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value=""/>
+		<item key="selection" value="list_table"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value=".ac"/>
-			<item value="center"/>
-			<item value="_hover_tr"/>
 			<item value="list_table"/>
-			<item value="class"/>
-			<item value="left"/>
-			<item value="bbsList"/>
-			<item value="loginAf"/>
-			<item value="login"/>
-			<item value="_rgetid"/>
-			<item value="backa"/>
-			<item value="login_title_wrap"/>
-			<item value="aspectj"/>
-			<item value="bbsList.do"/>
-			<item value="bbsAnswerAf"/>
+			<item value="showPen"/>
+			<item value="img"/>
+			<item value="content_table"/>
+			<item value="center"/>
+			<item value="ac"/>
+			<item value="getCalendarList"/>
+			<item value="calService"/>
+			<item value="calendar.tiles"/>
+			<item value="paging_wrap"/>
+			<item value="&quot;paging_wrap&quot;"/>
+			<item value="include"/>
+			<item value="recordCountPerPage"/>
+			<item value="pageCountPerScreen"/>
+			<item value="pageNumber"/>
 		</list>
 		<list key="replacehistory">
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="824"/>
-		<item key="DIALOG_Y_ORIGIN" value="268"/>
+		<item key="DIALOG_X_ORIGIN" value="1003"/>
+		<item key="DIALOG_Y_ORIGIN" value="154"/>
 		<item key="DIALOG_WIDTH" value="288"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>

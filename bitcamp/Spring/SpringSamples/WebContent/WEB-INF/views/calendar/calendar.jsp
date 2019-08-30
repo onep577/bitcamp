@@ -1,3 +1,4 @@
+<%@page import="bit.com.a.util.Util"%>
 <%@page import="bit.com.a.model.CalendarDto"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Calendar"%>
@@ -5,50 +6,23 @@
     pageEncoding="UTF-8"%>
 
 <%
-Calendar cal = Calendar.getInstance();
-cal.set(Calendar.DATE, 1);
-// 오늘의 달, 1일
-String syear = request.getParameter("year");
-String smonth = request.getParameter("month");
-int year = cal.get(Calendar.YEAR);
-if(nvl(syear) == false){		// 파라미터가 넘어 왔을 때
-	// 첫번째 들어온 게 아니라 두번째부터 체크한다
-	year = Integer.parseInt(syear);
-}
-int month = cal.get(Calendar.MONTH) + 1; // 0부터 시작한다 원하는 값을 얻기 위해서는 +1 해야한다
-if(nvl(smonth) == false){
-	month = Integer.parseInt(smonth);
-}
-if(month < 1){
-	month = 12;
-	year--;
-}
-if(month > 12){
-	month = 1;
-	year++;
-}
-cal.set(year, month-1, 1);		// 년월일 셋팅 완료
-// 요일
-int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
-// <<		year--
-String pp = String.format("<a href='%s?year=%d&month=%d'>"
-					+ "<img src='images/left.gif'></a>",
-						"calendar.jsp", year-1, month);
-// <		month--
-String p = String.format("<a href='%s?year=%d&month=%d'>"
-					+ "<img src='images/prec.gif'></a>",
-						"calendar.jsp", year, month-1);
-// >		month++
-String n = String.format("<a href='%s?year=%d&month=%d'>"
-					+ "<img src='images/next.gif'></a>",
-						"calendar.jsp", year, month+1);
-// >>		year++
-String nn = String.format("<a href='%s?year=%d&month=%d'>"
-					+ "<img src='images/last.gif'></a>",
-						"calendar.jsp", year+1, month);
-MemberDto user = (MemberDto)session.getAttribute("login");
-iCalendar dao = CalendarDao.getInstance();
-List<CalendarDto> list = dao.getCalendarList(user.getId(), syear + two(month + ""));
+Util util = new Util();
+
+// 날짜변경 할 수 있는 버튼
+String pp = (String)request.getAttribute("pp");
+String p = (String)request.getAttribute("p");
+String n = (String)request.getAttribute("n");
+String nn = (String)request.getAttribute("nn");
+
+// 해당 날짜
+int month = (Integer)request.getAttribute("month");
+int year = (Integer)request.getAttribute("year");
+int dayOfWeek = (Integer)request.getAttribute("dayOfWeek");
+Calendar cal = (Calendar)request.getAttribute("cal");
+
+List<CalendarDto> list = (List<CalendarDto>)request.getAttribute("list");
+
+
 %>
 
 <!DOCTYPE html>
@@ -59,8 +33,94 @@ List<CalendarDto> list = dao.getCalendarList(user.getId(), syear + two(month + "
 </head>
 <body>
 
-<h1>일정관리</h1>
+<form>
+<table class="list_table">
+<col width="100"><col width="100"><col width="100"><col width="100">
+<col width="100"><col width="100"><col width="100">
 
+<!-- 오늘 날짜와 날짜변경 할 수 있는 버튼 -->
+<tr height="100">
+	<td colspan="7" align="center">
+		<%=pp %>&nbsp;<%=p %>
+		<font color="black" style="font-size: 50px">
+			<%=String.format("%d년&nbsp;&nbsp;%d월", year, month) %>
+		</font>
+		<%=n %>&nbsp;<%=nn %>
+	</td>
+</tr>
+
+<!-- 달력의 시작인 요일이 나온다 -->
+<tr height="100">
+	<td align="center">일</td>
+	<td align="center">월</td>
+	<td align="center">화</td>
+	<td align="center">수</td>
+	<td align="center">목</td>
+	<td align="center">금</td>
+	<td align="center">토</td>
+</tr>
+
+<!-- 윗칸 -->
+<tr height="100" align="left" valign="top">
+<%
+for(int i = 1; i < dayOfWeek; i++){
+	%>
+	<td>&nbsp;</td>
+	<%
+}
+%>
+
+<%-- 날짜 --%>
+<%
+int lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+for(int i = 1; i <= lastDay; i++){
+	%>
+	<td class="mydate" onclick="func(<%=""+year+util.two(month+"")+util.two(i+"") %>)">
+	<%=util.callist(year, month, i) %>&nbsp;&nbsp;<%=util.showPen(year, month, i) %>
+	<%=util.makeTable(year, month, i, list) %>
+	</td>
+	<%
+	if((i + dayOfWeek - 1)%7 == 0 && i != lastDay){
+		%>
+		</tr><tr height="100" align="left" valign="top">
+		<%
+	}
+}
+%>
+
+
+<%-- 밑칸 --%>
+<%
+for(int i = 0; i < (7 - (dayOfWeek + lastDay - 1)%7 )%7; i++){
+	%>
+	<td>&nbsp;</td>
+	<%
+}
+%>
+
+
+</tr>
+
+</table>
+</form>
+
+
+
+
+<script type="text/javascript">
+$(".mydate").mouseover(function () {
+	$(this).css("background-color", "yellow");
+});
+$(".mydate").mouseout(function (){
+	$(this).css("background-color", "#fff");
+});
+
+function func(date){
+	alert(date);
+	location.href="calDetail.do?date"+date;
+	
+}
+</script>
 
 </body>
 </html>

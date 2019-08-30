@@ -2,7 +2,7 @@
 		
 	.list_table { width:98%; border-bottom:1px solid #EFEFEF; border-right:1px solid #EFEFEF; border-collapse:collapse; margin-left:auto; margin-right:auto; clear:both; }
 	.list_table2 { width:98%; border-bottom:1px solid #EFEFEF; border-right:1px solid #EFEFEF; border-collapse:collapse; margin-left:auto; margin-right:auto; clear:both; vertical-align:middle; text-align: center}
-	.list_table td,.list_table th { text-align:center; border-top:1px solid #EFEFEF; border-left:1px solid #EFEFEF; padding:0.3em; }
+	.list_table td,.list_table th { text-align:left; border-top:1px solid #EFEFEF; border-left:1px solid #EFEFEF; padding:0.3em; }
 	.list_table th { background-color:#4D6BB3; color:#FFFFFF; line-height:1.7em; font-weight:normal;}
 	.list_table tr td { padding-top:0.5em; padding-bottom:0.5em;}	
 	.list_table td.title { padding-left:0.5em; text-align:left; }
