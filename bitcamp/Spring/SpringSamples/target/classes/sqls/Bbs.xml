@@ -7,67 +7,98 @@
 
 <!-- Query -->
 
-<select id="bbsList" parameterType="bit.com.a.model.BbsParam" resultType="bit.com.a.model.BbsDto">
-	SELECT *
-	FROM BBS
-	WHERE DEL = 1
-	
-	<if test="s_category == 'id'">
-	AND ID LIKE '%'||#{keyword}||'%'
-	</if>
-	<if test="s_category == 'title'">
-	AND TITLE LIKE '%'||#{keyword}||'%'
-	</if>
-	<if test="s_category == 'content'">
-	AND CONTENT LIKE '%'||#{keyword}||'%'
-	</if>
-	
-	ORDER BY REF ASC, STEP DESC
+<select id="bbsList"	parameterType="bit.com.a.model.BbsParam" 
+	resultType="bit.com.a.model.BbsDto">
+	SELECT SEQ, ID, REF, STEP, DEPTH, TITLE, CONTENT,
+		WDATE, DEL, READCOUNT
+	FROM (SELECT ROW_NUMBER()OVER(ORDER BY REF DESC, STEP ASC)AS RNUM,
+		  SEQ, ID, REF, STEP, DEPTH, TITLE, CONTENT,
+		  WDATE, DEL, READCOUNT 
+		  FROM BBS
+		  WHERE 1=1
+		  
+ 		  <if test="s_category != null and s_category != ''
+		  	and s_keyword != null and s_keyword != ''">		  	
+		  	<if test="s_category == 'title'">
+		  		AND TITLE LIKE '%'||#{s_keyword}||'%'
+		  	</if>
+		  	<if test="s_category == 'contents'">
+		  		AND CONTENT LIKE '%'||#{s_keyword}||'%'
+		  	</if>
+		  	<if test="s_category == 'id'">
+		  		AND ID LIKE '%'||#{s_keyword}||'%'
+		  	</if>		  
+		  </if>
+		  ) A 
+	WHERE RNUM BETWEEN ${start} AND ${end}
+		
+	<!-- ORDER BY REF DESC, STEP ASC -->
 </select>
 
-<!--  <insert id="insert" parameterType="bit.com.a.model.BbsDto">
+<select id="getBbsCount" parameterType="bit.com.a.model.BbsParam" 
+	resultType="java.lang.Integer">
+
+	SELECT NVL(COUNT(*), 0) AS CNT
+	FROM BBS  
+	WHERE 1=1
+	
+ 	<if test="s_category != null and s_category != ''
+	  	and s_keyword != null and s_keyword != ''">		  	
+	  	<if test="s_category == 'title'">
+	  		AND TITLE LIKE '%'||#{s_keyword}||'%'
+	  	</if>
+	  	<if test="s_category == 'contents'">
+	  		AND CONTENT LIKE '%'||#{s_keyword}||'%'
+	  	</if>
+	  	<if test="s_category == 'id'">
+	  		AND ID LIKE '%'||#{s_keyword}||'%'
+	  	</if>		  
+	  </if>
+</select>
+
+<insert id="insert" parameterType="bit.com.a.model.BbsDto">
 	INSERT INTO BBS
 	VALUES( SEQ_BBS.nextval, #{id}, (SELECT NVL(MAX(REF), 0)+1 FROM BBS),
 			(SELECT NVL(MAX(STEP), 0)+1 FROM BBS), 0, #{title}, #{content}, SYSDATE ,1 ,0)
-</insert> -->
+</insert>
 
-<!-- <update id="readCount" parameterType="java.lang.Integer">
+<update id="readCount" parameterType="java.lang.Integer">
 	UPDATE BBS
 	SET READCOUNT = READCOUNT + 1
 	WHERE SEQ=#{seq}
-</update> -->
+</update>
 
-<!-- <select id="getBbs" parameterType="java.lang.Integer" resultType="bit.com.a.model.BbsDto">
+<select id="getBbs" parameterType="java.lang.Integer" resultType="bit.com.a.model.BbsDto">
 	SELECT *
 	FROM BBS
 	WHERE SEQ=#{seq}
-</select> -->
+</select>
 
-<!-- <update id="delete">
+<update id="delete">
 	UPDATE BBS
 	SET DEL = 0
 	WHERE SEQ=#{seq}
-</update> -->
+</update>
 
-<!-- <update id="update" parameterType="bit.com.a.model.BbsDto">
+<update id="update" parameterType="bit.com.a.model.BbsDto">
 	UPDATE BBS
 	SET TITLE = #{title}, CONTENT = #{content}
 	WHERE SEQ=#{seq}
-</update> -->
+</update>
 
-<!-- <update id="answerupdate" parameterType="java.lang.Integer">
+<update id="answerupdate" parameterType="java.lang.Integer">
 	UPDATE BBS
 	SET STEP = STEP + 1
 	WHERE REF=(SELECT REF FROM BBS WHERE SEQ=#{seq})
 		AND STEP > (SELECT REF FROM BBS WHERE SEQ=#{seq})
-</update> -->
+</update>
 
-<!-- <insert id="answerinsert" parameterType="bit.com.a.model.BbsDto">
+<insert id="answerinsert" parameterType="bit.com.a.model.BbsDto">
 	INSERT INTO BBS
 	VALUES(SEQ_BBS.NEXTVAL, #{id}, (SELECT REF FROM BBS WHERE SEQ=#{seq}),
 									(SELECT STEP FROM BBS WHERE SEQ=#{seq}) +1,
 									(SELECT DEPTH FROM BBS WHERE SEQ=#{seq}) +1,
-									#{title}, #{content}, SYSDATE, 0, 0)
-</insert> -->
+									#{title}, #{content}, SYSDATE, 1, 0)
+</insert>
 
 </mapper>

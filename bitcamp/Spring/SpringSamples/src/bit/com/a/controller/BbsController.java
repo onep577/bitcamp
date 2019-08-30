@@ -26,14 +26,35 @@ public class BbsController {
 	private static final Logger logger = LoggerFactory.getLogger(BbsController.class);
 	
 	// 게시판으로 이동만
-	@RequestMapping(value = "bbsList.do", method = RequestMethod.GET)
+	@RequestMapping(value = "bbsList.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String bbsList(Model model, BbsParam param, HttpSession session) throws Exception {
 		logger.info("BbsController bbsList()");
-		logger.info("session id : " + session.getAttribute("userId"));
-		List<BbsDto> list = bbsService.bbsList(param);
-		
-		model.addAttribute("list", list);
 		model.addAttribute("doc_title", "글목록");
+		logger.info("session id : " + session.getAttribute("userId"));
+		
+		// paging 처리
+		// 0, 1, 2, 3, ...가 들어온다
+		int sn = param.getPageNumber();
+		// 1, 11, 21, 31, ...로 나온다
+		int start = sn * param.getRecordCountPerPage() + 1;
+		// 10, 20, 30, 40, ...로 나온다
+		int end = (sn + 1) * param.getRecordCountPerPage();
+		
+		param.setStart(start);
+		param.setEnd(end);
+		
+		logger.info("BbsController bbsList() ------- " + sn + ", " + start + ", " + end + ", " + param.getStart() + ", " + param.getEnd()); 
+		
+		List<BbsDto> list = bbsService.bbsList(param);
+		// 글의 총 수
+		int totalRecordCount = bbsService.getBbsCount(param);
+
+		model.addAttribute("list", list);
+		model.addAttribute("pageNumber", sn);
+		model.addAttribute("pageCountPerScreen", 10);
+		model.addAttribute("recordCountPerPage", param.getRecordCountPerPage());
+		model.addAttribute("totalRecordCount", totalRecordCount);
+		
 		logger.info("리스트 전");
 		
 		return "bbsList.tiles";
@@ -46,7 +67,6 @@ public class BbsController {
 	}
 	
 	// 게시판 글쓰기
-	/*
 	@RequestMapping(value = "bbsWriteAf.do", method = RequestMethod.GET)
 	public String bbsWriteAf(BbsDto dto) throws Exception {
 		logger.info("BbsController bbsWriteAf()");
@@ -61,10 +81,8 @@ public class BbsController {
 			return "bbsWrite.tiles";
 		}
 	}
-	/**/
 	
 	// 해당 글 선택하면 조회수 증가하고 detail로 이동
-	/*
 	@RequestMapping(value = "bbsDetail.do", method = RequestMethod.GET)
 	public String bbsDetail(Model model, int seq) throws Exception {
 		logger.info("BbsController bbsDetail() seq : " + seq);
@@ -77,10 +95,8 @@ public class BbsController {
 		
 		return "bbsDetail.tiles";
 	}
-	/**/
 	
 	// 게시글 삭제
-	/*
 	@RequestMapping(value = "bbsDelete.do", method = RequestMethod.GET)
 	public String bbsDelete(int seq) throws Exception {
 		logger.info("BbsController bbsDelete() seq" + seq);
@@ -92,10 +108,8 @@ public class BbsController {
 		
 		return "redirect:/bbsList.do";
 	}
-	/**/
 
 	// 게시글 수정하기로 이동만
-	/*
 	@RequestMapping(value = "bbsUpdate.do", method = RequestMethod.GET)
 	public String bbsUpdate(Model model, int seq) throws Exception {
 		logger.info("BbsController bbsUpdate() seq : " + seq);
@@ -105,10 +119,8 @@ public class BbsController {
 		
 		return "bbsUpdate.tiles";
 	}
-	/**/
 
 	// 게시글 수정
-	/*
 	@RequestMapping(value = "bbsUpdateAf.do", method = RequestMethod.GET)
 	public String bbsUpdateAf(BbsDto dto) throws Exception {
 		logger.info("BbsController bbsUpdateAf() dto : " + dto.toString());
@@ -118,10 +130,8 @@ public class BbsController {
 		
 		return "redirect:/bbsList.do";
 	}
-	/**/
 
 	// 댓글로 이동만
-	/*
 	@RequestMapping(value = "bbsAnswer.do", method = RequestMethod.GET)
 	public String bbsAnswer(Model model, int seq) throws Exception {
 		logger.info("BbsController bbsAnswer() seq : " + seq);
@@ -131,10 +141,8 @@ public class BbsController {
 		
 		return "bbsAnswer.tiles";
 	}
-	/**/
 	
 	// 댓글 쓰기
-	/*
 	@RequestMapping(value = "bbsAnswerAf.do", method = RequestMethod.GET)
 	public String bbsAnswerAf(Model model, BbsDto dto) throws Exception {
 		logger.info("BbsController bbsAnswer() dto : " + dto.toString());
@@ -147,7 +155,6 @@ public class BbsController {
 		
 		return "redirect:/bbsList.do";
 	}
-	/**/
 
 
 }

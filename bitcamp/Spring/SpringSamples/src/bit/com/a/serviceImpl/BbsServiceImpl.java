@@ -30,6 +30,11 @@ public class BbsServiceImpl implements BbsService {
 		return list;
 	}
 	
+	@Override
+	public int getBbsCount(BbsParam param) {
+		return bbsDao.getBbsCount(param);
+	}
+	
 	// 게시판 글쓰기
 	@Override
 	public boolean bbsWrite(BbsDto dto) {

@@ -36,6 +36,13 @@ public class BbsDaoImpl implements BbsDao {
 		return list;
 	}
 	
+	@Override
+	public int getBbsCount(BbsParam param) {
+		int n = sqlSession.selectOne(namespace + "getBbsCount", param);
+		
+		return n;
+	}
+	
 	// 게시판 글쓰기
 	@Override
 	public boolean bbsWrite(BbsDto dto) {
@@ -79,6 +86,7 @@ public class BbsDaoImpl implements BbsDao {
 		return count>0?true:false;
 	}
 
+	// 게시글 댓글
 	@Override
 	public boolean answer(BbsDto dto) {
 		int count = sqlSession.update(namespace + "answerupdate", dto.getSeq());

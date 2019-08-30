@@ -16,7 +16,7 @@
 
 <!-- 글목록 -->
 <table class="list_table" style="width: 85%">
-<col width="5%"><col width="70%"><col width="10%"><col width="15%">
+<col width="5%"><col width="auto"><col width="10%"><col width="15%">
 
 <thead>
 	<tr>
@@ -37,27 +37,26 @@
 	<!-- 게시글이 있을 때 -->
 	<c:if test="${not empty list }">
 	<!-- setDepth를 호출 -->
-	<jsp:setProperty property="depth" name="ubbs" value="${bbs.depth }"/>	
 	<c:forEach begin="0" end="${fn:length(list) -1 }" step="1" varStatus="i">
+	<jsp:setProperty property="depth" name="ubbs" value="${list[i.index].depth }"/>	
 	
 	
 	
 	<!-- 게시글 한줄 시작 -->
 	<tr class="_hover_tr">
 		<td>${i.count }</td>
+		<td style="text-align: left;" class="bbsData">
 		<!-- getArrow 호출 -->
 		<jsp:getProperty property="arrow" name="ubbs"/>
 	
 	<c:if test="${list[i.index].del eq 0 }">
-		<td style="text-align: left;">작성자에 의해 삭제된 게시글입니다</td>
+		작성자에 의해 삭제된 게시글입니다
 	</c:if>
 	<c:if test="${list[i.index].del ne 0 }">
-		<td style="text-align: left;">
 			<a style="cursor: pointer;">${list[i.index].title } , ${list[i.index].del }</a>
 			<input type="hidden" value="${list[i.index].seq }">
-		</td>
 	</c:if>	
-	
+		</td>
 		<td>${list[i.index].readcount }</td>
 		<td>${list[i.index].id }</td>
 	</tr>
@@ -72,6 +71,9 @@
 	
 </tbody>
 </table>
+
+
+
 
 
 
@@ -100,16 +102,40 @@
 </tr>
 </table>
 
-<input type="text" name="keyword" id="keyword">
-<input type="button" id="btn" value="검색">
+
+<input type="hidden" name="pageNumber" id="_pageNumber" value="${(empty pageNumber)?0:pageNumber }">
+<input type="hidden" name="recordCountPerPage" 
+	id="_recordCountPerPage" value="${(empty recordCountPerPage)?0:recordCountPerPage }">
+
 </form>
 </div>
 
 
 
+<!-- 클릭한 페이지 번호 -->
+<!-- 총 글 수 23개 -->
+<!-- 스크린당 페이지 수 -->
+<!-- 페이지당 글 수 -->
+<!-- 페이징 -->
+<div id="paging_wrap">
+	<jsp:include page="/WEB-INF/views/bbs/paging.jsp" flush="false">
+		<jsp:param name="pageNumber" value="${pageNumber }" />
+		<jsp:param name="totalRecordCount" value="${totalRecordCount }" />
+		<jsp:param name="pageCountPerScreen" value="${pageCountPerScreen }" />
+		<jsp:param name="recordCountPerPage" value="${recordCountPerPage }" />	
+	</jsp:include>
+</div>
+
+
 
 <script type="text/javascript">
 $(document).ready(function () {
+	function goPage( pageNumber ){
+		// pageNumber : 클릭한 페이지 번호 즉, 현재 페이지 번호
+		$("#_pageNumber").val( pageNumber );
+		$("#_frmFormSearch").attr("action", "bbsList.do").submit();
+	}
+	
 	$("#bbsWrite").click(function () {
 		//alert("click");
 		location.href="bbsWrite.do";
@@ -136,23 +162,18 @@ $(document).ready(function () {
 	});
 	
 	
-	$("#btn").click(function () {
-		if(keyword == null){
+	$("#_btnSearch").click(function () {
+		var _s_keyword = $("#_s_keyword").val().trim();
+		if(_s_keyword == ""){
 			alert("검색어를 입력해주세요");
 			return;
 		}else {
-			$("#frm").attr("action","bbsList.do").submit();
+			$("#_pageNumber").val( 0 );
+			$("#_frmFormSearch").attr("action","bbsList.do").submit();
 		}
 	});
 });
 </script>
-
-
-
-
-
-
-
 
 
 </body>

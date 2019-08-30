@@ -76,7 +76,7 @@ if((pageNumber + 1) % pageCountPerScreen == 0){
 
 <div style="float: left; width: 96%; text-align: center;">
 	<!-- << -->
-	<a href="#none" title="처음페이지" onclick="gePage('0')">
+	<a href="#none" title="처음페이지" onclick="goPage('0')">
 		<img alt="" src="image/arrow_first.gif" style="width: 9px; height: 9px;">
 	</a>
 	
@@ -96,21 +96,19 @@ if((pageNumber + 1) % pageCountPerScreen == 0){
 	<%
 	// 첫 페이지가 1이 될지 11이 될지 모르니까
 	for(int i = screenStartPageIndex; i < screenEndPageIndex; i++){
-		if(i == pageNumber){
-			// 현재 페이지 클릭할 수 없다
+		if(i == pageNumber){	// 현재 페이지
 			%>
-			<span style="font-size: 9px; color: #000000; font-weight: bold;">
+			<span style="font-size: 9pt; color: #000000; font-weight: bold;">
 				<%=i+1 %>
 			</span>
 			<%
-		}else{
-			// 그 외의 페이지
+		}else{		// 그외의 페이지들
 			%>
-			<a href="#none" title="<%=i+1 %>페이지" onclick="goPage(<%=i %>)"
-				style="font-size: 7.5px; color: #000000; font-weight: normal;">
-			[<%=i+1 %>]
-			</a>
-			<%
+			<a href="#none" title="<%=i+1 %>페이지" onclick="goPage(<%=i %>)"	
+				style="font-size: 7.5pt; color: #000000; font-weight: normal;">
+				[<%=i+1 %>]
+			</a>	
+			<%	
 		}
 	}
 	%>
@@ -139,13 +137,5 @@ if((pageNumber + 1) % pageCountPerScreen == 0){
 	</a>
 	
 </div>
-
-
-
-
-
-
-
-
 
 

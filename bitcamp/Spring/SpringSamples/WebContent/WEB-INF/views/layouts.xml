@@ -16,7 +16,7 @@
 	<put-attribute name="top_inc" value="/WEB-INF/views/common/top_inc.jsp"/>
 	<put-attribute name="top_menu" value="/WEB-INF/views/common/top_menu.jsp"/>
 	<put-attribute name="left_menu" value="/WEB-INF/views/bbs/left_bbslist.jsp"/>
-	<put-attribute name="main" value="/WEB-INF/views/bbs/bbsList.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/bbs/bbslist.jsp"/>
 	<put-attribute name="bottom_inc" value="/WEB-INF/views/common/bottom_inc.jsp"/>
 </definition>
 
@@ -25,6 +25,18 @@
 
 <definition name="bbsWrite.tiles" extends="bbsList.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/bbs/bbsWrite.jsp"/>
+</definition>
+
+<definition name="bbsDetail.tiles" extends="bbsList.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/bbs/bbsDetail.jsp"/>
+</definition>
+
+<definition name="bbsUpdate.tiles" extends="bbsList.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/bbs/bbsUpdate.jsp"/>
+</definition>
+
+<definition name="bbsAnswer.tiles" extends="bbsList.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/bbs/bbsAnswer.jsp"/>
 </definition>
 
 
