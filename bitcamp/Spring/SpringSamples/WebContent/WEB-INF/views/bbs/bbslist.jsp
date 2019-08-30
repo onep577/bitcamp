@@ -1,3 +1,4 @@
+<%@page import="bit.com.a.model.BbsParam"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -38,7 +39,7 @@
 	<c:if test="${not empty list }">
 	<!-- setDepth를 호출 -->
 	<c:forEach begin="0" end="${fn:length(list) -1 }" step="1" varStatus="i">
-	<jsp:setProperty property="depth" name="ubbs" value="${list[i.index].depth }"/>	
+	<jsp:setProperty property="depth" name="ubbs" value="${list[i.index].depth }"/>
 	
 	
 	
@@ -62,7 +63,6 @@
 	</tr>
 	<!-- 게시글 한줄 끝 -->
 	
-	asdfasdf
 	
 	</c:forEach>
 	</c:if>
@@ -74,9 +74,6 @@
 
 
 
-
-
-
 <!-- 검색 -->
 <div class="box_border" style="margin-top: 5px; margin-bottom: 10px;">
 <form name="frmForm1" id="_frmFormSearch" method="post">
@@ -85,14 +82,14 @@
 	<td>검색:</td>
 	<td style="padding-left: 5px;">
 		<select id="_s_category" name="s_category">
-			<option value="" selected="selected">선택</option>
-			<option value="id">작성자</option>
-			<option value="title">제목</option>
-			<option value="content">내용</option>
+			<option value="">선택</option>
+			<option value="id" <c:out value="${s_category == 'id'? 'selected': '' }"/>>작성자</option>
+			<option value="title" <c:out value="${s_category == 'title'? 'selected': '' }"/>>제목</option>
+			<option value="content" <c:out value="${s_category == 'content'? 'selected': '' }"/>>내용</option>
 		</select>
 	</td>
 	<td style="padding-left: 5px;">
-		<input type="text" id="_s_keyword" name="s_keyword">
+		<input type="text" id="_s_keyword" name="s_keyword" value="${s_keyword }">
 	</td>
 	<td style="padding-left: 5px;">
 		<span class="button blue">
@@ -129,13 +126,13 @@
 
 
 <script type="text/javascript">
+function goPage( pageNumber ){
+	// pageNumber : 클릭한 페이지 번호 즉, 현재 페이지 번호
+	$("#_pageNumber").val( pageNumber );
+	$("#_frmFormSearch").attr("action", "bbsList.do").submit();
+}
+
 $(document).ready(function () {
-	function goPage( pageNumber ){
-		// pageNumber : 클릭한 페이지 번호 즉, 현재 페이지 번호
-		$("#_pageNumber").val( pageNumber );
-		$("#_frmFormSearch").attr("action", "bbsList.do").submit();
-	}
-	
 	$("#bbsWrite").click(function () {
 		//alert("click");
 		location.href="bbsWrite.do";
@@ -159,7 +156,7 @@ $(document).ready(function () {
 		//alert(seq);
 		
 		location.href="bbsDetail.do?seq="+seq;
-	});
+	}); 
 	
 	
 	$("#_btnSearch").click(function () {

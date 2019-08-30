@@ -43,11 +43,12 @@ public class BbsController {
 		param.setStart(start);
 		param.setEnd(end);
 		
-		logger.info("BbsController bbsList() ------- " + sn + ", " + start + ", " + end + ", " + param.getStart() + ", " + param.getEnd()); 
-		
 		List<BbsDto> list = bbsService.bbsList(param);
 		// 글의 총 수
 		int totalRecordCount = bbsService.getBbsCount(param);
+
+		model.addAttribute("s_category", param.getS_category());
+		model.addAttribute("s_keyword", param.getS_keyword());
 
 		model.addAttribute("list", list);
 		model.addAttribute("pageNumber", sn);

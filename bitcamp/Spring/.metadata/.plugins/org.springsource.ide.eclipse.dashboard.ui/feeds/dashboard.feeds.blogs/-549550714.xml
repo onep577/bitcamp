@@ -5,7 +5,24 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2019-08-27T08:07:21Z</updated>
+  <updated>2019-08-30T06:17:20Z</updated>
+  <entry>
+    <title>A Bootiful Podcast: Spring Cloud Data Flow legend Ilayaperumal Gopinathan</title>
+    <link rel="alternate" href="https://spring.io/blog/2019/08/30/a-bootiful-podcast-spring-cloud-data-flow-legend-ilayaperumal-gopinathan" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2019-08-30:3782</id>
+    <updated>2019-08-30T06:17:20Z</updated>
+    <content type="html">&lt;p&gt;Hi Spring fans! In this week&amp;rsquo;s episode I talk to Spring Cloud Data Flow legend Ilayaperumal Gopinathan (&amp;ldquo;Illaya&amp;rdquo;) about his journey to open-source, batch processing and messaging, integration, and Spring Cloud Data Flow, and so much more. Enjoy!&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="http://twitter.com/ilayaperumalg"&gt;Illaya on Twitter (@ilayaperumalg)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://Dataflow.Spring.io"&gt;your resource for getting started with Spring Cloud Data Flow&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/672686666&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"&gt;&lt;/iframe&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>This Week in Spring - August 27, 2019</title>
     <link rel="alternate" href="https://spring.io/blog/2019/08/27/this-week-in-spring-august-27-2019" />
@@ -1585,21 +1602,6 @@ intensive.&lt;/p&gt;
 &lt;p&gt;For a complete list of changes and upgrade instructions, please see the &lt;a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.2-Release-Notes"&gt;Spring Boot 2.2 Release Notes&lt;/a&gt; on the wiki and the &lt;a href="http://docs.spring.io/spring-boot/docs/2.2.0.M5/reference/html/"&gt;updated reference documentation&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;If you want to get started with 2.2 and try out the new features, you can bootstrap a new project on &lt;a href="https://start.spring.io"&gt;https://start.spring.io&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://projects.spring.io/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/2.2.0.M5/reference/htmlsingle"&gt;Documentation&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-boot"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;&lt;/p&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Boot 2.1.7 available now</title>
-    <link rel="alternate" href="https://spring.io/blog/2019/08/06/spring-boot-2-1-7-available-now" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>St?phane Nicoll</name>
-    </author>
-    <id>tag:spring.io,2019-08-06:3762</id>
-    <updated>2019-08-06T12:14:48Z</updated>
-    <content type="html">&lt;p&gt;On behalf of the team and everyone who has contributed, I&amp;rsquo;m happy to announce that Spring Boot 2.1.7 has been released and is is now available from &lt;a href="http://repo.spring.io/release"&gt;repo.spring.io&lt;/a&gt; and Maven Central.&lt;/p&gt;
-&lt;p&gt;This release includes &lt;a href="https://github.com/spring-projects/spring-boot/releases/tag/v2.1.7.RELEASE"&gt;97 fixes, improvements and dependency upgrades&lt;/a&gt;. Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;&lt;h3&gt;&lt;a href="#how-can-you-help" class="anchor" name="how-can-you-help"&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
-&lt;p&gt;If you&amp;rsquo;re interested in helping out, check out the &lt;a href="https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution"&gt;&amp;ldquo;ideal for contribution&amp;rdquo; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href="http://stackoverflow.com"&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href="http://stackoverflow.com/tags/spring-boot"&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt; or chat with the community on &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://spring.io/projects/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/2.1.7.RELEASE/reference/htmlsingle"&gt;Documentation&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-boot"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;&lt;/p&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
 </feed>
