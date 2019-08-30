@@ -62,7 +62,7 @@
 	</tr>
 	<!-- 게시글 한줄 끝 -->
 	
-	
+	asdfasdf
 	
 	</c:forEach>
 	</c:if>
