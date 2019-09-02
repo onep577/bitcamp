@@ -39,14 +39,32 @@
 	<put-attribute name="main" value="/WEB-INF/views/bbs/bbsAnswer.jsp"/>
 </definition>
 
+
+
+<!-- calendar -->
 <definition name="calendar.tiles" extends="bbsList.tiles">
 	<put-attribute name="left_menu" value="/WEB-INF/views/calendar/left_calendarlist.jsp"/>
 	<put-attribute name="main" value="/WEB-INF/views/calendar/calendar.jsp"/>
 </definition>
 
-<definition name="calDetail.tiles" extends="calendar.tiles">
+<definition name="calDetail.tiles" extends="bbsList.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/calendar/calDetail.jsp"/>
 </definition>
+
+
+
+<!-- pds -->
+<definition name="pdslist.tiles" extends="bbsList.tiles">
+	<!-- left_menu -->
+	<put-attribute name="main" value="/WEB-INF/views/pbs/pdslist.jsp"/>
+</definition>
+
+<definition name="pdswrite.tiles" extends="bbsList.tiles">
+	<!-- left_menu -->
+	<put-attribute name="main" value="/WEB-INF/views/pbs/pdswrite.jsp"/>
+</definition>
+
+
 
 
 

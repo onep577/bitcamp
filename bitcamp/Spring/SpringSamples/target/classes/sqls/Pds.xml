@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Pds">
+
+<select id="getPdsList" resultType="bit.com.a.model.PdsDto">
+SELECT SEQ, ID, TITLE, CONTENT, FILENAME, READCOUNT, DOWNCOUNT, REGDATE
+FROM PDS
+ORDER BY SEQ DESC
+</select>
+
+<insert id="uploadPds" parameterType="bit.com.a.model.PdsDto">
+INSERT INTO PDS(SEQ, ID, TITLE, CONTENT, FILENAME, READCOUNT, DOWNCOUNT, REGDATE)
+VALUES(SEQ_PDS.NEXTVAL, #{id}, #{title}, #{content}, #{filename}, 0, 0, SYSDATE)
+</insert>
+
+</mapper>
+
