@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
-<aop-project name="Sample01"/>
 <aop-project name="Sample02"/>
+<aop-project name="Sample01"/>
 <aop-project name="Sample03"/>
 <aop-project name="LegacySample01"/>
 <aop-project name="SampleAopXml">

@@ -7,6 +7,7 @@
 		<li class="subtitle">답변형 게시판</li>
 		<li class="menu_item">
 			<a href="calendar.do" title="일정목록">일정목록</a>
+			<a href="calwrite.do" title="일정쓰기">일정쓰기</a>
 		</li>
 
 	</ul>

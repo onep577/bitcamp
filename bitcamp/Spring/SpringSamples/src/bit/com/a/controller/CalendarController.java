@@ -1,6 +1,9 @@
 package bit.com.a.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,11 +32,12 @@ public class CalendarController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(CalendarController.class);
 	
+	Util util = new Util();
+	
 	// 일정관리 페이지로 이동만
 	@RequestMapping(value = "calendar.do", method = RequestMethod.GET)
 	public String calendar(Model model, HttpServletRequest req, String syear, String smonth) throws Exception {
 		
-		Util util = new Util();
 		model.addAttribute("doc_title", "일정관리");
 		
 		// 년도, 월, 아이디
@@ -112,13 +116,54 @@ public class CalendarController {
 		return "calendar.tiles";
 	}
 	
-	// 하루 일정 전체 보기
-	@RequestMapping(value = "calDetail.do", method = RequestMethod.GET)
-	public String calDetail(Model model, String date) throws Exception {
-		logger.info("date : 여기서도 null값 ㅠㅠㅠㅠㅠㅠㅠㅠ" + date);
+	// 일정쓰기 이동만
+	@RequestMapping(value = "calwrite.do", method = RequestMethod.GET)
+	public String calwrite(Model model, String date, HttpServletRequest req) throws Exception {
+		model.addAttribute("doc_title", "일정쓰기");
+		Calendar cal = Calendar.getInstance();
+		
+		String year, month, day, hour, minute;
+		// 일정쓰기를 클릭한 경우 date는 null값이 들어온다 오늘 날짜를 넣어준다
+		if(date == null) {
+			year = "" + cal.get(Calendar.YEAR);
+			month = util.two((cal.get(Calendar.MONTH) +1)+"");
+			day = util.two(cal.get(Calendar.DATE)+"");
+			hour = cal.get(Calendar.HOUR)+"";
+			minute = cal.get(Calendar.MINUTE)+"";
+			date = year + month + day + hour + minute;
+		}
+		
+		String lastday = ""+cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+		
+		model.addAttribute("lastday", lastday);
 		model.addAttribute("date", date);
 		
-		return "calDetail.tiles";
+		return "calwrite.tiles";
+	}
+	
+	// 일정쓰기
+	@RequestMapping(value = "calwriteAf.do", method = RequestMethod.GET)
+	public String calwriteAf(Model model, CalendarDto dto) throws Exception {
+		model.addAttribute("doc_title", "일정쓰기");
+		
+		boolean b = calService.calwriteAf(dto);
+		
+		if(b) {
+			logger.info("일정 추가 성공");
+		}else {
+			logger.info("일정 추가 실패");
+		}
+		
+		return "calwriteAf.tiles";
+	}
+	
+	// 하루 일정 전체 보기
+	@RequestMapping(value = "caldetail.do", method = RequestMethod.GET)
+	public String calDetail(Model model, String date) throws Exception {
+		logger.info("date : " + date);
+		model.addAttribute("date", date);
+		
+		return "caldetail.tiles";
 	}
 	
 

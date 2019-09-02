@@ -27,9 +27,18 @@ public class CalendarDaoImpl implements CalendarDao {
 
 	@Override
 	public List<CalendarDto> getCalendarList(CalendarParam calparam) throws Exception {
+		logger.info("일정 전체 가져오기");
 		List<CalendarDto> list = sqlSession.selectList(namespace + "callist", calparam);
 		
 		return list;
+	}
+
+	@Override
+	public boolean calwriteAf(CalendarDto dto) throws Exception {
+		logger.info("일정쓰기");		
+		int count = sqlSession.insert(namespace + "insert", dto);
+
+		return count>0?true:false;
 	}
 
 }

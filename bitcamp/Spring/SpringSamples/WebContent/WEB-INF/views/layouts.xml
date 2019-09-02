@@ -41,15 +41,38 @@
 
 
 
+
+
+
+
+
+
 <!-- calendar -->
 <definition name="calendar.tiles" extends="bbsList.tiles">
 	<put-attribute name="left_menu" value="/WEB-INF/views/calendar/left_calendarlist.jsp"/>
 	<put-attribute name="main" value="/WEB-INF/views/calendar/calendar.jsp"/>
 </definition>
 
-<definition name="calDetail.tiles" extends="bbsList.tiles">
-	<put-attribute name="main" value="/WEB-INF/views/calendar/calDetail.jsp"/>
+<definition name="calwrite.tiles" extends="bbsList.tiles">
+	<put-attribute name="left_menu" value="/WEB-INF/views/calendar/left_calendarlist.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/calendar/calwrite.jsp"/>
 </definition>
+
+<definition name="calwriteAf.tiles" extends="bbsList.tiles">
+	<put-attribute name="left_menu" value="/WEB-INF/views/calendar/left_calendarlist.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/calendar/calwriteAf.jsp"/>
+</definition>
+
+<definition name="caldetail.tiles" extends="bbsList.tiles">
+	<put-attribute name="left_menu" value="/WEB-INF/views/calendar/left_calendarlist.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/calendar/caldetail.jsp"/>
+</definition>
+
+
+
+
+
+
 
 
 

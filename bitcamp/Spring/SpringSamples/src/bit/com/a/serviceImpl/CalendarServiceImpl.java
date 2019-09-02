@@ -23,4 +23,9 @@ public class CalendarServiceImpl implements CalendarService {
 		return calDao.getCalendarList(calparam);
 	}
 
+	@Override
+	public boolean calwriteAf(CalendarDto dto) throws Exception {
+		return calDao.calwriteAf(dto);
+	}
+
 }

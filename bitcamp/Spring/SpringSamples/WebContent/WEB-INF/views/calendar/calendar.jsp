@@ -116,8 +116,8 @@ $(".mydate").mouseout(function (){
 });
 
 function func(date){
-	alert(date);
-	location.href="calDetail.do?date"+date;
+	//alert(date);
+	location.href="calDetail.do?date="+date;
 	
 }
 </script>

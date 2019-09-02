@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="list_table"/>
+		<item key="selection" value="session"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="session"/>
+			<item value="calendar.do"/>
+			<item value="downloadView"/>
 			<item value="list_table"/>
+			<item value="left"/>
+			<item value="calList"/>
 			<item value="showPen"/>
 			<item value="img"/>
 			<item value="content_table"/>
@@ -18,11 +23,6 @@
 			<item value="calService"/>
 			<item value="calendar.tiles"/>
 			<item value="paging_wrap"/>
-			<item value="&quot;paging_wrap&quot;"/>
-			<item value="include"/>
-			<item value="recordCountPerPage"/>
-			<item value="pageCountPerScreen"/>
-			<item value="pageNumber"/>
 		</list>
 		<list key="replacehistory">
 		</list>

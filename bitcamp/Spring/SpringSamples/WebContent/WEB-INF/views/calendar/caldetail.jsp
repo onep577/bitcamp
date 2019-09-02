@@ -11,9 +11,8 @@
 <h1>calDetail.jsp</h1>
 <%
 String date = (String)request.getAttribute("date");
-System.out.println("AAAAA : " + date);
+//System.out.println("AAAAA : " + date);
 
-// 근데 null값이다 ㅜㅠㅠㅠㅠ
 %>
 
 </body>

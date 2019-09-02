@@ -15,7 +15,10 @@ FROM(	SELECT ROW_NUMBER()OVER(ORDER BY RDATE) AS RNUM, SEQ, ID, TITLE, CONTENT, 
 WHERE RNUM BETWEEN 1 AND 5
 </select>
 
-
+<insert id="insert" parameterType="bit.com.a.model.CalendarParam">
+INSERT INTO(SEQ, ID, TITLE, CONTENT, RDATE, WDATE)
+VALUES(SEQ_CAL.NEXTVAL, ${id}, ${title}, ${content}, ${rdate}, SYSDATE)
+</insert>
 
 
 </mapper>
