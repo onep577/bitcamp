@@ -38,7 +38,7 @@
 	</td>
 	<td>
 		<img alt="이미지없음" src="image/del.png" data_file_seq="${pds.seq }"
-			class="btn_fileDelete">
+			class="btn_fileDelete" id="_btn_fileDelete">
 	</td>
 </tr>
 </c:forEach>
@@ -67,10 +67,13 @@ function filedowns(filename, seq){
 	doc.submit();
 }
 
+$("#_btn_fileDelete").click(function () {
+	//alert("click");
+	location.href="";
+});
+
 $("#_btnAdd").click(function () {
-	alert("클릭");
+	//alert("클릭");
 	location.href="pdswrite.do";
 });
-function filedowns(){
-}
 </script>

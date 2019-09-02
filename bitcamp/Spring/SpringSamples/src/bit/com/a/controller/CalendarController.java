@@ -94,7 +94,7 @@ public class CalendarController {
 		CalendarParam calparam = new CalendarParam(userId, nyear + util.two(nmonth + ""));
 		//logger.info("1" + calparam.toString());
 		List<CalendarDto> list = calService.getCalendarList(calparam);
-		//logger.info("2" + list.size());
+		logger.info("list.size() : " + list.size());
 		
 		
 		model.addAttribute("pp", pp);

@@ -29,6 +29,7 @@ public class PdsController {
 	// 하나라도 더 있으면 무거워진다
 	//private static final Logger logger = LoggerFactory.getLogger(PdsController.class);
 
+	// 파일 전체 보기
 	@RequestMapping(value = "pbslist.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String pdslist(Model model) {
 		model.addAttribute("doc_title", "자료실 목록");
@@ -39,6 +40,7 @@ public class PdsController {
 		return "pdslist.tiles";
 	}
 	
+	// 파일 넣고 쓰기
 	@RequestMapping(value = "pdswrite.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String pdswrite(Model model) {
 		model.addAttribute("doc_title", "자료 올리기");
@@ -46,6 +48,7 @@ public class PdsController {
 		return "pdswrite.tiles";
 	}
 	
+	// 파일 업로드
 	@RequestMapping(value = "pdsupload.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String pdsupload(PdsDto pdsdto,
 			@RequestParam(value = "fileload", required = false)MultipartFile fileload,
@@ -96,6 +99,7 @@ public class PdsController {
 		return "redirect:/pbslist.do";
 	}
 	
+	// 파일 다운로드
 	@RequestMapping(value = "fileDownload.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String fileDownload(String filename, int seq, HttpServletRequest req, Model model) {
 		
@@ -112,6 +116,14 @@ public class PdsController {
 		model.addAttribute("seq", seq);
 		
 		return "downloadView";
+	}
+	
+	// DB의 파일명 삭제
+	@RequestMapping(value = "filedel.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String filedel(int seq) {
+		System.out.println("seq : " + seq);
+		
+		return "redirect:/pbslist.do";
 	}
 	
 	
