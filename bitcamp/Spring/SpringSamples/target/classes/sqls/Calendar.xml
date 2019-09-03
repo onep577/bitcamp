@@ -10,15 +10,20 @@
 SELECT SEQ, ID, TITLE, CONTENT, RDATE, WDATE
 FROM(	SELECT ROW_NUMBER()OVER(ORDER BY RDATE) AS RNUM, SEQ, ID, TITLE, CONTENT, RDATE, WDATE
 		FROM CALENDAR
-		WHERE ID=${id} AND RDATE=${yyyydd}
+		WHERE ID=#{id} AND RDATE=#{yyyydd}
 	)
 WHERE RNUM BETWEEN 1 AND 5
 </select>
 
-<insert id="insert" parameterType="bit.com.a.model.CalendarParam">
-INSERT INTO(SEQ, ID, TITLE, CONTENT, RDATE, WDATE)
-VALUES(SEQ_CAL.NEXTVAL, ${id}, ${title}, ${content}, ${rdate}, SYSDATE)
+<insert id="calwriteAf" parameterType="bit.com.a.model.CalendarDto">
+INSERT INTO CALENDAR(SEQ, ID, TITLE, CONTENT, RDATE, WDATE)
+VALUES(SEQ_CAL.NEXTVAL, #{id}, #{title}, #{content}, #{rdate}, SYSDATE)
 </insert>
 
+<select id="getdetail">
+SELECT SEQ, ID, TITLE, CONTENT, RDATE, WDATE
+FROM CALENDAR
+WHERE RDATE=#{rdate}
+</select>
 
 </mapper>

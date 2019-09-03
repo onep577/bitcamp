@@ -12,5 +12,8 @@ public interface CalendarDao {
 	
 	// 일정 쓰기
 	public boolean calwriteAf(CalendarDto dto) throws Exception;
+	
+	// detail
+	public CalendarDto getdetail(String date) throws Exception;
 
 }

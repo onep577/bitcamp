@@ -1,9 +1,6 @@
 package bit.com.a.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
-
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,12 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import bit.com.a.dao.CalendarDao;
 import bit.com.a.model.CalendarDto;
 import bit.com.a.model.CalendarParam;
-import bit.com.a.model.MemberDto;
 import bit.com.a.service.CalendarService;
-import bit.com.a.util.Util;
+import bit.com.a.util.CalUtil;
 
 @Controller
 public class CalendarController {
@@ -32,7 +27,7 @@ public class CalendarController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(CalendarController.class);
 	
-	Util util = new Util();
+	CalUtil util = new CalUtil();
 	
 	// 일정관리 페이지로 이동만
 	@RequestMapping(value = "calendar.do", method = RequestMethod.GET)
@@ -118,20 +113,26 @@ public class CalendarController {
 	
 	// 일정쓰기 이동만
 	@RequestMapping(value = "calwrite.do", method = RequestMethod.GET)
-	public String calwrite(Model model, String date, HttpServletRequest req) throws Exception {
+	public String calwrite(Model model, String year, String month, String day, HttpServletRequest req) throws Exception {
 		model.addAttribute("doc_title", "일정쓰기");
 		Calendar cal = Calendar.getInstance();
 		
-		String year, month, day, hour, minute;
-		// 일정쓰기를 클릭한 경우 date는 null값이 들어온다 오늘 날짜를 넣어준다
-		if(date == null) {
+		String date = "";
+		String hour = "";
+		String minute = "";
+		// 일정쓰기를 클릭한 경우 year, month, day는 null값이 들어온다 오늘 날짜를 넣어준다
+		if(year == null && month == null && day == null) {
 			year = "" + cal.get(Calendar.YEAR);
-			month = util.two((cal.get(Calendar.MONTH) +1)+"");
-			day = util.two(cal.get(Calendar.DATE)+"");
-			hour = cal.get(Calendar.HOUR)+"";
-			minute = cal.get(Calendar.MINUTE)+"";
-			date = year + month + day + hour + minute;
+			month = (cal.get(Calendar.MONTH) +1)+"";
+			day =cal.get(Calendar.DATE)+"";
 		}
+		month = util.two(month);
+		day = util.two(day);
+		hour = util.two(cal.get(Calendar.HOUR)+"");
+		minute = util.two(cal.get(Calendar.MINUTE)+"");
+
+		date = year + month + day + hour + minute;
+		logger.info("year : " + year + ", month : " + month + ", day : " + day + ", hour : " + hour + ", minute : " + minute);
 		
 		String lastday = ""+cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 		
@@ -142,9 +143,10 @@ public class CalendarController {
 	}
 	
 	// 일정쓰기
-	@RequestMapping(value = "calwriteAf.do", method = RequestMethod.GET)
+	@RequestMapping(value = "calwriteAf.do", method = RequestMethod.POST)
 	public String calwriteAf(Model model, CalendarDto dto) throws Exception {
 		model.addAttribute("doc_title", "일정쓰기");
+		logger.info("dto : " + dto.toString());
 		
 		boolean b = calService.calwriteAf(dto);
 		
@@ -154,14 +156,19 @@ public class CalendarController {
 			logger.info("일정 추가 실패");
 		}
 		
-		return "calwriteAf.tiles";
+		return "redirect:/calendar.do";
 	}
 	
 	// 하루 일정 전체 보기
 	@RequestMapping(value = "caldetail.do", method = RequestMethod.GET)
-	public String calDetail(Model model, String date) throws Exception {
-		logger.info("date : " + date);
-		model.addAttribute("date", date);
+	public String calDetail(Model model, String rdate) throws Exception {
+		logger.info("rdate : " + rdate);
+		rdate = rdate.substring(0, 8);
+		logger.info("rdate : " + rdate);
+		
+		CalendarDto dto = calService.getdetail(rdate);
+		
+		model.addAttribute("rdate", rdate);
 		
 		return "caldetail.tiles";
 	}

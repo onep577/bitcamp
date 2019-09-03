@@ -1,4 +1,4 @@
-<%@page import="bit.com.a.util.Util"%>
+<%@page import="bit.com.a.util.CalUtil"%>
 <%@page import="bit.com.a.model.CalendarDto"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Calendar"%>
@@ -6,7 +6,7 @@
     pageEncoding="UTF-8"%>
 
 <%
-Util util = new Util();
+	CalUtil util = new CalUtil();
 
 // 날짜변경 할 수 있는 버튼
 String pp = (String)request.getAttribute("pp");
@@ -21,8 +21,6 @@ int dayOfWeek = (Integer)request.getAttribute("dayOfWeek");
 Calendar cal = (Calendar)request.getAttribute("cal");
 
 List<CalendarDto> list = (List<CalendarDto>)request.getAttribute("list");
-
-
 %>
 
 <!DOCTYPE html>
@@ -116,9 +114,8 @@ $(".mydate").mouseout(function (){
 });
 
 function func(date){
-	//alert(date);
-	location.href="calDetail.do?date="+date;
-	
+	alert(date);
+	location.href="caldetail.do?date="+date;
 }
 </script>
 

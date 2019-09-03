@@ -4,7 +4,7 @@ import java.util.List;
 
 import bit.com.a.model.CalendarDto;
 
-public class Util {
+public class CalUtil {
 	
 	// nvl함수
 	public boolean nvl(String msg){

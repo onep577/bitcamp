@@ -12,7 +12,7 @@
 <%
 String lastday = (String)request.getAttribute("lastday");
 String date = (String)request.getAttribute("date");
-System.out.println("date : " + date);
+//System.out.println("date : " + date);
 
 String year = date.substring(0, 4);
 String month = date.substring(4, 6);
@@ -20,20 +20,24 @@ String day = date.substring(6, 8);
 String hour = date.substring(8, 10);
 String minute = date.substring(10);
 
-if(month.length() == 2){
-	month.substring(1);
+if(month.substring(0, 1).equals("0")){
+	month = month.substring(1);
 }
-if(day.length() == 2){
-	day.substring(1);
+if(day.substring(0, 1).equals("0")){
+	day = day.substring(1);
+}
+if(hour.substring(0, 1).equals("0")){
+	hour = hour.substring(1);
+}
+if(minute.substring(0, 1).equals("0")){
+	minute = minute.substring(1);
 }
 
-System.out.println("year : " + year);
-System.out.println("month : " + month);
-System.out.println("day : " + day);
-System.out.println("hour : " + hour);
-System.out.println("minute : " + minute);
-
-날짜 시간 다시 구하자
+//System.out.println("year : " + year);
+//System.out.println("month : " + month);
+//System.out.println("day : " + day);
+//System.out.println("hour : " + hour);
+//System.out.println("minute : " + minute);
 %>
 
 <form action="calwriteAf.do" id="calwriteForm" method="post">
@@ -96,12 +100,14 @@ System.out.println("minute : " + minute);
 </tr>
 
 <tr>
-	<th>작성자</th><td><label>${userId }</label></td>
+	<th>작성자</th><td style="text-align: left;"><label>${userId }</label></td>
 </tr>
 <tr>
 	<th>제목</th>
-	<td>
+	<td style="text-align: left;">
 		<input type="text" size="100%" name="title" id="_title">
+		<input type="hidden" name="rdate" value="${date }">
+		<input type="hidden" name="id" value="${userId }">
 	</td>
 </tr>
 <tr>
@@ -119,9 +125,9 @@ System.out.println("minute : " + minute);
 <script type="text/javascript">
 $("#_calwriteBtn").click(function () {
 	alert("ddd");
+	$("#calwriteForm").submit();
 });
 
-$("#calwriteForm").att
 </script>
 
 </body>

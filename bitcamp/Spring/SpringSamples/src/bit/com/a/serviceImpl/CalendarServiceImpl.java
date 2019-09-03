@@ -28,4 +28,9 @@ public class CalendarServiceImpl implements CalendarService {
 		return calDao.calwriteAf(dto);
 	}
 
+	@Override
+	public CalendarDto getdetail(String date) throws Exception {
+		return calDao.getdetail(date);
+	}
+
 }
