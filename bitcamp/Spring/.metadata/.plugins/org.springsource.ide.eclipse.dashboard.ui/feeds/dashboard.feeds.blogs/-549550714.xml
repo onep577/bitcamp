@@ -5,7 +5,31 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2019-08-30T06:17:20Z</updated>
+  <updated>2019-09-03T08:21:12Z</updated>
+  <entry>
+    <title>This Week in Spring: September 3, 2019</title>
+    <link rel="alternate" href="https://spring.io/blog/2019/09/03/this-week-in-spring-september-3-2019" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2019-09-03:3783</id>
+    <updated>2019-09-03T08:21:12Z</updated>
+    <content type="html">&lt;p&gt;Hi Spring fans! Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! We&amp;rsquo;ve just finished celebrating Labor Day here in the Long home, in San Francisco, in the US. It was a fun day spent with family and friends, and I wasn&amp;rsquo;t sure if I could have any more fun but it&amp;rsquo;s Tuesday, and you know what that means: another epic installment of &lt;em&gt;This Week in Spring&lt;/em&gt;. I can&amp;rsquo;t believe we&amp;rsquo;re already in September, staring down the last few months of the year already! As usual, one of my favorite parts of the journey to the next year is the arrival of the &lt;a href="http://springoneplatform.io"&gt;epic SpringOne Platform&lt;/a&gt; show. This year is no different: I can&amp;rsquo;t wait to celebrate the show with friends in epic Austin, TX. Will you be there? &lt;a href="http://twitter.com/Starbuxman"&gt;Let me know!&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;I really enjoyed last week&amp;rsquo;s installment of &lt;em&gt;A Bootiful Podcast&lt;/em&gt;, an interview with &lt;a href="https://spring.io/blog/2019/08/30/a-bootiful-podcast-spring-cloud-data-flow-legend-ilayaperumal-gopinathan"&gt;Spring Cloud Data Flow legend Ilayaperumal Gopinathan&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=Nfk4782Da0E"&gt;Check out this fantastic introduction to Spring Data Neo4j RX&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;A nice article on DZone Microservices about &lt;a href="https://dzone.com/articles/contracts-for-microservices-with-openapi-and-sprin"&gt;Contracts for Microservices With OpenAPI and Spring Cloud Contract&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;DZone Java has a &lt;a href="https://dzone.com/articles/a-guide-to-spring-framework-annotations"&gt;A Guide to Spring Framework&amp;rsquo;s Annotations&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;I also enjoyed this introduction to the concept of &lt;a href="https://dzone.com/articles/autowiring-in-spring"&gt;autowiring in Spring &lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/netifi_inc/status/1166770007260499970"&gt;This is interesing: Spring users will soon be able to leverage RSocket via a Netifi managed service on Alibaba Cloud&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://developer.okta.com/blog/2019/08/28/reactive-microservices-spring-cloud-gateway"&gt;I &lt;em&gt;love&lt;/em&gt; Matt Raible&amp;rsquo;s &lt;em&gt;Secure Reactive Microservices with Spring Cloud Gateway&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;This is an interesting post by Emmanouil Gkatziouras on Dzone about how to add custom functionality &lt;a href="https://dzone.com/articles/add-custom-functionality-to-a-spring-data-reposito"&gt;to a Spring Data repository&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;This is an interesting post &lt;a href="https://dzone.com/articles/a-simple-state-machine-for-spring-boot-projects"&gt;on creating state-machines with Spring Boot&lt;/a&gt;, but &lt;em&gt;not&lt;/em&gt; Spring Statemachine. The post is interesting, but I&amp;rsquo;m not entirely persuaded that they couldn&amp;rsquo;t have done what they needed with Spring Statemachine. Either way, interesting read.&lt;/li&gt;
+  &lt;li&gt;Julien Dubois has published a very nice look at using R2DBC to &lt;a href="https://dev.to/azure/building-a-fully-reactive-and-scalable-spring-application-with-r2dbc-and-a-serverless-database-1jke"&gt;reactively talk to Microsoft SQL Server&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>A Bootiful Podcast: Spring Cloud Data Flow legend Ilayaperumal Gopinathan</title>
     <link rel="alternate" href="https://spring.io/blog/2019/08/30/a-bootiful-podcast-spring-cloud-data-flow-legend-ilayaperumal-gopinathan" />
@@ -1587,21 +1611,6 @@ intensive.&lt;/p&gt;
   &lt;li&gt;I really enjoyed last week&amp;rsquo;s &lt;a href="https://spring.io/blog/2019/08/02/a-bootiful-podcast-gradle-developer-advocate-jenn-strater"&gt;&lt;em&gt;A Bootiful Podcast&lt;/em&gt; interview with Gradle Developer Advocate Jenn Strater&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;This is exciting - a &lt;a href="https://twitter.com/nats_io/status/1156211038309801984"&gt;NATS binder for Spring Cloud Stream&lt;/a&gt;. NATS is a super high speed networking protocol and library.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Boot 2.2.0 M5 available now</title>
-    <link rel="alternate" href="https://spring.io/blog/2019/08/06/spring-boot-2-2-0-m5-available-now" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>St?phane Nicoll</name>
-    </author>
-    <id>tag:spring.io,2019-08-06:3763</id>
-    <updated>2019-08-06T14:12:24Z</updated>
-    <content type="html">&lt;p&gt;On behalf of the team and everyone that contributed, I am pleased to announce that the fifth milestone of Spring Boot 2.2 has been released and is available from &lt;a href="http://repo.spring.io/milestone/"&gt;our milestone repository&lt;/a&gt;. This release closes over &lt;a href="https://github.com/spring-projects/spring-boot/releases/tag/v2.2.0.M5"&gt;250 issues and pull requests&lt;/a&gt;. Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;
-&lt;p&gt;For a complete list of changes and upgrade instructions, please see the &lt;a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.2-Release-Notes"&gt;Spring Boot 2.2 Release Notes&lt;/a&gt; on the wiki and the &lt;a href="http://docs.spring.io/spring-boot/docs/2.2.0.M5/reference/html/"&gt;updated reference documentation&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;If you want to get started with 2.2 and try out the new features, you can bootstrap a new project on &lt;a href="https://start.spring.io"&gt;https://start.spring.io&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/2.2.0.M5/reference/htmlsingle"&gt;Documentation&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-boot"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;&lt;/p&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
 </feed>

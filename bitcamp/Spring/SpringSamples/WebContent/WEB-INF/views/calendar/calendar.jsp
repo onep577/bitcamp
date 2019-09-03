@@ -21,6 +21,8 @@ int dayOfWeek = (Integer)request.getAttribute("dayOfWeek");
 Calendar cal = (Calendar)request.getAttribute("cal");
 
 List<CalendarDto> list = (List<CalendarDto>)request.getAttribute("list");
+
+System.out.println("list.size() : " + list.size());
 %>
 
 <!DOCTYPE html>
@@ -114,8 +116,8 @@ $(".mydate").mouseout(function (){
 });
 
 function func(date){
-	alert(date);
-	location.href="caldetail.do?date="+date;
+	//alert(date);
+	location.href="callist.do?date="+date;
 }
 </script>
 

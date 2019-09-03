@@ -6,8 +6,6 @@
 <fullyQualifiedTypeName name="bit.com.a.model.BbsMemberDto"/>
 <fullyQualifiedTypeName name="bit.com.a.dao.BbsDao"/>
 <fullyQualifiedTypeName name="bit.com.a.dao.MemberDao"/>
-<fullyQualifiedTypeName name="org.slf4j.Logger"/>
-<fullyQualifiedTypeName name="org.slf4j.LoggerFactory"/>
 <fullyQualifiedTypeName name="javax.annotation.Generated"/>
 <fullyQualifiedTypeName name="org.apache.catalina.tribes.MembershipService"/>
 <fullyQualifiedTypeName name="org.springframework.context.support.AbstractApplicationContext"/>
@@ -37,9 +35,7 @@
 <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
 <fullyQualifiedTypeName name="org.mybatis.spring.SqlSessionTemplate"/>
 <fullyQualifiedTypeName name="bit.com.a.dao.PdsDao"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
-<fullyQualifiedTypeName name="bit.com.a.model.PdsDto"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
 <fullyQualifiedTypeName name="org.springframework.web.multipart.MultipartFile"/>
 <fullyQualifiedTypeName name="bit.com.a.util.FUpUtil"/>
@@ -52,12 +48,16 @@
 <fullyQualifiedTypeName name="org.springframework.util.FileCopyUtils"/>
 <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 <fullyQualifiedTypeName name="bit.com.a.service.PdsService"/>
-<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
-<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
-<fullyQualifiedTypeName name="org.springframework.ui.Model"/>
-<fullyQualifiedTypeName name="bit.com.a.model.CalendarDto"/>
-<fullyQualifiedTypeName name="java.lang.Exception"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.Calendar"/>
+<fullyQualifiedTypeName name="bit.com.a.model.CalendarDto"/>
+<fullyQualifiedTypeName name="org.slf4j.Logger"/>
+<fullyQualifiedTypeName name="org.slf4j.LoggerFactory"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
+<fullyQualifiedTypeName name="org.springframework.ui.Model"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="bit.com.a.model.PdsDto"/>
 </qualifiedTypeNameHistroy>

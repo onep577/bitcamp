@@ -16,5 +16,23 @@ INSERT INTO PDS(SEQ, ID, TITLE, CONTENT, FILENAME, READCOUNT, DOWNCOUNT, REGDATE
 VALUES(SEQ_PDS.NEXTVAL, #{id}, #{title}, #{content}, #{filename}, 0, 0, SYSDATE)
 </insert>
 
+<select id="getPds" parameterType="java.lang.Integer" resultType="bit.com.a.model.PdsDto">
+SELECT * 
+FROM PDS
+WHERE SEQ=#{seq}
+</select>
+
+<update id="updatepds" parameterType="bit.com.a.model.PdsDto">
+UPDATE PDS
+SET TITLE=#{title}, CONTENT=#{content}, FILENAME=#{filename},
+	REGDATE=SYSDATE
+WHERE SEQ=#{seq}
+</update>
+
+<delete id="delete" parameterType="java.lang.Integer">
+DELETE FROM PDS
+WHERE SEQ=#{seq}
+</delete>
+
 </mapper>
 

@@ -37,7 +37,7 @@ DELETE CALENDAR
 WHERE SEQ=#{seq}
 </delete>
 
-<update id="updateAf" parameterType="bit.com.a.model.CalendarDto">
+<update id="update" parameterType="bit.com.a.model.CalendarDto">
 UPDATE CALENDAR
 SET TITLE=#{title}, CONTENT=#{content}
 WHERE SEQ=#{seq}

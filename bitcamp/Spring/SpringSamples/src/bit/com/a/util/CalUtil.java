@@ -64,10 +64,10 @@ public class CalUtil {
 				
 				str += "<a href='caldetail.do?seq=" + dto.getSeq() + "'>";
 				// <a href='caldetail.jsp?seq=5'>
-				str += "<font style='font-size:8;color:red'>";
+				//str += "<font style='font-size:8;color:red'>";
 				str += dot3(dto.getTitle());
 				
-				str += "</font>";
+				//str += "</font>";
 				str += "</a>";
 				str += "</td>";
 				str += "</tr>";

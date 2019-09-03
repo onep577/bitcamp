@@ -53,28 +53,23 @@
 	<put-attribute name="main" value="/WEB-INF/views/calendar/calendar.jsp"/>
 </definition>
 
-<definition name="calwrite.tiles" extends="bbsList.tiles">
-	<put-attribute name="left_menu" value="/WEB-INF/views/calendar/left_calendarlist.jsp"/>
+<definition name="calwrite.tiles" extends="calendar.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/calendar/calwrite.jsp"/>
 </definition>
 
-<definition name="calwriteAf.tiles" extends="bbsList.tiles">
-	<put-attribute name="left_menu" value="/WEB-INF/views/calendar/left_calendarlist.jsp"/>
+<definition name="calwriteAf.tiles" extends="calendar.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/calendar/calwriteAf.jsp"/>
 </definition>
 
-<definition name="callist.tiles" extends="bbsList.tiles">
-	<put-attribute name="left_menu" value="/WEB-INF/views/calendar/left_calendarlist.jsp"/>
+<definition name="callist.tiles" extends="calendar.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/calendar/callist.jsp"/>
 </definition>
 
-<definition name="caldetail.tiles" extends="bbsList.tiles">
-	<put-attribute name="left_menu" value="/WEB-INF/views/calendar/left_calendarlist.jsp"/>
+<definition name="caldetail.tiles" extends="calendar.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/calendar/caldetail.jsp"/>
 </definition>
 
-<definition name="calupdate.tiles" extends="bbsList.tiles">
-	<put-attribute name="left_menu" value="/WEB-INF/views/calendar/left_calendarlist.jsp"/>
+<definition name="calupdate.tiles" extends="calendar.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/calendar/calupdate.jsp"/>
 </definition>
 
@@ -86,16 +81,21 @@
 
 <!-- pds -->
 <definition name="pdslist.tiles" extends="bbsList.tiles">
-	<!-- left_menu -->
-	<put-attribute name="main" value="/WEB-INF/views/pbs/pdslist.jsp"/>
+	<put-attribute name="left_menu" value="/WEB-INF/views/pds/left_pdslist.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/pds/pdslist.jsp"/>
 </definition>
 
-<definition name="pdswrite.tiles" extends="bbsList.tiles">
-	<!-- left_menu -->
-	<put-attribute name="main" value="/WEB-INF/views/pbs/pdswrite.jsp"/>
+<definition name="pdswrite.tiles" extends="pdslist.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/pds/pdswrite.jsp"/>
 </definition>
 
+<definition name="pdsdetail.tiles" extends="pdslist.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/pds/pdsdetail.jsp"/>
+</definition>
 
+<definition name="pdsupdate.tiles" extends="pdslist.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/pds/pdsupdate.jsp"/>
+</definition>
 
 
 

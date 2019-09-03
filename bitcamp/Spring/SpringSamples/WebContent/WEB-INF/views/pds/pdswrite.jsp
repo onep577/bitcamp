@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<form name="frmForm" id="_frmForm" action="pdsupload.do" method="post"
-	enctype="multipart/form-data">
+<form name="frmForm" id="_frmForm" action="pdsupload.do" method="post" enctype="multipart/form-data">
 <table class="list_table">
 <tr>
 	<th>아이디</th>
@@ -39,11 +38,11 @@
 
 <script type="text/javascript">
 $("#_btnPds").click(function () {
-	//alert("click");
-	
 	var title = $("#_title").val();
+	alert(title);
+
 	if(title == ""){
-		//alert("제목을 입력해주세요");
+		alert("제목을 입력해주세요");
 		return;
 	}
 	

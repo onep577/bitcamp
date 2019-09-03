@@ -15,14 +15,28 @@ public class PdsServiceImpl implements PdsService {
 	@Autowired
 	PdsDao pdsDao;
 
+	// 파일 전체 보기
 	@Override
-	public List<PdsDto> getPdsList() {
+	public List<PdsDto> getPdsList() throws Exception {
 		return pdsDao.getPdsList();
 	}
 
+	// 파일 업로드
 	@Override
-	public boolean uploadPds(PdsDto dto) {
+	public boolean uploadPds(PdsDto dto) throws Exception {
 		return pdsDao.uploadPds(dto);
+	}
+
+	// 파일 삭제
+	@Override
+	public boolean delete(int seq) throws Exception {
+		return pdsDao.delete(seq);
+	}
+
+	// 하나의 파일 가져오기
+	@Override
+	public PdsDto getPds(int seq) throws Exception {
+		return pdsDao.getPds(seq);
 	}
 	
 }

@@ -130,6 +130,12 @@ public class PdsDto implements Serializable {
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
+
+	@Override
+	public String toString() {
+		return "PdsDto [seq=" + seq + ", id=" + id + ", title=" + title + ", content=" + content + ", filename="
+				+ filename + ", readcount=" + readcount + ", downcount=" + downcount + ", regdate=" + regdate + "]";
+	}
 	
 
 }

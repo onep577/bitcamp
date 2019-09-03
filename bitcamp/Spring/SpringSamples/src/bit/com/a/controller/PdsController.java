@@ -7,6 +7,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,11 +29,11 @@ public class PdsController {
 	
 	// aop를 설정했기 때문에 안해도 된다
 	// 하나라도 더 있으면 무거워진다
-	//private static final Logger logger = LoggerFactory.getLogger(PdsController.class);
+	private static final Logger logger = LoggerFactory.getLogger(PdsController.class);
 
 	// 파일 전체 보기
-	@RequestMapping(value = "pbslist.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String pdslist(Model model) {
+	@RequestMapping(value = "pdslist.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String pdslist(Model model) throws Exception {
 		model.addAttribute("doc_title", "자료실 목록");
 		
 		List<PdsDto> list = pdsService.getPdsList();
@@ -40,9 +42,9 @@ public class PdsController {
 		return "pdslist.tiles";
 	}
 	
-	// 파일 넣고 쓰기
+	// 쓰기로 이동만
 	@RequestMapping(value = "pdswrite.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String pdswrite(Model model) {
+	public String pdswrite(Model model) throws Exception {
 		model.addAttribute("doc_title", "자료 올리기");
 		
 		return "pdswrite.tiles";
@@ -52,7 +54,7 @@ public class PdsController {
 	@RequestMapping(value = "pdsupload.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String pdsupload(PdsDto pdsdto,
 			@RequestParam(value = "fileload", required = false)MultipartFile fileload,
-			HttpServletRequest req) {
+			HttpServletRequest req) throws Exception {
 		// spring이 좋은점이 언제든지 리퀘스트를 얻어올 수 있다
 		// byte로 넘어오는 file에 대한 정보는 fileload, 제목 내용은 pdsdto
 		
@@ -66,8 +68,7 @@ public class PdsController {
 		String fupload = req.getServletContext().getRealPath("/upload");
 		
 		// 폴더
-		// String fupload = "d:\\tmp";
-		
+		// String fupload = "d:\\tmp";		
 		System.out.println("fupload : " + fupload);		// 업로드 위치
 		
 
@@ -96,12 +97,12 @@ public class PdsController {
 			e.printStackTrace();
 		}
 		
-		return "redirect:/pbslist.do";
+		return "redirect:/pdslist.do";
 	}
 	
 	// 파일 다운로드
 	@RequestMapping(value = "fileDownload.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String fileDownload(String filename, int seq, HttpServletRequest req, Model model) {
+	public String fileDownload(String filename, int seq, HttpServletRequest req, Model model) throws Exception {
 		
 		// download 경로
 		// tomcat
@@ -120,10 +121,31 @@ public class PdsController {
 	
 	// DB의 파일명 삭제
 	@RequestMapping(value = "filedel.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String filedel(int seq) {
-		System.out.println("seq : " + seq);
+	public String filedel(int seq) throws Exception {
+		logger.info("filedel() 자료 삭제");
 		
-		return "redirect:/pbslist.do";
+		boolean b = pdsService.delete(seq);
+		
+		if(b) {
+			logger.info("자료 삭제 성공");
+		}else {
+			logger.info("자료 삭제 실패");
+		}
+		
+		return "redirect:/pdslist.do";
+	}
+	
+	// 파일 detail
+	@RequestMapping(value = "pdsdetail.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String pdsdetail(Model model, int seq) throws Exception {
+		logger.info("pdsdetail() : 하나의 자료 보기 seq : " + seq);
+		
+		PdsDto dto = pdsService.getPds(seq);
+		logger.info("dto : " + dto.toString());
+		
+		model.addAttribute("dto", dto);
+		
+		return "pdsdetail.tiles";
 	}
 	
 	

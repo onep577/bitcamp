@@ -5,8 +5,16 @@ import bit.com.a.model.PdsDto;
 
 public interface PdsService {
 	
-	public List<PdsDto> getPdsList();
+	// 파일 전체 보기
+	public List<PdsDto> getPdsList() throws Exception;
 	
-	public boolean uploadPds(PdsDto dto);
+	// 파일 업로드
+	public boolean uploadPds(PdsDto dto) throws Exception;
+	
+	// 파일 삭제
+	public boolean delete(int seq) throws Exception;
+	
+	// 하나의 파일 가져오기
+	public PdsDto getPds(int seq) throws Exception;
 
 }

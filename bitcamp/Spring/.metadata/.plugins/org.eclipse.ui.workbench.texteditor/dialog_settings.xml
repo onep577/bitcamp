@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="session"/>
+		<item key="selection" value=""/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="pbs"/>
+			<item value="pdsdetail.do"/>
+			<item value="_seq"/>
+			<item value="filedel"/>
+			<item value="_btn_fileDelete"/>
+			<item value="getNewFileName"/>
+			<item value="fileload"/>
+			<item value="pdsupload.do"/>
+			<item value="uploadPds"/>
+			<item value="calupdate.do"/>
+			<item value="calupdate"/>
+			<item value="그날의"/>
+			<item value="callist"/>
+			<item value="calwrite.do"/>
 			<item value="session"/>
-			<item value="calendar.do"/>
-			<item value="downloadView"/>
-			<item value="list_table"/>
-			<item value="left"/>
-			<item value="calList"/>
-			<item value="showPen"/>
-			<item value="img"/>
-			<item value="content_table"/>
-			<item value="center"/>
-			<item value="ac"/>
-			<item value="getCalendarList"/>
-			<item value="calService"/>
-			<item value="calendar.tiles"/>
-			<item value="paging_wrap"/>
 		</list>
 		<list key="replacehistory">
 		</list>

@@ -206,21 +206,11 @@ public class CalendarController {
 		return "redirect:/calendar.do";
 	}
 	
-	// 하루 일정 수정하기로 이동만
-	@RequestMapping(value = "calupdate.do", method = RequestMethod.GET)
-	public String calupdate(Model model, int seq) throws Exception {
-		logger.info("하루 일정 수정하기로 이동만");
-		CalendarDto dto = (CalendarDto)calService.getdetail(seq);
-		
-		model.addAttribute("dto", dto);
-		
-		return "calupdate.tiles";
-	}
-	
 	// 하루 일정 수정하기
-	@RequestMapping(value = "calupdateAf.do", method = RequestMethod.GET)
+	@RequestMapping(value = "calupdate.do", method = RequestMethod.GET)
 	public String calupdate(Model model, CalendarDto dto) throws Exception {
-		logger.info("일정 수정하기");
+		logger.info("하루 일정 수정");
+		logger.info("calupdate dto : " + dto.toString());
 		
 		boolean b = calService.update(dto);
 		
@@ -232,6 +222,7 @@ public class CalendarController {
 		
 		return "redirect:/calendar.do";
 	}
+
 	
 
 }

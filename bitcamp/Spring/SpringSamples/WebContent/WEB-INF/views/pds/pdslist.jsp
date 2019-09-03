@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
 
 <table class="list_table" style="width: 85%">
 <colgroup>
@@ -38,13 +41,14 @@
 	</td>
 	<td>
 		<img alt="이미지없음" src="image/del.png" data_file_seq="${pds.seq }"
-			class="btn_fileDelete" id="_btn_fileDelete">
+			class="btn_fileDelete">
 	</td>
 </tr>
 </c:forEach>
 </tbody>
 
 </table>
+
 
 <!-- 추가버튼 -->
 <div id="button.wrap">
@@ -59,6 +63,11 @@
 	<input type="hidden" name="seq">
 </form>
 
+<!-- 삭제 버튼 클릭시 -->
+<form action="filedel.do" id="_file_delete">
+	<input type="hidden" name="seq" id="_seq">
+</form>
+
 <script type="text/javascript">
 function filedowns(filename, seq){
 	var doc = document.file_Down;
@@ -67,13 +76,20 @@ function filedowns(filename, seq){
 	doc.submit();
 }
 
-$("#_btn_fileDelete").click(function () {
-	//alert("click");
-	location.href="";
+$(document).ready(function () {
+	$(".btn_fileDelete").click(function () {
+		if (window.confirm("파일을 삭제 하시겠습니까?")){
+			var seqVal = $(this).attr("data_file_seq");
+			$("#_seq").val(seqVal);
+			//alert(seqVal);
+			$("#_file_delete").submit();
+		}
+	});
+
+	$("#_btnAdd").click(function () {
+		//alert("클릭");
+		location.href="pdswrite.do";
+	});
 });
 
-$("#_btnAdd").click(function () {
-	//alert("클릭");
-	location.href="pdswrite.do";
-});
 </script>

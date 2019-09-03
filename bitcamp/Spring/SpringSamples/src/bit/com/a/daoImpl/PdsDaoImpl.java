@@ -18,15 +18,31 @@ public class PdsDaoImpl implements PdsDao {
 	
 	String namespace = "Pds.";
 
+	// 파일 전체 보기
 	@Override
 	public List<PdsDto> getPdsList() {		
 		return sqlSession.selectList(namespace + "getPdsList");
 	}
 
+	// 파일 업로드
 	@Override
 	public boolean uploadPds(PdsDto dto) {
 		int n = sqlSession.insert(namespace + "uploadPds", dto);
 		return n>0?true:false;
+	}
+
+	// 파일 삭제
+	@Override
+	public boolean delete(int seq) throws Exception {
+		int n = sqlSession.delete(namespace + "delete", seq);
+		return n>0?true:false;
+	}
+
+	// 하나의 파일 가져오기
+	@Override
+	public PdsDto getPds(int seq) throws Exception {
+		PdsDto dto = sqlSession.selectOne(namespace + "getPds", seq);
+		return dto;
 	}
 	
 }
