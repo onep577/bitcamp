@@ -160,17 +160,77 @@ public class CalendarController {
 	}
 	
 	// 하루 일정 전체 보기
+	@RequestMapping(value = "callist.do", method = RequestMethod.GET)
+	public String callist(Model model, String year, String month, String day) throws Exception {
+		model.addAttribute("doc_title", "일정보기");
+		
+		String rdate = year + util.two(month) + util.two(day);
+		logger.info("rdate : " + rdate);
+		
+		List<CalendarDto> list = (List<CalendarDto>)calService.getdayList(rdate);
+		
+		model.addAttribute("year", year);
+		model.addAttribute("month", month);
+		model.addAttribute("day", day);
+		model.addAttribute("list", list);
+		
+		return "callist.tiles";
+	}
+	
+	// 하나의 일정보기
 	@RequestMapping(value = "caldetail.do", method = RequestMethod.GET)
-	public String calDetail(Model model, String rdate) throws Exception {
-		logger.info("rdate : " + rdate);
-		rdate = rdate.substring(0, 8);
-		logger.info("rdate : " + rdate);
+	public String caldetail(Model model, int seq) throws Exception {
+		model.addAttribute("doc_title", "일정 보기");
 		
-		CalendarDto dto = calService.getdetail(rdate);
+		CalendarDto dto = (CalendarDto)calService.getdetail(seq);
+		//logger.info("dto : " + dto.toString());
 		
-		model.addAttribute("rdate", rdate);
+		model.addAttribute("dto", dto);
 		
 		return "caldetail.tiles";
+	}
+	
+	// 하루 일정 삭제하기
+	@RequestMapping(value = "caldelete.do", method = RequestMethod.GET)
+	public String caldelete(Model model, int seq) throws Exception {
+		logger.info("일정 삭제하기");
+		
+		boolean b = calService.delete(seq);
+		
+		if(b) {
+			logger.info("일정 삭제 성공");
+		}else {
+			logger.info("일정 삭제 실패");
+		}
+		
+		return "redirect:/calendar.do";
+	}
+	
+	// 하루 일정 수정하기로 이동만
+	@RequestMapping(value = "calupdate.do", method = RequestMethod.GET)
+	public String calupdate(Model model, int seq) throws Exception {
+		logger.info("하루 일정 수정하기로 이동만");
+		CalendarDto dto = (CalendarDto)calService.getdetail(seq);
+		
+		model.addAttribute("dto", dto);
+		
+		return "calupdate.tiles";
+	}
+	
+	// 하루 일정 수정하기
+	@RequestMapping(value = "calupdateAf.do", method = RequestMethod.GET)
+	public String calupdate(Model model, CalendarDto dto) throws Exception {
+		logger.info("일정 수정하기");
+		
+		boolean b = calService.update(dto);
+		
+		if(b) {
+			logger.info("일정 수정 성공");
+		}else {
+			logger.info("일정 수정 실패");
+		}
+		
+		return "redirect:/calendar.do";
 	}
 	
 

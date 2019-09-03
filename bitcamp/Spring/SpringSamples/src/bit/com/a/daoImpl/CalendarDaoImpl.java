@@ -33,6 +33,7 @@ public class CalendarDaoImpl implements CalendarDao {
 		return list;
 	}
 
+	// 일정 쓰기
 	@Override
 	public boolean calwriteAf(CalendarDto dto) throws Exception {
 		logger.info("일정쓰기");		
@@ -41,12 +42,40 @@ public class CalendarDaoImpl implements CalendarDao {
 		return count>0?true:false;
 	}
 
+	// 하루 전체 일정 보기
 	@Override
-	public CalendarDto getdetail(String date) throws Exception {
+	public List<CalendarDto> getdayList(String date) throws Exception {
 		logger.info("그날의 일정 가져오기");
-		CalendarDto dto = sqlSession.selectOne(namespace + "getdetail", date);
+		List<CalendarDto> list = sqlSession.selectList(namespace + "getdayList", date);
 
+		return list;
+	}
+
+	// 하나의 일정보기
+	@Override
+	public CalendarDto getdetail(int seq) throws Exception {
+		logger.info("하나의 일정 가져오기");
+		CalendarDto dto = sqlSession.selectOne(namespace + "getdetail", seq);
+		
 		return dto;
+	}
+	
+	// 하나의 일정 삭제
+	@Override
+	public boolean delete(int seq) throws Exception {
+		logger.info("하나의 일정 삭제");
+		int count = sqlSession.delete(namespace + "delete", seq);
+
+		return count>0?true:false;
+	}
+
+	// 하나의 일정 수정
+	@Override
+	public boolean update(CalendarDto dto) throws Exception {
+		logger.info("하나의 일정 수정");
+		int count = sqlSession.update(namespace + "update", dto);
+
+		return count>0?true:false;
 	}
 
 }

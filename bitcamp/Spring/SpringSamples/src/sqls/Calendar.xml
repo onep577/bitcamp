@@ -20,10 +20,27 @@ INSERT INTO CALENDAR(SEQ, ID, TITLE, CONTENT, RDATE, WDATE)
 VALUES(SEQ_CAL.NEXTVAL, #{id}, #{title}, #{content}, #{rdate}, SYSDATE)
 </insert>
 
-<select id="getdetail">
+<select id="getdayList" parameterType="java.lang.String" resultType="bit.com.a.model.CalendarDto">
 SELECT SEQ, ID, TITLE, CONTENT, RDATE, WDATE
 FROM CALENDAR
-WHERE RDATE=#{rdate}
+WHERE RDATE LIKE '%'||#{rdate}||'%'
 </select>
+
+<select id="getdetail" parameterType="java.lang.Integer" resultType="bit.com.a.model.CalendarDto">
+SELECT SEQ, ID, TITLE, CONTENT, RDATE, WDATE
+FROM CALENDAR
+WHERE SEQ=#{seq}
+</select>
+
+<delete id="delete" parameterType="java.lang.Integer">
+DELETE CALENDAR
+WHERE SEQ=#{seq}
+</delete>
+
+<update id="updateAf" parameterType="bit.com.a.model.CalendarDto">
+UPDATE CALENDAR
+SET TITLE=#{title}, CONTENT=#{content}
+WHERE SEQ=#{seq}
+</update>
 
 </mapper>

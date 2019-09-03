@@ -63,12 +63,20 @@
 	<put-attribute name="main" value="/WEB-INF/views/calendar/calwriteAf.jsp"/>
 </definition>
 
+<definition name="callist.tiles" extends="bbsList.tiles">
+	<put-attribute name="left_menu" value="/WEB-INF/views/calendar/left_calendarlist.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/calendar/callist.jsp"/>
+</definition>
+
 <definition name="caldetail.tiles" extends="bbsList.tiles">
 	<put-attribute name="left_menu" value="/WEB-INF/views/calendar/left_calendarlist.jsp"/>
 	<put-attribute name="main" value="/WEB-INF/views/calendar/caldetail.jsp"/>
 </definition>
 
-
+<definition name="calupdate.tiles" extends="bbsList.tiles">
+	<put-attribute name="left_menu" value="/WEB-INF/views/calendar/left_calendarlist.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/calendar/calupdate.jsp"/>
+</definition>
 
 
 
