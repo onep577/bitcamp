@@ -33,8 +33,8 @@
 	<tr>
 		<th>아이디</th>
 		<td>
-			<label id="id">${userId }</label>
-			<input type="hidden" name="id" value="${userId }">
+			<label id="id">${login.id }</label>
+			<input type="hidden" name="id" value="${login.id }">
 		</td>
 	</tr>
 	<tr>

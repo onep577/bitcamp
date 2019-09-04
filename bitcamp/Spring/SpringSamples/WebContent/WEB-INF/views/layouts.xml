@@ -102,5 +102,16 @@
 
 
 
+<!-- poll -->
+<definition name="polllist.tiles" extends="bbsList.tiles">
+	<put-attribute name="left_menu" value="/WEB-INF/views/poll/left_polllist.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/poll/polllist.jsp"/>
+</definition>
+
+<definition name="pollmake.tiles" extends="polllist.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/poll/pollmake.jsp"/>
+</definition>
+
+
 
 </tiles-definitions>

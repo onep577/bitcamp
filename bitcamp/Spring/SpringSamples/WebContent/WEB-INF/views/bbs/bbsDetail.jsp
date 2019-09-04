@@ -66,7 +66,7 @@
 	</tr>
 	<tr>
 		<td colspan="2" align="center">
-		<c:if test="${userId eq dto.id }">
+		<c:if test="${login.id eq dto.id }">
 			<input type="button" id="update" value="수정">&nbsp;&nbsp;
 			<input type="button" id="delete" value="삭제">&nbsp;&nbsp;
 		</c:if>

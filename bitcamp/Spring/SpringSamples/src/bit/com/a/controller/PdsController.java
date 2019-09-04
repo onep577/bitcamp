@@ -140,10 +140,10 @@ public class PdsController {
 	public String pdsdetail(Model model, int seq) throws Exception {
 		logger.info("pdsdetail() : 하나의 자료 보기 seq : " + seq);
 		
-		PdsDto dto = pdsService.getPds(seq);
-		logger.info("dto : " + dto.toString());
+		PdsDto pds = pdsService.getPds(seq);
+		logger.info("pds : " + pds.toString());
 		
-		model.addAttribute("dto", dto);
+		model.addAttribute("pds", pds);
 		
 		return "pdsdetail.tiles";
 	}

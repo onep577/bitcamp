@@ -27,7 +27,7 @@ Date nows = new Date();
 			</c:if>
 			
 			<c:if test="${login.name ne '' }">
-				[${userId }]님 환영합니다
+				[${login.id }]님 환영합니다
 			</c:if>
 
 			<fmt:formatDate value="${nows }" var="now" pattern="yyyy/mm/dd" />

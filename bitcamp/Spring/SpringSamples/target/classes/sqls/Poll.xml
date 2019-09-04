@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Poll">
+
+<!-- 모든 투표의 정보를 가져오기 -->
+<select id="getPollAllList" resultType="bit.com.a.model.PollDto">
+SELECT POLLID, ID, QUESTION, SDATE, EDATE, ITEMCOUNT, POLLTOTAL, REGDATE
+FROM POLL
+ORDER BY SDATE DESC
+</select>
+
+<!-- 투표를 했는지 확인 -->
+<select id="isVote" parameterType="bit.com.a.model.Voter" resultType="java.lang.Integer">
+SELECT NVL(COUNT(*), 0)
+FROM VOTER
+WHERE POLLID=#{pollid} AND ID=#{id}
+</select>
+
+<!-- 투표 질문 만들기 -->
+<insert id="makePoll" parameterType="bit.com.a.model.PollDto">
+INSERT INTO POLL(POLLID, ID, QUESTION, SDATE, EDATE, ITEMCOUNT, POLLTOTAL, REGDATE)
+VALUES(POLL_SEQ.NEXTVAL, #{id}, #{question}, #{sdate}, #{edate}, #{itemcount}, 0, SYSDATE)
+</insert>
+
+<!-- 투표 보기 만들기 -->
+<insert id="makePollSub" parameterType="bit.com.a.model.PollSubDto">
+INSERT INTO POLLSUB(POLLSUBID, POLLID, ANSWER, ACOUNT)
+VALUES(POLLSUB_SEQ.NEXTVAL, (SELECT NVL(MAX(POLLID), 0) FROM POLL), #{answer}, 0)
+</insert>
+
+</mapper>

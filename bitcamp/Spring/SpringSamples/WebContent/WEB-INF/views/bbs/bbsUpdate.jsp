@@ -33,7 +33,7 @@
 	<tr>
 		<th>아이디</th>
 		<td>
-			<label id="id">${userId }</label>
+			<label id="id">${login.id }</label>
 			<input type="hidden" name="seq" id="seq" value="${dto.seq }">
 		</td>
 	</tr>

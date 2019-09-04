@@ -30,7 +30,7 @@ public class BbsController {
 	public String bbsList(Model model, BbsParam param, HttpSession session) throws Exception {
 		logger.info("BbsController bbsList()");
 		model.addAttribute("doc_title", "글목록");
-		logger.info("session id : " + session.getAttribute("userId"));
+		logger.info("session login : " + session.getAttribute("login").toString());
 		
 		// paging 처리
 		// 0, 1, 2, 3, ...가 들어온다

@@ -46,4 +46,10 @@ public class MemberServiceImpl implements MemberService {
 		return b;
 	}
 
+	// 로그인 한 정보 다 가져오기
+	@Override
+	public MemberDto loginDto(MemberDto dto) throws Exception {
+		return memDao.loginDto(dto);
+	}
+
 }

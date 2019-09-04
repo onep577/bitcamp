@@ -80,8 +80,8 @@
 	<tr>
 		<th>아이디</th>
 		<td>
-			<label id="answerid">${userId }</label>
-			<input type="hidden" name="id" value="${userId }">
+			<label id="answerid">${login.id }</label>
+			<input type="hidden" name="id" value="${login.id }">
 			<input type="hidden" name="seq" value="${dto.seq }">
 		</td>
 	</tr>

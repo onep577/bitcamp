@@ -24,6 +24,10 @@
 	WHERE ID=#{id} AND PWD=#{pwd}
 </select>
 
-
+<select id="loginsession" parameterType="bit.com.a.model.MemberDto" resultType="bit.com.a.model.MemberDto">
+	SELECT *
+	FROM MEMBER
+	WHERE ID=#{id} AND PWD=#{pwd}
+</select>
 
 </mapper>

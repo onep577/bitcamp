@@ -100,14 +100,14 @@ if(minute.substring(0, 1).equals("0")){
 </tr>
 
 <tr>
-	<th>작성자</th><td style="text-align: left;"><label>${userId }</label></td>
+	<th>작성자</th><td style="text-align: left;"><label>${login.id }</label></td>
 </tr>
 <tr>
 	<th>제목</th>
 	<td style="text-align: left;">
 		<input type="text" size="100%" name="title" id="_title">
 		<input type="hidden" name="rdate" value="${date }">
-		<input type="hidden" name="id" value="${userId }">
+		<input type="hidden" name="id" value="${login.id }">
 	</td>
 </tr>
 <tr>

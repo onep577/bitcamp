@@ -79,8 +79,10 @@ public class MemberController {
 		if(b) {
 			logger.info("MemberController loginAf() 로그인 성공");
 			
+			dto = memService.loginDto(dto);
+			
 			// session 저장
-			req.getSession().setAttribute("userId", dto.getId());
+			req.getSession().setAttribute("login", dto);
 			req.getSession().setMaxInactiveInterval(60 * 60 * 2); // 2시간이다
 			
 			logger.info("MemberController session id : " + dto.toString());

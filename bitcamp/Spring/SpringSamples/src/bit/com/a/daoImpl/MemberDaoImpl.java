@@ -53,6 +53,14 @@ public class MemberDaoImpl implements MemberDao {
 		return count>0?true:false;
 	}
 
+	// 로그인 한 정보 다 가져오기
+	@Override
+	public MemberDto loginDto(MemberDto dto) throws Exception {
+		dto = sqlSession.selectOne(namespace + "loginsession", dto);
+		
+		return dto;
+	}
+
 	
 	
 	

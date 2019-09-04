@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import bit.com.a.model.CalendarDto;
 import bit.com.a.model.CalendarParam;
+import bit.com.a.model.MemberDto;
 import bit.com.a.service.CalendarService;
 import bit.com.a.util.CalUtil;
 
@@ -88,7 +89,7 @@ public class CalendarController {
 		String nn = String.format("<a href='%s?year=%d&month=%d'><img src='image/rright.png'></a>",
 								"calendar.do", nyear+1, nmonth);
 
-		String userId = (String)req.getSession().getAttribute("userId");
+		String userId = ((MemberDto)req.getSession().getAttribute("login")).getId();
 		
 		CalendarParam calparam = new CalendarParam(userId, nyear + util.two(nmonth + ""));
 		//logger.info("1" + calparam.toString());

@@ -5,7 +5,7 @@
 <tr>
 	<th>아이디</th>
 	<td style="text-align: left;">
-		<input type="text" name="id" readonly="readonly" value="${userId }" size="50">
+		<input type="text" name="id" readonly="readonly" value="${login.id }" size="50">
 	</td>
 </tr>
 <tr>
