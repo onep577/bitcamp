@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value=""/>
+		<item key="selection" value="file_Down"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="pbs"/>
-			<item value="pdsdetail.do"/>
-			<item value="_seq"/>
-			<item value="filedel"/>
-			<item value="_btn_fileDelete"/>
-			<item value="getNewFileName"/>
-			<item value="fileload"/>
-			<item value="pdsupload.do"/>
-			<item value="uploadPds"/>
-			<item value="calupdate.do"/>
-			<item value="calupdate"/>
-			<item value="그날의"/>
-			<item value="callist"/>
-			<item value="calwrite.do"/>
-			<item value="session"/>
+			<item value="file_Down"/>
+			<item value="filedowns"/>
+			<item value="btnDown"/>
+			<item value="_btnAdd"/>
+			<item value="setAnswer"/>
+			<item value="makePoll"/>
+			<item value="isVote"/>
+			<item value="polForm"/>
+			<item value="VALUES"/>
+			<item value="question"/>
+			<item value="pollBean"/>
+			<item value="emonth"/>
+			<item value="lastday"/>
+			<item value="pollmakeAf.do"/>
+			<item value="userId"/>
 		</list>
 		<list key="replacehistory">
+			<item value="login.id"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

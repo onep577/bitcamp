@@ -50,7 +50,7 @@
 <tr>
 	<th>내용</th>
 	<td style="text-align: left;">
-		<textarea rows="10" cols="50"name="content" id="_content">${pds.content }</textarea>	
+		<textarea rows="10" cols="50"name="content" id="_content">${pds.content }</textarea>
 	</td>
 </tr>
 
@@ -60,8 +60,8 @@
 
 <!-- 다운로드 버튼 클릭시 -->
 <form name="file_Down" action="fileDownload.do" method="post">
-	<input type="hidden" name="filename">
-	<input type="hidden" name="seq">
+	<input type="hidden" name="filename" value="${pds.filename }">
+	<input type="hidden" name="seq" value="${pds.seq }">
 </form>
 
 
