@@ -4,6 +4,7 @@ import java.util.List;
 
 import bit.com.a.model.PollBean;
 import bit.com.a.model.PollDto;
+import bit.com.a.model.PollSubDto;
 import bit.com.a.model.Voter;
 
 public interface PollService {
@@ -16,5 +17,9 @@ public interface PollService {
 	
 	// 투표 만들기 위해 정보 다 가져오기
 	public void makePoll(PollBean pbean);
+	
+	// 투표하기
+	public PollDto getPoll(PollDto poll);
+	public List<PollSubDto> getPollSubList(PollDto poll);
 
 }

@@ -84,11 +84,19 @@ public class PollServiceImpl implements PollService {
 			
 			pollDao.makePollSub(pollsub);
 		}
-		/**/
+		/**/	
+	}
 
-	
-	
-	
+
+	// 투표하기
+	@Override
+	public PollDto getPoll(PollDto poll) {
+		return pollDao.getPoll(poll);
+	}
+
+	@Override
+	public List<PollSubDto> getPollSubList(PollDto poll) {
+		return pollDao.getPollSubList(poll);
 	}
 
 }

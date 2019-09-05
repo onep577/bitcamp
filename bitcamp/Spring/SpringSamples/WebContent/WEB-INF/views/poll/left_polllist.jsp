@@ -16,7 +16,7 @@
 
 		<c:if test="${login.auth eq '1' }">
 			<li class="menu_item">
-				<a href="makepoll.do" title="투표만들기">투표만들기</a>
+				<a href="pollmake.do" title="투표만들기">투표만들기</a>
 			</li>
 		</c:if>
 

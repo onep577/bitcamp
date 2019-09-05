@@ -112,6 +112,12 @@
 	<put-attribute name="main" value="/WEB-INF/views/poll/pollmake.jsp"/>
 </definition>
 
+<definition name="polldetail.tiles" extends="polllist.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/poll/polldetail.jsp"/>
+</definition>
+
+
+
 
 
 </tiles-definitions>

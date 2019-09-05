@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import bit.com.a.model.MemberDto;
 import bit.com.a.model.PollBean;
 import bit.com.a.model.PollDto;
+import bit.com.a.model.PollSubDto;
 import bit.com.a.service.PollService;
 
 @Controller
@@ -37,7 +38,7 @@ public class PollController {
 		System.out.println("session : " + ((MemberDto)req.getSession().getAttribute("login")).toString());
 		
 		// list 투표를 했는지 체크
-		List<PollDto> list = pollService.getPollAllList(id);		
+		List<PollDto> list = pollService.getPollAllList(id);
 		System.out.println("list : " + list.toString());
 		
 		model.addAttribute("plists", list);
@@ -63,5 +64,34 @@ public class PollController {
 		
 		return "redirect:/polllist.do";
 	}
+	
+	@RequestMapping(value = "polldetail.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String polldetail(Model model, PollDto poll) throws Exception {
+		model.addAttribute("doc_title", "투표 내용");
+		
+		PollDto dto = pollService.getPoll(poll);
+		List<PollSubDto> list = pollService.getPollSubList(poll);
+		
+		logger.info("질문 : " + dto.getQuestion());
+		for (PollSubDto p : list) {
+			logger.info(""+p);
+		}
+		
+		model.addAttribute("poll", dto);
+		model.addAttribute("pollsublist", list);
+		
+		return "polldetail.tiles";
+	}
 
 }
+
+
+
+
+
+
+
+
+
+
+

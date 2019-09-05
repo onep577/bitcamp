@@ -32,4 +32,39 @@ INSERT INTO POLLSUB(POLLSUBID, POLLID, ANSWER, ACOUNT)
 VALUES(POLLSUB_SEQ.NEXTVAL, (SELECT NVL(MAX(POLLID), 0) FROM POLL), #{answer}, 0)
 </insert>
 
+<!-- 투표하기 -->
+
+<!-- poll detail 투표항목 가져오기 -->
+<select id="getPoll" parameterType="bit.com.a.model.PollDto" resultType="bit.com.a.model.PollDto">
+SELECT POLLID, ID, QUESTION, SDATE, EDATE, ITEMCOUNT, POLLTOTAL, REGDATE
+FROM POLL
+WHERE POLLID=#{pollid}
+</select>
+
+<!-- poll detail 투표보기들 가져오기 -->
+<select id="getPollSubList" parameterType="bit.com.a.model.PollDto" resultType="bit.com.a.model.PollSubDto">
+SELECT POLLSUBID, POLLID, ANSWER, ACOUNT
+FROM POLLSUB
+WHERE POLLID=#{pollid}
+</select>
+
+<!-- voter테이블에 투표자를 등록 -->
+
+<!-- 어떤 투표 항목에 투표를 했는지 카운터 -->
+
+<!-- 어떤 보기에 투표했는지 카운터 -->
+
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

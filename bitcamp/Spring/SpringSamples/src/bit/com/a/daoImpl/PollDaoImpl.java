@@ -44,4 +44,15 @@ public class PollDaoImpl implements PollDao {
 		sqlSession.insert(namespace + "makePollSub", pollSub);
 	}
 
+	// 투표하기
+	@Override
+	public PollDto getPoll(PollDto poll) {
+		return sqlSession.selectOne(namespace + "getPoll", poll);
+	}
+
+	@Override
+	public List<PollSubDto> getPollSubList(PollDto poll) {
+		return sqlSession.selectList(namespace + "getPollSubList", poll);
+	}
+
 }

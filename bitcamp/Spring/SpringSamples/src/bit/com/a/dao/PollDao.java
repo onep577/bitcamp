@@ -14,10 +14,13 @@ public interface PollDao {
 	// 투표 했는지? 안했는지? 확인
 	public int isVote(Voter voter);
 	
-	// 투표 질문 만들기
-	public void makePoll(PollDto poll);
 	
-	// 투표 보기 만들기
+	// 투표만들기
+	public void makePoll(PollDto poll);
 	public void makePollSub(PollSubDto pollSub);
+	
+	// 투표하기
+	public PollDto getPoll(PollDto poll);	
+	public List<PollSubDto> getPollSubList(PollDto poll);
 
 }
