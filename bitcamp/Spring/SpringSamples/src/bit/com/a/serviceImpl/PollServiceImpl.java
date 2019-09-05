@@ -21,7 +21,7 @@ public class PollServiceImpl implements PollService {
 
 	// 모든 투표의 정보를 가져오기
 	@Override
-	public List<PollDto> getPollAllList(String id) {
+	public List<PollDto> getPollAllList(String id) throws Exception {
 		
 		// 모든 투표 목록을 가져온다
 		List<PollDto> list = pollDao.getPollAllList();
@@ -50,13 +50,13 @@ public class PollServiceImpl implements PollService {
 
 	// 투표 했는지? 안했는지? 확인
 	@Override
-	public int isVote(Voter voter) {
+	public int isVote(Voter voter) throws Exception {
 		return pollDao.isVote(voter);
 	}
 
 	// 투표 만들기 위해 정보 다 가져오기
 	@Override
-	public void makePoll(PollBean pbean) {
+	public void makePoll(PollBean pbean) throws Exception {
 		
 		System.out.println("pbean toString : " + pbean.toString());
 		
@@ -90,13 +90,22 @@ public class PollServiceImpl implements PollService {
 
 	// 투표하기
 	@Override
-	public PollDto getPoll(PollDto poll) {
+	public PollDto getPoll(PollDto poll) throws Exception {
 		return pollDao.getPoll(poll);
 	}
 
 	@Override
-	public List<PollSubDto> getPollSubList(PollDto poll) {
+	public List<PollSubDto> getPollSubList(PollDto poll) throws Exception {
 		return pollDao.getPollSubList(poll);
+	}
+
+	// 투표
+	@Override
+	public void polling(Voter voter) throws Exception {
+		// 투표자 등록, 질문의 카운터, 보기의 카운터
+		pollDao.pollingVoter(voter);
+		pollDao.pollingPoll(voter);
+		pollDao.pollingSub(voter);
 	}
 
 }

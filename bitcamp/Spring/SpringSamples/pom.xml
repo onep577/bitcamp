@@ -348,6 +348,26 @@
 	    <scope>provided</scope>
 	</dependency>
 	
+	
+	
+	<!-- 채팅 -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-websocket</artifactId>
+	    <version>5.1.5.RELEASE</version>
+	</dependency>
+	
+	
+	<!-- 채팅 -->
+	<dependency>
+	    <groupId>org.glassfish</groupId>
+	    <artifactId>javax.json</artifactId>
+	    <version>1.0.4</version>
+	</dependency>
+	
+	
+	
+	
 
 	
 </dependencies>

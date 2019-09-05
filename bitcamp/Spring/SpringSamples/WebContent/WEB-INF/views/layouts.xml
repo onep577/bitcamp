@@ -8,7 +8,7 @@
 <definition name="login.tiles" template="/WEB-INF/views/login/login.jsp">
 </definition>
 
-<definition name="account.tileS" template="/WEB-INF/views/login/account.jsp">
+<definition name="account.tiles" template="/WEB-INF/views/login/account.jsp">
 </definition>
 
 <definition name="bbsList.tiles" template="/WEB-INF/views/layouts-tiles.jsp">
@@ -39,6 +39,10 @@
 	<put-attribute name="main" value="/WEB-INF/views/bbs/bbsAnswer.jsp"/>
 </definition>
 
+<!-- chatting -->
+<definition name="chatting.tiles" extends="bbsList.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/webchat/chatting.jsp"/>
+</definition>
 
 
 
@@ -79,6 +83,8 @@
 
 
 
+
+
 <!-- pds -->
 <definition name="pdslist.tiles" extends="bbsList.tiles">
 	<put-attribute name="left_menu" value="/WEB-INF/views/pds/left_pdslist.jsp"/>
@@ -102,6 +108,7 @@
 
 
 
+
 <!-- poll -->
 <definition name="polllist.tiles" extends="bbsList.tiles">
 	<put-attribute name="left_menu" value="/WEB-INF/views/poll/left_polllist.jsp"/>
@@ -114,6 +121,10 @@
 
 <definition name="polldetail.tiles" extends="polllist.tiles">
 	<put-attribute name="main" value="/WEB-INF/views/poll/polldetail.jsp"/>
+</definition>
+
+<definition name="pollresult.tiles" extends="polllist.tiles">
+	<put-attribute name="main" value="/WEB-INF/views/poll/pollresult.jsp"/>
 </definition>
 
 

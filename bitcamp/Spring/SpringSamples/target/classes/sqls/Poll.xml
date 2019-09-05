@@ -49,11 +49,24 @@ WHERE POLLID=#{pollid}
 </select>
 
 <!-- voter테이블에 투표자를 등록 -->
+<insert id="pollingvote" parameterType="bit.com.a.model.Voter">
+INSERT INTO VOTER(VOTERID, POLLID, POLLSUBID, ID, REGDATE)
+VALUES(VOTER_SEQ.NEXTVAL, #{pollid}, #{pollsubid}, #{id}, SYSDATE)
+</insert>
 
 <!-- 어떤 투표 항목에 투표를 했는지 카운터 -->
+<update id="pollingPoll" parameterType="bit.com.a.model.Voter">
+UPDATE POLL
+SET POLLTOTAL=POLLTOTAL+1
+WHERE POLLID=#{pollid}
+</update>
 
 <!-- 어떤 보기에 투표했는지 카운터 -->
-
+<update id="pollingSub" parameterType="bit.com.a.model.Voter">
+UPDATE POLLSUB
+SET ACOUNT=ACOUNT+1
+WHERE POLLID=#{pollid} AND POLLSUBID=#{pollsubid}
+</update>
 </mapper>
 
 

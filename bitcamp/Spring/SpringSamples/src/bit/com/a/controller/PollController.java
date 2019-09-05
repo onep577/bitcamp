@@ -16,6 +16,7 @@ import bit.com.a.model.MemberDto;
 import bit.com.a.model.PollBean;
 import bit.com.a.model.PollDto;
 import bit.com.a.model.PollSubDto;
+import bit.com.a.model.Voter;
 import bit.com.a.service.PollService;
 
 @Controller
@@ -28,7 +29,7 @@ public class PollController {
 		
 	// 투표
 	@RequestMapping(value = "polllist.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String polllist(Model model, HttpServletRequest req) {
+	public String polllist(Model model, HttpServletRequest req) throws Exception{
 		model.addAttribute("doc_title", "투표 목록");
 		
 		// 리스트로 들어갈 때 투표했으면 결과창으로 안했으면 투표창으로 보내기 위해 session이 필요하다
@@ -65,8 +66,10 @@ public class PollController {
 		return "redirect:/polllist.do";
 	}
 	
+	// 투표하기 페이지로 이동
 	@RequestMapping(value = "polldetail.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String polldetail(Model model, PollDto poll) throws Exception {
+		logger.info("polldetail()");
 		model.addAttribute("doc_title", "투표 내용");
 		
 		PollDto dto = pollService.getPoll(poll);
@@ -82,11 +85,32 @@ public class PollController {
 		
 		return "polldetail.tiles";
 	}
+	
+	@RequestMapping(value = "polling.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String polling(Voter voter, Model model) throws Exception {
+		logger.info("polling()");
+		
+		pollService.polling(voter);
+		
+		return "redirect:/polllist.do";
+	}
+	
+	// 투표 결과 페이지로 이동
+	@RequestMapping(value = "pollresult.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String pollresult(PollDto poll, Model model) throws Exception {
+		logger.info("pollresult()");
+		model.addAttribute("doc_title", "투표 결과");
+		
+		PollDto dto = pollService.getPoll(poll);
+		List<PollSubDto> list = pollService.getPollSubList(poll);
+		
+		model.addAttribute("poll", dto);
+		model.addAttribute("pollsublist", list);
+		
+		return "pollresult.tiles";
+	}
 
 }
-
-
-
 
 
 

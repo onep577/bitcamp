@@ -23,7 +23,7 @@ public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
 	// 로그인 페이지로 이동만
-	@RequestMapping(value = "login.do", method = RequestMethod.GET)
+	@RequestMapping(value = "login.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String login() throws Exception {
 		logger.info("MemberController login()");
 		return "login.tiles";

@@ -84,7 +84,7 @@ List<PollDto> plists = (List<PollDto>)request.getAttribute("plists");
 			}else{
 				%>
 				<td>
-					<a href="polldetail.do?pollid="<%=poll.getPollid() %>>
+					<a href="polldetail.do?pollid=<%=poll.getPollid() %>">
 						<%=poll.getQuestion() %>
 					</a>
 				</td>
@@ -97,7 +97,7 @@ List<PollDto> plists = (List<PollDto>)request.getAttribute("plists");
 	         // 결과를 볼 수 있다
 	         if(isSuccess || DateUtil.isEnd(poll.getEdate())){
 	            %>
-	            <a href="poll.result.do?pollid=<%=poll.getPollid() %>">결과</a>
+	            <a href="pollresult.do?pollid=<%=poll.getPollid() %>">결과</a>
 	            <%
 	         }else{
 	            %>

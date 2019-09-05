@@ -12,6 +12,8 @@
 			<li><a href="pdslist.do" title="자료실">자료실</a></li>
 			<li><a href="polllist.do" title="투표">투표</a></li>
 			
+			<li><a href="chatting.do" title="chat">채팅</a></li>
+			
 			<c:if test="${login.auth eq '1' }">
 			<li class="menu_item">
 				<a href="pollmake.do" title="투표만들기">투표만들기</a>

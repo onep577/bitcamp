@@ -156,6 +156,12 @@ public class BbsController {
 		
 		return "redirect:/bbsList.do";
 	}
+	
+	// 채팅
+	@RequestMapping(value = "chatting.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String chatting() {
+		return "chatting.tiles";
+	}
 
 
 }
