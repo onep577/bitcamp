@@ -1,16 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<style>
+#my{
+	color: red;
+}
+#you{
+	color: green;
+}
+</style>
+
 채팅명 : <input type="text" id="nickname">
 
 <input type="button" id="enterBtn" value="입장" onclick="connect()">
-
 <input type="button" id="exitBtn" value="나가기" onclick="disconnect()">
 <br><br>
 
 <h1>대화영역</h1>
 <div id="chatArea">
-	<div id="chatMessageArea">
+	<div id="chatMessageArea" style="background-color: yellow;">
 	</div>
 </div>
 
@@ -43,6 +51,7 @@ function connect() {
 	wsocket = new WebSocket("ws://192.168.0.12:8090/SpringSamples/echo.do");
 	alert("wsocket : " + wsocket);
 	
+	// websocket 함수 = java script 함수
 	wsocket.onopen = onOpen;
 	wsocket.onmessage = onMessage;
 	wsocket.onclose = onClose;
@@ -52,8 +61,12 @@ function disconnect() {
 	wsocket.close();
 }
 
-// onopen(연결), onmessage(메시지), onclose(끊겼을 때)
+function ending() {
+	//var endMsg = .val();
+	//send();
+}
 
+// onopen(연결), onmessage(메시지), onclose(끊겼을 때)
 function onOpen(evt) {
 	appendMessage("연결 되었습니다");
 }
@@ -81,22 +94,30 @@ function send() {
 
 function appendMessage(msg) {
 	// 메시지를 추가하고 개행
-	$("#chatMessageArea").append(msg + "<br>");
+	 $("#chatMessageArea").append(msg + "<br>");
+	//alert(msg);
 	
-	// 화면을 밑으로 민다
+	myid = $("#nickname").val();
+	userid = msg.substring(0, msg.indexOf(':'));
+	//alert(userid);
+	
+	if(myid == userid){
+		//alert("if");
+		$("#chatMessageArea").append("<span id='my'>" + myid + "</span>" +  + "<br>");
+		
+	}else{
+		//alert("else");
+		$("#chatMessageArea").append("<span id='you'>" + userid + "</span>" +  + "<br>");
+	}
+
+	
+	// 화면을 밑으로 민다 근데 왜 있지?
+	/*
 	var chatAreaHeight = $("#chatArea").height();
 	var maxScroll = $("#chatMessageArea").height() - chatAreaHeight;
 	$("#chatArea").scrollTop(maxScroll);
-	
+	/**/
 }
 
 </script>
-
-
-
-
-
-
-
-
 

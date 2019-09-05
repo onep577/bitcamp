@@ -38,5 +38,11 @@ public class PdsServiceImpl implements PdsService {
 	public PdsDto getPds(int seq) throws Exception {
 		return pdsDao.getPds(seq);
 	}
+
+	// 조회수 증가
+	@Override
+	public boolean readcount(int seq) throws Exception {
+		return pdsDao.readcount(seq);
+	}
 	
 }

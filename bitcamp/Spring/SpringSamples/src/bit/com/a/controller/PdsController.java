@@ -119,7 +119,7 @@ public class PdsController {
 		return "downloadView";
 	}
 	
-	// DB의 파일명 삭제
+	// DB에서 게시물 삭제
 	@RequestMapping(value = "filedel.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String filedel(int seq) throws Exception {
 		logger.info("filedel() 자료 삭제");
@@ -135,17 +135,33 @@ public class PdsController {
 		return "redirect:/pdslist.do";
 	}
 	
-	// 파일 detail
+	// pds detail
 	@RequestMapping(value = "pdsdetail.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String pdsdetail(Model model, int seq) throws Exception {
 		logger.info("pdsdetail() : 하나의 자료 보기 seq : " + seq);
+
+		// 조회수 증가
+		boolean b = pdsService.readcount(seq);
 		
+		// 하나의 detail 가져오기
 		PdsDto pds = pdsService.getPds(seq);
 		logger.info("pds : " + pds.toString());
+		
+		if(b) {
+			logger.info("조회수 증가 성공");
+		}else {
+			logger.info("조회수 증가 실패");
+		}
 		
 		model.addAttribute("pds", pds);
 		
 		return "pdsdetail.tiles";
+	}
+		
+	// 게시물 수정
+	@RequestMapping(value = "pdsupdate.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String pdsupdate(Model model, int seq) throws Exception {
+		return "";
 	}
 	
 	

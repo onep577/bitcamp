@@ -44,5 +44,12 @@ public class PdsDaoImpl implements PdsDao {
 		PdsDto dto = sqlSession.selectOne(namespace + "getPds", seq);
 		return dto;
 	}
+
+	// 조회수 증가
+	@Override
+	public boolean readcount(int seq) throws Exception {
+		int n = sqlSession.update(namespace + "readcount", seq);
+		return n>0?true:false;
+	}
 	
 }

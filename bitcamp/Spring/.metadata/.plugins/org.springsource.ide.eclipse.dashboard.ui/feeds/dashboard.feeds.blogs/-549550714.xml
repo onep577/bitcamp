@@ -5,7 +5,22 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2019-09-03T08:21:12Z</updated>
+  <updated>2019-09-05T11:02:35Z</updated>
+  <entry>
+    <title>Spring Framework 5.2 RC2 available now</title>
+    <link rel="alternate" href="https://spring.io/blog/2019/09/05/spring-framework-5-2-rc2-available-now" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>St?phane Nicoll</name>
+    </author>
+    <id>tag:spring.io,2019-09-05:3786</id>
+    <updated>2019-09-05T11:02:35Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team and everyone who has contributed, I am pleased to announce that the second release candidate of Spring Framework 5.2 has been released and is available from our &lt;a href="https://repo.spring.io/milestone"&gt;milestone repository&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Spring Framework &lt;code&gt;5.2.0.RC2&lt;/code&gt; includes &lt;a href="https://github.com/spring-projects/spring-framework/releases/tag/v5.2.0.RC2"&gt;63 fixes and improvements&lt;/a&gt; and is our last stop before GA proper scheduled 3 weeks from now.&lt;/p&gt;
+&lt;p&gt;Next up is Spring Boot &lt;code&gt;2.2.0.M6&lt;/code&gt;, stay tuned!&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://projects.spring.io/spring-framework/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-framework"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-framework/issues"&gt;Issues&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-framework/docs/5.2.0.RC2/spring-framework-reference"&gt;Documentation&lt;/a&gt;&lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>This Week in Spring: September 3, 2019</title>
     <link rel="alternate" href="https://spring.io/blog/2019/09/03/this-week-in-spring-september-3-2019" />
@@ -1584,33 +1599,6 @@ intensive.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>This Week in Spring - August 6, 2019</title>
-    <link rel="alternate" href="https://spring.io/blog/2019/08/06/this-week-in-spring-august-6-2019" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2019-08-06:3764</id>
-    <updated>2019-08-06T18:48:03Z</updated>
-    <content type="html">&lt;p&gt;Hi Spring fans! Welcome to another amazing week in Spring! &lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;I just published &lt;a href="https://content.pivotal.io/josh-blog/this-month-in-spring-july-2019"&gt;&lt;em&gt;This Month in Spring&lt;/em&gt;&lt;/a&gt; yesterday, if you want a larger roundup of everything from June to about yesterday.&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2019/08/06/spring-boot-2-2-0-m5-available-now"&gt;Spring Boot 2.2.0 M5 available now&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2019/08/06/spring-boot-2-1-7-available-now"&gt;Spring Boot 2.1.7 available now&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2019/08/06/it-is-time-goodbye-spring-boot-1-x"&gt;It is time - Goodbye Spring Boot 1.x!&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2019/08/05/spring-security-5-1-6-and-5-0-13-released"&gt;Spring Security 5.1.6 and 5.0.13 Released&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2019/08/05/spring-security-5-2-0-m4-released"&gt;Spring Security 5.2.0.M4 Released&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2019/08/05/spring-data-moore-rc2-lovelace-sr10-and-ingalls-sr23-released"&gt;Spring Data Moore RC2, Lovelace SR10, and Ingalls SR23 released&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2019/08/05/spring-framework-5-2-goes-rc1"&gt;Spring Framework 5.2 goes RC1&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2019/08/02/spring-boot-for-apache-geode-pivotal-gemfire-1-1-0-rc1-released"&gt;Spring Boot for Apache Geode &amp;amp; Pivotal GemFire 1.1.0.RC1 Released!&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2019/08/02/spring-framework-5-1-9-5-0-15-and-4-3-25-available-now"&gt;Spring Framework 5.1.9, 5.0.15 and 4.3.25 available now&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-data-dev-tools/tree/master/release-tools"&gt;spring-data-dev-tools/release-tools at master ¡¤ spring-projects/spring-data-dev-tools&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;I really enjoyed last week&amp;rsquo;s &lt;a href="https://spring.io/blog/2019/08/02/a-bootiful-podcast-gradle-developer-advocate-jenn-strater"&gt;&lt;em&gt;A Bootiful Podcast&lt;/em&gt; interview with Gradle Developer Advocate Jenn Strater&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;This is exciting - a &lt;a href="https://twitter.com/nats_io/status/1156211038309801984"&gt;NATS binder for Spring Cloud Stream&lt;/a&gt;. NATS is a super high speed networking protocol and library.&lt;/li&gt;
-&lt;/ul&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
 </feed>

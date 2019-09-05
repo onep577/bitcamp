@@ -17,5 +17,8 @@ public interface PdsDao {
 	
 	// 하나의 파일 가져오기
 	public PdsDto getPds(int seq) throws Exception;
+	
+	// 조회수 증가
+	public boolean readcount(int seq) throws Exception;
 
 }
