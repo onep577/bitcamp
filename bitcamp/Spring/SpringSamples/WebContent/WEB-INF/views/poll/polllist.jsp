@@ -128,23 +128,3 @@ List<PollDto> plists = (List<PollDto>)request.getAttribute("plists");
 </c:if>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

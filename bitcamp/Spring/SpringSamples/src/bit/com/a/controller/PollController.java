@@ -86,6 +86,7 @@ public class PollController {
 		return "polldetail.tiles";
 	}
 	
+	// 투표하기
 	@RequestMapping(value = "polling.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String polling(Voter voter, Model model) throws Exception {
 		logger.info("polling()");

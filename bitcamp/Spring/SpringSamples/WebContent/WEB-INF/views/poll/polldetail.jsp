@@ -47,6 +47,7 @@
 			${vs.count == 1?"checked='checked'":"" } value="${psub.pollsubid }">
 			
 			<input type="text" name="answer" size="60" value="${psub.answer }" readonly="readonly">
+			<br>
 		</c:forEach>
 	</td>
 </tr>
