@@ -19,7 +19,7 @@ public class DateUtil {
 		return msg.trim().length()<2?"0"+msg:msg.trim();
 	}//
 	public static String str(String msg){ //데크르라레이션에서 있던 메소드를 다 빼놨음
-		return msg==null ?"":msg.trim();
+		return msg==null?"":msg.trim();
 	}//
 	//완성하시오.
 	public static String pollState(java.util.Date d){

@@ -5,7 +5,29 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2019-09-06T09:21:16Z</updated>
+  <updated>2019-09-06T10:42:42Z</updated>
+  <entry>
+    <title>Spring Cloud Data Flow 2.3.0.M1 and 2.2.1 GA Released</title>
+    <link rel="alternate" href="https://spring.io/blog/2019/09/06/spring-cloud-data-flow-2-3-0-m1-and-2-2-1-ga-released" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Ilayaperumal Gopinathan</name>
+    </author>
+    <id>tag:spring.io,2019-09-04:3785</id>
+    <updated>2019-09-06T10:42:42Z</updated>
+    <content type="html">&lt;p&gt;The &lt;a href="https://cloud.spring.io/spring-cloud-dataflow/"&gt;Spring Cloud Data Flow&lt;/a&gt; team is pleased to announce the milestone release 2.3.0.M1 and the release of 2.2.1 GA.&lt;/p&gt;
+&lt;p&gt;Along with the bug fixes and enhancements, the first milestone of 2.3.0 also has the following new features: &lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Improved Prometheus monitoring based on &lt;a href="https://github.com/micrometer-metrics/prometheus-rsocket-proxy"&gt;Prometheus RSocket&lt;/a&gt;. It uses persistent bidirectional (RSocket) connections between the Stream/Task applications and a Prometheus RSocket Proxy instance. When Prometheus scrapes the proxy instance, and the proxy, in turn, uses the connections to pull metrics from the applications.&lt;/li&gt;
+  &lt;li&gt;Ability to pass OAuth Access Token as command-line arguments for &lt;a href="https://docs.spring.io/spring-cloud-dataflow/docs/2.3.0.M1/reference/htmlsingle/#_configuration_options"&gt;Composed Tasks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Users can now specify a description of the stream when creating it. Thanks to &lt;code&gt;Daniel Serleg&lt;/code&gt; for the contribution!&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Scheduler SPI is now merged into Spring Cloud Deployer. We¡¯ll deprecate the explicit &lt;code&gt;spring-cloud-scheduler&lt;/code&gt; project and its implementations on Cloud Foundry, K8s and have them available as part of &lt;code&gt;spring-cloud-deployer&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can see the full list of &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/releases/tag/v2.3.0.M1"&gt;changes&lt;/a&gt; on Github.&lt;/p&gt;
+&lt;p&gt;The release 2.2.1 GA is mostly the bug fixes on 2.2.x base and you can see the &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/releases/tag/v2.2.1.RELEASE"&gt;changes&lt;/a&gt; on Github.&lt;/p&gt;&lt;h2&gt;&lt;a href="#stay-in-touch-hellip" class="anchor" name="stay-in-touch-hellip"&gt;&lt;/a&gt;Stay in touch&amp;hellip;&lt;/h2&gt;
+&lt;p&gt;As always, we welcome feedback and contributions, so please reach out to us on &lt;a href="https://stackoverflow.com/questions/tagged/spring-cloud-dataflow"&gt;Stackoverflow&lt;/a&gt; or &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/issues"&gt;GitHub&lt;/a&gt; or via &lt;a href="https://gitter.im/spring-cloud/spring-cloud-dataflow"&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>A Bootiful Podcast: Gary Russell</title>
     <link rel="alternate" href="https://spring.io/blog/2019/09/06/a-bootiful-podcast-gary-russell" />
@@ -1374,19 +1396,6 @@ Person person =  uppercasePerson.apply(MessageBuilder.withPayload(&amp;quot;{\&a
   &lt;li&gt;&lt;a href="https://twitter.com/springcloud/status/1159840277122564098"&gt;As a reminder, Spring Cloud Edgware (compatible with Spring Boot 1.5.x) reached end-of-life earlier this month.&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="https://twitter.com/cloudfoundry/status/1159208018824687616"&gt;Comcast is hiring!&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>A Bootiful Podcast: John Willis on DevOps, cloud computing, process, and so much more</title>
-    <link rel="alternate" href="https://spring.io/blog/2019/08/09/a-bootiful-podcast-john-willis-on-devops-cloud-computing-process-and-so-much-more" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2019-08-09:3768</id>
-    <updated>2019-08-09T06:06:57Z</updated>
-    <content type="html">&lt;p&gt;Hi Spring fans! In this week&amp;rsquo;s installment, Josh Long (&lt;a href="http://twitter.com/starbuxman"&gt;@starbuxman&lt;/a&gt;) talk to DevOps luminary, cloud-computing visionary, and all-around-great-guy John Willis (&lt;a href="http://twitter.com/botchagalupe"&gt;@botchagalupe&lt;/a&gt;). This a white-knuckle rollercoaster ride of knowledge, so buckle up and enjoy!&lt;/p&gt;
-&lt;iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/663320411&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"&gt;&lt;/iframe&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
 </feed>
