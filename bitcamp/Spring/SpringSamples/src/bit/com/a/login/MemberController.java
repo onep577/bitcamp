@@ -84,6 +84,7 @@ public class MemberController {
 			// session 저장
 			req.getSession().setAttribute("login", dto);
 			req.getSession().setMaxInactiveInterval(60 * 60 * 2); // 2시간이다
+			//req.getSession().setMaxInactiveInterval(5); // 2시간이다
 			
 			logger.info("MemberController session id : " + dto.toString());
 			return "redirect:/bbsList.do";
