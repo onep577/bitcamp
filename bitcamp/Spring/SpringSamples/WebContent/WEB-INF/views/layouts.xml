@@ -131,4 +131,17 @@
 
 
 
+
+
+
+<!-- youtube -->
+<definition name="youtube.tiles" extends="bbsList.tiles">
+	<put-attribute name="left_menu" value="/WEB-INF/views/youtube/left_youlist.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/youtube/youlist.jsp"/>
+</definition>
+
+
+
+
+
 </tiles-definitions>

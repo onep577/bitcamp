@@ -13,6 +13,7 @@
 			<li><a href="polllist.do" title="투표">투표</a></li>
 			
 			<li><a href="chatting.do" title="chat">채팅</a></li>
+			<li><a href="youtube.do" title="youtube">유튜브</a></li>
 			
 			<c:if test="${login.auth eq '1' }">
 			<li class="menu_item">

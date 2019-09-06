@@ -5,7 +5,205 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2019-09-05T11:02:35Z</updated>
+  <updated>2019-09-05T18:18:47Z</updated>
+  <entry>
+    <title>Spring HATEOAS 1.0.0.RC2 released</title>
+    <link rel="alternate" href="https://spring.io/blog/2019/09/05/spring-hateoas-1-0-0-rc2-released" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Greg Turnquist</name>
+    </author>
+    <id>tag:spring.io,2019-09-05:3787</id>
+    <updated>2019-09-05T18:18:47Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;Dear Spring community, we&amp;#8217;re proud to announce the second release candidate of Spring HATEOAS 1.0.0. Since our &lt;a href="https://spring.io/blog/2019/03/05/spring-hateoas-1-0-m1-released"&gt;last release&lt;/a&gt;, Spring HATEOAS has made great strides with two more milestones and two RCs.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Here&amp;#8217;s the summary:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Internationalization support for both &lt;a href="https://docs.spring.io/spring-hateoas/docs/1.0.0.RC2/reference/html/#mediatypes.hal.i18n"&gt;HAL&lt;/a&gt; and &lt;a href="https://docs.spring.io/spring-hateoas/docs/1.0.0.RC2/reference/html/#mediatypes.hal-forms.i18n"&gt;HAL-FORMS&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Performance improvements&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spring HATEOS is now based on Spring Framework 5.2 and Reactor&amp;#8217;s Dysprosium release train. This is critical to support downstream projects like Spring Data Moore and Spring Boot 2.2.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Now supports Spring WebFlux applications that have both hypermedia and non-hypermedia endpoints.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Improved major chunks of reference documentation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Created a &lt;a href="https://gitter.im/spring-projects/spring-hateoas"&gt;Spring HATEOAS Gitter channel&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fixed issues in various media types to ensure they comply with spec definitions, and don&amp;#8217;t throw unexpected exceptions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Let&amp;#8217;s have a detailed look at some of those features.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="internationalization"&gt;&lt;a class="anchor" href="#internationalization"&gt;&lt;/a&gt;Internationalization&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;One of the most brittle features to add to your API is internationalized text.
+Many clients mimic server-side rules by parsing the content of the payload.
+This sets them up for massive breaking changes when the server wants to adopt locale-specific text.
+Convincing your clients to adopt a link-based approach opens the door to using Spring resource bundles to tune the text shown on links.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;HAL defines a title attribute for its link objects. These titles can be populated by using Spring¡¯s resource bundle abstraction and a resource bundle named &lt;code&gt;rest-messages&lt;/code&gt; so that clients can use them in their UIs directly. This bundle will be set up automatically and is used during HAL link serialization.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;To define a title for a HAL link, use the key template &lt;code&gt;_links.$relationName.title&lt;/code&gt; as follows:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="exampleblock"&gt;
+&lt;div class="title"&gt;Example 1. A sample &lt;code&gt;rest-messages.properties&lt;/code&gt;&lt;/div&gt;
+&lt;div class="content"&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre&gt;_links.cancel.title=Cancel order
+_links.payment.title=Proceed to checkout&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This will result in the following HAL representation:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="exampleblock"&gt;
+&lt;div class="title"&gt;Example 2. A sample HAL document with link titles defined&lt;/div&gt;
+&lt;div class="content"&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre&gt;{
+  "_links" : {
+    "cancel" : {
+      "href" : "¡¦"
+      "title" : "Cancel order"
+    },
+    "payment" : {
+      "href" : "¡¦"
+      "title" : "Proceed to checkout"
+    }
+  }
+}&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;From there, you are free to include &lt;code&gt;rest-messages.properties&lt;/code&gt; for default values, and then include, for example, &lt;code&gt;rest-messages_de.properties&lt;/code&gt; for your German clients, etc.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;HAL-FORMS has both a &lt;code&gt;title&lt;/code&gt; and a &lt;code&gt;prompt&lt;/code&gt; attribute, intended for human consumption. Look at the following &lt;code&gt;rest-messages.properties&lt;/code&gt; entries:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="exampleblock"&gt;
+&lt;div class="title"&gt;Example 3. Defining HAL-FORMS template titles and prompts&lt;/div&gt;
+&lt;div class="content"&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre&gt;_templates.default.title=Some title &lt;b class="conum"&gt;(1)&lt;/b&gt;
+_templates.putEmployee.title=Create employee &lt;b class="conum"&gt;(2)&lt;/b&gt;
+Employee._templates.default.title=Create employee  &lt;b class="conum"&gt;(3)&lt;/b&gt;
+com.acme.Employee._templates.default.title=Create employee &lt;b class="conum"&gt;(4)&lt;/b&gt;
+
+firstName._prompt=Firstname &lt;b class="conum"&gt;(5)&lt;/b&gt;
+Employee.firstName=Firstname &lt;b class="conum"&gt;(6)&lt;/b&gt;
+com.acme.Employee.firstName._prompt=Firstname &lt;b class="conum"&gt;(7)&lt;/b&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="colist arabic"&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;A global definition for the title using default as key.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A global definition for the title using the actual affordance name as key. Unless defined explicitly when creating the affordance, this defaults to &lt;code&gt;$httpMethod + $simpleInputTypeName&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A locally defined title to be applied to all types named &lt;code&gt;Employee&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A title definition using the fully-qualified type name.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;All properties named email will get "Firstname" rendered, independent of the type they¡¯re declared in.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The firstName property in types named Employee will be prompted "Firstname".&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The firstName property of com.acme.Employee will get a prompt of "Firstname" assigned.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This puts you in control to show your customers what they need to see, and allows your clients to not sweat it when changes to the payload are made.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="perf"&gt;&lt;a class="anchor" href="#perf"&gt;&lt;/a&gt;Performance improvements&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Thanks to efforts by both the community and our team, we have sped up the rendering of hypermedia. This includes caching critical bits, moving unnecessary object allocation off the hot path, and even getting rid of exceptions that were being used for normal control flow.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Additionally, this project, which started on Java 6, continues to adopt Java 8 features that make it easier to speed things up. Also thanks to batteries of load testing through JMH (Java Microbenchmark Harness), we have been able to spot many areas that were in desparate need of attention.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="spring-framework-5.2"&gt;&lt;a class="anchor" href="#spring-framework-5.2"&gt;&lt;/a&gt;Spring Framework 5.2 + Reactor Dysprosium + Java.NEXT&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Being a crucial dependency for the Spring Data &lt;code&gt;Moore&lt;/code&gt; release train, Spring HATEOAS has aligned with &lt;strong&gt;Spring Framework 5.2&lt;/strong&gt; and &lt;strong&gt;Reactor Dysprosium&lt;/strong&gt;. This all feeds toward &lt;strong&gt;Spring Boot 2.2&lt;/strong&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;At the same time, we build every commit against both the latest milestone/RC of Spring Framework as well as against snapshots. That way, we can spot problems fast and ensure they don&amp;#8217;t break you.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;If you are a trail blazer and using newer versions of Java, you should be happy to know we run every commit against both LTS releases (AdoptOpenJDK 8 &amp;amp; 11) and the latest version of Java available on Docker hub (AdoptOpenJDK 12). This way, there are no surprises if some breaking API change is coming down the pipe from the Java community.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="community"&gt;&lt;a class="anchor" href="#community"&gt;&lt;/a&gt;Community support&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Community is important.
+That&amp;#8217;s why we opened a Spring HATEOAS &lt;a href="https://gitter.im/spring-projects/spring-hateoas"&gt;Gitter channel&lt;/a&gt;.
+Come and join us!
+If you are using Spring HATEOAS to build an API and have a question or are broken down somewhere, come and find us.
+The community is here to help.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Anything missing? Let us know! With over &lt;a href="https://docs.spring.io/spring-hateoas/docs/1.0.0.RC2/changelog.txt"&gt;14 closed issues&lt;/a&gt;, be sure to check things out.
+And let us know what you think!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Check out the project links below.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Links: &lt;a href="http://spring.io/projects/spring-hateoas"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-hateoas"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-hateoas/issues"&gt;Issues&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-hateoas"&gt;Gitter&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Being a release candidate, you&amp;#8217;ll find the artifacts at &lt;a href="https://repo.spring.io/libs-milestone" class="bare"&gt;https://repo.spring.io/libs-milestone&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>Spring Framework 5.2 RC2 available now</title>
     <link rel="alternate" href="https://spring.io/blog/2019/09/05/spring-framework-5-2-rc2-available-now" />
@@ -1514,90 +1712,6 @@ machine.sendEvent(Mono.just(event))
 &lt;p&gt;Now is a good time to try it out and provide feedback for next milestones. I&amp;#8217;d like to thank
 all the community contributions as some of the refactorings were relatively labour
 intensive.&lt;/p&gt;
-&lt;/div&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Session Corn-M3 and Bean-SR7 Released</title>
-    <link rel="alternate" href="https://spring.io/blog/2019/08/06/spring-session-corn-m3-and-bean-sr7-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Rob Winch</name>
-    </author>
-    <id>tag:spring.io,2019-08-06:3765</id>
-    <updated>2019-08-06T20:03:49Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;em&gt;This post was authored by &lt;a href="https://github.com/vpavic"&gt;Vedran Pavi?&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;On behalf of the community I¡¯m pleased to announce the releases of Spring Session &lt;code&gt;Corn-M3&lt;/code&gt; and &lt;code&gt;Bean-SR7&lt;/code&gt;. These releases will be picked up by Spring Boot &lt;code&gt;2.2.0.M5&lt;/code&gt; and &lt;code&gt;2.1.8.RELEASE&lt;/code&gt;, respectively.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="spring-session-corn-m3"&gt;&lt;a class="anchor" href="#spring-session-corn-m3"&gt;&lt;/a&gt;Spring Session &lt;code&gt;Corn-M3&lt;/code&gt;&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;The &lt;code&gt;Corn-M3&lt;/code&gt; release is based on:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Spring Session core modules &lt;code&gt;2.2.0.M3&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Spring Session Data Geode &lt;code&gt;2.2.0.M2&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Spring Session Data MongoDB &lt;code&gt;2.2.0.RC1&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Some of the highlights of Spring Session &lt;code&gt;2.2.0.M3&lt;/code&gt; are:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;support for save mode, which allows control over how session changes are tracked and saved to the session store&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;support for flush mode for JDBC-backed sessions&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;common strategy for resolving session indexes&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Complete details of these releases can be found in &lt;a href="https://github.com/spring-projects/spring-session/milestone/63?closed=1"&gt;the changelog&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="spring-session-bean-sr7"&gt;&lt;a class="anchor" href="#spring-session-bean-sr7"&gt;&lt;/a&gt;Spring Session &lt;code&gt;Bean-SR7&lt;/code&gt;&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;The &lt;code&gt;Bean-SR7&lt;/code&gt; release is based on:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Spring Session core modules &lt;code&gt;2.1.8.RELEASE&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Spring Session Data Geode &lt;code&gt;2.1.4.RELEASE&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Spring Session Data MongoDB &lt;code&gt;2.1.4.RELEASE&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Spring Session &lt;code&gt;2.1.8.RELEASE&lt;/code&gt; is maintenance release that brings one bug fix and the usual dependency upgrades. Complete details of these releases can be found in &lt;a href="https://github.com/spring-projects/spring-session/milestone/65?closed=1"&gt;the changelog&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;a href="https://projects.spring.io/spring-session/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-session/docs/2.2.0.M3/reference/html5/"&gt;Documentation&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-session/issues"&gt;Issues&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-session"&gt;Gitter&lt;/a&gt; | &lt;a href="https://stackoverflow.com/questions/tagged/spring-session"&gt;Stack Overflow&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 &lt;/div&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
