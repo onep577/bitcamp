@@ -131,7 +131,8 @@ $(document).ready(function () {
 			data:"id="+id+"&vname="+vname+"&title="+title+"&category="+category,
 			
 			success:function(msg){
-				alert("success");
+				//alert("success");
+				alert("성공적으로 " + msg.vname + "가 저장되었습니다");
 			},
 			error:function(){
 				alert("error");
@@ -139,24 +140,12 @@ $(document).ready(function () {
 		});
 		
 	});
-
+	
 });
+
+function getyoutube2(vname) {
+	$("#_v" + vname + "ed2").css("background-color", "#ff0000");
+}
+
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

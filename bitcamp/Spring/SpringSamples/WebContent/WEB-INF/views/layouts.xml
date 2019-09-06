@@ -140,7 +140,10 @@
 	<put-attribute name="main" value="/WEB-INF/views/youtube/youlist.jsp"/>
 </definition>
 
-
+<definition name="youtubelist.tiles" extends="youtube.tiles">
+	<put-attribute name="left_menu" value="/WEB-INF/views/youtube/left_youlist.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/views/youtube/youtubelist.jsp"/>
+</definition>
 
 
 

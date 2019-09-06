@@ -1,6 +1,9 @@
 package bit.com.a.controller;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import bit.com.a.model.MemberDto;
 import bit.com.a.model.YesMember;
 import bit.com.a.model.Youtube;
 import bit.com.a.model.YoutubeSave;
@@ -43,14 +47,32 @@ public class YoutubeController {
 	// 유튜브 저장
 	@ResponseBody
 	@RequestMapping(value = "youtubesave.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public YesMember youtubesave(YoutubeSave you) throws Exception {
+	public YoutubeSave youtubesave(YoutubeSave you) throws Exception {
 		
 		// DB 추가
+		boolean b = youtubeService.writeYoutube(you);
+		YoutubeSave ysave = youtubeService.getYoutube(you);
 		
-		// SUC/FAIL
-		
-		return null;
+		return ysave;
 	}
 
+	// 유튜브 전체 다 가져오기
+	@RequestMapping(value = "youtubelist.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String youtubelist(HttpServletRequest req, Model model) throws Exception {
+		model.addAttribute("doc_title", "Youtube 목록");
+		
+		String id = ((MemberDto)req.getSession().getAttribute("login")).getId();
+		
+		YoutubeSave you = new YoutubeSave();
+		you.setId(id);
+		
+		// 유튜브 전체 다 가져오기
+		List<YoutubeSave> getTitles = youtubeService.getYoutubeList(you);
+		
+		model.addAttribute("youlist", getTitles);
+		
+		return "youtubelist.tiles";
+	}
+	
 
 }
