@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="appendMessage"/>
+		<item key="selection" value="loginAf"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="appendMessage"/>
-			<item value="ending"/>
-			<item value="connect"/>
-			<item value="auto"/>
-			<item value="chatArea"/>
-			<item value="pdsupdate.do"/>
+			<item value="loginAf"/>
+			<item value="getPollnum"/>
+			<item value="str"/>
+			<item value="DateUtil"/>
+			<item value="ck_seq"/>
+			<item value="writeYoutube"/>
+			<item value="Sys"/>
+			<item value="   public String toUrl(String msg) {      "/>
+			<item value="c_vname"/>
+			<item value="getTitles"/>
 			<item value="_frmForm"/>
-			<item value="_btnAdd"/>
-			<item value="chatAreaHeight"/>
-			<item value="chatMessageArea"/>
-			<item value="onOpen"/>
-			<item value="nickname"/>
-			<item value="send"/>
-			<item value="account()"/>
-			<item value="account.tiles"/>
+			<item value="youlist"/>
+			<item value="getVname"/>
+			<item value="_btnSearch"/>
+			<item value="search"/>
 		</list>
 		<list key="replacehistory">
 			<item value="login.id"/>

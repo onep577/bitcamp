@@ -50,6 +50,8 @@ public class MemberDaoImpl implements MemberDao {
 		logger.info("MemberDaoImpl loginAf : " + dto.getId() + ", " + dto.getPwd());
 		int count = sqlSession.selectOne(namespace + "loginAf", dto);
 		
+		logger.info("MemberDaoImpl : " + count);
+		
 		return count>0?true:false;
 	}
 

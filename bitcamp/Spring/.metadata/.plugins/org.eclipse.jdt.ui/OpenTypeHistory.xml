@@ -6,7 +6,9 @@
 <typeInfo handle="=SpringBbsAjax/src&lt;bit.com.a.dao{BbsDao.java[BbsDao" modifiers="513" timestamp="1566968587848"/>
 <typeInfo handle="=SpringSamples/src&lt;bit.com.a.dao{CalendarDao.java[CalendarDao" modifiers="513" timestamp="1567497010168"/>
 <typeInfo handle="=SpringSamples/src&lt;bit.com.a.service{CalendarService.java[CalendarService" modifiers="513" timestamp="1567497000523"/>
+<typeInfo handle="=SpringSamples/src&lt;bit.com.a.service{PollService.java[PollService" modifiers="513" timestamp="1567647064655"/>
+<typeInfo handle="=SpringSamples/src&lt;bit.com.a.dao{PollDao.java[PollDao" modifiers="513" timestamp="1567646890779"/>
+<typeInfo handle="=SpringSamples/src&lt;bit.com.a.dao{YoutubeDao.java[YoutubeDao" modifiers="513" timestamp="1567732167965"/>
+<typeInfo handle="=SpringSamples/src&lt;bit.com.a.service{YoutubeService.java[YoutubeService" modifiers="513" timestamp="1567732213394"/>
 <typeInfo handle="=MyBatisSample/C:\/Program Files\/Java\/jre1.8.0_211\/lib\/rt.jar&lt;java.io(Serializable.class[Serializable" modifiers="1537" timestamp="1557725694127"/>
-<typeInfo handle="=SpringSamples/src&lt;bit.com.a.service{PollService.java[PollService" modifiers="513" timestamp="1567585262773"/>
-<typeInfo handle="=SpringSamples/src&lt;bit.com.a.dao{PollDao.java[PollDao" modifiers="513" timestamp="1567590415102"/>
 </typeInfoHistroy>

@@ -215,11 +215,3 @@ function setDay2(){
 
 
 
-
-
-
-
-
-
-
-
