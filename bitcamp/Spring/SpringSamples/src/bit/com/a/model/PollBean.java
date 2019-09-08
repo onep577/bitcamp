@@ -39,6 +39,7 @@ public class PollBean implements Serializable {
 	private Date edate;
 	
 	// 보기들 묶음
+	// DateUtil.str은 null값이면 ""로 바꾼다
 	public String[] getPollnum() {
 		pollnum[0] = DateUtil.str(poll1);
 		pollnum[1] = DateUtil.str(poll2);

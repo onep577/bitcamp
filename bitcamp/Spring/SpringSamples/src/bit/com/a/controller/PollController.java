@@ -58,7 +58,7 @@ public class PollController {
 	
 	// 투표 만들기
 	@RequestMapping(value = "pollmakeAf.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String pollmakeAf(PollBean pbean) throws Exception {		
+	public String pollmakeAf(PollBean pbean) throws Exception {
 		logger.info("pollmakeAf : " + pbean.toString());
 		
 		pollService.makePoll(pbean);
