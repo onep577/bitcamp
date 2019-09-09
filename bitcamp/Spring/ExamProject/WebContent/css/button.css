@@ -1,0 +1,64 @@
+@CHARSET "UTF-8";
+
+/* Button Reset */
+.button,
+.button a,
+.button button,
+.button input { position:relative; margin:0; padding:0; border:0; display:inline-block; text-decoration:none !important; white-space:nowrap; background:url("../image/buttonWhite.gif") no-repeat; overflow:visible; color:#333;}
+.button { height:23px; padding:0; vertical-align:middle; margin-right:2px; background-position:left top;}
+.button a,
+.button button,
+.button input{ left:2px; vertical-align:top; cursor:pointer;}
+
+/* Button Size */
+.button.large { height:29px; background-position:left -30px; }
+.button.xLarge { height:35px; background-position:left -65px; }
+.button.small { height:18px; background-position:left -107px; }
+.button a,
+.button button,
+.button input { height:23px; padding:0 10px 0 8px; font-size:12px; line-height:24px; background-position:right top;}
+.button.large a,
+.button.large button,
+.button.large input { height:30px; padding:0 10px 0 8px; font-size:16px; line-height:29px; background-position:right -30px;}
+.button.xLarge a,
+.button.xLarge button,
+.button.xLarge input { height:35px; padding:0 10px 0 8px; font-size:20px; line-height:35px; background-position:right -65px;}
+.button.small a,
+.button.small button,
+.button.small input { height:18px; padding:0 6px 0 4px; font-size:11px; line-height:18px; background-position:right -107px;}
+
+/* Button Text Color */
+.button *:hover,
+.button *:active,
+.button *:focus{ color:#690;}
+.button.green,
+.button.green a,
+.button.green button,
+.button.green input { background-image:url("../image/buttonGreen.gif"); color:#fff;}
+.button.green *:hover,
+.button.green *:active,
+.button.green *:focus{ color:#ff0;}
+.button.black,
+.button.black a,
+.button.black button,
+.button.black input { background-image:url("../image/buttonBlack.gif"); color:#fff;}
+.button.black *:hover,
+.button.black *:active,
+.button.black *:focus{ color:#ff0;}
+.button.red,
+.button.red a,
+.button.red button,
+.button.red input {  background-image:url("../image/buttonRed.gif"); color:#fff;}
+.button.red *:hover,
+.button.red *:active,
+.button.red *:focus{ color:#ff0;}
+.button.blue,
+.button.blue a,
+.button.blue button,
+.button.blue input { position:center; background-image:url("../image/buttonBlue.gif"); color:#fff;}
+.button.blue *:hover,
+.button.blue *:active,
+.button.blue *:focus{ color:#ff0;}
+
+/* Button Text Strong */
+.button.strong * { font-weight:bold !important;}
