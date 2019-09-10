@@ -10,7 +10,7 @@ import org.springframework.util.StopWatch;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import bit.com.a.model.MemberDto;
+import bit.com.a.model.Student;
 
 @Aspect
 public class LogAop {
@@ -35,7 +35,7 @@ public class LogAop {
 		if(request != null) {
 			HttpSession session = request.getSession();
 			
-			String userId = ((MemberDto)session.getAttribute("login")).getId();
+			String userId = ((Student)session.getAttribute("login")).getId();
 			
 			if(userId == null) {
 				return "redirect:/logout.do";

@@ -31,27 +31,27 @@ request.setCharacterEncoding("utf-8");
 
 <div id="body_wrap">
 	<div id="main_wrap">
-		<tiles:insertAttribute name="top_inc"/>
-		<tiles:insertAttribute name="top_menu"/>
+		<tiles:insertAttribute name="top_inc" />
+		<tiles:insertAttribute name="top_menu" />
 	</div>
 
 	<div id="middle_wrap">
 		<div id="sidebar_wrap">
-			<tiles:insertAttribute name="left_menu"/>
+			<tiles:insertAttribute name="left_menu" />
 		</div>
-		
+
 		<div id="content_wrap">
 			<div id="content_title_wrap">
 				<!-- doc_title?? -->
 				<div class="title">${doc_title }</div>
 			</div>
-			
-			<tiles:insertAttribute name="main"/>
-		</div>		
+
+			<tiles:insertAttribute name="main" />
+		</div>
 	</div>
-	
+
 	<div id="footer_wrap">
-		<tiles:insertAttribute name="bottom_inc"/>
+		<tiles:insertAttribute name="bottom_inc" />
 	</div>
 
 </div>
@@ -63,29 +63,8 @@ $(document).ready(function () {
 	
 	$("#content_title_wrap div.title").css("background-image", "url('./image/ico_sub_sb.gif')");
 	
-	
-	
 });
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>

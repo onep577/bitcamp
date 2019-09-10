@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import bit.com.a.dao.PollDao;
-import bit.com.a.model.PollBean;
 import bit.com.a.model.PollDto;
-import bit.com.a.model.PollSubDto;
 import bit.com.a.model.Voter;
 import bit.com.a.service.PollService;
 
@@ -30,10 +28,10 @@ public class PollServiceImpl implements PollService {
 		List<PollDto> plist = new ArrayList<PollDto>();
 		
 		for (PollDto poll : list) {
-			int pollid = poll.getPollid();	// 투표번호
+			int subject_seq = poll.getExam_seq();	// 투표번호
 			
 			// 두번째 값은 아무거나 넣어도 된다
-			int count = pollDao.isVote(new Voter(pollid, -1, id));
+			int count = pollDao.isVote(new Voter(subject_seq, id));
 			
 			if(count == 1) {
 				// 투표했음
@@ -49,12 +47,14 @@ public class PollServiceImpl implements PollService {
 	}
 
 	// 투표 했는지? 안했는지? 확인
+	/*
 	@Override
 	public int isVote(Voter voter) throws Exception {
 		return pollDao.isVote(voter);
 	}
 
 	// 투표 만들기 위해 정보 다 가져오기
+	/*
 	@Override
 	public void makePoll(PollBean pbean) throws Exception {
 		
@@ -85,10 +85,13 @@ public class PollServiceImpl implements PollService {
 			pollDao.makePollSub(pollsub);
 		}
 		/**/
+	/*
 	}
+	/**/
 
 
 	// 투표하기
+	/*
 	@Override
 	public PollDto getPoll(PollDto poll) throws Exception {
 		return pollDao.getPoll(poll);
@@ -98,8 +101,10 @@ public class PollServiceImpl implements PollService {
 	public List<PollSubDto> getPollSubList(PollDto poll) throws Exception {
 		return pollDao.getPollSubList(poll);
 	}
+	/**/
 
 	// 투표
+	/*
 	@Override
 	public void polling(Voter voter) throws Exception {
 		// 투표자 등록, 질문의 카운터, 보기의 카운터
@@ -107,5 +112,6 @@ public class PollServiceImpl implements PollService {
 		pollDao.pollingPoll(voter);
 		pollDao.pollingSub(voter);
 	}
+	/**/
 
 }

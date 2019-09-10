@@ -10,39 +10,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import bit.com.a.model.MemberDto;
-import bit.com.a.service.MemberService;
+import bit.com.a.model.Student;
+import bit.com.a.service.StudentService;
 
 @Controller
-public class MemberController {
+public class StudentController {
 	
 	@Autowired
-	private MemberService memService;
+	private StudentService studentService;
 	
 	// 현재 클래스에서 Logger를 사용하겠다
-	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+	private static final Logger logger = LoggerFactory.getLogger(StudentController.class);
 	
 	// 로그인 페이지로 이동만
 	@RequestMapping(value = "login.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String login() throws Exception {
-		logger.info("MemberController login()");
+		logger.info("StudentController login()");
 		return "login.tiles";
 	}
 	
 	// 회원가입 페이지로 이동만
 	@RequestMapping(value = "account.do", method = RequestMethod.GET)
 	public String account() throws Exception {
-		logger.info("MemberController account()");
+		logger.info("StudentController account()");
 		return "account.tiles";
 	}
 	
 	// 회원가입 페이지에서 아이디 체크
 	@ResponseBody
 	@RequestMapping(value = "idcheck.do", method = RequestMethod.POST)
-	public String idcheck(MemberDto mem) throws Exception {
-		logger.info("MemberController idcheck()");
+	public String idcheck(Student mem) throws Exception {
+		logger.info("StudentController idcheck()");
 		
-		boolean b = memService.idCheck(mem.getId());
+		boolean b = studentService.idCheck(mem.getId());
 		
 		String msg = "";
 		if(b) {
@@ -56,10 +56,10 @@ public class MemberController {
 
 	// 회원가입 페이지에서 회원가입
 	@RequestMapping(value = "accountAf.do", method = RequestMethod.POST)
-	public String accountAf(MemberDto mem) throws Exception {
-		logger.info("MemberController accountAf()");
+	public String accountAf(Student mem) throws Exception {
+		logger.info("StudentController accountAf()");
 		
-		boolean b = memService.account(mem);
+		boolean b = studentService.accountAf(mem);
 		
 		if(b) {
 			return "redirect:/login.do";
@@ -72,23 +72,23 @@ public class MemberController {
 	@RequestMapping(value = "loginAf.do",
 					produces = "application/String; charset=utf-8",
 					method = RequestMethod.POST)
-	public String loginAf(MemberDto dto, HttpServletRequest req) throws Exception {
-		logger.info("MemberController loginAf() : " + dto.getId() + ", " + dto.getPwd());
-		boolean b = memService.loginAf(dto);
+	public String loginAf(Student dto, HttpServletRequest req) throws Exception {
+		logger.info("StudentController loginAf() : " + dto.getId() + ", " + dto.getPwd());
+		boolean b = studentService.loginAf(dto);
 		
 		if(b) {
-			logger.info("MemberController loginAf() 로그인 성공");
+			logger.info("StudentController loginAf() 로그인 성공");
 			
-			dto = memService.loginDto(dto);
+			dto = studentService.loginDto(dto);
 			
 			// session 저장
 			req.getSession().setAttribute("login", dto);
 			req.getSession().setMaxInactiveInterval(60 * 60 * 2); // 2시간이다
 			
-			logger.info("MemberController session id : " + dto.toString());
-			return "redirect:/bbsList.do";
+			logger.info("StudentController session id : " + dto.toString());
+			return "redirect:/polllist.do";
 		}else {
-			logger.info("MemberController loginAf() 로그인 실패");
+			logger.info("StudentController loginAf() 로그인 실패");
 			return "redirect:/login.do";
 		}
 	}
@@ -96,7 +96,7 @@ public class MemberController {
 	// 세션이 null값일 때 로그아웃
 	@RequestMapping(value = "logout.do", method = RequestMethod.GET)
 	public String logout(HttpServletRequest req) throws Exception {
-		logger.info("MemberController logout()");
+		logger.info("StudentController logout()");
 		
 		req.getSession().invalidate();
 		

@@ -3,78 +3,47 @@ package bit.com.a.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+/*
+DROP TABLE VOTER
+CASCADE CONSTRAINTS;
+
+DROP SEQUENCE VOTER_SEQ;
+
+CREATE TABLE VOTER(
+	VOTER_SEQ		NUMBER(10)		PRIMARY KEY,	-- 투표자SEQ
+	SUBJECT_SEQ		VARCHAR2(50)	NOT NULL,		-- 과목SEQ
+	POLLID			VARCHAR2(50)	NOT NULL,		-- 질문SEQ
+	ANSWER			VARCHAR2(50)	NOT NULL,		-- 체크한 보기
+	ID				VARCHAR2(20)	NOT NULL		-- 누가?
+)
+
+CREATE SEQUENCE VOTER_SEQ
+START WITH 1
+INCREMENT BY 1;
+*/
+
 // 투표자
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Voter implements Serializable {
 	
-	private int voterid;		// 투표자 sequence
-	private int pollid;			// 질문	좋아하는 과일은?
-	private int pollsubid;		// 보기	(사과, 배, 바나나)
-	private String id;			// 누가?
-	private Date regdate;		// 언제
-	
-	public Voter() {
-	}
+	private int voterseq;			// 투표자 sequence
+	private int subject_seq;		// 과목 sequence
+	private int pollid;				// 질문	좋아하는 과일은?
+	private int answer;				// 보기	(사과, 배, 바나나)
+	private String id;				// 누가?
 
-	public Voter(int pollid, int pollsubid, String id) {
+	public Voter(int subject_seq, String id) {
 		super();
-		this.pollid = pollid;
-		this.pollsubid = pollsubid;
+		this.subject_seq = subject_seq;
 		this.id = id;
-	}
-
-	public Voter(int voterid, int pollid, int pollsubid, String id, Date regdate) {
-		super();
-		this.voterid = voterid;
-		this.pollid = pollid;
-		this.pollsubid = pollsubid;
-		this.id = id;
-		this.regdate = regdate;
-	}
-
-	public int getVoterid() {
-		return voterid;
-	}
-
-	public void setVoterid(int voterid) {
-		this.voterid = voterid;
-	}
-
-	public int getPollid() {
-		return pollid;
-	}
-
-	public void setPollid(int pollid) {
-		this.pollid = pollid;
-	}
-
-	public int getPollsubid() {
-		return pollsubid;
-	}
-
-	public void setPollsubid(int pollsubid) {
-		this.pollsubid = pollsubid;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public Date getRegdate() {
-		return regdate;
-	}
-
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
-	}
-
-	@Override
-	public String toString() {
-		return "Voter [voterid=" + voterid + ", pollid=" + pollid + ", pollsubid=" + pollsubid + ", id=" + id
-				+ ", regdate=" + regdate + "]";
 	}
 
 }

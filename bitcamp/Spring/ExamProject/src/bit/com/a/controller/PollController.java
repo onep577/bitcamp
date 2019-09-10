@@ -12,11 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import bit.com.a.model.MemberDto;
-import bit.com.a.model.PollBean;
 import bit.com.a.model.PollDto;
-import bit.com.a.model.PollSubDto;
-import bit.com.a.model.Voter;
+import bit.com.a.model.Student;
 import bit.com.a.service.PollService;
 
 @Controller
@@ -34,13 +31,13 @@ public class PollController {
 		
 		// 리스트로 들어갈 때 투표했으면 결과창으로 안했으면 투표창으로 보내기 위해 session이 필요하다
 		// 왜? voter dto에 session id가 있으면 결과창으로 보낼 수 있다
-		String id = ((MemberDto)req.getSession().getAttribute("login")).getId();
+		String id = ((Student)req.getSession().getAttribute("login")).getId();
 		
-		System.out.println("session : " + ((MemberDto)req.getSession().getAttribute("login")).toString());
+		logger.info("session : " + ((Student)req.getSession().getAttribute("login")).toString());
 		
 		// list 투표를 했는지 체크
 		List<PollDto> list = pollService.getPollAllList(id);
-		System.out.println("list : " + list.toString());
+		logger.info("list : " + list.toString());
 		
 		model.addAttribute("plists", list);
 		
@@ -57,6 +54,7 @@ public class PollController {
 	}
 	
 	// 투표 만들기
+	/*
 	@RequestMapping(value = "pollmakeAf.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String pollmakeAf(PollBean pbean) throws Exception {
 		logger.info("pollmakeAf : " + pbean.toString());
@@ -65,8 +63,10 @@ public class PollController {
 		
 		return "redirect:/polllist.do";
 	}
+	/**/
 	
 	// 투표하기 페이지로 이동
+	/*
 	@RequestMapping(value = "polldetail.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String polldetail(Model model, PollDto poll) throws Exception {
 		logger.info("polldetail()");
@@ -85,8 +85,10 @@ public class PollController {
 		
 		return "polldetail.tiles";
 	}
+	/**/
 	
 	// 투표하기
+	/*
 	@RequestMapping(value = "polling.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String polling(Voter voter, Model model) throws Exception {
 		logger.info("polling()");
@@ -95,8 +97,10 @@ public class PollController {
 		
 		return "redirect:/polllist.do";
 	}
+	/**/
 	
 	// 투표 결과 페이지로 이동
+	/*
 	@RequestMapping(value = "pollresult.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String pollresult(PollDto poll, Model model) throws Exception {
 		logger.info("pollresult()");
@@ -110,13 +114,8 @@ public class PollController {
 		
 		return "pollresult.tiles";
 	}
+	/**/
 
 }
-
-
-
-
-
-
 
 

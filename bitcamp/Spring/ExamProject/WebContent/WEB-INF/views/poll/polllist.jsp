@@ -29,13 +29,13 @@ List<PollDto> plists = (List<PollDto>)request.getAttribute("plists");
 		%>
 		<tr bgcolor="#aabbcc">
 			<td><%=i+1 %></td>
-			<td><%=poll.getId() %></td>
+			<td><%=poll.getSubject_seq() %></td>
+			<td><%=poll.getExam_seq() %></td>
 			<td><%=poll.getQuestion() %></td>
-			<td><%=poll.getSdate() %></td>
-			<td><%=poll.getEdate() %></td>
-			<td><%=poll.getItemcount() %></td>
+			<td><%=poll.getQuestion_sub() %></td>
+			<td><%=poll.getAnswer() %></td>
 			<td><%=poll.getPolltotal() %></td>
-			<td><%=poll.getRegdate() %></td>
+			<td><%=poll.getTeacher() %></td>
 		</tr>
 		<%
 	}
@@ -68,7 +68,7 @@ List<PollDto> plists = (List<PollDto>)request.getAttribute("plists");
 		%>
 		<tr bgcolor="#aabbcc">
 			<td><%=i+1 %></td>
-			<td><%=poll.getId() %></td>
+			<td><%=poll.getTeacher() %></td>
 			<!-- 투표를 했으면 링크없다, 안했으면 링크건다 -->
 			<%
 			// true면 투표했고, false면 투표 안했다
@@ -84,7 +84,7 @@ List<PollDto> plists = (List<PollDto>)request.getAttribute("plists");
 			}else{
 				%>
 				<td>
-					<a href="polldetail.do?pollid=<%=poll.getPollid() %>">
+					<a href="polldetail.do?subject_seq=<%=poll.getSubject_seq() %>">
 						<%=poll.getQuestion() %>
 					</a>
 				</td>
@@ -97,7 +97,7 @@ List<PollDto> plists = (List<PollDto>)request.getAttribute("plists");
 	         // 결과를 볼 수 있다
 	         if(isSuccess || DateUtil.isEnd(poll.getEdate())){
 	            %>
-	            <a href="pollresult.do?pollid=<%=poll.getPollid() %>">결과</a>
+	            <a href="pollresult.do?subject_seq=<%=poll.getSubject_seq() %>">결과</a>
 	            <%
 	         }else{
 	            %>
@@ -110,9 +110,7 @@ List<PollDto> plists = (List<PollDto>)request.getAttribute("plists");
 			
 			<td><%=poll.getSdate() %></td>
 			<td><%=poll.getEdate() %></td>
-			<td><%=poll.getItemcount() %></td>
 			<td><%=poll.getPolltotal() %></td>
-			<td><%=poll.getRegdate() %></td>
 		</tr>
 		<%
 	}

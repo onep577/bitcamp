@@ -10,17 +10,13 @@ int tday = cal.get(Calendar.DATE);
 %>
 
 <form action="pollmakeAf.do" id="polForm" method="post">
-<table class="list_table" style="width: 85%">
+<table class="list_table" style="width: 65%">
 <colgroup>
 	<col width="200px"><col width="500px">
 </colgroup>
 
-<tr>
-	<th>아이디</th>
-	<td style="text-align: left;">
-		${login.id }<input type="hidden" name="id" value="${login.id }">
-	</td>
-</tr>
+
+
 <tr>
 	<th>투표기한</th>
 	<td style="text-align: left;">
@@ -94,20 +90,20 @@ int tday = cal.get(Calendar.DATE);
 </tr>
 
 <tr>
-	<th>투표 내용</th>
+	<th>투표 제목</th>
 	<td style="text-align: left;">
-		<textarea rows="10" cols="50" name="question"></textarea>
+		<input type="text" size="50" name="question">
 	</td>
 </tr>
 
 <tr>
-	<th>투표 문항수</th>
+	<th>투표 질문수</th>
 	<td style="text-align: left;">
 		<select name="itemcount" onchange="pollchange(this)">
 			<%
-			for(int i = 2; i <= 10; i++){
+			for(int i = 10; i <= 20; i++){
 				%>
-				<option <%=(4+"").equals(i+"")?"selected='selected'":"" %>
+				<option <%=(2+"").equals(i+"")?"selected='selected'":"" %>
 				value="<%=i %>"><%=i %></option>
 				<%
 			}
@@ -115,32 +111,64 @@ int tday = cal.get(Calendar.DATE);
 		</select>개
 	</td>
 </tr>
+</table>
 
+<br><br><br><br><br><br><br><br>
+
+<%
+for(int i = 1; i <= 20; i++){
+%>
+<div id="poll<%=i %>" name="poll<%=i %>">
+<table class="list_table" style="width: 95%">
+<colgroup>
+	<col width="200px"><col width="500px">
+</colgroup>
 <tr>
-	<th>투표 상세 문항</th>
+	<th><%=(i+"") %>번 질문</th>
 	<td style="text-align: left;">
-		<%
-		for(int i = 1; i <= 10; i++){
-			%>
-			<div id="poll<%=i %>">
-				<%=(i+"") %>번 : <input type="text" name="poll<%=i %>" size="60">
-			</div>
-			<%
-		}
-		%>
+		<table>
+			<colgroup>
+				<col width="100px"><col width="500px">
+			</colgroup>
+			<tr>
+				<td>질문</td>
+				<td><input type="text" size="80"></td>
+			</tr>
+			<tr>
+				<td>상세질문</td>
+				<td><input type="file" value="파일 선택"></td>
+			</tr>
+			<tr>
+				<td>보기</td>
+				<td>
+				<input type="text" name="answer">
+				<input type="text" name="answer<%=i%>">
+				<input type="text" name="answer<%=i%>">
+				<input type="text" name="answer<%=i%>">
+				</td>
+			</tr>
+			<tr>
+				<td>답</td>
+				<td><input type="text" size="80"></td>
+			</tr>
+		</table>
 	</td>
 </tr>
-
-<tr>
-	<td colspan="2"><input type="button" id="pollsubmit" value="투표만들기"></td>
-</tr>
-
 </table>
+</div>
+<%
+}
+%>
 </form>
+
+<input type="button" id="pollsubmit" value="투표만들기"></td>
+
+
+
 
 <script type="text/javascript">
 $(document).ready(function () {
-	for(i = 5; i <= 10; i++){
+	for(i = 1; i <= 20; i++){
 		$("#poll" + i).hide();
 	}
 	
@@ -161,7 +189,7 @@ function pollchange( me ){
 	//alert("num : " + num);
 	
 	// 전부 초기화
-	for(i = 1; i <= 10; i++){
+	for(i = 1; i <= 20; i++){
 		$("#poll" + i).val("");
 		$("#poll" + i).hide();
 	}

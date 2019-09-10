@@ -2,6 +2,11 @@ package bit.com.a.model;
 
 import java.io.Serializable;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 /*
 DROP TABLE POLLSUB
 CASCADE CONSTRAINTS;
@@ -9,77 +14,45 @@ CASCADE CONSTRAINTS;
 DROP SEQUENCE POLLSUB_SEQ;
 
 CREATE TABLE POLLSUB(
-	POLLSUBID NUMBER NOT NULL,
-	POLLID NUMBER NOT NULL,
-	ANSWER VARCHAR2(1000) NOT NULL,
-	ACOUNT NUMBER NOT NULL,
-	CONSTRAINT POLLSUB_PK PRIMARY KEY(POLLSUBID)
+	SUBJECT_SEQ		NUMBER(10)		NOT NULL,		-- 과목코드
+	EXAM_SEQ		NUMBER(10)		NOT NULL,		-- 시험코드
+	QUESTION		VARCHAR2(50)	NOT NULL,		-- 질문
+	QUESTION_SUB	VARCHAR2(20),					-- 상세 질문
+	ANSWER			VARCHAR2(10)	NOT NULL,		-- 답
+	POLLSUB1		VARCHAR2(20)	NOT NULL,		-- 보기1
+	POLLSUB2		VARCHAR2(20)	NOT NULL,		-- 보기2
+	POLLSUB3		VARCHAR2(20)	NOT NULL,		-- 보기3
+	POLLSUB4		VARCHAR2(20)	NOT NULL,		-- 보기4
+	POLLSUBTOTAL1	NUMBER(10)		NOT NULL,		-- 1번 투표한 사람 수
+	POLLSUBTOTAL2	NUMBER(10)		NOT NULL,		-- 2번 투표한 사람 수
+	POLLSUBTOTAL3	NUMBER(10)		NOT NULL,		-- 3번 투표한 사람 수
+	POLLSUBTOTAL4	NUMBER(10)		NOT NULL		-- 4번 투표한 사람 수
 );
 
 CREATE SEQUENCE POLLSUB_SEQ
 START WITH 1
 INCREMENT BY 1;
-
-ALTER TABLE POLLSUB ADD CONSTRAINT POLLSUB_FK
-FOREIGN KEY(POLLID)
-REFERENCES POLL(POLLID);
 */
 
 // 보기들
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class PollSubDto implements Serializable {
+	private int subject_seq;		// 과목코드
+	private int exam_seq;			// 시험코드
+	private String question;		// 질문
+	private String question_sub;	// 상세 질문
+	private String answer_sub;		// 답
 	
-	private int pollsubid;		// sequence 1, 2, 3, 4, 5				1, 2, 3
-	private int pollid;			// PollDto의 seq 즉, 질문 번호이다		1, 1, 1
-	private String answer;		// 보기명(사과, 배, 바나나)
-	private int acount;			// 이 보기를 선택한 사람 수	예) 사과를 선택한 사람 수, 배를 선택한 사람 수
-	
-	public PollSubDto() {
-	}
-
-	public PollSubDto(int pollsubid, int pollid, String answer, int acount) {
-		super();
-		this.pollsubid = pollsubid;
-		this.pollid = pollid;
-		this.answer = answer;
-		this.acount = acount;
-	}
-
-	public int getPollsubid() {
-		return pollsubid;
-	}
-
-	public void setPollsubid(int pollsubid) {
-		this.pollsubid = pollsubid;
-	}
-
-	public int getPollid() {
-		return pollid;
-	}
-
-	public void setPollid(int pollid) {
-		this.pollid = pollid;
-	}
-
-	public String getAnswer() {
-		return answer;
-	}
-
-	public void setAnswer(String answer) {
-		this.answer = answer;
-	}
-
-	public int getAcount() {
-		return acount;
-	}
-
-	public void setAcount(int acount) {
-		this.acount = acount;
-	}
-
-	@Override
-	public String toString() {
-		return "PollSubDto [pollsubid=" + pollsubid + ", pollid=" + pollid + ", answer=" + answer + ", acount=" + acount
-				+ "]";
-	}
+	private int pollsub1;			// 보기1
+	private int pollsub2;			// 보기2
+	private int pollsub3;			// 보기3
+	private int pollsub4;			// 보기4
+	private int pollsubtotal1;		// 1번 투표한 사람 수
+	private int pollsubtotal2;		// 2번 투표한 사람 수
+	private int pollsubtotal3;		// 3번 투표한 사람 수
+	private int pollsubtotal4;		// 4번 투표한 사람 수
 
 }
