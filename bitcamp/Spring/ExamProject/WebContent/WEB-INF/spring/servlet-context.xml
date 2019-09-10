@@ -45,20 +45,25 @@
 		<property name="requestContextAttribute" value="requestContext"/>
 		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
 	</bean>
+
+
+	
+	<!-- 다중파일 -->
+	<!-- 멀티파트 리졸버 -->
+<!-- 	<bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+         최대업로드 가능한 바이트크기
+         <property name="maxUploadSize" value="52428800" />
+
+         defaultEncoding
+         <property name="defaultEncoding" value="utf-8" />	
+	</bean> -->
 	
 	
+
 	<!-- java 공통 패키지 -->
 	<context:component-scan base-package="bit.com.a"></context:component-scan>
-	
-	<!-- file upload -->
-	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		
-		<property name="maxUploadSize" value="104857600"/>
-		<property name="maxInMemorySize" value="102400"/>
-		<property name="defaultEncoding" value="utf-8"/>
-		<property name="uploadTempDir" value="upload"/>
-	</bean>
+
+
 	
 	<!-- download view -->
 	<bean id="downloadView" class="bit.com.a.util.DownloadView"/>	

@@ -36,7 +36,14 @@ public class Subject implements Serializable {
 	private String title;		// 시험명
 	private int itemcount;		// 질문의 갯수 10, 20
 	private Date wdate;			// 등록일
-	private String sdate;		// 시작일
-	private String edate;		// 종료일
-
+	private Date sdate;			// 시작일
+	private Date edate;			// 종료일
+	
+	public Subject(String title, Date sdate, Date edate) {
+		super();
+		this.title = title;
+		this.sdate = sdate;
+		this.edate = edate;
+	}
+	
 }

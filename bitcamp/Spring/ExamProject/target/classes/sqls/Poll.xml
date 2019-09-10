@@ -8,7 +8,7 @@
 
 <!-- 모든 투표의 정보를 가져오기 -->
 <select id="getPollAllList" resultType="bit.com.a.model.PollDto">
-SELECT SUBJECT_SEQ, EXAM_SEQ, QUESTION, QUESTION_SUB, ANSWER, TEACHER
+SELECT SUBJECT_SEQ, EXAM_SEQ, QUESTION, QUESTION_SUB, TEACHER
 FROM POLL
 ORDER BY SUBJECT_SEQ DESC
 </select>
@@ -20,17 +20,24 @@ FROM VOTER
 WHERE SUBJECT_SEQ=#{subject_seq} AND ID=#{id}
 </select>
 
+<!-- 투표 과목 만들기 -->
+<insert id="makeSubject" parameterType="bit.com.a.model.Subject">
+INSERT INTO SUBJECT(SEQ, TITLE, WDATE, SDATE, EDATE)
+VALUES(SUBJECT_SEQ.NEXTVAL, #{title}, SYSDATE, #{sdate}, #{edate})
+</insert>
+
 <!-- 투표 질문 만들기 -->
-<!-- <insert id="makePoll" parameterType="bit.com.a.model.PollDto">
-INSERT INTO POLL(POLLID, ID, QUESTION, SDATE, EDATE, ITEMCOUNT, POLLTOTAL, REGDATE)
-VALUES(POLL_SEQ.NEXTVAL, #{id}, #{question}, #{sdate}, #{edate}, #{itemcount}, 0, SYSDATE)
-</insert> -->
+<insert id="makePoll" parameterType="bit.com.a.model.PollDto">
+INSERT INTO POLL(SUBJECT_SEQ, EXAM_SEQ, QUESTION, QUESTION_SUB, POLLTOTAL, TEACHER, SDATE, EDATE)
+VALUES(SUBJECT_SEQ.NEXTVAL, EXAM_SEQ.NEXTVAL, #{question}, #{question_sub}, 0, #{teacher}, #{sdate}, #{edate})
+</insert>
 
 <!-- 투표 보기 만들기 -->
-<!-- <insert id="makePollSub" parameterType="bit.com.a.model.PollSubDto">
-INSERT INTO POLLSUB(POLLSUBID, POLLID, ANSWER, ACOUNT)
-VALUES(POLLSUB_SEQ.NEXTVAL, (SELECT NVL(MAX(POLLID), 0) FROM POLL), #{answer}, 0)
-</insert> -->
+<insert id="makePollSub" parameterType="bit.com.a.model.PollSubDto">
+INSERT INTO POLLSUB(*)
+VALUES(SUBJECT_SEQ.NEXTVAL, EXAM_SEQ.NEXTVAL, #{question}, #{question_sub}, #{answer},
+#{pollsub1}, #{pollsub2}, #{pollsub3}, #{pollsub4}, 0, 0, 0, 0)
+</insert>
 
 
 

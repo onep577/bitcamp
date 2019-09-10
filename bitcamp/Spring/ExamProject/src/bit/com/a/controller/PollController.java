@@ -1,9 +1,11 @@
 package bit.com.a.controller;
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +13,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import bit.com.a.model.PollBean;
 import bit.com.a.model.PollDto;
 import bit.com.a.model.Student;
 import bit.com.a.service.PollService;
+import bit.com.a.util.FUpUtil;
 
 @Controller
 public class PollController {
@@ -54,16 +60,42 @@ public class PollController {
 	}
 	
 	// 투표 만들기
-	/*
 	@RequestMapping(value = "pollmakeAf.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String pollmakeAf(PollBean pbean) throws Exception {
+	public String pollmakeAf(PollBean pbean,
+			@RequestParam(value = "fileload", required = false) MultipartFile fileload,
+			@RequestParam("file") MultipartFile[] multiFiles, HttpServletRequest req ) throws Exception {
+
+		logger.info(multiFiles.toString());
 		logger.info("pollmakeAf : " + pbean.toString());
 		
-		pollService.makePoll(pbean);
+		System.out.println("길이 : " +pbean.getItemcount());
+		
+		String question[] = pbean.getQuestion().split(",");
+		String question_sub[] = pbean.getQuestion_sub().split(",");
+		String pollsub1[] = pbean.getPollsub1().split(",");
+		String pollsub2[] = pbean.getPollsub2().split(",");
+		String pollsub3[] = pbean.getPollsub3().split(",");
+		String pollsub4[] = pbean.getPollsub4().split(",");
+		String answer[] = pbean.getAnswer().split(",");
+		
+		for(int i = 0; i < Integer.parseInt(pbean.getItemcount()); i++) {
+			logger.info("pollmakeAf : " + pbean.getQuestion());
+			pollService.makePoll(new PollBean(pbean.getTitle(),
+					question[i],
+					question_sub[i],
+					pbean.getItemcount(),
+					pollsub1[i],
+					pollsub2[i],
+					pollsub3[i],
+					pollsub4[i],
+					answer[i],
+					pbean.getTeacher(),
+					pbean.getSdate(),
+					pbean.getEdate()));
+		}		
 		
 		return "redirect:/polllist.do";
 	}
-	/**/
 	
 	// 투표하기 페이지로 이동
 	/*

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import bit.com.a.dao.PollDao;
 import bit.com.a.model.PollDto;
+import bit.com.a.model.PollSubDto;
+import bit.com.a.model.Subject;
 import bit.com.a.model.Voter;
 
 @Repository
@@ -31,21 +33,23 @@ public class PollDaoImpl implements PollDao {
 		return sqlSession.selectOne(namespace + "isVote", voter);
 	}
 
+	// 투표 과목 만들기
+	@Override
+	public void makeSubject(Subject subject) throws Exception {
+		sqlSession.insert(namespace + "makeSubject", subject);
+	}
+
 	// 투표 질문 만들기
-	/*
 	@Override
 	public void makePoll(PollDto poll) throws Exception {
 		sqlSession.insert(namespace + "makePoll", poll);		
 	}
-	/**/
 
 	// 투표 보기 만들기
-	/*
 	@Override
 	public void makePollSub(PollSubDto pollSub) throws Exception {
 		sqlSession.insert(namespace + "makePollSub", pollSub);
 	}
-	/**/
 
 	// 투표하기
 	/*

@@ -9,7 +9,7 @@ int tmonth = cal.get(Calendar.MONTH) +1;
 int tday = cal.get(Calendar.DATE);
 %>
 
-<form action="pollmakeAf.do" id="polForm" method="post">
+<form id="polForm" method="post" enctype="multipart/form-data">
 <table class="list_table" style="width: 65%">
 <colgroup>
 	<col width="200px"><col width="500px">
@@ -92,7 +92,7 @@ int tday = cal.get(Calendar.DATE);
 <tr>
 	<th>투표 제목</th>
 	<td style="text-align: left;">
-		<input type="text" size="50" name="question">
+		<input type="text" size="50" name="title">
 	</td>
 </tr>
 
@@ -101,9 +101,9 @@ int tday = cal.get(Calendar.DATE);
 	<td style="text-align: left;">
 		<select name="itemcount" onchange="pollchange(this)">
 			<%
-			for(int i = 10; i <= 20; i++){
+			for(int i = 1; i <= 20; i++){
 				%>
-				<option <%=(2+"").equals(i+"")?"selected='selected'":"" %>
+				<option <%=(20+"").equals(i+"")?"selected='selected'":"" %>
 				value="<%=i %>"><%=i %></option>
 				<%
 			}
@@ -132,24 +132,29 @@ for(int i = 1; i <= 20; i++){
 			</colgroup>
 			<tr>
 				<td>질문</td>
-				<td><input type="text" size="80"></td>
+				<td><input type="text" name="question" size="80"></td>
 			</tr>
 			<tr>
 				<td>상세질문</td>
-				<td><input type="file" value="파일 선택"></td>
+				<td><input type="file" name="question_sub" value="파일 선택"></td>
 			</tr>
 			<tr>
 				<td>보기</td>
 				<td>
-				<input type="text" name="answer">
-				<input type="text" name="answer<%=i%>">
-				<input type="text" name="answer<%=i%>">
-				<input type="text" name="answer<%=i%>">
+				1번 : <input type="text" name="pollsub1" class="pollsub1<%=i%>" onchange="changeVal1(<%=i%>)"><br>
+				2번 : <input type="text" name="pollsub2" class="pollsub2<%=i%>" onchange="changeVal2(<%=i%>)"><br>
+				3번 : <input type="text" name="pollsub3" class="pollsub3<%=i%>" onchange="changeVal3(<%=i%>)"><br>
+				4번 : <input type="text" name="pollsub4" class="pollsub4<%=i%>" onchange="changeVal4(<%=i%>)">
 				</td>
 			</tr>
 			<tr>
 				<td>답</td>
-				<td><input type="text" size="80"></td>
+				<td>
+				1번 : <b class="b_sub1<%=i%>"></b>&nbsp;<input type="radio" name="answer<%=i %>" class="answer_sub1<%=i%>"><br>
+				2번 : <b class="b_sub2<%=i%>"></b>&nbsp;<input type="radio" name="answer<%=i %>" class="answer_sub2<%=i%>"><br>
+				3번 : <b class="b_sub3<%=i%>"></b>&nbsp;<input type="radio" name="answer<%=i %>" class="answer_sub3<%=i%>"><br>
+				4번 : <b class="b_sub4<%=i%>"></b>&nbsp;<input type="radio" name="answer<%=i %>" class="answer_sub4<%=i%>">
+				</td>
 			</tr>
 		</table>
 	</td>
@@ -159,18 +164,20 @@ for(int i = 1; i <= 20; i++){
 <%
 }
 %>
+<input type="hidden" name="answer" id="_answer">
+<input type="hidden" name="teacher" value="${login.id }">
 </form>
 
-<input type="button" id="pollsubmit" value="투표만들기"></td>
-
+<input type="button" id="pollsubmit" value="투표만들기">
 
 
 
 <script type="text/javascript">
-$(document).ready(function () {
+$(document).ready(function () {	
 	for(i = 1; i <= 20; i++){
 		$("#poll" + i).hide();
 	}
+
 	
 	// 해당 년,월에 맞는 일을 리턴해준다
 	$("select[name='smonth']").change( setDay1 );
@@ -178,9 +185,58 @@ $(document).ready(function () {
 	
 
 	$("#pollsubmit").click(function () {
-		$("#polForm").submit();
+		//alert("333");
+		
+		var itemcount = $("select[name=itemcount]").val();
+		//alert(itemcount);
+		
+		var str = "";
+		for(i=1; i<=itemcount; i++){
+			var answer = $("input[name=answer"+i+"]:checked").val();
+					
+			str += answer + ",";
+		}		
+		var answer = str.substring(0, str.length -1);
+		$("#_answer").val( str );
+		//alert(answer);
+		
+		$("#polForm").attr("action","pollmakeAf.do").submit();
 	});
 });
+
+
+
+// 입력값이 바뀌면 자동으로 바뀌게 한다
+function changeVal1(num) {
+	//alert(num);
+	var pollsub = $(".pollsub1"+num).val();
+	//alert(pollsub);
+	$(".answer_sub1"+num).val( pollsub );
+	$(".b_sub1"+num).text( pollsub );
+}
+function changeVal2(num) {
+	//alert(num);
+	var pollsub = $(".pollsub2"+num).val();
+	//alert(pollsub);
+	$(".answer_sub2"+num).val( pollsub );
+	$(".b_sub2"+num).text( pollsub );
+}
+function changeVal3(num) {
+	//alert(num);
+	var pollsub = $(".pollsub3"+num).val();
+	//alert(pollsub);
+	$(".answer_sub3"+num).val( pollsub );
+	$(".b_sub3"+num).text( pollsub );
+}
+function changeVal4(num) {
+	//alert(num);
+	var pollsub = $(".pollsub4"+num).val();
+	//alert(pollsub);
+	$(".answer_sub4"+num).val( pollsub );
+	$(".b_sub4"+num).text( pollsub );
+}
+
+
 
 // 
 function pollchange( me ){
@@ -236,10 +292,5 @@ function setDay2(){
 }
 
 </script>
-
-
-
-
-
 
 

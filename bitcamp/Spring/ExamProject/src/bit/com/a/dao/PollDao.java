@@ -3,6 +3,8 @@ package bit.com.a.dao;
 import java.util.List;
 
 import bit.com.a.model.PollDto;
+import bit.com.a.model.PollSubDto;
+import bit.com.a.model.Subject;
 import bit.com.a.model.Voter;
 
 public interface PollDao {
@@ -14,8 +16,9 @@ public interface PollDao {
 	public int isVote(Voter voter) throws Exception;
 	
 	// 투표만들기
-	//public void makePoll(PollDto poll) throws Exception;
-	//public void makePollSub(PollSubDto pollSub) throws Exception;
+	public void makeSubject(Subject subject) throws Exception;
+	public void makePoll(PollDto poll) throws Exception;
+	public void makePollSub(PollSubDto pollSub) throws Exception;
 	
 	// 투표하기
 	//public PollDto getPoll(PollDto poll) throws Exception;

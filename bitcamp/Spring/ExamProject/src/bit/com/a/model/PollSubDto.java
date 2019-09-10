@@ -40,19 +40,30 @@ INCREMENT BY 1;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PollSubDto implements Serializable {
-	private int subject_seq;		// 과목코드
-	private int exam_seq;			// 시험코드
-	private String question;		// 질문
-	private String question_sub;	// 상세 질문
-	private String answer_sub;		// 답
+	private int subject_seq;			// 과목코드
+	private int exam_seq;				// 시험코드
+	private String question;			// 질문
+	private String question_sub;		// 상세 질문
+	private String answer;				// 정답
+	private String pollsub1;			// 보기1
+	private String pollsub2;			// 보기2
+	private String pollsub3;			// 보기3
+	private String pollsub4;			// 보기4
+	private int pollsubtotal1;			// 1번 투표한 사람 수
+	private int pollsubtotal2;			// 2번 투표한 사람 수
+	private int pollsubtotal3;			// 3번 투표한 사람 수
+	private int pollsubtotal4;			// 4번 투표한 사람 수	
 	
-	private int pollsub1;			// 보기1
-	private int pollsub2;			// 보기2
-	private int pollsub3;			// 보기3
-	private int pollsub4;			// 보기4
-	private int pollsubtotal1;		// 1번 투표한 사람 수
-	private int pollsubtotal2;		// 2번 투표한 사람 수
-	private int pollsubtotal3;		// 3번 투표한 사람 수
-	private int pollsubtotal4;		// 4번 투표한 사람 수
+	public PollSubDto(String question, String question_sub, String answer,
+			String pollsub1, String pollsub2, String pollsub3, String pollsub4) {
+		super();
+		this.question = question;
+		this.question_sub = question_sub;
+		this.answer = answer;
+		this.pollsub1 = pollsub1;
+		this.pollsub2 = pollsub2;
+		this.pollsub3 = pollsub3;
+		this.pollsub4 = pollsub4;
+	}
 
 }

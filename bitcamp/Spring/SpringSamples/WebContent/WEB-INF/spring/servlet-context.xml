@@ -50,15 +50,6 @@
 	<!-- java 공통 패키지 -->
 	<context:component-scan base-package="bit.com.a"></context:component-scan>
 	
-	<!-- file upload -->
-	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		
-		<property name="maxUploadSize" value="104857600"/>
-		<property name="maxInMemorySize" value="102400"/>
-		<property name="defaultEncoding" value="utf-8"/>
-		<property name="uploadTempDir" value="upload"/>
-	</bean>
 	
 	<!-- download view -->
 	<bean id="downloadView" class="bit.com.a.util.DownloadView"/>	
@@ -70,17 +61,6 @@
 		</property>
 		
 	</bean>
-
-	<!-- web socket 설정 -->
-	<websocket:handlers>
-		<websocket:mapping handler="myHandler"
-			path="/echo.do" />
-		<websocket:handshake-interceptors>
-			<bean
-				class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"></bean>
-		</websocket:handshake-interceptors>
-	</websocket:handlers>
-	<bean id="myHandler" class="bit.com.a.websock.WebSocket" />
 	
 
 </beans>
