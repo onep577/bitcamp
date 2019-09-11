@@ -68,7 +68,7 @@ public class PollController {
 		logger.info(multiFiles.toString());
 		logger.info("pollmakeAf : " + pbean.toString());
 		
-		System.out.println("길이 : " +pbean.getItemcount());
+		logger.info("길이 : " +pbean.getItemcount());
 		
 		String question[] = pbean.getQuestion().split(",");
 		String question_sub[] = pbean.getQuestion_sub().split(",");

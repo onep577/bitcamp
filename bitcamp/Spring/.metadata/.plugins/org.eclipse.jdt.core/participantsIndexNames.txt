@@ -1,6 +1,8 @@
 INDEX VERSION 1.131
 E:\github\bitcamp\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3295099097.index
 \Sample01\src
+E:\github\bitcamp\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\610110278.index
+\LegacySample01\src\main\java
 E:\springSample\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3253809250.index
 \LegacySample01\src\main\java
 E:\springSample\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\610110278.index
@@ -43,6 +45,8 @@ E:\springSample\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\421637846.
 \Sample02\src
 E:\github\bitcamp\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3646544567.index
 \SpringBbsAjax\src
+E:\github\bitcamp\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3019500073.index
+\Sample02\src
 E:\github\bitcamp\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2519070323.index
 \SpringSamples\src
 E:\github\bitcamp\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1397904811.index
@@ -81,6 +85,8 @@ E:\github\bitcamp\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4
 \lombok\src
 E:\github\bitcamp\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2456491602.index
 \SpringSamples\src
+E:\github\bitcamp\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3253809250.index
+\LegacySample01\src\main\java
 E:\springSample\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4265347137.index
 \Sample03\src
 E:\github\bitcamp\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2320537029.index
@@ -93,3 +99,5 @@ E:\github\bitcamp\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2
 \SpringBbs\src
 E:\github\bitcamp\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\729729293.index
 \SpringSamples\src
+E:\github\bitcamp\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\421637846.index
+\Sample02\src
