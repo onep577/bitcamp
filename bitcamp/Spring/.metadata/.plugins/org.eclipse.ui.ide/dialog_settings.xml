@@ -103,6 +103,9 @@
 		<item value="org.springsource.sts:3.9.9.201906181741-RELEASE"/>
 	</list>
 	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="C:\Users\bit\Desktop\파이널 프로젝트\MariaExamPrj"/>
+		<item value="E:\github\bitcamp\Spring\MariaExam"/>
+		<item value="E:\github\bitcamp\Spring\MariaExamPrj"/>
 		<item value="E:\github\bitcamp\Spring\SpringBbsAjax"/>
 		<item value="E:\github\bitcamp\Spring\Sample03"/>
 	</list>

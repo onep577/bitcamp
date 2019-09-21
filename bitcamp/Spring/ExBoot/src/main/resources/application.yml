@@ -1,0 +1,31 @@
+#ExBoot
+#내장톰캣
+server:
+  port: 18081
+#JSP config를 쓸 수 있게
+  servlet:
+    jsp:
+      init-parameters:
+        development: true
+#custume error page를 설정
+  error:
+    whitelabel:
+      enabled: false
+ 
+#db config 뷰리절브
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  datasource:
+    hikari:
+      #jdbc-url: jdbc:oracle://localhost:3306/rhymes?characterEncoding=UTF-8&serverTimezone=UTC      
+      jdbc-url: jdbc:oracle:thin:@localhost:1521/xe
+      pool-name: hikari-cp
+      maximum-pool-size: 30
+      minimum-idle: 2
+      #driver-class-name: com.mysql.cj.jdbc.Driver      
+      driver-class-name: oracle.jdbc.OracleDriver
+      username: hr
+      password: hr

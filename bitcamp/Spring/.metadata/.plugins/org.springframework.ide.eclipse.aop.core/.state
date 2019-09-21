@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
-<aop-project name="Sample02"/>
 <aop-project name="Sample01"/>
+<aop-project name="Sample02"/>
 <aop-project name="Sample03"/>
+<aop-project name="ExBoot"/>
 <aop-project name="LegacySample01"/>
+<aop-project name="Test01"/>
+<aop-project name="FinalProjectMaria"/>
+<aop-project name="MariaExamPrj"/>
 <aop-project name="SampleAopXml">
 <aspect-definition advice-class-name="com.aopex.logAOP" advice-method-name="loggerAop" advice-type="AROUND" aspect-end-line-number="29" aspect-name="logApp" aspect-start-line-number="29" factory-id="org.springframework.ide.eclipse.aop.core.beanAspectDefinitionElementFactory" file="/SampleAopXml/src/bean.xml" pointcut-expression="within(com.aopex.*)" proxy-target-class="false">
 <aop-reference advice-type="AROUND" bean="1:BeansModel|2:SampleAopXml|3:src/bean.xml|7:beans:6|8:myCat:35" bean-file="/SampleAopXml/src/bean.xml" bean-start-line="35" factory-id="org.springframework.ide.eclipse.aop.core.aopReferenceElementFactory" file="/SampleAopXml/src/bean.xml" source="=SampleAopXml/src&lt;com.aopex{logAOP.java[logAOP~loggerAop~QProceedingJoinPoint;" source-start-line="8" target="=SampleAopXml/src&lt;com.aopex{Cat.java[Cat~getColor" target-start-line="34"/>

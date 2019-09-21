@@ -1,0 +1,24 @@
+#test project
+server:
+  port: 18080
+  #JSP config
+  servlet:
+    jsp:
+      init-parameters:
+        development: true
+#custume error page
+  error:
+    whitelabel:
+      enabled: false
+ 
+#db config
+spring:
+  datasource:
+    hikari:
+      jdbc-url: jdbc:mysql://localhost:3306/rhymes_test?characterEncoding=UTF-8&serverTimezone=UTC
+      pool-name: hikari-cp
+      maximum-pool-size: 30
+      minimum-idle: 2
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: root
