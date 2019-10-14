@@ -107,6 +107,8 @@ E:\github\bitcamp\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1
 \ExamProject\src
 E:\github\bitcamp\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1498744935.index
 \SpringSamples\src
+E:\github\bitcamp\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\499193422.index
+\FinalProjectShoppingMall\src\main\java
 E:\github\bitcamp\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3558784634.index
 \FinalProjectMaria\src\main\java
 E:\github\bitcamp\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2188099124.index
