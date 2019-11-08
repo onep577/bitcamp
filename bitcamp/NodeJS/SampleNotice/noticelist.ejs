@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+<head></head>
+<body>
+
+    <h3>notice list ejs</h3>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>작성자</th>
+                <th>제목</th>
+                <th>내용</th>
+                <th>수정</th>
+                <th>삭제</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <% list.forEach(function(list, index){ %>
+                <tr>
+                    <td><%=index + 1 %></td>
+                    <td><!-- 넘어온 데이터는 대문자로 -->
+                        <a href="/detail/<%=list.WRITER %>"><%=list.WRITER %></a>
+                    </td>
+                    <td><%=list.TITLE %></td>
+                    <td><%=list.CONTENT %></td>
+                    <td><!-- 수정 -->
+                        <a href="/update?writer=<%=list.WRITER %>"><%=list.WRITER %></a>
+                    </td>
+                    <td><!-- 삭제 -->
+                        <a href="/delete?writer=<%=list.WRITER %>"><%=list.WRITER %></a>
+                    </td>
+                </tr>
+            <% }); %>
+
+        </tbody>
+
+    </table>
+
+</body>
+</html>

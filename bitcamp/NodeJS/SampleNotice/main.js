@@ -100,15 +100,75 @@ app.get("/noticelist", function (req, resp) {
 
         console.log(arr);
 
-        // fs.readFile(__dirname + "/noticelist.ejs", "utf-8", function (err, data) {
-        //     // 이 파일을 넘겨줄 때 데이터를 가지고 간다
-        //     if(err) console.log("읽기 실패 : " + err);
+        fs.readFile(__dirname + "/noticelist.ejs", "utf-8", function (err, data) {
+            // 이 파일을 넘겨줄 때 데이터를 가지고 간다
+            if(err) console.log("읽기 실패 : " + err);
+            resp.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
 
-        //     // ??
-        //     resp.end(ejs.render(data, { list:arr }));
-        // });
+            // render는 파일명과 한꺼번에 넘길 때, end는 fs.readFile에서 넘길 때
+            // 둘 다 addAttribute? 결과 값은 똑같은 때 넘기는 과정은 다르다
+            resp.end(ejs.render(data, { list:arr }));
+        });
     });
 
+});
+
+// detail
+app.get("/detail/:writer", function (req, resp) {
+    console.log("/detail 접속 성공");
+    var writer = req.params.writer;
+    console.log("writer : " + writer);
+
+    fs.readFile('detail.html', 'utf-8', function (error, data) {
+        dbconn.execute('select * from products where writer = ?', [req.params.writer], function (error, result) {
+            console.log("result : " + result);
+            //resp.send(ejs.render(data, {
+            //    data: result[0]
+            //}))
+        })
+    });
+
+    // db에서 산출
+//    dbconn.execute("SELECT * FROM NOTICE WHERE WRITER=?", [writer], function (err, result) {
+        //if(err) console.log("조회 실패 : " + err);
+
+        //console.log(result);
+        //console.log(result.rows);
+
+        // // 문자열로 바꿔주는 것
+        // json = JSON.stringify(result.rows);
+        // // json으로 바꿔주는 것
+        // var arr = JSON.parse(json);
+
+        // console.log(arr);
+
+        //  fs.readFile(__dirname + "/detail.html", "utf-8", function (err, data) {
+        //      // 이 파일을 넘겨줄 때 데이터를 가지고 간다
+        //      if(err) console.log("읽기 실패 : " + err);
+        //      resp.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+
+        //      // render는 파일명과 한꺼번에 넘길 때, end는 fs.readFile에서 넘길 때
+        //      // 둘 다 addAttribute? 결과 값은 똑같은 때 넘기는 과정은 다르다
+        //      resp.end(ejs.render(data, { list:arr }));
+        //  });
+//    });
+
+});
+
+// 수정
+// update
+app.get("/update/:writer", function (req, resp) {
+    console.log("/update 접속 성공");
+    var writer = req.params.writer;
+    console.log("writer : " + writer);
+});
+
+// 삭제
+// delete
+app.get("/delete/:writer", function (req, resp) {
+    console.log("/delete 접속 성공");
+    var writer = req.params.writer;
+    console.log("writer : " + writer);
 });
 
 // 서버 리스너
