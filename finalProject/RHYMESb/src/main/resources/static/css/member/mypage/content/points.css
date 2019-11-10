@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+.user_point_info{
+    margin: 1px;
+}
+
+.user_point_info .form-row { 
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border: 0.03px solid #e0e0e0;    
+}
+
+.user_point_info_title{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 3px solid #d7fd75;
+    border-bottom: 2px solid #c0c0c0;
+}
+
+.user_point_info_content{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #c0c0c0;
+}

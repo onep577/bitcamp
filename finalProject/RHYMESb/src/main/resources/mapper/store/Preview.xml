@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Preview">
+	<!-- previewlist -->
+	<select id="getPreviewList" parameterType="com.rhymes.app.store.model.DetailParam"  resultType="com.rhymes.app.store.model.PreviewDto">
+      SELECT  A.SEQ,A.PD_SEQ,A.USERID,A.TITLE,A.CONTENT,A.LIKES_CNT,A.RDATE,
+				D.P_NAME AS P_NAME , C.SIZE AS SIZE
+				FROM RHY_PRODUCT_REVIEW A,RHY_PAYMENT_DETAILS B, RHY_STORE_STOCK C, RHY_STORE_PRODUCT D 
+				WHERE B.S_SEQ = C.STOCK_SEQ AND C.P_SEQ = D.P_SEQ  AND A.PD_SEQ = B.SEQ AND C.P_SEQ=#{p_seq} 
+			
+    </select>
+    
+	<!--pqna 글의 총 수  -->
+	<select id="getPreviewCount" parameterType="com.rhymes.app.store.model.DetailParam"
+		resultType="java.lang.Integer">
+		SELECT IFNULL(COUNT(*), 0)AS CNT
+		FROM RHY_PRODUCT_REVIEW A,RHY_PAYMENT_DETAILS B, RHY_STORE_STOCK C, RHY_STORE_PRODUCT D
+		WHERE B.S_SEQ = C.STOCK_SEQ AND C.P_SEQ = D.P_SEQ  AND A.PD_SEQ = B.SEQ AND C.P_SEQ=#{p_seq}
+	</select>
+	
+	<!--좋아요 여부-->
+	<select id="getlikes" parameterType="hashmap" resultType="java.lang.Integer">
+		SELECT count(*)
+		FROM RHY_PRODUCT_REVIEW_LIKES
+		WHERE USERID=#{id} AND REVIEW_SEQ=#{review_seq}
+	</select>
+	
+	<!-- 좋아요 추가 -->
+	<insert id="addlikes" parameterType="hashmap">
+		INSERT INTO RHY_PRODUCT_REVIEW_LIKES(REVIEW_SEQ,USERID)
+		VALUES(#{review_seq},#{id})
+	</insert>
+	
+	<!-- 좋아요 삭제  -->
+	<delete id="deletelikes" parameterType="hashmap">
+		DELETE FROM RHY_PRODUCT_REVIEW_LIKES
+		WHERE REVIEW_SEQ=#{review_seq} AND USERID=#{id}
+	</delete>
+	 
+	<!-- 총 좋아요 수 올리기-->
+	<update id="uptotalcount" parameterType="com.rhymes.app.customer.model.CustomerParam">
+	UPDATE RHY_PRODUCT_REVIEW
+	SET LIKES_CNT=LIKES_CNT+1
+	WHERE SEQ=#{seq}
+	</update>
+	
+	<!-- 총 좋아요 수 내리기-->
+	<update id="downtotalcount" parameterType="com.rhymes.app.customer.model.CustomerParam">
+	UPDATE RHY_PRODUCT_REVIEW
+	SET LIKES_CNT=LIKES_CNT-1
+	WHERE SEQ=#{seq}
+	</update>
+	
+	<!-- 총 좋아요 수 가져오기-->
+	<select id="liketotalcount" parameterType="com.rhymes.app.customer.model.CustomerParam" resultType="java.lang.Integer">
+      SELECT LIKES_CNT
+      FROM RHY_PRODUCT_REVIEW
+      WHERE SEQ = #{seq}
+    </select>
+	
+</mapper>

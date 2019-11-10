@@ -1,0 +1,137 @@
+@charset "UTF-8";
+
+.mypage_main_content_body{  /*찜 목록 타이틀*/
+    margin-top: -45px;
+}
+
+/*찜 목록 테이블 부분*/
+.tbl_wishlist_head{
+    border-top: 3px solid rgb(215, 253, 117);
+    text-align: center;
+}
+
+.tbl_wishlist_head .form-row{
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.img_wishlist_item p{
+	margin-bottom: 40px;
+}
+
+.wishlist_row:hover{
+	background-color: rgba(215,253,117,0.1);
+}
+
+.body_wishlist .wishlist_row{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 10px;
+	height: 150px;
+}
+.body_wishlist .wishlist_row input{
+	
+}
+
+.chk_wishlist_item input{
+	position:absolute;
+	top: 50%;
+	left: 39%;
+}
+
+.detail_wishlist_item .form-row{
+	left: 3%;
+	cursor: pointer;
+	min-width: 90% !important;
+	max-width: 90% !important;
+}
+
+.wishlist_body_btns{
+	position:absolute;
+	top: 10%;
+	left: 0%;
+}
+
+.wishlist_body_btns input{
+	margin: 5px;
+	width: 130px;
+	border-color: #d7fd75;
+}
+
+.btn_write_review{
+	color: #400000;
+	background-color: #d7fd75;
+}
+
+.order_body_content table tr th{	/* 주문 상세내용 */
+	padding: 4px;
+}
+
+.tbl_wishlist_overall_btns{
+	margin-top: 50px;
+}
+.tbl_wishlist_overall_btns input{
+	width: 200px !important;
+	height: 50px !important;
+}
+.tbl_wishlist_head input{
+	left: 40% !important;
+}
+
+/* 장바구니 담기 모달 */
+/* 포지션 */
+#_wishlist_cart_modal .modal-dialog{
+	margin-top: 300px;
+}
+/* 내부 요소 */
+.cart_one_item_info .cart_one_item_info_input_wrap{
+	float: left;
+	position: relative;
+	margin-right: 20px;
+}
+
+/* Switch 1 Specific Styles Start */
+input[type="checkbox"].switch_1{
+	font-size: 30px;
+	-webkit-appearance: none;
+	   -moz-appearance: none;
+	        appearance: none;
+	width: 1.0em;
+	height: 0.5em;
+	background: #ddd;
+	border-radius: 3em;
+	position: absolute;
+	cursor: pointer;
+	outline: none;
+	-webkit-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+	left: 33%;
+	top: 40%;
+  }
+  
+  input[type="checkbox"].switch_1:checked{
+	background: #d7fd75;
+  }
+  
+  input[type="checkbox"].switch_1:after{
+	position: absolute;
+	content: "";
+	width: 0.4em;
+	height: 0.4em;
+	border-radius: 50%;
+	background: #fff;
+	-webkit-box-shadow: 0 0 .25em rgba(0,0,0,.3);
+	        box-shadow: 0 0 .25em rgba(0,0,0,.3);
+	-webkit-transform: scale(.7);
+	        transform: scale(.7);
+	left: 4%;
+	top: 7%;
+	-webkit-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+  }
+  
+  input[type="checkbox"].switch_1:checked:after{
+	left: calc(100% - 0.5em);
+  }
+	
+/* Switch 1 Specific Style End */

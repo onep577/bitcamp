@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="excel">
+
+	<!-- 개인 회원 정보 전부 가져오기 -->
+    <select id="getMemberP_ExcelDown" resultType="com.rhymes.app.member.model.P_MemberDTO">
+        SELECT SEQ, ID as userid, NAME as username, POSTCODE, ADDRESS, DETAILADDRESS,
+        		EMAIL as useremail, PHONE, GENDER as usergender, BIRTH as userbirth, COUNT, SUBSCRIBE
+        FROM RHY_MEM_P
+    </select>
+	
+	<!-- 사업자 회원 정보 전부 가져오기 -->
+    <select id="getMemberC_ExcelDown" resultType="com.rhymes.app.member.model.SellerDTO">
+        SELECT * FROM RHY_MEM_C
+    </select>
+    
+    <!-- 결제내역 정보 전부 가져오기 -->
+    <select id="getPaymentExcelDown" resultType="com.rhymes.app.payment.model.PaymentDTO">
+        SELECT * FROM RHY_PAYMENT
+    </select>
+    
+    <!-- 상품 정보 전부 가져오기 -->
+    <select id="getProductExcelDown" resultType="com.rhymes.app.admin.excel.model.AdminExcelProductDTO">
+    	SELECT *
+    	FROM RHY_STORE_PRODUCT P, RHY_STORE_STOCK S
+    	WHERE P.P_SEQ = S.P_SEQ
+    </select>
+    
+    <!-- 업체별 상품정보 -->
+    <select id="getComProductExcelDown" parameterType="java.lang.String" resultType="com.rhymes.app.admin.excel.model.AdminExcelProductDTO">
+    	SELECT *
+    	FROM RHY_STORE_PRODUCT SP, RHY_STORE_STOCK SS, RHY_MEM_C MC
+    	WHERE SP.P_SEQ = SS.P_SEQ AND SP.C_NAME=MC.C_NAME AND MC.ID=#{userid}
+    </select>
+    
+    <!-- 업체별 결제정보 -->
+    <select id="getComPaymentExcelDown" parameterType="java.lang.String" resultType="com.rhymes.app.payment.model.PaymentDTO">
+    	SELECT *
+    	FROM RHY_PAYMENT P, RHY_PAYMENT_DETAILS PD, RHY_STORE_STOCK SS, RHY_STORE_PRODUCT SP, RHY_MEM_C MC
+    	WHERE P.PAYMENT_CODE = PD.PAYMENT_CODE AND PD.S_SEQ = SS.STOCK_SEQ AND SS.P_SEQ = SP.P_SEQ AND SP.C_NAME = MC.C_NAME AND MC.ID=#{userid}
+    </select>
+    
+</mapper>

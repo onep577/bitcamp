@@ -1,0 +1,104 @@
+@charset "UTF-8";
+.findidtext{
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: larger;
+    color: #505050;
+    /* margin-bottom: 10px; */
+    padding-bottom: 16px;
+    position: relative;
+/*     top: 106px; */
+/*     border: solid 2px; */
+    padding: 13px;
+}
+.hrline{
+	width: 100px;
+}
+.findidtext_s, .findidtext_s_id{
+	font-family: sans-serif;
+/*     font-weight: bold; */
+    font-size: medium;
+    color: #505050;
+    /* margin-bottom: 10px; */
+    padding-bottom: 16px;
+}
+.findidtext_s_id{
+	font-weight: bold;
+	
+}
+.regibutton{
+	border-radius: 5px;
+    border: solid 1px #c5c5c5;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bolder;
+    height: 54px;
+    padding: 0px 30px 0px 30px;
+    width: 320px;
+    margin: 10px 5px 5px 5px;
+}
+.regibutton:hover{
+	border-color: #b1e627;
+	color: #b1e627;
+}
+.goBtn{
+	border-radius: 10px;
+   margin-top:13px;
+   margin-bottom:10px;
+   width:320px;
+   height:55px;
+   background: #CFEC40;   
+   font: Open Sans 30px;
+   color: black; 
+   outline: 0;
+   border: 0px solid gray; 
+}
+.welcp {
+
+}
+.topwrap{
+	position: relative;
+	top: 100px;
+}
+.loginwrap{
+	position: relative;
+	top: 360px;	
+}
+.goBtn:hover{
+	opacity: 0.5
+}
+
+.cpwrap{
+	position: relative;
+	top: 87px;	
+}
+.cptext{
+	position: relative;
+	
+}
+.welcpText{
+	color: #6d6d6d;
+	font-weight: bold;
+	position: relative;
+    top: -26px;
+    left: -32px;
+}
+.regisucwrap{
+	
+}
+.hrline{
+	width: 400px;
+	border-color: #8a8a8a;
+}
+#footer_wrap{
+	position: relative;
+	top: 170px;
+}
+.container{
+	position:relative;
+	top:-130px;	
+}
+.regisucwrap{
+	position: relative;
+	top: -180px;
+}

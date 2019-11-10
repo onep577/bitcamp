@@ -1,0 +1,69 @@
+#Project RHYMES
+server:
+  port: 18080
+  tomcat:    max-http-post-size: 31457280
+  
+#JSP config
+  servlet:
+    jsp:
+      init-parameters:
+        development: true
+#custume error page
+  error:
+    whitelabel:
+      enabled: true
+
+spring:
+  #db config
+  datasource: 
+    tomcat:      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      validation-query: SELECT 1
+    hikari:
+      jdbc-url: jdbc:mysql://112.169.197.59:23306/rhymes?characterEncoding=UTF-8&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
+      #jdbc-url: jdbc:mysql://192.168.0.14:3306/rhymes?characterEncoding=UTF-8&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
+      pool-name: hikari-cp
+      maximum-pool-size: 30
+      minimum-idle: 2
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: mhj
+      password: mhj
+  jpa:
+    database: mysql    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+    properties:
+      hibernate:
+        show-sql: true
+        format_sql: true
+    generate-ddl: true
+    
+  #ehcache config
+  cache:    ehcache:      config: classpath:/config/ehcache.xml      
+  #jsp
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  servlet:
+    multipart:
+      max-file-size: 30MB
+      max-request-size: 30MB
+      enabled: true
+      file-size-threshold: 30MB
+      
+logging:
+  level: 
+    org:
+     apache:
+      tiles:
+       request:
+        locale:
+         PostfixedApplicationResource: ERROR
+         logging:
+     #JPA Hibernate 로깅
+     hibernate:
+      SQL: DEBUG
+      type:
+       descriptor:
+         sql:
+           BasicBinder: TRACE

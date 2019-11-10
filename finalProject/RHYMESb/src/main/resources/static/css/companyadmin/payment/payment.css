@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+.searchPosition{
+	float: right;
+}
+.vbankBtn{
+	color: #fff;
+    background-color: #66e0b4;
+    border-color: #66e0b4;
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border: solid;
+   \border: solid 1px #66e0b4;
+    border-radius: 8px;
+/*     box-shadow:  */
+}
+.deliveryIngChangeBtn{
+	color: #fff;
+    background-color: #66e0b4;
+    border-color: #66e0b4;
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border: solid;
+   \border: solid 1px #66e0b4;
+    border-radius: 8px;
+/*     box-shadow:  */
+}
+.deliveryFinishChangeBtn{
+	color: #fff;
+    background-color: #66e0b4;
+    border-color: #66e0b4;
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border: solid;
+    border: solid 1px #66e0b4;
+    border-radius: 8px;
+/*     box-shadow:  */
+}

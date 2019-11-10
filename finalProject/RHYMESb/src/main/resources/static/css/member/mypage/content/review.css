@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+.review_main_nav_tab_item{
+	width: 50%;	
+}
+
+.review_notice {	/* 상품후기 게시판 설명 */
+	font-size: 7px;
+	margin-top: 10px;
+}
+
+/* 작성 가능 내용 관련 */
+.order_id {	/*주문번호*/
+	margin-top: 20px;
+	font-size: 13px;
+	color: #555555;
+}
+.waiting_item {
+	margin: 7px 0px 7px 0px;
+	border: 1px solid #DEE2E6;
+	padding: 10px;
+}
+
+.img_waiting_item img {
+	width: 90px;
+	height: 100px;
+}
+.detail_waiting_item{
+	cursor: pointer;
+}
+
+.detail_waiting_item div{
+	margin-bottom: 5px;
+}
+
+.delivery_waiting_item {
+	vertical-align: middle;
+	margin: auto;
+}
+
+.writenew_waiting_item {
+	vertical-align: middle;
+	margin: auto;
+}
+
+.writenew_waiting_item input{
+	color: #400000;
+	background-color: #d7fd75;
+}

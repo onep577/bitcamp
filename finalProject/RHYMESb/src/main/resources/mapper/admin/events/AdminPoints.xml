@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adpoints">
+	
+	<!-- 총 적립금 지급내역 개수 -->
+	<select id="getTotalCountOfPoints" parameterType="com.rhymes.app.admin.events.model.AdminPointsPagingDTO" resultType="java.lang.Integer">
+		<include refid="getTotalCountOfPointsSql"/></select>
+	
+	<!-- 페이징, 검색 조건에 맞는 적립금 내역 리턴 -->
+	<select id="getPointsLogByConditions" parameterType="com.rhymes.app.admin.events.model.AdminPointsPagingDTO"
+		resultType="com.rhymes.app.admin.events.model.PointsDTO">
+		<include refid="getPointsLogByConditionsSql"/></select>
+
+	<!-- 매개변수로 받은 내용대로 적립금 디테일 수정 -->
+	<update id="updatePointsDetail" parameterType="com.rhymes.app.admin.events.model.PointsDTO">
+		<include refid="updatePointsDetailSql"/></update>
+		
+	<!-- ID가 갖는 모든 권한 리턴 -->
+	<select id="getAuthoritiesById" parameterType="java.lang.String" resultType="java.lang.String">
+		<include refid="getAuthoritiesByIdSql"/></select>
+
+	<!-- 쿼리정보 -->
+	<!-- 총 적립금 지급내역 개수 -->
+	<sql id="getTotalCountOfPointsSql">
+		SELECT COUNT(*) FROM RHY_MEM_POINT
+		<include refid="searchConditions"/>
+	</sql>
+	
+	<!-- 페이징, 검색 조건에 맞는 적립금 내역 리턴 -->	
+	<sql id="getPointsLogByConditionsSql">
+		SELECT * 
+		FROM (
+			SELECT 
+				@ROWNUM := @ROWNUM +1 AS RNUM, A.SEQ AS SEQ, ID, A.COMMENT, COUP_CODE, AMOUNT, RDATE, USED_DATE, USED_AMOUNT,
+				DATE_ADD(RDATE, INTERVAL 12 MONTH) AS EXPDATE
+			FROM RHY_MEM_POINT A, (SELECT @ROWNUM :=0) B
+			<include refid="searchConditions"/>
+			ORDER BY RDATE DESC
+			) RESULT
+		LIMIT #{startSeq}, #{recordCountPerPage};
+	</sql>
+	
+	<sql id="searchConditions">
+		<where>
+			<if test="cond == 1">ID LIKE '%' #{keyword} '%'</if>
+			<if test="cond == 2">COUP_CODE LIKE '%' #{keyword} '%'</if>
+		</where>
+	</sql>
+	
+	<!-- 매개변수로 받은 내용대로 적립금 디테일 수정 -->
+	<sql id="updatePointsDetailSql">
+		UPDATE RHY_MEM_POINT
+		<set>
+			<if test="comment != null and comment != ''">COMMENT = #{comment}</if>
+			<if test="amount != null">, AMOUNT = #{amount}</if>
+			<if test="used_amount != null">, USED_AMOUNT = #{used_amount}</if>
+		</set> 
+		WHERE SEQ=#{seq};
+	</sql>
+	
+	<!-- ID가 갖는 모든 권한 리턴 -->
+	<sql id="getAuthoritiesByIdSql">
+		SELECT AUTHORITY FROM AUTHORITIES WHERE ID=#{id}
+	</sql>
+		
+</mapper>

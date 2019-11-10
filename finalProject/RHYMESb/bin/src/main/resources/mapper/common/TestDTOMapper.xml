@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="common">
+  <resultMap type="com.rhymes.app.member.model.MemberDTO" id="memberMap">
+    <id property="userid" column="userid"/>
+    <result property="userid" column="userid"/>
+    <result property="userpw" column="userpw"/>
+    <collection property="authList" resultMap="authMap">
+    </collection> 
+  </resultMap>
+  
+  <resultMap type="com.rhymes.app.member.model.MemberDTO" id="authMap">
+    <result property="userid" column="userid"/>
+    <result property="auth" column="auth"/>
+  </resultMap>
+  
+  <select id="read" resultMap="memberMap" parameterType="java.lang.String">
+SELECT 
+  mem.id as userid, pw as userpw, enabled, auth
+FROM 
+  MEMBER_TEST mem LEFT OUTER JOIN AUTH_TEST auth on mem.id = auth.id 
+WHERE mem.id = #{userid} 
+  </select>
+
+</mapper>

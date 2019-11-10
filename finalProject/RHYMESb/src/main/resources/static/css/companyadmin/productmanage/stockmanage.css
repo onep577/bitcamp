@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+.change_q-modal {
+		color:black;
+		display: none; /* Hidden by default */
+		position: fixed; /* Stay in place */
+		z-index: 1; /* Sit on top */
+		left: 0;
+		top: 0;
+		width: 100%; /* Full width */
+		height: 100%; /* Full height */
+		overflow: scroll; /* Enable scroll if needed */
+		background-color: rgb(0,0,0); /* Fallback color */
+		background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.change_q-modal-content {
+	border: 0px solid #888;
+	background-color: #fefefe;
+	margin: 15% auto; /* 10% from the top and centered */
+	margin-left: 28%;
+	margin-top:10%;
+	padding: 20px;
+	height:520px auto;
+	width: 50%; /* Could be more or less, depending on screen size */                          
+}
+#changeq_table{
+	margion:10px;
+	width:80%;
+	height:400px;
+	text-align: center;
+}
+#changq-finishbtn{
+	border: solid 1px #DADCE0; width:auto; border-radius: 5px; background-color: white;	
+}
+
+/* msg Modal */
+.msgModal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 9999; /* Sit on top */
+	left: 0;
+	margin:auto;
+	top: 300px;
+	width: 100%; /* Full width */
+	height: 50%; /* Full height */
+	overflow: hidden; /* Enable scroll if needed */
+	/* background-color: rgb(0,0,0); Fallback color
+	background-color: rgba(0,0,0,0.4); */ /* Black w/ opacity */
+	/* background-color:green; */
+}
+
+/* Modal Content/Box */
+.msg-content {
+	color:white;
+	font-weight:bold;
+	font-size:30px;
+	position:fixed;
+    background-color: #86E57F;
+    margin:3%;
+    padding: 20px;
+    opacity:0.7;
+    border: 0px solid #888;
+    width: 100%;
+    height: auto;
+    margin: 8% auto;
+    text-align: center;
+}

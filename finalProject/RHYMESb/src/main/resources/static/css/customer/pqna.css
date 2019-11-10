@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+
+
+/* 리스트테이블 */
+.list_table { width:98%; text-align: center;}
+.list_table th { text-align:center; padding:20px 0px;  border-top: 3px solid #CFEC40;}
+.list_table td { padding:20px 0px 20px 10px;  border-top:1px solid #EFEFEF;}
+.list_table td,.list_table th { font-size: 14px;}
+ 
+
+ 
+/* 버튼 */
+.pqna-btn1{
+   border-radius: 10px;
+   margin-top:13px;
+   margin-bottom:10px;
+   width:140px;
+   height:55px;
+   background: #CFEC40;   
+   font: Open Sans 25px;
+   color: black; 
+   outline: 0;
+   border: 0px solid gray; 
+
+}
+
+.pqna-btn1:hover{
+   opacity: 0.5;
+} 
+
+.pqna-btn2{
+   border-radius: 10px;
+   margin-top:5px;
+   width:60px;
+   height:45px;
+   background: white;
+   font: Open Sans 30px;
+   color: black; 
+   outline: 0;
+   border: 1px solid #cccccc; 
+}
+.pqna-btn2:hover{
+   opacity:0.5;
+}
+
+.likebtn1{
+   width:120px;
+   height:30px;
+   background: white;
+   color: black; 
+  	font: Open Sans;
+   outline: 0;
+   border: 2px solid #CFEC40; 
+   margin-left: 5px;
+   
+}

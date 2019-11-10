@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <mapper namespace="com.mde.app.common.dao"> -->
+
+<mapper namespace="mainresourcemanage">
+
+<select id="getmainresource" resultType="com.rhymes.app.admin.main.model.MainResourceDto">
+	SELECT 
+		MAINBANNER_FILE, MAINBANNER_TYPE, PHOTO1_FILE, PHOTO2_FILE, VIDEO1_FILE, VIDEO2_FILE,
+		PHOTO1_TITLE, PHOTO1_CONTENT, PHOTO2_TITLE, PHOTO2_CONTENT,
+		VIDEO1_TITLE, VIDEO1_CONTENT, VIDEO2_TITLE, VIDEO2_CONTENT, U_DATE
+	FROM rhy_main_resource
+	WHERE SEQ = 1
+</select>
+
+<update id="updatemainresource" parameterType="com.rhymes.app.admin.main.model.MainResourceDto">
+	UPDATE rhy_main_resource
+	SET
+		<if test="mainbanner_file != '' and mainbanner_file != null">
+			MAINBANNER_FILE = #{mainbanner_file},
+			MAINBANNER_TYPE = #{mainbanner_type}
+		</if>
+		<if test="video1_file != '' and video1_file != null">
+			VIDEO1_FILE = #{video1_file}
+		</if>
+		<if test="video2_file != '' and video2_file != null">
+			VIDEO2_FILE = #{video2_file}
+		</if>
+		<if test="photo1_file != '' and photo1_file != null">
+			PHOTO1_FILE = #{photo1_file}
+		</if>
+		<if test="photo2_file != '' and photo2_file != null">
+			PHOTO2_FILE = #{photo2_file}
+		</if>
+	WHERE SEQ = 1
+</update>
+
+<update id="updatemaintext" parameterType="com.rhymes.app.admin.main.model.MainResourceDto">
+	UPDATE rhy_main_resource
+	SET
+		<if test="video1_title != '' and video1_title != null">
+			VIDEO1_TITLE = #{video1_title}
+		</if>
+		<if test="video1_content != '' and video1_content != null">
+			VIDEO1_CONTENT = #{video1_content}
+		</if>
+		<if test="video2_title != '' and video2_title != null">
+			VIDEO2_TITLE = #{video2_title}
+		</if>
+		<if test="video2_content != '' and video2_content != null">
+			VIDEO2_CONTENT = #{video2_content}
+		</if>
+		
+		<if test="photo1_title != '' and photo1_title != null">
+			PHOTO1_TITLE = #{photo1_title}
+		</if>
+		<if test="photo1_content != '' and photo1_content != null">
+			PHOTO1_CONTENT = #{photo1_content}
+		</if>
+		<if test="photo2_title != '' and photo2_title != null">
+			PHOTO2_TITLE = #{photo2_title}
+		</if>
+		<if test="photo2_content != '' and photo2_content != null">
+			PHOTO2_CONTENT = #{photo2_content}
+		</if>
+	
+	WHERE SEQ = 1
+</update>
+
+<select id="getbestitemlist" resultType="com.rhymes.app.store.model.ProductDto" parameterType="com.rhymes.app.store.model.ProductDto">
+	SELECT F.RNUM,
+		   F.P_NAME,
+		   F.P_SEQ,		   
+		   F.C1_NAME,
+		   F.C2_NAME,
+		   F.C3_NAME,
+		   F.C_NAME,
+     	   F.SALESVOLUME,
+     	   F.PHOTO1_FILE
+	FROM(
+		SELECT ROW_NUMBER()OVER(ORDER BY SALESVOLUME DESC) AS RNUM,
+															  a.P_SEQ,
+															  a.P_NAME,
+															  a.C1_NAME,
+															  a.C2_NAME,
+															  a.C3_NAME,
+															  a.C_NAME,
+															  a.PHOTO1_FILE,
+															  SUM(SALES) AS SALESVOLUME
+								   
+		FROM (SELECT ROW_NUMBER()OVER(ORDER BY SALES ASC) AS RNUM2,
+															 a.P_SEQ,
+															 a.P_NAME,
+															 a.C_NAME,
+															 a.C1_NAME,
+															 a.C2_NAME,
+															 a.C3_NAME,
+															 a.PHOTO1_FILE,
+															 IFNULL((SELECT SUM(d.EA) 
+																	FROM rhy_payment e 
+																	WHERE e.PAYMENT_STATUS = '결제완료' 
+																		AND e.PAYMENT_CODE = d.PAYMENT_CODE
+																	GROUP BY d.S_SEQ), 0) AS SALES
+								
+				FROM rhy_store_product a
+					INNER JOIN rhy_store_stock b
+						ON a.P_SEQ = b.P_SEQ
+					LEFT OUTER JOIN rhy_payment_details d
+						ON b.STOCK_SEQ = d.S_SEQ
+				WHERE a.C1_NAME = #{c1_name}
+				GROUP BY b.STOCK_SEQ
+				ORDER BY SALES DESC) A
+		GROUP BY a.P_SEQ DESC) F
+		WHERE F.RNUM BETWEEN 1 AND 7
+		ORDER BY F.RNUM ASC
+		
+</select>
+
+
+
+
+
+</mapper>

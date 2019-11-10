@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+.review_main_nav_tab_item {
+	width: 50%;
+}
+#_content{
+	width:380px;
+	overflow:hidden; 
+	text-overflow:ellipsis; 
+	white-space:nowrap;
+}
+/* #footer_wrap{
+	position:absolute;
+	top:700px;
+}
+ */
+
+/* Block레벨 테그에서만 적용됨.
+overflow:hidden : 넓이가 70px를 넒어서는 내용에 대해서는 보이지 않게 처리함
+text-overflow:ellipsis : 글자가 넓이 70px를 넘을 경우 생략부호를 표시함
+white-space:nowrap : 공백문자가 있는 경우 줄바꿈하지 않고 한줄로 나오게 처리함
+ */
+
+ /* 리스트테이블 */
+.list_table { width:98%;}
+.list_table th { text-align:center; padding:20px 0px;  border-top: 3px solid #E0FF8B;}
+.list_table td { padding:15px 0px 15px 10px;  border-top:1px solid #EFEFEF;}
+.list_table td,.list_table th { font-size: 12px;}
+
+#deletebtn{
+	position :relative;
+	right: 800px;
+}
+
+.rhybtn{
+   border-radius: 10px;
+
+   margin:10px 10px 10px 10px;
+   width:100px;
+   height:30px;
+   background: white;
+   font: Open Sans 30px;
+   color: black; 
+   outline: 0;
+   border: 1px solid #cccccc; 
+}
+.rhybtn:hover{
+   opacity:0.5;
+}
+

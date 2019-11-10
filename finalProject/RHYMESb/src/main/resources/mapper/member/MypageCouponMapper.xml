@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="coupon">	
+
+	<!-- 검색조건에 맞는 유효한 쿠폰의 총 개수 리턴 -->
+	<select id="getCountOnConditions" resultType="java.lang.Integer" parameterType="java.lang.String">
+		<include refid="getCountOnConditionsSql"/></select>
+		
+	<!-- 쿠폰리스트에 보여줄 쿠폰의 총 개수 리턴 -->
+	<select id="getCountOfMyCoupons" resultType="java.lang.Integer" parameterType="java.lang.String">
+		<include refid="getCountOfMyCouponsSql"/></select>
+		
+	<!-- 검색조건에 맞는 쿠폰 디테일 정보 리턴 -->
+	<select id="getDetailsOnConditions" resultType="com.rhymes.app.member.model.mypage.MemberCouponDTO"
+	 parameterType="com.rhymes.app.member.model.mypage.MemberReviewPagingDTO">
+	 <!-- parameterType="com.rhymes.app.member.model.PointsPagingDTO"> -->	 
+		<include refid="getDetailsOnConditionsSql"/></select>
+	
+	<!-- 쿠폰번호에 맞는 쿠폰상세정보 리턴 -->
+	<select id="getCoupInfoByCoupCode" resultType="com.rhymes.app.member.model.mypage.MemberCouponDetailDTO" parameterType="java.lang.String">
+		<include refid="getCoupInfoByCoupCodeSql"/></select>
+	
+	<!-- 쿠폰상세정보의 c_seq와 일치하는 쿠폰내용 리턴 -->
+	<select id="getCoupInfoByCSeq" parameterType="java.lang.Integer" resultType="com.rhymes.app.member.model.mypage.MemberCouponDTO">
+		<include refid="getCoupInfoByCSeqSql"/></select>
+	
+	<!-- 쿠폰 등록 프로세스. 등록사용자id, 등록일, 만료일 등록 -->
+	<update id="regiNewCoupon" parameterType="com.rhymes.app.member.model.mypage.MemberCouponDetailDTO">
+		<include refid="regiNewCouponSql"/></update>
+ 	
+ 	<!-- 사용자 쿠폰 목록에서 안보이도록 설정(delete 역할) -->
+ 	<update id="deleteCouponInList" parameterType="java.lang.Integer">
+ 		<include refid="deleteCouponInListSql"/></update>
+ 	
+ 	
+ 	
+ 	<!-- 실제 쿼리 작성 영역 -->
+ 	
+ 	<!-- 검색조건에 맞는 유효한 쿠폰의 총 개수 리턴 -->
+ 	<sql id="getCountOnConditionsSql"> 				
+		SELECT COUNT(*) AS CNT
+		FROM RHY_MEM_COUPON_DETAIL
+		WHERE USERID=#{userid} AND DATE_FORMAT(EXPDATE,'%Y-%m-%d') <![CDATA[>]]> CURDATE()
+			AND ISUSED='미사용'
+		GROUP BY USERID		
+ 	</sql>
+ 	
+ 	<!-- 쿠폰리스트에 보여줄 쿠폰의 총 개수 리턴 -->
+ 	<sql id="getCountOfMyCouponsSql"> 				
+		SELECT COUNT(*) AS CNT
+		FROM RHY_MEM_COUPON_DETAIL
+		WHERE USERID=#{userid} AND DATE_FORMAT(EXPDATE,'%Y-%m-%d') <![CDATA[>]]> CURDATE()
+			AND VISIBLE=1
+		GROUP BY USERID		
+ 	</sql>
+ 	
+ 	<!-- 검색조건에 맞는 쿠폰 디테일 정보 리턴 -->
+ 	<sql id="getDetailsOnConditionsSql"> 		
+ 		SELECT * 
+		FROM (
+			<![CDATA[
+			SELECT 
+				@ROWNUM := @ROWNUM +1 AS RNUM, B.SEQ AS SEQ, TITLE, SUB_TITLE, APP_CATE, FUNC, FUNC_NUM, FUNC_MEASURE, USERID,
+				DATE_FORMAT(GDATE,'%Y-%m-%d') AS GDATE, 
+				DATE_FORMAT(EXPDATE,'%Y-%m-%d') AS EXPDATE, 
+				COUP_CODE,
+				(SELECT IF( DATE_FORMAT(B.EXPDATE,'%Y-%m-%d') < CURDATE(), '만료', ISUSED) ) AS ISUSED
+			FROM RHY_MEM_COUPON A, RHY_MEM_COUPON_DETAIL B, (SELECT @ROWNUM :=0) C
+			WHERE A.SEQ = B.C_SEQ AND USERID = #{userid } AND VISIBLE=1
+			ORDER BY GDATE DESC
+			) RESULT
+			]]>
+		LIMIT #{startSeq }, #{recordCountPerPage}		
+ 	</sql>
+ 	
+ 	<!-- 쿠폰번호에 맞는 쿠폰상세정보 리턴 -->
+	<sql id="getCoupInfoByCoupCodeSql"> <![CDATA[	
+		SELECT 
+			SEQ, C_SEQ, USERID,
+			DATE_FORMAT(GDATE,'%Y-%m-%d') AS GDATE, 
+			DATE_FORMAT(EXPDATE,'%Y-%m-%d') AS EXPDATE, 
+			COUP_CODE,
+			IF( DATE_FORMAT(EXPDATE,'%Y-%m-%d') < CURDATE(), '만료', ISUSED) AS ISUSED,
+			USED_ID, USED_DATE
+		FROM RHY_MEM_COUPON_DETAIL
+		WHERE COUP_CODE = #{coup_code};	]]>	
+	</sql>
+	
+	<!-- 쿠폰상세정보의 c_seq와 일치하는 쿠폰내용 리턴 -->
+	<sql id="getCoupInfoByCSeqSql">
+		SELECT TITLE, SUB_TITLE, APP_CATE, FUNC, FUNC_NUM, FUNC_MEASURE, FUNC_TIME_LIMIT, RDATE
+		FROM RHY_MEM_COUPON
+		WHERE SEQ=#{seq}
+	</sql>
+	
+	<!-- 쿠폰 등록 프로세스. 등록사용자id, 등록일, 만료일 등록 -->
+	<sql id="regiNewCouponSql">
+		UPDATE RHY_MEM_COUPON_DETAIL			
+		<choose>
+			<when test="coup_type == 1"><!-- 쿠폰 타입이 적립인 경우 -->
+				<![CDATA[ 
+					SET USERID=#{userid}, GDATE=NOW(), EXPDATE=DATE_ADD(NOW(), INTERVAL #{func_time_limit} MONTH),
+						ISUSED='사용', USED_ID=#{userid}, USED_DATE=NOW()
+				]]>		
+			</when>
+			<otherwise><!-- 쿠폰 타입이 할인인 경우 -->
+				<![CDATA[ SET USERID=#{userid}, GDATE=NOW(), EXPDATE=DATE_ADD(NOW(), INTERVAL #{func_time_limit} MONTH) ]]>			
+			</otherwise>
+		</choose>			
+		WHERE COUP_CODE=#{coup_code}
+	</sql>
+	
+	<!-- 사용자 쿠폰 목록에서 안보이도록 설정(delete 역할) -->
+	<sql id="deleteCouponInListSql">
+		UPDATE RHY_MEM_COUPON_DETAIL
+		SET VISIBLE=0
+		WHERE SEQ=#{seq}
+	</sql>
+
+</mapper>

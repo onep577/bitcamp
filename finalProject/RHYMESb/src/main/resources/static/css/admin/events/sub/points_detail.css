@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+/* 메인 테이블 설정 */
+#dataTable{
+	margin-top: 10px;
+}
+
+
+/* 모달폼 설정 */
+.frm-input-row{
+    margin-bottom: 5px;
+    width: 300px;
+    left: 20%;
+    border: none;
+}
+.frm-input-row span{
+    border: none;
+}
+.frm-input-row input{
+    background-color: #FEFEFE;
+    border: none;
+}
+.frm-input-row input:focus{
+    outline: none !important;
+}
+
+/* 페이징 위치 */
+#dataTable_paginate{
+    position:relative;
+    left: 75%;
+}
+
+/* 기능버튼 모음 */
+.function-btns-wrap{
+	margin: 15px 0px 15px 0px;
+}

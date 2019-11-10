@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+#body_wrap {
+	width: 1000px !important;
+	height: 1000px !important;
+}
+
+/* 템플릿 중단 영역 설정 */
+.mypage_middle_template{
+	/* z-index: 0; */
+	position: absolute;
+	margin: 50px 0 0 -1500px;
+	
+	width: 3000px !important;
+	min-width: 3000px !important;
+	height: 1000px;
+
+	top: 500px;
+	left: 50%;
+	/* background-color:green; */
+}
+
+/* 템플릿 뷰 영역 배치 */
+.mypage_middle_left_template{
+	position: absolute;
+	width: 160px;
+	height: 1000px;
+	background-color: white;
+	
+	z-index: 1;
+	position: absolute;
+	margin: 0px 0px 0px -500px;
+	
+	top: 0px;
+	left: 50%;
+	/* background-color:yellow; */
+}
+
+.mypage_middle_content_template{
+	position: absolute;
+	width: 800px;
+	height: 1000px;
+	background-color: white;
+	
+	/* z-index: 0; */
+	position: absolute;
+	margin: 0 0 0 -198px;
+	
+	top: 0px;
+	left: 46.5%;
+}
+

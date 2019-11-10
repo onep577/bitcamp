@@ -1,0 +1,246 @@
+@charset "UTF-8";
+
+@import
+	url('https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap');
+
+#content_wrap {
+	 height: 2000px; 
+	 overflow: inherit; 
+}
+
+.rhybtn {
+	border-radius: 10px;
+	margin-left: 10px;
+	margin-right: 2px;
+	width: 80px;
+	height: 30px;
+	background: white;
+	font: Open Sans 30px;
+	color: black;
+	outline: 0;
+	border: 1px solid #cccccc;
+}
+
+.rhybtn:hover {
+	opacity: 0.5;
+}
+
+#ctable {
+	width: 700px;
+	border-collapse: collapse;
+}
+
+#ctable {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	background: #fff;
+	border-collapse: collapse;
+}
+
+.emptycomment {
+	position: absolute;
+	left: 27%;
+}
+
+#ctable th {
+	font-size: 16px;
+	font-weight: normal;
+	color: black;
+	border-bottom: 2px solid gray;
+	border-top: 2px solid gray;
+	font-weight: bold;
+}
+
+textarea {
+	resize: none;
+}
+
+#ctable td {
+	border-bottom: 1px solid #ccc;
+	color: black;
+	font-size: 13px;
+	padding: 5px;
+}
+
+#addtable {
+	width: 700px;
+	border-top: hidden;
+	border-left: hidden;
+	border-right: hidden;
+	border-bottom: hidden;
+}
+
+.ctr {
+	border-bottom: hidden;
+	border-left: hidden;
+	border-right: hidden;
+}
+
+.ctr2 {
+	border-left: hidden;
+	border-right: hidden;
+}
+
+.slider_wrap {
+	position: absolute;
+	width: 400px;
+	height: 400px;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+#body____wrap {
+	width: 1250px;
+	height: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0px;
+}
+
+body {
+	font: Open Sans;
+	min-height: 100%;
+	box-sizing: border-box;
+	overflow-x: hidden;
+}
+
+tr {
+	border: 1px solid black;
+}
+
+#side_goods {
+	position: absolute;
+	width: 1250px;
+	height: auto;
+	font-size: 15px;
+	margin-left: 800px;
+	margin-top: 46px;
+}
+
+#goods_comment {
+	margin-top: 800px;
+}
+
+.list {
+	list-style: none;
+	padding: 0;
+}
+
+.list>li {
+	padding: 0;
+}
+
+.list-checkbox {
+	display: none;
+}
+
+.title {
+	padding: 10px;
+	margin: 0;
+	border-top: 1px solid #ddd;
+	background: #f4f4f4;
+	cursor: pointer;
+	display: block;
+}
+
+.desc {
+	max-height: 0;
+	overflow: hidden;
+	transition: 0.5s;
+}
+
+.desc>div {
+	margin: 10px;
+}
+
+.list-checkbox:checked+.title+.desc {
+	max-height: 1000px;
+}
+
+.modal_text {
+	color: red;
+	margin-bottom: 3px;
+	line-height: 30px;
+}
+
+.modal-body {
+	text-align: left;
+	font-size: 13px;
+}
+
+.test {
+	border-bottom: none;
+}
+
+#comment_wrap {
+	position: absolute;
+	margin-left: 80px;
+}
+
+#market_info {
+	margin-left: 80px;
+}
+
+#info_qna {
+	border: 1px solid black;
+}
+
+/* ///////////productdetail.css////////////// */
+#b_btn {
+	font-size: 13px;
+}
+
+#buyBtn {
+	border-radius: 30px;
+	margin-top: 13px;
+	margin-bottom: 10px;
+	width: 270px;
+	height: 55px;
+	background: #d7fd75;
+	font: Open Sans 30px;
+	color: black;
+}
+
+#buyBtn:hover {
+	opacity: 0.5;
+}
+
+.basketBtn {
+	border-radius: 30px;
+	margin-top: 5px;
+	width: 135px;
+	height: 45px;
+	background: white;
+	font: Open Sans 30px;
+	color: black;
+}
+
+.wishBtn {
+	border-radius: 30px;
+	margin-top: 5px;
+	width: 135px;
+	height: 45px;
+	background: white;
+	font: Open Sans 30px;
+	color: black;
+}
+
+#ctr2 {
+	border-top: none;
+}
+
+#dtable {
+	width: 700px;
+	text-align: center;
+	basketBtn: hover{  
+	opacity:0.5;
+}
+
+#ctable:nth-child(even) {
+	background-color: #ffd4e9;
+}
+
+#ctable:nth-child(odd) {
+	background-color: #d4e9ff;
+}

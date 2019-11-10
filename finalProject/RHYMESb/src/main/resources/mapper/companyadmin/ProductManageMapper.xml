@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <mapper namespace="com.mde.app.common.dao"> -->
+
+<mapper namespace="productmanage">
+ 
+ 
+ <!-- 1.상품 조회(PRODUCTLIST) -->
+<select id="getAdminProductList" parameterType="com.rhymes.app.store.model.ProductParam" resultType="com.rhymes.app.store.model.ProductDto">
+	SELECT F.RNUM,
+		   F.P_NAME,
+		   F.P_SEQ,
+		   F.P_PRICE,
+		   F.BFS_PRICE,
+		   F.C1_NAME,
+		   F.C2_NAME,
+		   F.C3_NAME,
+		   F.P_COLOR,
+		   F.CP_CODE,
+		   F.RDATE,
+		   F.SUM,
+		   F.WISH,		   
+		   F.SALEPERCENT,
+		   F.SALESVOLUME
+		   
+	FROM(
+		SELECT ROW_NUMBER()OVER(ORDER BY 
+				<if test="sorting == 'SEQ' or sorting =='' or sorting == null ">
+			 		a.P_SEQ DESC
+			 	</if>
+				<if test="sorting == 'PRICEUP'">
+			 		a.P_PRICE DESC
+			 	</if>
+			 	<if test="sorting == 'PRICEDOWN'">
+			 		a.P_PRICE ASC
+			 	</if>
+			 	<if test="sorting == 'SALEUP'">
+					SALEPERCENT ASC
+				</if>
+				<if test="sorting == 'SALEDOWN'">
+					SALEPERCENT DESC
+				</if>
+				<if test="sorting == 'SALESUP'">
+					 SALESVOLUME DESC
+				</if>
+				<if test="sorting == 'SALESDOWN'">
+					 SALESVOLUME ASC
+				</if>
+			 ) AS RNUM,
+			   a.P_SEQ,
+			   a.P_NAME,
+			   a.P_PRICE,
+			   a.BFS_PRICE,
+			   a.C1_NAME,
+			   a.C2_NAME,
+			   a.C3_NAME,
+			   a.P_COLOR,
+			   a.CP_CODE,
+			   a.RDATE,
+			   SUM(A.QUANTITY) AS SUM,
+			   WISH,
+			   SALEPERCENT,
+			   SUM(SALES) AS SALESVOLUME
+			   
+		FROM (SELECT ROW_NUMBER()OVER(ORDER BY
+				<if test="sorting == 'SEQ' or sorting =='' or sorting == null ">
+			 		a.P_SEQ DESC
+			 	</if>
+				<if test="sorting == 'PRICEUP'">
+			 		a.P_PRICE DESC
+			 	</if>
+			 	<if test="sorting == 'PRICEDOWN'">
+			 		a.P_PRICE ASC
+			 	</if>
+			 	<if test="sorting == 'SALEUP'">
+					SALEPERCENT ASC
+				</if>
+				<if test="sorting == 'SALEDOWN'">
+					SALEPERCENT DESC
+				</if>
+				<if test="sorting == 'SALESUP'">
+					 SALES DESC
+				</if>
+				<if test="sorting == 'SALESDOWN'">
+					 SALES ASC
+				</if>
+			   	) AS RNUM2,
+					a.P_SEQ,
+					a.P_NAME,
+					a.P_PRICE,
+					a.BFS_PRICE,
+					a.C_NAME,
+					a.C1_NAME,
+					a.C2_NAME,
+					a.C3_NAME,
+					a.P_COLOR,
+					a.CP_CODE,
+					a.RDATE,
+					b.QUANTITY,
+					IFNULL((a.P_PRICE / a.BFS_PRICE),0) AS SALEPERCENT,
+					(SELECT COUNT(c.ID) 
+					 FROM rhy_store_wishlist c 
+					 WHERE c.P_SEQ = a.P_SEQ) as WISH,
+					IFNULL((SELECT SUM(d.EA) 
+							FROM rhy_payment e 
+							WHERE e.PAYMENT_STATUS = '결제완료' 
+								AND e.PAYMENT_CODE = d.PAYMENT_CODE
+							GROUP BY d.S_SEQ), 0) AS SALES
+								
+				FROM rhy_store_product a
+					INNER JOIN rhy_store_stock b
+						ON a.P_SEQ = b.P_SEQ
+					LEFT OUTER JOIN rhy_payment_details d
+						ON b.STOCK_SEQ = d.S_SEQ
+				WHERE a.C_NAME = #{c_name}
+					<!-- 검색 -->
+					<if test="criterion != null and criterion != '' and keyword != null and keyword != ''">	
+						<if test="criterion == 'all_search'">
+							AND (a.P_NAME LIKE '%' #{keyword} '%' or a.CP_CODE LIKE '%' #{keyword} '%') 
+						</if>
+						<if test="criterion == 'pname_search'">
+							AND a.P_NAME LIKE '%' #{keyword} '%'
+						</if>
+						<if test="criterion == 'cpcode_search'">
+							AND a.CP_CODE LIKE '%' #{keyword} '%'
+						</if>
+					</if>
+					<if test="criterion != null and criterion != '' and (keyword == null or keyword == '')">
+						<if test="criterion == 'c1_search'">
+								AND a.C1_NAME = #{c1_name}
+						</if>
+					</if>
+					<if test="key == 'sale'">
+						AND a.BFS_PRICE != 0
+					</if> 	
+				GROUP BY b.STOCK_SEQ
+				ORDER BY 
+					<if test="sorting == 'SEQ' or sorting =='' or sorting == null ">
+			 		a.P_SEQ DESC
+				 	</if>
+					<if test="sorting == 'PRICEUP'">
+				 		a.P_PRICE DESC
+				 	</if>
+				 	<if test="sorting == 'PRICEDOWN'">
+				 		a.P_PRICE ASC
+				 	</if>
+				 	<if test="sorting == 'SALEUP'">
+						SALEPERCENT ASC
+					</if>
+					<if test="sorting == 'SALEDOWN'">
+						SALEPERCENT DESC
+					</if>
+					<if test="sorting == 'SALESUP'">
+						 SALES DESC
+					</if>
+					<if test="sorting == 'SALESDOWN'">
+						 SALES ASC
+					</if>
+				
+				 ) A
+		GROUP BY a.P_SEQ DESC) F
+		WHERE RNUM BETWEEN #{start} and #{end}
+		ORDER BY F.RNUM DESC
+			
+</select>
+
+
+ <!-- 1(2).PRODUCTLIST 상품 총갯수 -->
+<select id="getAdminProductCnt" parameterType="com.rhymes.app.companyadmin.model.ProductManageDto" resultType="java.lang.Integer">
+	SELECT IFNULL(COUNT(*),0) AS CNT
+	FROM rhy_store_product
+	WHERE 1=1
+			<if test="criterion != null and criterion != '' and keyword != null and keyword != ''">	
+				<if test="criterion == 'all_search'">
+					AND (P_NAME LIKE '%' #{keyword} '%' or CP_CODE LIKE '%' #{keyword} '%') 
+				</if>
+				<if test="criterion == 'pname_search'">
+					AND P_NAME LIKE '%' #{keyword} '%'
+				</if>
+				<if test="criterion == 'cpcode_search'">
+					AND CP_CODE LIKE '%' #{keyword} '%'
+				</if>
+				<if test="criterion == 'c1_search'">
+					AND C1_NAME = #{c1_name}
+				</if>
+			</if>
+			<if test="criterion != null and criterion != '' and (keyword == null or keyword == '')">
+					<if test="criterion == 'c1_search'">
+						AND C1_NAME = #{c1_name}
+					</if>
+			</if>
+		
+			<if test="key == 'sale'">
+					AND BFS_PRICE != 0
+			</if>
+			AND C_NAME = #{c_name}
+</select>
+ 
+ <!-- 1(3).상품 상세조회(PRODUCTDETAILLIST) -->
+<select id="getAdminStockList" parameterType="com.rhymes.app.store.model.StockDto" resultType="com.rhymes.app.store.model.StockDto">
+	SELECT a.STOCK_SEQ, a.P_SEQ, a.SIZE, a.QUANTITY, SALESVOLUME
+	FROM(SELECT a.STOCK_SEQ, a.P_SEQ, a.SIZE, a.QUANTITY,
+		 IFNULL((SELECT SUM(b.EA)
+		        FROM rhy_payment c
+		        WHERE c.PAYMENT_STATUS='결제완료'
+		             AND b.PAYMENT_CODE = c.PAYMENT_CODE
+		        GROUP BY b.S_SEQ),0) AS SALESVOLUME	
+		 FROM rhy_store_stock a
+		 	LEFT OUTER JOIN rhy_payment_details b
+		 		ON a.STOCK_SEQ = b.S_SEQ    
+		 GROUP BY a.STOCK_SEQ) A
+	WHERE a.P_SEQ = #{p_seq}		 					  
+</select>
+ 
+<!-- 2.상품등록 -->
+ <select id="getCate2List" parameterType="Integer" resultType="com.rhymes.app.store.model.category.Category2Dto">
+     SELECT C2_SEQ, C2_NAME, C1_SEQ 
+     FROM rhy_store_cate2
+     WHERE 1=1 
+     	<if test="c1_seq != '' and c1_seq != null">
+     		AND C1_SEQ = #{c1_seq}
+     	</if>
+ </select>
+ 
+ <select id="getc2seq" parameterType="com.rhymes.app.store.model.category.Category2Dto" resultType="Integer">
+ 	SELECT C2_SEQ
+ 	FROM rhy_store_cate2
+ 	WHERE C1_SEQ = #{c1_seq} AND C2_NAME = #{c2_name}
+ </select>
+ 
+ <select id="getCate3List" parameterType="Integer" resultType="com.rhymes.app.store.model.category.Category3Dto">
+     SELECT C3_SEQ, C3_NAME, C2_SEQ 
+     FROM rhy_store_cate3
+     WHERE C2_SEQ = #{c2_seq}
+ </select>
+ 
+ <select id="getPseq" resultType="Integer">
+ 	SELECT nextval('p_seq') 
+ 	FROM DUAL
+ </select>
+ 
+ <insert id="insertProduct" parameterType="com.rhymes.app.store.model.ProductDto">
+ 	INSERT INTO rhy_store_product
+ 	VALUES(#{p_seq}, #{c_name}, #{p_name}, #{p_title}, #{cp_code}, #{p_price}, 0, #{p_color}, #{c1_name}, #{c2_name}, #{c3_name},
+ 		#{nation}, #{mdate}, #{detail}, #{photo1_file}, #{photo2_file}, #{photo3_file}, #{photo4_file}, #{photo5_file}, NOW() )
+ </insert>
+ <insert id="insertStock" parameterType="com.rhymes.app.store.model.StockDto">
+ 	INSERT INTO rhy_store_stock
+ 	VALUES(NULL, #{p_seq}, #{p_size}, #{p_quantity})
+ </insert>
+ 
+ <select id="getSizeunit" resultType="String" parameterType="com.rhymes.app.store.model.SizeunitDto">
+ 	SELECT C2_SIZE 
+ 	FROM rhy_store_sizeunit
+ 	WHERE C2_SEQ = #{c2_seq}
+ </select>
+
+ <select id="getProductList" parameterType="com.rhymes.app.store.model.ProductDto" resultType="com.rhymes.app.store.model.ProductDto">
+ 	SELECT P_NAME, P_TITLE, P_PRICE, P_COLOR, PHOTO1_FILE, C1_NAME, BFS_PRICE 		
+ 	FROM rhy_store_product 	 
+ </select>
+ 
+ <select id="getCname" resultType="com.rhymes.app.member.model.SellerDTO" parameterType="com.rhymes.app.member.model.SellerDTO">
+ 	SELECT C_NAME 
+ 	FROM rhy_mem_c
+ 	WHERE ID = #{ id }  	
+ </select>
+<!-- 상품등록 끝 --> 	
+
+<!-- 3.상품 수정/삭제 -->
+ <!-- 3(1).상품기본정보 수정 -->
+ <update id="cAdminProductBasicinfoUpdate" parameterType="com.rhymes.app.store.model.ProductDto">
+ 	UPDATE rhy_store_product
+ 	SET P_NAME = #{p_name},
+ 		CP_CODE = #{cp_code},
+ 		P_PRICE = #{p_price},
+ 		P_COLOR = #{p_color},
+ 		MDATE = #{mdate},
+ 		C1_NAME = #{c1_name},
+ 		C2_NAME = #{c2_name},
+ 		C3_NAME = #{c3_name} 
+ 	WHERE P_SEQ = #{p_seq}
+ </update>
+ <!-- 3(2).상품이미지 수정 -->
+ <update id="cAdminProductImgUpdate" parameterType="com.rhymes.app.store.model.ProductDto">
+ 	UPDATE rhy_store_product
+ 	SET
+ 		<if test="photo1_file != '' and photo1_file != null">
+ 			PHOTO1_FILE = #{photo1_file}
+ 		</if>
+ 		<if test="photo2_file != '' and photo2_file != null">
+ 			PHOTO2_FILE = #{photo2_file}
+ 		</if>
+ 		<if test="photo3_file != '' and photo3_file != null">
+ 			PHOTO3_FILE = #{photo3_file}
+ 		</if>
+ 		<if test="photo4_file != '' and photo4_file != null">
+ 			PHOTO4_FILE = #{photo4_file}
+ 		</if>
+ 		<if test="photo5_file != '' and photo5_file != null">
+ 			PHOTO5_FILE = #{photo5_file}
+ 		</if>
+ 	WHERE P_SEQ = #{p_seq}
+ </update>
+ <!-- 3(3).SALE 적용 -->
+ <update id="cAdminProductSalePriceUpdate" parameterType="com.rhymes.app.store.model.ProductDto">
+ 	UPDATE rhy_store_product
+ 	SET P_PRICE = #{p_price}, BFS_PRICE = #{bfs_price}
+ 	WHERE P_SEQ = #{p_seq}
+ </update>
+ <!-- 3(3).SALE 적용 -->
+ <update id="cAdminProductSalePriceUpdateCancel" parameterType="com.rhymes.app.store.model.ProductDto">
+ 	UPDATE rhy_store_product
+ 	SET P_PRICE = #{p_price}, BFS_PRICE = 0
+ 	WHERE P_SEQ = #{p_seq}
+ </update>
+ <!-- 3(4).상품삭제 -->
+ <delete id="cAdminProductDelete" parameterType="com.rhymes.app.store.model.ProductDto">
+ 	DELETE FROM rhy_store_product
+ 	WHERE P_SEQ = #{p_seq}
+ </delete>
+ 
+ <!-- 5.재고관리 -->
+ <select id="cAdminStockManage" parameterType="com.rhymes.app.companyadmin.model.StockManageDto" resultType="com.rhymes.app.store.model.StockDto">
+ 	SELECT F.P_SEQ,
+ 		   F.STOCK_SEQ,
+ 		   F.P_NAME,
+ 		   F.SIZE,
+ 		   F.QUANTITY,
+ 		   F.C1_NAME,
+ 		   F.C2_NAME,
+ 		   F.C3_NAME,
+ 		   F.P_PRICE,
+ 		   F.CP_CODE,
+ 		   F.P_COLOR,
+ 		   F.RNUM
+ 		   
+	FROM (SELECT ROW_NUMBER()OVER(ORDER BY 
+							<if test="sorting == 'SEQ' or sorting =='' or sorting == null ">
+						 		a.STOCK_SEQ DESC
+						 	</if>
+							<if test="sorting == 'PRICEUP'">
+						 		b.P_PRICE DESC
+						 	</if>
+						 	<if test="sorting == 'PRICEDOWN'">
+						 		b.P_PRICE ASC
+						 	</if>
+									) AS RNUM,
+									a.STOCK_SEQ,
+									b.P_SEQ,
+									b.P_NAME,
+									a.SIZE,
+									a.QUANTITY,
+									b.C1_NAME,
+									b.C2_NAME,
+									b.C3_NAME,
+									b.P_PRICE,
+									b.CP_CODE,
+									b.P_COLOR
+		  FROM rhy_store_stock a 
+			INNER JOIN rhy_store_product b
+				ON a.P_SEQ = b.P_SEQ 
+			WHERE b.C_NAME = #{c_name}
+			<!-- 검색 -->
+			<if test="criterion != null and criterion != '' and keyword != null and keyword != ''">	
+				<if test="criterion == 'all_search'">
+					AND (b.P_NAME LIKE '%' #{keyword} '%' or a.STOCK_SEQ LIKE '%' #{keyword} '%') 
+				</if>
+				<if test="criterion == 'pname_search'">
+					AND b.P_NAME LIKE '%' #{keyword} '%'
+				</if>
+				<if test="criterion == 'stockseq_search'">
+					AND a.STOCK_SEQ = #{keyword}
+				</if>
+			</if>
+			
+			<if test="criterion != null and criterion != '' and (keyword == null or keyword == '')">
+				<if test="criterion == 'c1_search'">
+						AND b.C1_NAME = #{c1_name}
+				</if>
+			</if>
+		  ORDER BY
+		  		<if test="sorting == 'SEQ' or sorting =='' or sorting == null ">
+			 		a.STOCK_SEQ DESC
+			 	</if>
+				<if test="sorting == 'PRICEUP'">
+			 		b.P_PRICE DESC
+			 	</if>
+			 	<if test="sorting == 'PRICEDOWN'">
+			 		b.P_PRICE ASC
+			 	</if>
+		) F
+	WHERE F.RNUM BETWEEN #{start} AND #{end}	
+ </select>
+ 
+ <!-- 5. stock총갯수 -->
+ <select id="cAdminStockCnt" resultType="Integer" parameterType="com.rhymes.app.companyadmin.model.StockManageDto">
+	SELECT IFNULL(COUNT(*),0) AS CNT
+	FROM rhy_store_stock a 
+		INNER JOIN rhy_store_product b
+			ON a.P_SEQ = b.P_SEQ 
+		WHERE b.C_NAME = #{c_name}
+		<!-- 검색 -->
+			<if test="criterion != null and criterion != '' and keyword != null and keyword != ''">	
+				<if test="criterion == 'all_search'">
+					AND (b.P_NAME LIKE '%' #{keyword} '%' or a.STOCK_SEQ LIKE '%' #{keyword} '%') 
+				</if>
+				<if test="criterion == 'pname_search'">
+					AND b.P_NAME LIKE '%' #{keyword} '%'
+				</if>
+				<if test="criterion == 'stockseq_search'">
+					AND a.STOCK_SEQ = #{keyword}
+				</if>
+			</if>
+			
+			<if test="criterion != null and criterion != '' and (keyword == null or keyword == '')">
+				<if test="criterion == 'c1_search'">
+						AND b.C1_NAME = #{c1_name}
+				</if>
+			</if>
+ </select>
+ 
+ <!-- 5.재고수정 -->
+ <update id="cAdminchangestockquantity" parameterType="com.rhymes.app.store.model.StockDto">
+ 	UPDATE rhy_store_stock 
+ 	SET QUANTITY = #{quantity}
+ 	WHERE STOCK_SEQ = #{stock_seq}
+ </update>
+ 
+ <!-- 5.RESTOCK STOCKSEQ CHECK -->
+ <select id="cAdminrestockcheck" parameterType="com.rhymes.app.store.model.StockDto" resultType="Integer">
+ 	SELECT COUNT(*) CNT
+ 	FROM rhy_store_restock_notify
+ 	WHERE STOCK_SEQ = ${stock_seq}
+ </select>
+ 
+ <!-- 5.GETTING PHONENUMBERS THAT REQUEST RESTOCK-NOTICE -->
+ <select id="cAdmingetrestockphonenumbers" parameterType="com.rhymes.app.store.model.StockDto" resultType="com.rhymes.app.store.model.RestockNotifyDto">
+ 	SELECT PHONE
+ 	FROM rhy_store_restock_notify
+ 	WHERE STOCK_SEQ = #{stock_seq}
+ </select>
+ 
+ <!-- 5.DELLETING STOCKSEQ, AFTER SENDING SMS SUCCESSFULLY -->
+ <delete id="cAdmindeleterestock" parameterType="com.rhymes.app.store.model.StockDto">
+ 	DELETE FROM rhy_store_restock_notify
+ 	WHERE STOCK_SEQ = #{stock_seq} 
+ </delete>
+ 
+</mapper>

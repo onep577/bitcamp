@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+#_ntable th {
+    text-align: center;
+}
+
+#_ntable td {
+    text-align: center;
+}
+
+#_formbtn{
+	   border-radius: 10px;
+   margin-top:5px;
+   width:100px;
+   height:30px;
+   background: white;
+   font: Open Sans 30px;
+   color: black; 
+   outline: 0;
+   border: 1px solid #cccccc; 
+}
+#_formbtn:hover{
+   opacity:0.5;
+}
+
+#rhybtn{
+   border-radius: 10px;
+   margin-top:5px;
+   width:40px;
+   height:30px;
+   background: white;
+   font: Open Sans 30px;
+   color: black; 
+   outline: 0;
+   border: 1px solid #cccccc; 
+}
+#rhybtn:hover{
+   opacity:0.5;
+}
+
+/* 리스트테이블 */
+.list_table { width:98%;}
+.list_table th { text-align:center; padding:20px 0px;  border-top: 3px solid #E0FF8B;}
+.list_table td { padding:8px 0px 8px 10px;  border-top:1px solid #EFEFEF;}
+.list_table td,.list_table th { font-size: 12px;}
+

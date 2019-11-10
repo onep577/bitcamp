@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+#_h1 {
+	color: black;
+}
+
+.btn:hover {
+	opacity: 0.5;
+}
+
+.btn {
+	border-radius: 10px;
+	margin: 10px 10px 10px 10px;
+	width: 100px;
+	height: 30px;
+	background: white;
+	font: Open Sans 30px;
+	color: black;
+	outline: 0;
+	border: 1px solid #cccccc;
+}
+
+input[type="text"], input[type="password"] {
+	height: auto; /* 높이 초기화 */
+	line-height: normal; /* line-height 초기화 */
+	padding: .8em .5em; /* 여백 설정 */
+	margin: 10px 10px 10px 10px;
+}

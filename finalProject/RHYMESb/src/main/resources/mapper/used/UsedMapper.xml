@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 물품 등록 -->
+<mapper namespace="Used">
+	<insert id="write" parameterType="com.rhymes.app.used.model.ProductsDto">
+	INSERT INTO rhy_used_products(s_id,category,title,content,price,quantity,place,photo,photo_sys,division,likes,readcount,rdate)
+	VALUES (#{s_id},#{category},#{title},#{content},#{price},#{quantity},#{place},#{photo},#{photo_sys},'판매중',0,0,SYSDATE())
+	</insert>
+	
+<update id="usedupdate" parameterType="com.rhymes.app.used.model.ProductsDto">
+	UPDATE rhy_used_products
+	SET CATEGORY=#{category},TITLE=#{title},PRICE=#{price},QUANTITY=#{quantity},PLACE=#{place},PHOTO=#{photo},PHOTO_SYS=#{photo_sys}
+	WHERE SEQ=#{seq}
+</update>	
+	
+<!-- 물품 리스트  -->	
+<select id="getUsedList" resultType="com.rhymes.app.used.model.ProductsDto">
+	SELECT seq,s_id,category,title,content,price,quantity,place,photo,photo_sys,division,likes,readcount,rdate
+	FROM (SELECT ROW_NUMBER()OVER(ORDER BY RDATE DESC) AS RNUM, 
+			seq,s_id,category,title,content,price,quantity,place,photo,photo_sys,division,likes,readcount,rdate
+		  FROM rhy_used_products
+		  WHERE 1=1
+	<if test="category != null">
+	
+	<if test="select != null and keyword != null">
+		<if test="select == 'title'">
+            AND TITLE LIKE CONCAT('%',#{keyword},'%')
+            AND CATEGORY LIKE CONCAT('%',#{category},'%')
+         </if>
+         <if test="select == 'content'">
+            AND CONTENT LIKE CONCAT('%',#{keyword},'%')
+            AND CATEGORY LIKE CONCAT('%',#{category},'%')
+         </if>
+         <if test="select == 'id'">
+            AND S_ID LIKE LIKE CONCAT('%',#{keyword},'%')
+            AND CATEGORY LIKE CONCAT('%',#{category},'%')
+         </if>
+      </if>
+      AND CATEGORY LIKE CONCAT('%',#{category},'%')
+      </if>
+	) A
+	WHERE RNUM BETWEEN ${start} AND ${end}
+	<!-- AND CATEGORY LIKE CONCAT('%',#{category},'%') -->
+	ORDER BY RDATE DESC
+</select>
+
+
+<!-- 페이징을 위한 게시글 총 개수 구하기 -->
+ <select id="getBbsCount" parameterType="com.rhymes.app.used.model.BbsParam" resultType="java.lang.Integer">
+	SELECT IFNULL(COUNT(*), 0)AS CNT
+	FROM rhy_used_products
+	WHERE 1=1
+	
+		<if test="category != null">
+	
+		<if test="select != null and keyword != null">
+		<if test="select == 'title'">
+            AND TITLE LIKE CONCAT('%',#{keyword},'%')
+            AND CATEGORY LIKE CONCAT('%',#{category},'%')
+         </if>
+         <if test="select == 'content'">
+            AND CONTENT LIKE CONCAT('%',#{keyword},'%')
+            AND CATEGORY LIKE CONCAT('%',#{category},'%')
+         </if>
+         <if test="select == 'id'">
+            AND S_ID LIKE LIKE CONCAT('%',#{keyword},'%')
+            AND CATEGORY LIKE CONCAT('%',#{category},'%')
+         </if>
+      </if>
+      AND CATEGORY LIKE CONCAT('%',#{category},'%')
+      </if>
+    <!-- AND CATEGORY LIKE CONCAT('%',#{category},'%') -->      
+</select>
+
+
+<!-- 물품 디테일 -->
+<select id="getUsedDetail" resultType="com.rhymes.app.used.model.ProductsDto" parameterType="java.lang.Integer">
+	SELECT *	
+	FROM rhy_used_products
+	where seq=#{seq}
+</select>
+
+<!-- 셀러 인증 카운트 증가 -->
+<update id="updateSellerCount" parameterType="java.lang.String">
+	UPDATE rhy_mem_p  
+	SET COUNT=COUNT+1
+	where id=#{parameter}
+</update>
+
+<!-- 셀러 인증 카운트 조회 -->
+<select id="getSellerCount" resultType="java.lang.Integer" parameterType="java.lang.String">
+	SELECT COUNT
+	FROM rhy_mem_p
+	where id=#{parameter}
+</select>
+
+<!-- 멤버 정보 불러오기 -->
+<select id="getMember" resultType="com.rhymes.app.member.model.P_MemberDTO" parameterType="java.lang.String">
+	SELECT id as userid, name as username, postcode,address,detailAddress,email as useremail,phone,gender as usergender,birth as userbirth,count,subscribe
+	FROM rhy_mem_p
+	WHERE ID=#{id}
+</select>
+
+<!-- 기본주소가 등록된 회원 판매자 등록 -->
+<insert id="setSellerMember" parameterType="java.lang.String">
+	INSERT INTO rhy_used_seller(s_id,rdate)
+	VALUES(#{s_id},SYSDATE())
+</insert>
+
+<!-- 기본주소가 없는 회원 주소추가 -->
+<update id="setSelleraddress" parameterType="com.rhymes.app.member.model.P_MemberDTO">
+	UPDATE rhy_mem_p
+	SET postcode=#{postcode}, address=#{address}, detailaddress=#{detailAddress}
+	WHERE ID=#{userid}
+</update>
+
+<!-- 기본주소가 없는 회원 판매자 등록 -->
+<insert id="setSellerMember2" parameterType="com.rhymes.app.member.model.P_MemberDTO">
+	INSERT INTO rhy_used_seller(s_id,rdate)
+	VALUES(#{userid},SYSDATE())
+</insert>
+
+<!-- 게시글 클릭시 좋아요 여부 조회 -->
+<select id="getlikes" parameterType="hashmap" resultType="java.lang.Integer">
+	SELECT count(*)
+	FROM rhy_used_likes
+	WHERE mname=#{mname} AND bno=#{bno}
+</select>
+
+<!-- 게시글의 좋아요 개수 조회 -->
+<select id="getboardlikes" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+	SELECT count(*)
+	FROM rhy_used_likes
+	WHERE bno=#{seq}
+</select>
+
+<!-- 게시글 조회수 증가 -->
+<update id="updateReadCount" parameterType="java.lang.Integer">
+	UPDATE rhy_used_products
+	SET readcount = readcount + 1
+	WHERE seq=#{seq}
+</update>
+
+<!-- 좋아요 삭제  -->
+<delete id="deletelikes" parameterType="hashmap">
+	DELETE FROM rhy_used_likes
+	WHERE mname=#{mname} AND bno=#{bno}
+</delete>
+
+<!-- 좋아요 추가 -->
+<insert id="addlikes" parameterType="hashmap">
+	INSERT INTO rhy_used_likes (mname,bno)
+	VALUES(#{mname},#{bno})
+</insert>
+
+<!-- 댓글 불러오기 -->
+<select id="getComments" parameterType="com.rhymes.app.used.model.CommentsDto" resultType="com.rhymes.app.used.model.CommentsDto">
+	SELECT seq,id,comments,date,parent,ref,step,depth
+	FROM (SELECT ROW_NUMBER()OVER(ORDER BY ref desc, step asc) as RNUM,
+						seq,id,comments,wdate as date,parent,ref,step,depth
+		  FROM rhy_used_Comments				
+	) A
+	<!-- WHERE RNUM BETWEEN #{start} AND #{end} AND parent=#{seq} -->
+	WHERE parent = #{seq}
+	order by ref desc, step asc
+	LIMIT #{start}, 10
+</select>
+<!-- <select id="getCommentCount" parameterType="com.rhymes.app.used.model.CommentsDto" resultType="java.lang.Integer">
+	SELECT COUNT(*)
+	FROM (SELECT ROW_NUMBER()OVER(ORDER BY ref desc, step asc) as RNUM,
+						seq,id,comments,wdate as date,parent,ref,step,depth
+		  FROM rhy_used_Comments				
+	) A
+	WHERE parent = #{seq}
+	LIMIT #{start}, 10
+</select> -->
+
+<!-- 댓글 작성 -->
+<insert id="addComments" parameterType="hashmap">
+	INSERT INTO rhy_used_Comments(id,comments,wdate,parent,ref,step,depth)
+	VALUES(#{userid},#{comments},SYSDATE(),#{parent},(SELECT IFNULL(MAX(REF), 0)+1 FROM rhy_used_Comments ALIAS_FOR_SUBQUERY),0,0)
+</insert><!-- (SELECT IFNULL(MAX(REF), 0)+1 FROM rhy_used_Comments ALIAS_FOR_SUBQUERY) -->
+
+<!-- 댓글 수정 -->
+<update id="updateComment" parameterType="hashmap">
+	UPDATE rhy_used_Comments
+	SET comments=#{comments}
+	WHERE parent=#{parent}
+	AND seq=#{seq}
+</update>
+
+<!-- 댓글 삭제 -->
+<delete id="deleteComment" parameterType="hashmap">
+
+	DELETE FROM rhy_used_Comments
+	
+	<include refid="deletedepth"/>
+	
+</delete>
+	
+<sql id="deletedepth">
+	<where>
+		<if test="depth == 0">
+		parent=#{parent}
+		and ref in (
+					select ref 
+					from ( select ref 
+							 from rhy_used_Comments
+							 where seq = #{seq}) as tmp )
+		</if>
+			
+		<if test="depth > 0">
+		parent=#{parent}
+		and seq=#{seq}
+		</if>
+	</where>
+</sql>
+
+<delete id="deleteProduct" parameterType="java.lang.Integer">
+	DELETE FROM rhy_used_Products
+	WHERE SEQ=#{seq}
+</delete>
+
+<!-- 답글 정렬을 위한 step 업데이트 -->
+<update id="updateanswer" parameterType="hashmap">
+update rhy_used_Comments 
+set step = step + 1
+where seq in ( select seq
+					from ( select seq
+							from rhy_used_Comments
+							where seq = #{seq}) tmp )
+</update>
+
+<!-- 답글 등록  -->
+<insert id="insertanswer" parameterType="hashmap">
+	INSERT INTO rhy_used_Comments(id,comments,wdate,parent,ref,step,depth)
+	VALUES(#{userid},#{comments},SYSDATE(),#{parent},(select ref 
+													 from ( select ref
+													 from  rhy_used_Comments
+													 			where seq = #{seq} ) m1 ),(select step 
+													 from ( select step
+													 from  rhy_used_Comments
+													 			where seq = #{seq} ) m2 ) + 1,(select depth 
+													 from ( select depth
+													 from  rhy_used_Comments
+													 			where seq = #{seq} ) m3 ) + 1)
+</insert>
+
+<!-- 셀러 등록 여부 조회 -->
+<select id="getSellerid" parameterType="java.lang.String" resultType="java.lang.Integer">
+	SELECT COUNT(*)
+	FROM rhy_used_seller
+	WHERE s_id=#{s_id}
+</select>
+
+<!--게시글 신고  -->
+<insert id="setblackList" parameterType="hashmap">
+	INSERT INTO rhy_used_blacklist(b_id,b_seq,reporter,content,rdate,review)
+	VALUES(#{b_id},#{seq},#{id},#{str},NOW(),'N')
+</insert>
+
+<!-- 권한추가  -->
+<insert id="insertSeller" parameterType="java.lang.String">
+INSERT INTO authorities(id,AUTHORITY,rdate)
+VALUES(#{id},'ROLE_USEDSELLER',NOW());
+</insert>
+
+
+</mapper>

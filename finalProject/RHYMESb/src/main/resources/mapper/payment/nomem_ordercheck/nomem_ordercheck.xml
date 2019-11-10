@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="nomem_ordercheck">
+
+
+<!-- 비회원으로 주문내역 있는지 확인 -->
+<select id="confirm" parameterType="com.rhymes.app.payment.model.PaymentDTO" resultType="java.lang.String">
+SELECT SEND_NAME
+FROM RHY_PAYMENT
+WHERE SEND_NAME=#{send_name } AND PAYMENT_CODE LIKE CONCAT('%',#{payment_code},'%')
+</select>
+
+<!-- 주문내역 조회 -->
+<select id="getOrdercheck" resultType="com.rhymes.app.payment.model.PaymentDTO">
+SELECT * FROM RHY_PAYMENT
+ORDER BY RDATE DESC
+</select>
+
+<!-- 주문상세내역 조회 -->
+<select id="getOrdercheckDetail" parameterType="java.lang.String" resultType="com.rhymes.app.payment.model.NoMemOrderCheckDTO">
+SELECT DE.DELIVERY_REQUEST, PA.PAYMENT_CODE, PA.USERID, PA.SEND_NAME,
+		PA.RDATE, DE.NAME, PA.RECEIVE_PHONE, DE.DELIVERY_POST_CODE, PA.PAYMENT_METHOD, PA.TOTALPRICE,
+		PA.DISC_POINT, PA.COUPON_CODE, DT.S_SEQ, DT.EA, DT.PRICE, PA.PAYMENT_STATUS, PA.DISC_COUPON,
+		PR.P_TITLE, PR.P_NAME, PR.PHOTO1_FILE, PR.P_TITLE, PA.RECEIVE_ADDRESS, ST.SIZE, PR.P_COLOR
+	
+FROM RHY_PAYMENT PA, RHY_DELIVERY DE, RHY_PAYMENT_DETAILS DT, RHY_STORE_STOCK ST, RHY_STORE_PRODUCT PR
+WHERE DE.PAYMENT_CODE = PA.PAYMENT_CODE AND PA.PAYMENT_CODE = DT.PAYMENT_CODE
+		AND DT.S_SEQ = ST.STOCK_SEQ AND PR.P_SEQ = ST.P_SEQ
+		AND PA.PAYMENT_CODE LIKE CONCAT('%',#{payment_code},'%')
+ORDER BY PA.RDATE DESC
+</select>
+
+<!-- 배송현황 조회 -->
+<select id="getOrdercheckDelivery" parameterType="java.lang.String" resultType="com.rhymes.app.payment.model.DeliveryDTO">
+SELECT * FROM RHY_DELIVERY
+WHERE payment_code=#{payment_code}
+</select>
+
+
+</mapper>

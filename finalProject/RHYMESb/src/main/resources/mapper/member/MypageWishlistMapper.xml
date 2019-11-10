@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wishlist">	
+
+	<!-- 매개변수로 받은 ID에 맞는 찜목록 리턴 -->
+	<select id="getWishlistById" parameterType="java.lang.String"
+	 resultType="com.rhymes.app.member.model.mypage.MemberWishlistDTO">
+		<include refid="getWishlistByIdSql"/></select>
+		
+	<!-- 매개변수로 받은 ID와 p_seq에 맞는 찜 아이템 삭제 -->
+	<delete id="deleteWishItemByIdAndP_Seq" parameterType="com.rhymes.app.member.model.mypage.MemberWishlistDTO">
+		<include refid="deleteWishItemByIdAndP_SeqSql"/></delete>
+
+	<!-- 상품번호에 맞는 재고정보 리스트 리턴 -->			
+	<select id="getSizeListByP_Seq" parameterType="java.lang.Integer"
+		resultType="com.rhymes.app.member.model.mypage.MemberStockDTO">
+		<include refid="getSizeListByP_SeqSql"/></select>
+	
+	<!-- 상품번호에 맞는 상품정보 리스트 리턴 -->
+	
+	
+	<!-- QUERY --> 	
+ 	<!-- 매개변수로 받은 ID의 주문상세내역을 리턴 -->
+ 	<sql id="getWishlistByIdSql">		
+		SELECT * 
+		FROM RHY_STORE_PRODUCT A, RHY_STORE_WISHLIST B
+		WHERE A.P_SEQ = B.P_SEQ AND B.ID = #{userid};
+ 	</sql>
+ 	
+ 	<!-- 매개변수로 받은 ID와 p_seq에 맞는 찜 아이템 삭제 -->
+	<sql id="deleteWishItemByIdAndP_SeqSql" >
+		DELETE FROM RHY_STORE_WISHLIST
+		WHERE ID=#{userid} AND P_SEQ=#{p_seq}
+	</sql>
+	
+	<!-- 상품번호에 맞는 재고정보 리스트 리턴 -->
+	<sql id="getSizeListByP_SeqSql">
+		SELECT STOCK_SEQ AS s_seq, p_seq, size, quantity
+		FROM RHY_STORE_STOCK 
+		WHERE P_SEQ=#{p_seq}
+	</sql>
+</mapper>
+
+
+
+

@@ -1,0 +1,95 @@
+@charset "UTF-8";
+
+.body_orderlog_item{
+	margin-bottom: 20px;
+}
+
+/* 주문내역 상단 타이틀과 정렬기준 */
+.top_title {
+	float: left;
+}
+
+.top_term {
+	float: right;
+}
+
+/* 주문이력 개별 건에 대한 내용 class="order_detial"*/
+.order_detail {
+
+	height: 230px;
+	padding: 10px;
+	border: 1px solid;
+	border-color: #dbdbdb;	
+}
+.order_detail hr {
+}
+.order_body {
+	position: relative;
+	float: left;
+	top: 0px;
+	left: 0px;
+	padding: 10px;
+	height:  0px;
+}
+.order_body img{
+	width: 80px;
+	height: 100px;
+}
+
+.order_title{/* 주문내역 제목 */
+	height: 30px;
+	padding: 0px 10px 0px 10px;
+	margin-top: 10px;
+	cursor:pointer;
+}
+
+.order_title_text {
+	float: left;	
+}
+.order_title_ico {
+	float: right;
+}
+.order_body_thumbnail{	/* 주문썸네일 */
+	position: relative;
+	top: 50%;
+}
+.order_body_content{	/* 주문 상세내용 */
+	position: relative;
+	top: -95px;
+	left: 100px;
+}
+.order_body_btns{
+	position: relative;
+	top: -185px;
+	left: 580px;
+}
+
+.order_body_btns input{	/* 라임색테두리버튼 */
+	margin: 5px;
+	margin-right: 40px;
+	width: 180px;
+	border-color: #d7fd75;
+}
+
+.btn_write_review{	/* 라임색버튼 */
+	color: #400000;
+	background-color: #d7fd75;
+}
+
+.order_body_content table tr th{	/* 주문 상세내용 */
+	padding: 4px;
+}
+
+.orderlog_paging{	/* 페이징 네비게이션 */
+	position: absolute;
+	margin-top: 50px;
+	top: 100%;
+}
+
+.inform_nothing{	/* 아이템이 없을 때 */
+	border: 1px solid #e0e0e0;
+	width: 100%;
+	height: 130px;
+	padding: 50px;
+	text-align: center;
+}

@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admem">
+	
+	<!-- 회원리스트 -->
+	<select id="getmemlist" parameterType="com.rhymes.app.member.model.MemberParam" resultType="com.rhymes.app.member.model.MemBean">
+		SELECT SEQ, ID AS USERID, date_format(RDATE, "%Y-%m-%d") AS RDATE, SOCIAL, NAME AS USERNAME, POSTCODE, ADDRESS, DETAILADDRESS, 
+				EMAIL AS USEREMAIL, PHONE, GENDER, BIRTH, AUTHORITY, isAccountNonLock as isAccountNonLocked
+	       FROM (SELECT ROW_NUMBER()OVER(<choose>
+											<when test="sorting == 'ID'">ORDER BY M.ID ASC</when>
+											<when test="sorting == 'NAME'">ORDER BY P.NAME ASC</when>
+											<when test="sorting == 'ADDRESS'">ORDER BY P.ADDRESS ASC</when>
+											<when test="sorting == 'EMAIL'">ORDER BY P.EMAIL ASC</when>
+											<when test="sorting == 'PHONE'">ORDER BY P.PHONE ASC</when>
+											<when test="sorting == 'SOCIAL'">ORDER BY M.SOCIAL ASC</when>
+											<when test="sorting == 'RDATE'">ORDER BY M.RDATE ASC</when>
+											<when test="sorting == 'isAccountNonLocked'">ORDER BY M.isAccountNonLock ASC</when>
+											<otherwise>ORDER BY M.RDATE DESC</otherwise>
+										</choose>
+										)AS RNUM, 
+						M.SEQ, M.ID, M.RDATE, M.SOCIAL, P.NAME, P.POSTCODE, P.ADDRESS, P.DETAILADDRESS, 
+						P.EMAIL, P.PHONE, P.GENDER, P.BIRTH, A.AUTHORITY, M.isAccountNonLock
+				FROM RHY_MEM M, RHY_MEM_P P, AUTHORITIES A
+				WHERE M.ID = P.ID AND P.ID = A.ID 
+				<if test="s_category != null and s_category != ''">
+					<if test="s_keyword != null and s_keyword != ''">
+						<if test="s_category == '01'">
+							AND M.ID LIKE '%' #{s_keyword} '%'
+						</if>
+						<if test="s_category == '02'">
+							AND P.EMAIL LIKE '%' #{s_keyword} '%'
+						</if>
+						<if test="s_category == '03'">
+							AND M.SOCIAL LIKE '%' #{s_keyword} '%'
+						</if>
+						<if test="s_category == '04'">
+							AND P.PHONE LIKE '%' #{s_keyword} '%'
+						</if>
+					</if>
+				</if>
+					)B
+			WHERE RNUM BETWEEN ${start} AND ${end}
+			<if test="rdate != null">
+				AND RDATE LIKE '%' #{rdate} '%'
+			</if>
+			<choose>
+				<when test="sorting == 'ID'">ORDER BY ID ASC</when>
+				<when test="sorting == 'NAME'">ORDER BY NAME ASC</when>
+				<when test="sorting == 'ADDRESS'">ORDER BY ADDRESS ASC</when>
+				<when test="sorting == 'EMAIL'">ORDER BY EMAIL ASC</when>
+				<when test="sorting == 'PHONE'">ORDER BY PHONE ASC</when>
+				<when test="sorting == 'SOCIAL'">ORDER BY SOCIAL ASC</when>
+				<when test="sorting == 'RDATE'">ORDER BY RDATE ASC</when>
+				<when test="sorting == 'isAccountNonLocked'">ORDER BY isAccountNonLock ASC</when>
+				<otherwise>ORDER BY RDATE DESC</otherwise>
+			</choose>
+	</select>
+
+	<!-- 회원 리스트 count -->
+	<select id="getmemCount" parameterType="com.rhymes.app.member.model.MemberParam"
+		resultType="java.lang.Integer">
+		SELECT IFNULL(COUNT(*), 0) AS CNT
+		FROM RHY_MEM M, RHY_MEM_P P, AUTHORITIES A
+		WHERE M.ID = P.ID AND P.ID = A.ID
+			<if test="s_category != null and s_category != ''
+							and s_keyword != null and s_keyword != ''">
+						
+				<if test="s_category == '01'">
+					AND M.ID LIKE '%' #{s_keyword} '%'
+				</if>
+				<if test="s_category == '02'">
+					AND P.EMAIL LIKE '%' #{s_keyword} '%'
+				</if>
+				<if test="s_category == '03'">
+					AND M.SOCIAL LIKE '%' #{s_keyword} '%'
+				</if>
+				<if test="s_category == '04'">
+					AND P.PHONE '%' #{s_keyword} '%'
+				</if>					
+			</if>
+		<if test="rdate != null">
+			AND M.RDATE LIKE '%' #{rdate} '%'
+		</if>
+	</select>
+
+	<!-- 업체 리스트 -->
+	<select id="getmem_c_list" parameterType="com.rhymes.app.member.model.MemberParam" resultType="com.rhymes.app.member.model.SellerBean">
+	SELECT SEQ, ID AS USERID, RDATE, SOCIAL, C_NAME, C_NUM, P_NAME, C_POSTCODE, C_ADDRESS, C_DETAILADDRESS
+			IC_NAME, IC_PHONE, IC_EMAIL, AUTHORITY, isAccountNonLock
+       FROM (SELECT ROW_NUMBER()OVER(
+       								<choose>
+											<when test="sorting == 'ID'">
+												ORDER BY M.ID ASC					
+											</when>
+											<when test="sorting == 'C_NAME'">
+												ORDER BY C.C_NAME ASC					
+											</when>
+											<when test="sorting == 'C_NUM'">
+												ORDER BY C.C_NUM ASC					
+											</when>
+											<when test="sorting == 'P_NAME'">
+												ORDER BY C.P_NAME ASC					
+											</when>
+											<when test="sorting == 'C_ADDRESS'">
+												ORDER BY C.P_NAME ASC					
+											</when>
+											<when test="sorting == 'IC_PHONE'">
+												ORDER BY C.IC_PHONE ASC					
+											</when>
+											<when test="sorting == 'IC_MAIL'">
+												ORDER BY C.IC_MAIL ASC					
+											</when>
+											<when test="sorting == 'RDATE'">
+												ORDER BY M.RDATE ASC					
+											</when>
+											<when test="sorting == 'isAccountNonLock'">
+												ORDER BY M.isAccountNonLock ASC					
+											</when>
+										</choose>
+       								)AS RNUM,
+				M.SEQ, M.ID, M.RDATE, M.SOCIAL, C.C_NAME, C.C_NUM, C.P_NAME, C.C_POSTCODE, C.C_ADDRESS, C.C_DETAILADDRESS,
+				C.IC_NAME, C.IC_PHONE, C.IC_EMAIL, A.AUTHORITY, M.isAccountNonLock
+			FROM RHY_MEM M, RHY_MEM_C C, AUTHORITIES A
+			WHERE M.ID = C.ID AND C.ID = A.ID 
+			<if test="s_category != null and s_category != ''">
+				<if test="s_keyword != null and s_keyword != ''">
+					<if test="s_category == '01'">
+						AND M.ID LIKE '%' #{s_keyword} '%'
+					</if>
+					<if test="s_category == '02'">
+						AND C.C_NAME LIKE '%' #{s_keyword} '%'
+					</if>
+					<if test="s_category == '03'">
+						AND C.C_NUM LIKE '%' #{s_keyword} '%'
+					</if>
+					<if test="s_category == '04'">
+						AND C.IC_NAME LIKE '%' #{s_keyword} '%'
+					</if>
+					<if test="s_category == '05'">
+						AND C.IC_PHONE LIKE '%' #{s_keyword} '%'
+					</if>
+				</if>
+			</if>
+				
+				)B
+		WHERE RNUM BETWEEN ${start} AND ${end}	
+		<choose>
+		<when test="sorting == 'ID'">
+			ORDER BY ID ASC					
+		</when>
+		<when test="sorting == 'C_NAME'">
+			ORDER BY C_NAME ASC					
+		</when>
+		<when test="sorting == 'C_NUM'">
+			ORDER BY C_NUM ASC					
+		</when>
+		<when test="sorting == 'P_NAME'">
+			ORDER BY P_NAME ASC					
+		</when>
+		<when test="sorting == 'C_ADDRESS'">
+			ORDER BY P_NAME ASC					
+		</when>
+		<when test="sorting == 'IC_PHONE'">
+			ORDER BY IC_PHONE ASC					
+		</when>
+		<when test="sorting == 'IC_MAIL'">
+			ORDER BY IC_MAIL ASC					
+		</when>
+		<when test="sorting == 'RDATE'">
+			ORDER BY RDATE ASC					
+		</when>
+		<when test="sorting == 'isAccountNonLock'">
+			ORDER BY isAccountNonLock ASC					
+		</when>
+	</choose>
+	</select>
+	
+	<!-- 업체 리스트 count -->
+	 <select id="getmem_c_Count" parameterType="com.rhymes.app.member.model.MemberParam"
+	resultType="java.lang.Integer">
+	SELECT IFNULL(COUNT(*), 0) AS CNT
+	FROM RHY_MEM M, RHY_MEM_C C, AUTHORITIES A
+	WHERE M.ID = C.ID AND C.ID = A.ID
+		<if test="s_category != null and s_category != ''
+						and s_keyword != null and s_keyword != ''">
+						
+			<if test="s_category == '01'">
+				AND M.ID LIKE '%' #{s_keyword} '%'
+			</if>		
+			<if test="s_category == '02'">
+				AND C.C_NAME LIKE '%' #{s_keyword} '%'
+			</if>
+			<if test="s_category == '03'">
+				AND C.C_NUM LIKE '%' #{s_keyword} '%'
+			</if>
+			<if test="s_category == '04'">
+				AND C.IC_NAME LIKE '%' #{s_keyword} '%'
+			</if>
+			<if test="s_category == '05'">
+				AND C.IC_PHONE LIKE '%' #{s_keyword} '%'
+			</if>
+				
+		</if>
+	</select> 
+	
+	
+
+	<!-- 회원정보 불러오기 -->
+	<select id="getAdMem" parameterType="java.lang.String" resultType="com.rhymes.app.member.model.P_MemberDTO">
+		SELECT SEQ, ID AS USERID, NAME AS USERNAME, POSTCODE, ADDRESS, DETAILADDRESS, EMAIL AS USEREMAIL, PHONE, GENDER AS USERGENDER, BIRTH AS USERBIRTH
+		FROM RHY_MEM_P
+		WHERE ID=#{id}
+	</select>
+	
+	<!-- 회원정보 수정 -->
+	<update id="getAdMemAf" parameterType="com.rhymes.app.member.model.P_MemberDTO">
+		UPDATE RHY_MEM_P
+		SET NAME=#{username}, POSTCODE=#{postcode}, ADDRESS=#{address}, DETAILADDRESS=#{detailAddress}, 
+			EMAIL=#{useremail}, PHONE=#{phone}, GENDER=#{usergender}, BIRTH=#{userbirth}
+		WHERE ID=#{userid}
+	</update>
+
+	<!-- 회원 정지 -->
+	<update id="getMemLock" parameterType="com.rhymes.app.member.model.MemBean">
+		UPDATE RHY_MEM
+		SET isAccountNonLock='false'
+		WHERE ID=#{userid}
+	</update>
+	
+	<!-- 회원 정지 해제 -->
+	<update id="getMemLock_n" parameterType="com.rhymes.app.member.model.MemBean">
+		UPDATE RHY_MEM
+		SET isAccountNonLock='true'
+		WHERE ID=#{userid}
+	</update>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+	<resultMap type="com.rhymes.app.member.model.MemberDTO" id="memberMap">
+		<id property="userid" column="userid"/>
+		<result property="userid" column="userid"/>
+		<result property="userpw" column="userpw"/>
+<!-- 		<result property="isAccountNonLock" column="isAccountNonLock"/> -->
+		<collection property="authList" resultMap="authMap">
+		</collection> 
+	</resultMap>
+	
+	<resultMap type="com.rhymes.app.member.model.AuthoritiesDTO" id="authMap">
+		<result property="userid" column="userid"/>
+		<result property="authority" column="authority"/>
+	</resultMap>
+  
+	<select id="getOneMemberByMemberId" resultMap="memberMap" parameterType="java.lang.String">
+		SELECT 
+		  mem.id as userid, pw as userpw, enabled, authority
+		FROM 
+		  RHY_MEM mem LEFT OUTER JOIN AUTHORITIES auth on mem.id = auth.id 
+		WHERE mem.id = #{userid} AND mem.enabled='true' AND mem.isAccountNonLock='true'
+ 	</select>
+ 	
+ 	
+ 	<!-- id중복확인 -->
+ 	<select id="getIDCheck" parameterType="com.rhymes.app.member.model.MemberDTO" resultType="java.lang.Integer">
+    	SELECT COUNT(*)
+    	FROM RHY_MEM
+    	WHERE ID=#{userid}
+    </select>
+    
+    <!-- 공통정보 -->
+    <insert id="getAddmem" parameterType="com.rhymes.app.member.model.MemberDTO">
+    	INSERT INTO RHY_MEM(ID, PW)
+    	VALUES(#{userid}, #{userpw})
+    </insert>
+    
+    <!-- 추가정보 -->
+    <insert id="getPAddmem" parameterType="com.rhymes.app.member.model.P_MemberDTO">
+    	INSERT INTO RHY_MEM_P(ID, NAME, POSTCODE, ADDRESS, DETAILADDRESS, PHONE, EMAIL, GENDER, BIRTH, COUNT)
+    	VALUES(#{userid}, #{username}, #{postcode}, #{address}, #{detailAddress}, #{phone}, #{useremail}, #{usergender}, #{userbirth}, #{count})
+    </insert>
+    
+    <!-- 권한정보 ROLE_MEMBER.. 등 -->
+    <insert id="getAuthAddmem" parameterType="com.rhymes.app.member.model.AuthoritiesDTO">
+    	INSERT INTO AUTHORITIES(ID, AUTHORITY)
+    	VALUES(#{userid}, #{authority})
+    </insert>
+    
+    <!-- 웰컴쿠폰 -->
+    <insert id="getmem_cp" parameterType="com.rhymes.app.member.model.mypage.MemberCouponDetailDTO">
+    	INSERT INTO RHY_MEM_COUPON_DETAIL(C_SEQ, USERID, GDATE, EXPDATE, COUP_CODE, VISIBLE)
+	    VALUES(3, #{userid}, NOW(), DATE_ADD(NOW(), INTERVAL 1 MONTH), #{coup_code}, 1) 
+    </insert>
+    
+    <!-- 사업자번호체크 -->
+    <select id="getCRCheck" parameterType="com.rhymes.app.member.model.SellerCRnumDTO" resultType="java.lang.String">  
+    	SELECT CRNAME
+    	FROM RHY_CR_NUMBER
+    	WHERE CRNUM1=#{crnum1} AND CRNUM2=#{crnum2} AND CRNUM3=#{crnum3}
+    </select>
+    
+    <!-- 사이트에 등록된 사업자번호인지 확인 -->
+    <select id="getCRCYN" parameterType="com.rhymes.app.member.model.SellerDTO" resultType="java.lang.Integer">  
+    	SELECT COUNT(*)
+    	FROM RHY_MEM_C
+    	WHERE C_NUM=#{c_num}
+    </select>
+    
+    <!-- 사업자 회원가입 -->
+	<insert id="getAddSeller_C" parameterType="com.rhymes.app.member.model.SellerDTO">
+		INSERT INTO RHY_MEM_C(ID, C_NAME, C_NUM, P_NAME, C_COND, C_TYPE,
+								IC_NAME, IC_PHONE, IC_EMAIL,
+								C_POSTCODE, C_ADDRESS, C_DETAILADDRESS, 
+								S_POSTCODE, S_ADDRESS, S_DETAILADDRESS, 
+								R_POSTCODE, R_ADDRESS, R_DETAILADDRESS
+								)
+		VALUES(#{id}, #{c_name}, #{c_num}, #{p_name}, #{c_cond}, #{c_type},
+							#{ic_name}, #{ic_phone}, #{ic_email},
+							#{c_postcode}, #{c_address}, #{c_detailaddress},
+							#{s_postcode}, #{s_address}, #{s_detailaddress}, 
+							#{r_postcode}, #{r_address}, #{r_detailaddress})
+	</insert>
+	
+	<!-- id찾기 -->
+	<select id="getFindID_E" parameterType="com.rhymes.app.member.model.P_MemberDTO" resultType="java.lang.String">
+		SELECT ID
+		FROM RHY_MEM_P
+		WHERE EMAIL=#{useremail}
+	</select>
+	
+	<select id="getFindID_P" parameterType="com.rhymes.app.member.model.MemberDTO" resultType="java.lang.String">
+		SELECT PW
+		FROM RHY_MEM
+		WHERE ID=#{userid}
+	</select>
+
+	<!-- 비밀번호찾기 -->
+	<select id="getusertel" parameterType="com.rhymes.app.member.model.P_MemberDTO" resultType="java.lang.String">
+		SELECT ID
+		FROM RHY_MEM_P
+		WHERE PHONE=#{phone}
+	</select>
+	
+	<!-- 비밀번호 재설정 -->
+	<update id="getuserpwreset">
+		UPDATE RHY_MEM
+		SET PW=#{userpw}
+		WHERE ID=#{userid}
+	</update>
+	
+	<!-- 사업자 id찾기 -->
+	<select id="getfindid_seller" parameterType="com.rhymes.app.member.model.SellerDTO" resultType="com.rhymes.app.member.model.SellerDTO">
+		SELECT ID, IC_EMAIL
+		FROM RHY_MEM_C
+		WHERE C_NAME=#{c_name} AND C_NUM=#{c_num}
+	</select>
+	
+	<!-- 사업자pw찾기 -->
+	<select id="getfindpw_seller" parameterType="com.rhymes.app.member.model.SellerDTO" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM RHY_MEM_C
+		WHERE C_NAME=#{c_name} AND C_NUM=#{c_num} AND ID=#{id}
+	</select>
+	
+	<!-- 카카오regi -->
+	<insert id="getsnsregi" parameterType="com.rhymes.app.member.model.MemBean">
+		INSERT INTO RHY_MEM(ID, PW, SOCIAL)
+		VALUES(#{useremail}, #{userpw}, #{social})
+	</insert>
+	
+	<!-- 카카오regi 추가정보 -->
+	<insert id="getsnsregi_p" parameterType="com.rhymes.app.member.model.MemBean">
+		INSERT INTO RHY_MEM_P(ID, NAME, EMAIL)
+		VALUES(#{useremail}, #{username}, #{useremail})
+	</insert>
+	
+	
+	<!-- sns로그인 디비확인 -->
+	<select id="getsnsuser" parameterType="com.rhymes.app.member.model.MemBean" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM RHY_MEM
+		WHERE ID=#{userid}
+	</select>
+	
+	<!-- 사업자 이메일 등록 확인 -->
+	<select id="getEmailCheck_C" parameterType="java.lang.String" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM RHY_MEM_C
+		WHERE IC_EMAIL=#{email}
+	</select>
+	
+	<!-- 일반회원 이메일 등록 확인 -->
+	<select id="getEmailCheck_P" parameterType="java.lang.String" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM RHY_MEM_P
+		WHERE EMAIL=#{email}
+	</select>
+	
+	
+	
+	
+	
+</mapper>

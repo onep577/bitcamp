@@ -1,0 +1,94 @@
+@charset "UTF-8";
+.table-responsive{
+	overflow-x: hidden;
+}
+#paging_wrap{
+	float: right;
+}
+
+.searchSelect{
+	width: 100px;
+    height: calc(1.5em + .75rem + 2px);
+    padding-left: 8px;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #6e707e;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #d1d3e2;
+    border-radius: .35rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+/*     margin-bottom: 10px; */
+/*     position: relative; */
+/*     top: -4px; */
+}
+
+.clickBtn1{
+	height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: white;
+    background-color: #66e0b4;
+    background-clip: padding-box;
+    border: 1px solid #d1d3e2;
+    border-radius: .35rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    box-shadow: 0px 0px 2px #bbbbbb;
+    margin-bottom: 10px;
+}
+
+.clickBtn2{
+	height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #6e707e;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #d1d3e2;
+    border-radius: .35rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    box-shadow: 0px 0px 2px #bbbbbb;
+}
+
+.clickBtn3{
+	height: calc(1.2em + .55rem + 1.5px);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #6e707e;
+    background-color: #fff;
+    border: 1px solid #66e0b4;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    box-shadow: 0px 0px 2px #bbbbbb;
+    margin-left: 10px;
+}
+
+a{
+	color: #858796;
+}
+
+a:hover{
+	color: #858796;
+	
+	text-decoration: none;
+}
+								
+.searchText{
+    width: 200px;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #6e707e;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #d1d3e2;
+    border-radius: .35rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;	
+}

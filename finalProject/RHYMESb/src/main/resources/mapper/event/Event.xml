@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="event">
+
+<!-- 전체 이벤트 리스트 -->
+<select id="geteventlist" parameterType="com.rhymes.app.event.model.EventParam" resultType="com.rhymes.app.event.model.EventDTO">
+	SELECT SEQ, TITLE, CONTENT, TYPE, PHOTO_BANNER, RDATE, SDATE, EDATE
+	FROM (SELECT ROW_NUMBER()OVER(ORDER BY SEQ DESC)AS RNUM,
+				SEQ, TITLE, CONTENT, TYPE, PHOTO_BANNER, RDATE, SDATE, EDATE
+		  FROM RHY_EVENT_LIST
+		 )B
+	WHERE RNUM BETWEEN ${start} AND ${end}
+	ORDER BY SEQ DESC
+</select>
+
+<!-- count -->
+<select id="getEventCount" parameterType="com.rhymes.app.event.model.EventParam" resultType="java.lang.Integer">
+	SELECT IFNULL(COUNT(*), 0) AS CNT
+	FROM RHY_EVENT_LIST
+</select>
+
+<!-- detail -->
+<select id="geteventdetail" parameterType="com.rhymes.app.event.model.EventDTO" resultType="com.rhymes.app.event.model.EventDTO">
+	SELECT SEQ, TITLE, CONTENT, TYPE, COUPON_SEQ1, COUPON_SEQ2, COUPON_TITLE1, COUPON_TITLE2, PHOTO_BANNER, PHOTO_CONTENT, RDATE, SDATE, EDATE
+	FROM RHY_EVENT_LIST
+	WHERE SEQ=#{seq}
+</select>
+
+<!-- 쿠폰 insert -->
+<insert id="eventcoupon" parameterType="com.rhymes.app.member.model.mypage.MemberCouponDetailDTO">
+	INSERT INTO RHY_MEM_COUPON_DETAIL(C_SEQ, USERID, GDATE, EXPDATE, COUP_CODE, VISIBLE)
+	    VALUES(#{c_seq}, #{userid}, NOW(), DATE_ADD(NOW(), INTERVAL 1 MONTH), #{coup_code}, 1) 
+</insert>
+
+<!-- 이미 발급받은 쿠폰인지 확인 -->
+<select id="geteventduplicate" parameterType="com.rhymes.app.member.model.mypage.MemberCouponDetailDTO" resultType="java.lang.Integer">
+	SELECT COUNT(*)
+	FROM RHY_MEM_COUPON_DETAIL
+	WHERE USERID=#{userid} AND C_SEQ=#{c_seq}
+</select>
+
+<!-- 종료된 이벤트 리스트 -->
+<select id="geteventEndlist" parameterType="com.rhymes.app.event.model.EventParam" resultType="com.rhymes.app.event.model.EventDTO">
+	SELECT SEQ, TITLE, CONTENT, TYPE, PHOTO_BANNER, RDATE, SDATE, EDATE
+	FROM (SELECT ROW_NUMBER()OVER(ORDER BY SEQ DESC)AS RNUM,
+				SEQ, TITLE, CONTENT, TYPE, PHOTO_BANNER, RDATE, SDATE, EDATE
+		  FROM RHY_EVENT_LIST
+		  WHERE EDATE <![CDATA[<]]> #{ndate}
+		 )B
+	WHERE RNUM BETWEEN ${start} AND ${end}
+	ORDER BY SEQ DESC
+</select>
+
+<!-- 종료된 이벤트 리스트 count -->
+<select id="getEvenEndtCount" parameterType="com.rhymes.app.event.model.EventParam" resultType="java.lang.Integer">
+	SELECT IFNULL(COUNT(*), 0) AS CNT
+	FROM RHY_EVENT_LIST
+	WHERE EDATE <![CDATA[<]]> #{ndate}
+</select>
+
+<!-- 진행중인 이벤트 리스트 -->
+<select id="geteventInglist" parameterType="com.rhymes.app.event.model.EventParam" resultType="com.rhymes.app.event.model.EventDTO">
+	SELECT SEQ, TITLE, CONTENT, TYPE, PHOTO_BANNER, RDATE, SDATE, EDATE
+	FROM (SELECT ROW_NUMBER()OVER(ORDER BY SEQ DESC)AS RNUM,
+				SEQ, TITLE, CONTENT, TYPE, PHOTO_BANNER, RDATE, SDATE, EDATE
+		  FROM RHY_EVENT_LIST
+		  WHERE EDATE <![CDATA[>]]> #{ndate}
+		 )B
+	WHERE RNUM BETWEEN ${start} AND ${end}
+	ORDER BY SEQ DESC
+</select>
+
+<!-- 진행중인 이벤트 리스트 count -->
+<select id="getEvenIngtCount" parameterType="com.rhymes.app.event.model.EventParam" resultType="java.lang.Integer">
+	SELECT IFNULL(COUNT(*), 0) AS CNT
+	FROM RHY_EVENT_LIST
+	WHERE EDATE <![CDATA[>]]> #{ndate}
+</select>
+
+<!-- 출첵 적립금 확인 -->
+<select id="geteventduplicate_check" parameterType="com.rhymes.app.member.model.mypage.MemberPointDTO" resultType="java.lang.Integer">
+	SELECT COUNT(*)
+	FROM RHY_MEM_POINT
+	WHERE DATE(rdate) = #{tdate} AND ID=#{userid} AND COMMENT=#{comment}
+</select>
+
+<!-- 쿠폰금액뽑기 -->
+<select id="getcouponamount" parameterType="com.rhymes.app.member.model.mypage.MemberPointDTO" resultType="com.rhymes.app.member.model.mypage.MemberCouponDTO">
+	SELECT FUNC_NUM
+	FROM RHY_MEM_COUPON
+	WHERE SEQ=#{seq} AND TITLE=#{comment}
+</select>
+
+<!-- 출첵 적립금 insert -->
+ <insert id="eventcoupon_check" parameterType="com.rhymes.app.member.model.mypage.MemberPointDTO">
+	INSERT INTO RHY_MEM_POINT(ID, COMMENT, AMOUNT, USED_AMOUNT)
+	    VALUES(#{userid}, #{comment}, #{amount}, 0) 
+</insert>
+
+
+
+</mapper>

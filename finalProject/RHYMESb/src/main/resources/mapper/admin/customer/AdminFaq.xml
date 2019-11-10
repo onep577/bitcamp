@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AdminFaq">
+	<select id="getFaqList" parameterType="com.rhymes.app.customer.model.CustomerParam" resultType="com.rhymes.app.customer.model.FaqDto">
+		SELECT SEQ, ID, CATEGORY, TITLE,CONTENT
+	       FROM (SELECT ROW_NUMBER()OVER(ORDER BY SEQ DESC)AS RNUM,
+					SEQ, ID, CATEGORY, TITLE, CONTENT
+					FROM FAQ
+					WHERE 1=1 
+					<if test="s_category != null and s_category != ''">
+					<if test="s_category == '01'">
+						AND CATEGORY = '회원문의'
+					</if>
+					<if test="s_category == '02'">
+						AND CATEGORY = '주문/결제'
+					</if>
+					<if test="s_category == '03'">
+						AND CATEGORY = '취소/교환/반품'
+					</if>
+					<if test="s_category == '04'">
+						AND CATEGORY = '배송문의'
+					</if>
+					<if test="s_category == '05'">
+						AND CATEGORY = '쿠폰/적립금'
+					</if>
+					<if test="s_category == '06'">
+						AND CATEGORY = '서비스 이용 및 기타'
+					</if>
+					</if>
+					<if test="s_keyword != null and s_keyword != ''">
+						AND TITLE LIKE '%' #{s_keyword} '%'
+					</if>	 
+					)A
+			WHERE RNUM BETWEEN ${start} AND ${end}	
+			ORDER BY SEQ DESC	
+	</select>
+
+	<select id="getFaqCount" parameterType="com.rhymes.app.customer.model.CustomerParam"
+		resultType="java.lang.Integer">
+		SELECT IFNULL(COUNT(*), 0) AS CNT
+		FROM FAQ
+		WHERE 1=1
+			<if test="s_category != null and s_category != ''">
+					<if test="s_category == '01'">
+						AND CATEGORY = '회원문의'
+					</if>
+					<if test="s_category == '02'">
+						AND CATEGORY = '주문/결제'
+					</if>
+					<if test="s_category == '03'">
+						AND CATEGORY = '취소/교환/반품'
+					</if>
+					<if test="s_category == '04'">
+						AND CATEGORY = '배송문의'
+					</if>
+					<if test="s_category == '05'">
+						AND CATEGORY = '쿠폰/적립금'
+					</if>
+					<if test="s_category == '06'">
+						AND CATEGORY = '서비스 이용 및 기타'
+					</if>
+					</if>
+					<if test="s_keyword != null and s_keyword != ''">
+						AND TITLE LIKE '%' #{s_keyword} '%'
+					</if>
+	</select>
+	
+	<!-- 디테일 -->
+	 <select id="getFaqDetail" parameterType="java.lang.Integer" resultType="com.rhymes.app.customer.model.FaqDto">
+       SELECT * 
+       FROM FAQ
+       WHERE SEQ = #{seq}
+    </select>
+    
+	<!-- 올리기 -->
+	<insert id="FaqUpload" parameterType="com.rhymes.app.customer.model.FaqDto">
+	INSERT INTO FAQ(ID, CATEGORY, TITLE, CONTENT)
+	VALUES(#{ id}, #{category}, #{title}, #{content})
+	</insert>
+	
+	<!-- 수정 -->
+	<update id="FaqUpdateAf" parameterType="com.rhymes.app.customer.model.FaqDto">
+	UPDATE FAQ
+	SET TITLE=#{title}, CONTENT=#{content}, CATEGORY=#{category}
+	WHERE SEQ=#{seq}
+	</update>
+	
+	<!-- 삭제 -->
+	<delete id="FaqDelete" parameterType="java.lang.Integer">
+	DELETE FROM FAQ
+	WHERE SEQ=#{seq}
+	</delete>
+</mapper>

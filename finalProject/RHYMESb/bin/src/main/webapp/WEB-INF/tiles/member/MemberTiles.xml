@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<!-- main -->
+
+	<definition name="welcome" template="/WEB-INF/views/welcome.jsp">
+	</definition>
+
+	<!-- login -->
+	<definition name="rhylogin"	template="/WEB-INF/views/member/login.jsp">
+	</definition>
+
+	<!-- registration -->
+	<definition name="rhyregi" template="/WEB-INF/views/member/regi.jsp">
+	</definition>
+
+	<!-- admin test -->
+	<definition name="memtest/admin" template="/WEB-INF/views/member/tmp/admin.jsp">
+	</definition>
+
+	<!-- member test -->
+	<definition name="memtest/member" template="/WEB-INF/views/member/tmp/member.jsp">
+	</definition>
+
+	<!-- seller test -->
+	<definition name="memtest/seller" template="/WEB-INF/views/member/tmp/seller.jsp">
+	</definition>
+
+	<!-- login -->
+   <definition name="welcome" template="/WEB-INF/views/welcome.jsp">
+   </definition>
+
+</tiles-definitions>
+

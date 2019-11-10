@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+.form_head_info{
+	margin: 50px;
+}
+
+.form_reconfirm {
+    margin: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;    
+}
+
+.form_reconfirm div {
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btn_reconfirm_submit {
+    width: 200px;
+}
+
+#_btn_confirm_mem{
+	background-color: #d7fd75;	
+	color: #370202;
+	font-size: 18px;
+	font-weight: 800
+}

@@ -1,0 +1,214 @@
+@charset "UTF-8";
+.inputtext_b{
+	word-break: break-all;
+	box-sizing: border-box;
+	font: inherit;
+	margin: 5px 5px 5px 5px;
+	letter-spacing: -0.05em;
+	max-width: 100%;
+	font-family: 'Noto Sans';
+	color: #333;
+	width: 200px;
+	height: 34px;
+	padding: 0 19px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	background-color: #fff;
+	font-size: 14px;
+	line-height: 20px;
+	outline: none;
+}
+.inputtext_long{
+	word-break: break-all;
+	box-sizing: border-box;
+	font: inherit;
+	margin: 5px 5px 5px 5px;
+	letter-spacing: -0.05em;
+	max-width: 100%;
+	font-family: 'Noto Sans';
+	color: #333;
+	width: 300px;
+	height: 34px;
+	padding: 0 19px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	background-color: #fff;
+	font-size: 14px;
+	line-height: 20px;
+	outline: none;
+}
+.inputtext_s{
+	word-break: break-all;
+	box-sizing: border-box;
+	font: inherit;
+	margin: 5px 5px 5px 5px;
+	letter-spacing: -0.05em;
+	max-width: 100%;
+	font-family: 'Noto Sans';
+	color: #333;
+	width: 150px;
+	height: 34px;
+	padding: 0 19px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	background-color: #fff;
+	font-size: 14px;
+	line-height: 20px;
+	outline: none;
+}
+.inputtext_b_long{
+	word-break: break-all;
+	box-sizing: border-box;
+	font: inherit;
+	margin: 5px 5px 5px 5px;
+	letter-spacing: -0.05em;
+	max-width: 100%;
+	font-family: 'Noto Sans';
+	color: #333;
+	width: 320px;
+	height: 54px;
+	padding: 0 19px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	background-color: #fff;
+	font-size: 14px;
+	line-height: 20px;
+	outline: none;
+}
+.selectbox{
+	word-break: break-all;
+	box-sizing: border-box;
+	font: inherit;
+	margin: 5px 5px 5px 5px;
+	letter-spacing: -0.05em;
+	max-width: 100%;
+	font-family: 'Noto Sans';
+	color: #333;
+	width: 90px;
+	height: 54px;
+	padding: 0 19px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	background-color: #fff;
+	font-size: 14px;
+	line-height: 20px;
+	outline: none;
+}
+.regibutton{
+	border-radius: 5px;
+    border: solid 1px #c5c5c5;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bolder;
+    height: 33px;
+    padding: 0px 30px 0px 30px;
+}
+.regibutton_login{
+	border-radius: 5px;
+    border: solid 1px #c5c5c5;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bolder;
+    height: 33px;
+    width: 300px;
+    padding: 0px 30px 0px 30px;
+}
+.regibutton_b{
+	border-radius: 5px;
+    border: solid 1px #c5c5c5;
+    background-color: #ffffff;
+    color: #545454;
+    font-weight: bolder;
+    height: 54px;
+    padding: 0px 30px 0px 30px;
+    margin: 5px 5px 30px 5px;
+}
+.regibutton_long{
+	border-radius: 5px;
+    border: solid 1px #c5c5c5;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bolder;
+    height: 54px;
+    padding: 0px 30px 0px 30px;
+    width: 320px;
+    margin: 5px 5px 5px 5px;
+}
+.txt_title{
+ 	margin: 0px 5px 0px 5px;
+ 	color: #545454;
+}
+.txt {
+/*     display: block; */
+    font-size: 12px;
+    color: #666;
+    line-height: 20px;
+    margin-left: 10px;
+}
+.txt_point{
+	margin: 0px 0px 0px 10px;
+	color: #759ffd;
+}
+.regibutton_b_long{
+	border-radius: 5px;
+    border: solid 1px #c5c5c5;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bolder;
+    height: 54px;
+    padding: 0px 30px 0px 30px;
+    width: 424px;
+    margin: 5px 5px 5px 5px;
+}
+.c_name{
+	margin-right: 180px;
+/* 	font-size: 12px; */
+    color: #666;
+}
+.c_num{
+	margin: 10px;
+/* 	font-size: 12px; */
+    color: #666;
+}
+.regi_table{
+/* 	background-color: #eaeaeab3; */
+}
+#_crText{
+	padding: 10px 0px 10px 0px;
+}
+.findNum{
+	border-radius: 5px;
+    border: solid 1px #c5c5c5;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bolder;
+    height: 54px;
+    width:184px;
+    padding: 0px 30px 0px 30px;
+    margin: 5px 5px 30px 5px;
+    
+}
+text:hover {
+	border-color: red;
+}
+.findidtext {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: larger;
+    color: #505050;
+    /* margin-bottom: 10px; */
+    padding-bottom: 16px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

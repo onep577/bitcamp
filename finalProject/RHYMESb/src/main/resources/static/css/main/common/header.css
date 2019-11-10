@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+/*search*/
+/* Modal Css */
+	.modal {
+		display: none; /* Hidden by default */
+		position: fixed; /* Stay in place */
+		z-index: 999; /* Sit on top */
+		left: 0;
+		top: 0;
+		width: 100%; /* Full width */
+		height: 100%; /* Full height */
+		overflow: hidden; /* Enable scroll if needed */
+		background-color: rgb(0,0,0); /* Fallback color */
+		background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	}
+	
+	/* Modal Content/Box */
+	.modal-content2 {
+	    background-color: #fefefe;
+	    margin:3%;
+	    padding: 20px;
+	    border: 1px solid #888;
+	    width: 70%;
+	    height: 190px;
+	    margin: 20% auto;
+	}
+	/* The Close Button */
+	.close {
+		color: #aaa;
+		float: right;
+		font-size: 28px;
+		font-weight: bold;
+	}
+	.close:hover, .close:focus {
+		color: black;
+		text-decoration: none;
+		cursor: pointer;
+	}
+	
+	
+
+
+/* search / 검색 */
+#modal_s{
+	margin:3%;
+    width: 95%;
+    margin-left: 5%;
+    left: 0;
+	top: 0;
+	overflow: hidden;
+	float: right;
+	float: left;
+}
+#searchWord{
+    border: 1px solid #DADCE0;
+    padding: 10px;
+    border-radius: 4px;
+    width: 69%;
+    font-family: "Noto Sans KR", sans-serif;
+    margin-left:3%;
+    margin-right: 1%;
+    font-size: 20px;
+    text-align: left;
+    padding-left: 25px;
+    
+}
+
+.mwRadioL{
+	cursor:pointer;
+   border-radius: 10px;
+   width:135px;
+   height:45px;
+   padding:10px;
+   background: white;
+   font: Open Sans 30px;
+   color: black; 
+   outline: 0;
+   border: 1px solid #cccccc; 
+   text-align: center;
+	/* padding-top: 5px;
+	margin-top: 5px; */
+}

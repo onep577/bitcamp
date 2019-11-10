@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+
+
+.findidtext {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: larger;
+    color: #505050;
+    /* margin-bottom: 10px; */
+    padding-bottom: 16px;
+}
+
+.regibutton_long{
+border-radius: 10px;
+   margin-top:13px;
+   margin-bottom:10px;
+   width:320px;
+   height:55px;
+   background: #CFEC40;   
+   font: Open Sans 30px;
+   color: black; 
+   outline: 0;
+   border: 0px solid gray; 
+}
+.regibutton_long:hover{
+	opacity: 0.5;
+}
+.inputtext_b_long{
+	word-break: break-all;
+	box-sizing: border-box;
+	font: inherit;
+	margin: 5px 5px 5px 5px;
+	letter-spacing: -0.05em;
+	max-width: 100%;
+	font-family: 'Noto Sans';
+	color: #333;
+	width: 320px;
+	height: 54px;
+	padding: 0 19px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	background-color: #fff;
+	font-size: 14px;
+	line-height: 20px;
+	outline: none;
+}
+
+#footer_wrap{
+	position: relative;
+	top: 80px;
+}
+
+
+
+
+
+
+
+
+
+
+

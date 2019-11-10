@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mypage">	
+
+	<!-- 매개변수 ID가 갖는 비밀번호 리턴 -->
+	<select id="getPwById" resultType="java.lang.String" parameterType="java.lang.String">
+		<include refid="getPwByIdSql"/>
+	</select>
+	
+	<!-- 검색조건에 맞는 적립금 디테일 정보 리턴 -->
+	<select id="getDetailsOnConditions" resultType="com.rhymes.app.member.model.mypage.MemberPointDTO"
+	 parameterType="com.rhymes.app.common.model.CommonPagingDTO">
+		<![CDATA[
+		SELECT RNUM, SEQ, USERID, COMMENT, AMOUNT, RDATE, EDATE, ISEXPIRED
+		FROM (
+			SELECT @ROWNUM := @ROWNUM + 1 AS RNUM, SEQ, ID AS USERID, COMMENT, AMOUNT, 
+			DATE_FORMAT(RDATE,'%Y-%m-%d') AS RDATE,			
+			DATE_FORMAT(DATE_ADD(RDATE, INTERVAL 12 MONTH),'%Y-%m-%d') AS EDATE,
+			(SELECT IF( DATE_FORMAT(DATE_ADD(RDATE, INTERVAL 12 MONTH),'%Y-%m-%d') < CURDATE(), 'true', 'false') ) AS ISEXPIRED
+			FROM RHY_MEM_POINT, (SELECT @ROWNUM :=0) A
+			ORDER BY RDATE DESC
+			) RESULT
+		LIMIT #{startSeq }, #{recordCountPerPage}
+		]]>
+	</select>
+	
+	<!-- id에 맞는 디테일 정보 리턴 -->
+	<select id="getDetailsById" resultType="com.rhymes.app.member.model.mypage.MemberPointDTO" parameterType="java.lang.String">
+		<![CDATA[
+		SELECT 
+			SEQ, ID AS USERID, COMMENT, AMOUNT, 
+			DATE_FORMAT(RDATE,'%Y-%m-%d') AS RDATE,			
+			DATE_FORMAT(DATE_ADD(RDATE, INTERVAL 12 MONTH),'%Y-%m-%d') AS EDATE,
+			(SELECT IF( DATE_FORMAT(DATE_ADD(RDATE, INTERVAL 12 MONTH),'%Y-%m-%d') < CURDATE(), 'true', 'false') ) AS ISEXPIRED
+		FROM RHY_MEM_POINT
+		WHERE ID = #{userid}
+		]]>
+	</select>
+
+	<!-- 매개변수로 받은 ID가 갖는 적립금 중 유효한 적립금 총 합 리턴 -->
+	<select id="getAmountOfPointById" resultType="java.lang.Integer" parameterType="java.lang.String">
+	<!-- <select id="getAmountOfPointById" resultType="java.util.HashMap" parameterType="java.lang.String"> -->
+		SELECT 
+			SUM(AMOUNT) AS RESULT
+		FROM RHY_MEM_POINT 
+		<![CDATA[
+			WHERE 
+				ID = #{userid }
+				AND RDATE >= date_add(now(), interval -12 month) 
+			GROUP BY ID
+		]]>
+ 	</select>
+ 	
+ 	<!-- 매개변수로 받은 ID가 갖는 적립금 중 만료 예정인 적립금 총 합 리턴 -->
+ 	<select id="getAmountOfExpiredPointById" resultType="java.lang.Integer" parameterType="java.lang.String">
+ 	<!-- <select id="getAmountOfExpiredPointById" resultType="java.util.HashMap" parameterType="java.lang.String"> -->
+	 	SELECT 
+	 		SUM(AMOUNT) AS RESULT
+	 	FROM 
+	 		RHY_MEM_POINT	 	
+    	<![CDATA[
+		 	WHERE 
+		 		ID = #{userid }
+		 		AND ( RDATE >= date_add(now(), interval -13 month) )
+		 		AND ( RDATE <= date_add(now(), interval -12 month) )
+	 	]]> 
+	 	GROUP BY ID
+ 	</select>
+
+
+	<!-- 실제 쿼리 부분 -->
+	<!-- 매개변수 ID가 갖는 비밀번호 리턴 -->
+	<sql id="getPwByIdSql">
+		SELECT PW
+		FROM RHY_MEM
+		WHERE ID = #{userid}
+	</sql>
+	
+</mapper>

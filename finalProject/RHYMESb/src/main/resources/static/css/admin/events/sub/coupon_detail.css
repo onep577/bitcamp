@@ -1,0 +1,48 @@
+@charset "UTF-8";
+/* 상단 쿠폰정보 설정 */
+#_coupon_info{
+    height: 160px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    margin: 0px 0px 20px 0px;
+}
+#_btn_gen_coup_code{
+    height: 30px;
+    font-size:13px;
+    margin-bottom: 5px;
+}
+/* 상단 쿠폰정보 설정 끝 */
+
+/* 쿠폰디테일 테이블 설정 */
+
+/* 쿠폰디테일 테이블 설정 끝*/
+
+/* 페이징  */
+#dataTable_paginate{
+    position:relative;
+    left: 75%;
+}
+/* 페이징  끝*/
+
+/* 새 쿠폰 발행 모달 */
+#_coupon_new_details_modal div{
+    width: 400px;
+}
+#_coup_amount_num{
+    width: 70px;
+    height: 26px;
+}
+/* 새 쿠폰 발행 모달 끝*/
+
+/* 쿠폰 발행정보 모달 */
+#_coupon_detail_info_modal {
+    left: -5%;
+}
+#_coupon_detail_info_modal div{
+    width: 750px;    
+}
+#_coup_detail_info .coup-detail-row{
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+/* 쿠폰 발행정보 모달 끝 */

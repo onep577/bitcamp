@@ -1,0 +1,178 @@
+@charset "UTF-8";
+
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+#updateDiv{
+	align:center;
+	width:50%;
+	margin:auto; 
+	border: solid 1px #DADCE0;
+	width:900px;
+	height:auto;
+	color:black;
+	margin-top:20px;
+	margin-bottom: 30px;
+	padding: 35px;
+	font-family: 'Alegreya Sans SC', sans-serif;
+}
+#updateDiv strong{
+	font-size: 30px;
+}
+button{
+	border: solid 1px #DADCE0;
+	width: 90px;
+	height:40px;
+	border-radius: 5px;
+	background-color: white;
+	font-size: 13px;
+	margin-top: 20px;	 
+}
+#basicinfo-table th{
+	font-size: 13px;}
+
+#basicinfo-table td{
+	font-size: 12px;
+}
+/* 기본정보수정 modal table */
+#basicinfo_udt-table{
+	font-family: 'Alegreya Sans SC', sans-serif;
+	width:95%;
+	margin: 20px;	
+}
+#basicinfo_udt-table tr{
+	margin-bottom: 50px;
+}
+#basicinfo_udt-table th{
+	color:black;
+	font-size: 13px;
+	text-align: center;
+}
+#basicinfo_udt-table td{
+	color:black;
+	font-size: 13px;
+	width:200px;
+	text-align: left;
+	padding-left: 10px;
+}
+#basicinfo_udt-table td input{
+	width: 80%;
+	height:30px;
+	padding: 6px;
+	border-radius: 5px;
+	text-align: center;
+	font-size: 12px;
+}
+/* 상품이미지 modal div */
+.udtimg-div{
+	margin-bottom: 0%;	
+}
+#udtimg-hr{
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+.imgUdt-finishBtn{
+	color:green;
+	font-weight: bolder;
+}
+
+/* 기본정보 수정 modal */
+.basicinfo_modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: hidden; /* Enable scroll if needed */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.basicinfo_modal-content {
+	background-color: #fefefe;
+	margin: 15% auto; /* 10% from the top and centered */
+	margin-left: 35%;
+	padding: 20px;
+	height:auto;
+	border: 1px solid #888;
+	width: 30%; /* Could be more or less, depending on screen size */                          
+}
+/* 상품이미지 수정 modal */
+.imgudt_modal {
+		color:black;
+		display: none; /* Hidden by default */
+		position: fixed; /* Stay in place */
+		z-index: 1; /* Sit on top */
+		left: 0;
+		top: 0;
+		width: 100%; /* Full width */
+		height: 100%; /* Full height */
+		overflow: scroll; /* Enable scroll if needed */
+		background-color: rgb(0,0,0); /* Fallback color */
+		background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.imgudt_modal-content {
+	border: 1px solid #888;
+	background-color: #fefefe;
+	margin: 15% auto; /* 10% from the top and centered */
+	margin-left: 30% auto;
+	margin-top:3%;
+	padding: 20px;
+	height:70% auto;
+	width: 50%; /* Could be more or less, depending on screen size */                          
+}
+/* 상세정보 수정 modal */
+.detailinfo_modal {
+		display: none; /* Hidden by default */
+		position: fixed; /* Stay in place */
+		z-index: 1; /* Sit on top */
+		left: 0;
+		top: 0;
+		width: 100%; /* Full width */
+		height: 100%; /* Full height */
+		overflow: hidden; /* Enable scroll if needed */
+		background-color: rgb(0,0,0); /* Fallback color */
+		background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.detailnfo_modal-content-content {
+	background-color: #fefefe;
+	margin: 15% auto; /* 10% from the top and centered */
+	margin-left: 35%;
+	padding: 20px;
+	height:500px;
+	border: 1px solid #888;
+	width: 30%; /* Could be more or less, depending on screen size */                          
+}
+
+
+/* msg Modal */
+.msgModal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 9999; /* Sit on top */
+	left: 0;
+	margin:auto;
+	top: 300px;
+	width: 100%; /* Full width */
+	height: 50%; /* Full height */
+	overflow: hidden; /* Enable scroll if needed */
+	/* background-color: rgb(0,0,0); Fallback color
+	background-color: rgba(0,0,0,0.4); */ /* Black w/ opacity */
+	/* background-color:green; */
+}
+
+/* Modal Content/Box */
+.msg-content {
+	color:white;
+	font-weight:bold;
+	font-size:30px;
+	position:fixed;
+    background-color: #86E57F;
+    margin:3%;
+    padding: 20px;
+    opacity:0.7;
+    border: 0px solid #888;
+    width: 100%;
+    height: auto;
+    margin: 8% auto;
+    text-align: center;
+}

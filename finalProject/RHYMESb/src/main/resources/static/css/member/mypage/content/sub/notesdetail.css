@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+.rhybtn {
+	border-radius: 10px;
+	margin: 15px 15px 15px 15px;
+	width: 100px;
+	height: 30px;
+	background: white;
+	font: Open Sans 30px;
+	color: black;
+	outline: 0;
+	border: 1px solid #cccccc;
+}
+
+.rhybtn:hover {
+	opacity: 0.5;
+}

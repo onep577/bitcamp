@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+/* 영역 배치 */
+.mypage_wrap {	/* Body부분 전체 크기 및 배치 */	
+	position: absolute;
+	margin: 0 0 0 -1500px;
+	
+	width: 3000px !important;
+	min-width: 3000px !important;
+	height: 100px;
+
+	top: 50%;
+	left: 50%;
+
+	background-color: white;
+}
+
+.mypage_top {	/* TOP부분 배경화면 */
+	z-index: 0;
+	position: absolute;
+	margin: 0 0 0 -1500px;
+	
+	width: 300px !important;
+	min-width: 3000px !important;
+	height: 275px;
+
+	top: 17%;
+	left: 50%;
+
+	background-color: #f7f7f77a;
+}
+
+.mypage_top_user {	/* TOP부분 전체 크기 및 배치. 등급 적립금 등 */
+	z-index: 0;
+	position: absolute;
+	margin: 0 0 0 -500px;
+	
+	width: 1000px;
+	height: 225px;
+	
+	top: 10%;
+	left: 50%;
+	
+	/* background-color: yellow; */
+}
+/* top메뉴 영역 분배 끝 */
+
+/* top메뉴 가로 리스트 설정 */
+.mypage_top_list {	/* TOP메뉴 ul 전체 레이아웃 크기 */
+		list-style: none;	margin: 0;	padding: 0;}
+	.mypage_top_list_item {	height: 200px;	margin: 5px 0 0 5px;    padding: 0 0 0 0;    border : 0;    float: left;    background-color: white;}
+	.grade_user {	width: 38%;}
+	.points_user {	width: 20%;}
+	.coupon_user {	width: 20%;}
+	.membership_user {	width: 20%;}
+
+/* 유저디테일 부분 */
+.summary_special_offer_title{
+	border: 1px solid #D7FD75;	position: absolute;	width: 10%;	height: 35%;	margin: auto;
+	left: 2%;	top: 10%;
+	padding: 18px;	font-weight: 900;
+}	.summary_user_name{
+		position: absolute;	width: 10%;	height: 35%;	margin: auto;
+		left: 15%;	top: 10%; text-align: left;	}
+	.summary_special_offer_content{  position: absolute;	width: 25%;	height: 35%;	margin: auto; left: 15%;	top: 30%;	text-align: left;	font-size: 10px;	}
+	#_grade_user_detail{ position: absolute;	width: 40%;	height: 35%;	margin: auto;	left: -1%;	top: 55%;	}
+	#_grade_user_detail .btn{ margin: 17px;	width: 150px !important;	font-size: 12px;	}
+/* 유저디테일 부분 끝 */
+/* 적립금 부분 */
+.points_user_title{
+	position: absolute;	width: 10%;	height: 35%;	margin: auto;
+	left: 42%;	top: 10%; text-align: left;
+}	.points_user_curr_point{  position: absolute;	width: 25%;	height: 35%;	margin: auto; left: 42%;	top: 30%;	text-align: left;	font-size: 25px;	}
+	.points_user_exp_point{  position: absolute;	width: 25%;	height: 35%;	margin: auto; left: 42%;	top: 60%;	text-align: left;	font-size: 12px; color: #707070 !important;	}
+/* 적립금 부분 끝 */
+/* 쿠폰 부분 */
+.coupon_user_title{
+	position: absolute;	width: 10%;	height: 35%;	margin: auto;
+	left: 63%;	top: 10%; text-align: left;
+}	.coupon_user_content{  position: absolute;	width: 25%;	height: 35%;	margin: auto; left: 63%;	top: 30%;	text-align: left;	font-size: 25px;	}
+/* 쿠폰 부분 끝 */
+/* 멤버십 부분 */
+.membership_user_title{
+	position: absolute;	width: 10%;	height: 35%;	margin: auto;
+	left: 83%;	top: 10%; text-align: left;
+}	.membership_user_content{  position: absolute;	width: 25%;	height: 35%;	margin: auto; left: 83%;	top: 30%;	text-align: left;	font-size: 25px;	}
+/* 멤버십 부분 끝*/

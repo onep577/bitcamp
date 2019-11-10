@@ -1,0 +1,354 @@
+@charset "UTF-8";
+@charset "UTF-8";
+
+.inputtext_long{
+	word-break: break-all;
+	box-sizing: border-box;
+	font: inherit;
+	margin: 5px 5px 5px 5px;
+	letter-spacing: -0.05em;
+	max-width: 100%;
+	font-family: 'Noto Sans';
+	color: #333;
+	width: 300px;
+	height: 34px;
+	padding: 0 19px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	background-color: #fff;
+	font-size: 14px;
+	line-height: 20px;
+	outline: none;
+}
+.selectbox{
+	word-break: break-all;
+	box-sizing: border-box;
+	font: inherit;
+	margin: 5px 5px 5px 5px;
+	letter-spacing: -0.05em;
+	max-width: 100%;
+	font-family: 'Noto Sans';
+	color: #333;
+	width: 90px;
+	height: 54px;
+	padding: 0 19px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	background-color: #fff;
+	font-size: 14px;
+	line-height: 20px;
+	outline: none;
+}
+
+.regibutton_login{
+	border-radius: 5px;
+    border: solid 1px #c5c5c5;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bolder;
+    height: 33px;
+    width: 300px;
+    padding: 0px 30px 0px 30px;
+}
+.regibutton_b{
+	border-radius: 5px;
+    border: solid 1px #c5c5c5;
+    background-color: #ffffff;
+    color: #545454;
+    font-weight: bolder;
+    height: 54px;
+    padding: 0px 30px 0px 30px;
+    margin: 5px 5px 30px 5px;
+}
+.regibutton_long{
+	border-radius: 5px;
+    border: solid 1px #c5c5c5;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bolder;
+    height: 54px;
+    padding: 0px 30px 0px 30px;
+    width: 320px;
+    margin: 5px 5px 5px 5px;
+}
+.txt_title{
+ 	margin: 0px 5px 0px 5px;
+ 	color: #545454;
+}
+
+
+.regibutton_b_long{
+	border-radius: 5px;
+    border: solid 1px #c5c5c5;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bolder;
+    height: 54px;
+    padding: 0px 30px 0px 30px;
+    width: 424px;
+    margin: 5px 5px 5px 5px;
+}
+.c_name{
+	margin-right: 180px;
+/* 	font-size: 12px; */
+    color: #666;
+}
+.c_num{
+	margin: 10px;
+/* 	font-size: 12px; */
+    color: #666;
+}
+
+#_crText{
+	padding: 10px 0px 10px 0px;
+}
+.findNum{
+	border-radius: 5px;
+    border: solid 1px #c5c5c5;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bolder;
+    height: 54px;
+    width:184px;
+    padding: 0px 30px 0px 30px;
+    margin: 5px 5px 30px 5px;
+    
+}
+text:hover {
+	border-color: red;
+}
+
+
+
+/* ====================사용 */
+
+.findidtext{
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: larger;
+    color: #505050;
+    /* margin-bottom: 10px; */
+    padding-bottom: 16px;
+}
+
+#footer_wrap {
+	z-index: -1;
+	position: relative;
+	top: -28px;
+}
+
+.subText{
+	
+}
+.subTextdiv{
+	position: relative;
+    left: -276px;
+}
+td{
+	position: relative;
+    left: -11px;
+    width: 100%
+}
+th{
+	width: 100%;
+}
+.txt {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    line-height: 20px;
+    margin-left: 10px;
+}
+#body{
+	background-color: #f3f3f382;
+    height: 1000px;
+    position: relative;
+    top: -101px;
+/*     z-index: -2; */
+}
+.txt_point{
+	margin: 0px 0px 0px 10px;
+	padding-bottom: 5px;
+	color: #d7fd75;
+	font-size: x-large;
+}
+.txt_point2{
+	color: white;
+}
+.th_title{
+	padding-bottom: 5px;
+	font-size: small;
+}
+.subTitle{
+	padding: 50px 0px 25px 0px;
+	font-size: large;
+}
+.txt_point_b{
+	margin: 0px 0px 0px 10px;
+	color: #d7fd75;
+	font-size: x-large;
+}
+.middleLine{
+    background-color: #a2ff6f80;
+    position: relative;
+    top: 431px;
+    left: 3px;
+    height: 1px;
+    width: 600px;
+}
+/* .addinfo{
+	position: relative;
+	top: 46px;
+} */
+.radiobtn{
+	position: relative;
+	left: 5px;
+}
+.postBtn{
+    border-radius: 0px 3px 3px 0px;
+    border: solid 1px #c5c5c5;
+    background-color: #ffffff;
+    color: #545454;
+    font-weight: bolder;
+    height: 44px;
+    padding: 0px 15px;
+    position: relative;
+    top: 49px;
+    left: 175px;
+}
+.smsBtn{
+    border-radius: 0px 3px 3px 0px;
+    border: solid 1px #c5c5c5;
+    background-color: #ffffff;
+    color: #545454;
+    font-weight: bolder;
+    height: 44px;
+    padding: 0px 15px;
+    position: relative;
+    top: -49px;
+    left: 242px;
+}
+.emailBtn{
+    border-radius: 0px 3px 3px 0px;
+    border: solid 1px #c5c5c5;
+    background-color: #ffffff;
+    color: #545454;
+    font-weight: bolder;
+    height: 44px;
+    padding: 0px 15px;
+    position: relative;
+    top: -49px;
+    left: 191px;
+}
+.eposition{
+	position: relative;
+	left: 242px;
+}
+.regibutton{
+	border-radius: 5px;
+    border: solid 1px #c5c5c5;
+    background-color: #ffffff;
+    color: #545454;
+    font-weight: bolder;
+    height: 44px;
+    width: 474px;
+    margin-bottom: 10px;
+    position: relative;
+    top: -50px
+}
+.regibutton1{
+	border-radius: 3px;
+    border: solid 1px #c5c5c5;
+    background-color: #ffffff;
+    color: #545454;
+    font-weight: bolder;
+    height: 44px;
+    padding: 0px 15px;
+    position: relative;
+    top: 49px;
+    left: 191px;
+}
+.inputtext_b{
+	word-break: break-all;
+	box-sizing: border-box;
+	font: inherit;
+	margin: 5px 5px 5px 5px;
+	letter-spacing: -0.05em;
+	max-width: 100%;
+	font-family: 'Noto Sans';
+	color: #333;
+	width: 301px;
+	height: 44px;
+	padding: 0 19px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	background-color: #fff;
+	font-size: 14px;
+	line-height: 20px;
+	outline: none;
+}
+#_rgetid{
+	font-size: small;
+	margin-left: 8px;
+}
+.inputtext_s{
+	word-break: break-all;
+	box-sizing: border-box;
+	font: inherit;
+	margin: 5px 5px 5px 5px;
+	letter-spacing: -0.05em;
+	max-width: 100%;
+	font-family: 'Noto Sans';
+	color: #333;
+    width: 301px;
+    height: 44px;
+	padding: 0 19px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	background-color: #fff;
+	font-size: 14px;
+	line-height: 20px;
+	outline: none;
+}
+td,th{
+	padding-bottom: 10px;
+}
+.regibtn{
+	margin-top: 121px;
+}
+.regibutton1:hover, .postBtn:hover, .regibutton:hover{
+	color: #c2fb2d;
+	border-color:#c2fb2d; 
+}
+/* .backcolor{
+	background-color: #ffffff;
+    border: solid 1px #c2fb2d;
+    position: absolute;
+    left: 461px;
+    z-index: -1;
+    height: 750px;
+    width: 700px;
+    padding-top: 6px;
+    margin-top: -29px;
+} */
+.regi_table{
+	background-color: white;
+/* 	border: solid 1px #d7fd75; */
+	position: relative;
+	top: 20px;
+}
+.findidtextsub{
+	font-family: 'Noto Sans';
+	font: inherit;
+	font-size: small;
+	color: #333;
+	font-weight: bold;
+	position: relative;
+	left: 210px;
+	top: 20px
+}
+#emailNumText{
+    position: relative;
+    top: -41px;
+    left: 7px;
+}

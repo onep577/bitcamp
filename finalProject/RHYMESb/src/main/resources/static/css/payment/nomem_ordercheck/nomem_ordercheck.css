@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+
+
+#body_wrap { width:1600px; margin-left:auto; margin-right:auto; padding:0px;}	
+#middle_wrap { display:inline-block; width:100%; padding:0px; margin:0px; text-align:center; border:solid 1px #EFEFEF;}
+#footer_wrap { width:100%; border:solid 0px navy; clear:both;}
+
+#sidebar_wrap { float:left; width:250px; margin:0px; padding:3px;}
+#content_wrap { float:left; width:1250px;  border-left:solid 1px #EFEFEF; padding: 5px; }
+#content_title_wrap { height:90px; width:100%;  text-align:left; font-weight:normal; line-height:2.5em; _line-height:2.7em; margin-bottom:10px; }
+#content_title_wrap div.title { padding-left:25px; background-repeat:no-repeat; background-position:10px 9px; font-weight:bold; }
+
+
+
+/* 버튼 */
+#ordercheck_confirm_btn{ border-radius: 10px; margin-top:13px; margin-bottom:10px; width:400px; height:70px; background: #CFEC40; font: Open Sans 30px; color: black; outline: 0; border: 0px solid gray; }
+#ordercheck_confirm_btn:hover{ opacity: 0.5; }
+
+
+
+/* 비회원 주문조회 인증 페이지 */
+.ordercheck_confirm_wrap { /* background-color: #d7fd75; */ margin-left: 350px; }
+.ordercheck_confirm_title { /* background-color: red; */ margin-bottom: 50px; margin-top: 50px; }
+.ordercheck_confirm_content { /* background-color: blue; */) }
+.ordercheck_confirm_title_font { font-size: 30px; }
+#ordercheck_confirm_payment_code{ width: 400px; height: 70px; padding-left: 15px; font-size: 20px; }
+#ordercheck_confirm_send_name{ width: 400px; height: 70px; padding-left: 15px; font-size: 20px; }
+
+
+
+
+/* 
+.ordercheck_tb{ font-size: 15px; text-align: left;  background-color: red;  width: 100%; margin-bottom: 150px; margin-top: 20px; }
+.ordercheck_tb th { padding: 10px 10px 10px 10px; text-align: center; background-color: #d7fd75; }
+.ordercheck_tb td { padding: 10px 10px 10px 10px; text-align: center; }
+ */
+

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Pqna">
+	<!-- pqnalist -->
+
+	<select id="getPqnaList" parameterType="com.rhymes.app.store.model.DetailParam"  resultType="com.rhymes.app.store.model.PqnaDto">
+       SELECT SEQ, ID, P_SEQ, WDATE,SECRET,REF,STEP,DEPTH,TITLE,CONTENT,FEEDBACK
+      FROM (SELECT ROW_NUMBER()OVER(ORDER BY REF DESC, STEP ASC)AS RNUM,
+					SEQ, ID, P_SEQ,WDATE,SECRET,REF,STEP,DEPTH,TITLE,CONTENT,FEEDBACK
+					FROM RHY_STORE_PRODUCTQNA
+					WHERE P_SEQ =${p_seq}
+					)A 
+			WHERE RNUM BETWEEN ${start} AND ${end}
+			
+			ORDER BY REF DESC, STEP ASC
+    </select>
+	<!--pqna 글의 총 수  -->
+	<select id="getPqnaCount" parameterType="com.rhymes.app.store.model.DetailParam"
+		resultType="java.lang.Integer">
+		SELECT IFNULL(COUNT(*), 0)AS CNT
+		FROM RHY_STORE_PRODUCTQNA
+		WHERE P_SEQ =${p_seq}
+	</select>
+	
+	<!-- pqna 올리기 -->
+	<insert id="PqnaUpload" parameterType="com.rhymes.app.store.model.PqnaDto">
+	INSERT INTO RHY_STORE_PRODUCTQNA(ID, P_SEQ, WDATE,SECRET,REF,STEP,DEPTH,TITLE,CONTENT,FEEDBACK)
+	VALUES(#{ id}, #{p_seq}, now(),#{secret},(SELECT IFNULL(MAX(REF), 0)+1 FROM RHY_STORE_PRODUCTQNA ALIAS_FOR_SUBQUERY),0,0,#{title}, #{content},0)
+	</insert>
+	
+	<!-- pqna디테일 -->
+	 <select id="getPqnaDetail" parameterType="java.lang.Integer" resultType="com.rhymes.app.store.model.PqnaDto">
+       SELECT * 
+       FROM RHY_STORE_PRODUCTQNA
+       WHERE SEQ = #{seq}
+    </select>
+    
+    <!-- pqna 수정 -->
+	<update id="PqnaUpdateAf" parameterType="com.rhymes.app.store.model.PqnaDto">
+	UPDATE RHY_STORE_PRODUCTQNA
+	SET TITLE=#{title}, CONTENT=#{content}, SECRET=#{secret}
+	WHERE SEQ=#{seq}
+	</update>
+	
+	<!-- pqna 삭제 -->
+	<delete id="PqnaDelete" parameterType="java.lang.Integer">
+	DELETE FROM RHY_STORE_PRODUCTQNA
+	WHERE SEQ=#{seq}
+	</delete>
+	
+	<!-- pqna 답글 -->
+	<update id="PqnaAnswer" parameterType="com.rhymes.app.store.model.PqnaDto">
+	UPDATE RHY_STORE_PRODUCTQNA
+		SET STEP = (STEP+1)     
+			WHERE REF= #{ref}
+			AND STEP> #{step}
+	</update>
+	<insert id="PqnaAnswerAf" parameterType="com.rhymes.app.store.model.PqnaDto">
+	     INSERT INTO RHY_STORE_PRODUCTQNA(ID, P_SEQ, WDATE,SECRET,REF,STEP,DEPTH,TITLE,CONTENT,FEEDBACK)
+	     VALUES(#{id},#{p_seq}, NOW(),#{secret},
+	     				#{ref},
+	     				#{step}+1, 
+	     				#{depth}+1,
+	     				#{title},#{content},0)
+	</insert>
+
+</mapper>
+	

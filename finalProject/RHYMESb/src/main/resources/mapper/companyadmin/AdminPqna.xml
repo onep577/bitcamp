@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AdminPqna">
+	<!-- pqnalist --> 
+
+	<select id="getPqnaList" parameterType="com.rhymes.app.store.model.DetailParam"  resultType="com.rhymes.app.store.model.PqnaDto">
+       SELECT A.SEQ AS SEQ, A.ID AS ID, A.P_SEQ AS P_SEQ, A.WDATE AS WDATE,A.SECRET AS SECRET,A.REF AS REF,A.STEP AS STEP,A.DEPTH AS DEPTH,A.TITLE AS TITLE,A.CONTENT AS CONTENT,A.FEEDBACK AS FEEDBACK, A.P_NAME AS P_NAME
+      
+       FROM (SELECT ROW_NUMBER()OVER(ORDER BY REF DESC, STEP ASC)AS RNUM,
+					D.SEQ AS SEQ, D.ID AS ID, D.P_SEQ AS P_SEQ, D.WDATE AS WDATE,D.SECRET AS SECRET,D.REF AS REF,D.STEP AS STEP,D.DEPTH AS DEPTH,D.TITLE AS TITLE,D.CONTENT AS CONTENT,D.FEEDBACK AS FEEDBACK, C.P_NAME AS P_NAME
+					FROM RHY_STORE_PRODUCTQNA D	,(SELECT C_NAME AS CNAME FROM RHY_MEM_C WHERE ID = #{id})B , RHY_STORE_PRODUCT C
+					WHERE 1=1 AND CNAME = C.C_NAME AND C.P_SEQ=D.P_SEQ
+					<if test="s_category != null and s_category != ''">
+					<if test="s_category == 0">
+						AND FEEDBACK = 0
+					</if>
+					<if test="s_category == 1">
+						AND FEEDBACK = 1
+					</if>
+					</if>
+					)A 
+		WHERE RNUM BETWEEN ${start} AND ${end}	
+		ORDER BY REF DESC, STEP ASC
+    </select>
+	
+	<!--pqna 글의 총 수  -->
+	<select id="getPqnaCount" parameterType="com.rhymes.app.store.model.DetailParam"
+		resultType="java.lang.Integer">
+		SELECT IFNULL(COUNT(*), 0)AS CNT
+		FROM RHY_STORE_PRODUCTQNA A, (SELECT C_NAME AS CNAME FROM RHY_MEM_C WHERE ID = #{id})B, RHY_STORE_PRODUCT C
+		WHERE 1=1
+		AND CNAME = C.C_NAME AND C.P_SEQ=A.P_SEQ
+			<if test="s_category != null and s_category != ''">
+				<if test="s_category == 0">
+					AND FEEDBACK = 0
+				</if>
+				<if test="s_category == 1">
+					AND FEEDBACK = 1
+				</if>
+			</if>
+	</select>
+	 
+	<!-- pqna 올리기 -->
+	<insert id="PqnaUpload" parameterType="com.rhymes.app.store.model.PqnaDto">
+	INSERT INTO RHY_STORE_PRODUCTQNA(ID, P_SEQ, WDATE,SECRET,REF,STEP,DEPTH,TITLE,CONTENT,FEEDBACK)
+	VALUES(#{ id}, #{p_seq}, now(),#{secret},(SELECT IFNULL(MAX(REF), 0)+1 FROM RHY_STORE_PRODUCTQNA ALIAS_FOR_SUBQUERY),0,0,#{title}, #{content},0)
+	</insert>
+	
+	<!-- pqna디테일 -->
+	 <select id="getPqnaDetail" parameterType="java.lang.Integer" resultType="com.rhymes.app.store.model.PqnaDto">
+       SELECT A.SEQ AS SEQ, A.ID AS ID, A.P_SEQ AS P_SEQ, A.WDATE AS WDATE,A.SECRET AS SECRET,A.REF AS REF,A.STEP AS STEP,A.DEPTH AS DEPTH,A.TITLE AS TITLE,A.CONTENT AS CONTENT,A.FEEDBACK AS FEEDBACK, B.P_NAME AS P_NAME
+       FROM RHY_STORE_PRODUCTQNA A, RHY_STORE_PRODUCT B
+       WHERE SEQ = #{seq} 
+       		AND A.P_SEQ = B.P_SEQ
+    </select>
+    
+    <!-- pqna 수정 -->
+	<update id="PqnaUpdateAf" parameterType="com.rhymes.app.store.model.PqnaDto">
+	UPDATE RHY_STORE_PRODUCTQNA
+	SET TITLE=#{title}, CONTENT=#{content}, SECRET=#{secret}
+	WHERE SEQ=#{seq}
+	</update>
+	
+	<!-- pqna 삭제 -->
+	<delete id="PqnaDelete" parameterType="java.lang.Integer">
+	DELETE FROM RHY_STORE_PRODUCTQNA
+	WHERE SEQ=#{seq}
+	</delete>
+	
+	<!-- pqna 답글 -->
+	<update id="PqnaAnswer" parameterType="com.rhymes.app.store.model.PqnaDto">
+	UPDATE RHY_STORE_PRODUCTQNA
+		SET STEP = (STEP+1)     
+			WHERE REF= #{ref}
+			AND STEP> #{step}
+	</update>
+	<insert id="PqnaAnswerAf" parameterType="com.rhymes.app.store.model.PqnaDto">
+	     INSERT INTO RHY_STORE_PRODUCTQNA(ID, P_SEQ, WDATE,SECRET,REF,STEP,DEPTH,TITLE,CONTENT,FEEDBACK)
+	     VALUES(#{id},#{p_seq}, NOW(),#{secret},
+	     				#{ref},
+	     				#{step}+1, 
+	     				#{depth}+1,
+	     				#{title},#{content},0)
+	</insert>
+
+	<!-- pqna feedback 올리기 -->
+	<update id="PqnaUpFeedback" parameterType="com.rhymes.app.store.model.PqnaDto">
+	UPDATE RHY_STORE_PRODUCTQNA
+		SET FEEDBACK = 1     
+			WHERE REF= #{ref}
+	</update>
+</mapper>
+	

@@ -1,0 +1,93 @@
+@charset "UTF-8";
+
+
+
+#body_wrap { width:1600px; margin-left:auto; margin-right:auto; padding:0px;}	
+
+#middle_wrap { display:inline-block; width:100%; padding:0px; margin:0px; text-align:center; border:solid 1px #EFEFEF;}
+#footer_wrap { width:100%; border:solid 0px navy; clear:both;}
+	
+
+#sidebar_wrap { float:left; width:250px; margin:0px; padding:3px;}
+#content_wrap { float:left; width:1250px;  border-left:solid 1px #EFEFEF; padding: 5px; }
+
+#content_title_wrap { height:90px; width:100%;  text-align:left; font-weight:normal; line-height:2.5em; _line-height:2.7em; margin-bottom:10px; }
+#content_title_wrap div.title { padding-left:25px; background-repeat:no-repeat; background-position:10px 9px; font-weight:bold; }
+	
+
+
+/* body */
+.bannerimg{
+	max-width: 1050px;
+	max-height: 200px;
+	min-width: 1050px;
+	min-height: 200px;
+}
+
+
+
+
+/* 좌측 메뉴 */
+.sidenav {
+
+  width:80%; 
+  padding:0; 
+  margin-left:25px;
+  margin-top:40px; 
+  color:#000000; 
+  text-align:left; 
+  font-size: 12px;
+}
+.sidenav a, .dropdown-btn {
+	
+  font-size : 12px;
+  padding: 16px 0px 16px 19px; 
+  text-decoration: none;
+  color: #000;
+  display: block;
+	border:none;
+  background: none;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  
+}
+
+.sidenav a { 
+	font-size : 12px;
+	display:block; 
+	background-color:#ffffff; 
+	padding: 16px 0px 16px 19px; 
+	text-decoration:none; 
+	color:#000000;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  background-repeat:no-repeat; 
+  background-position:5px 7px; 
+  background-color:#E1FF36;
+  color:#000000;  
+  
+}
+
+
+
+/* 리스트테이블 */
+/* .list_table { width:98%;}
+.list_table th { text-align:center; padding:20px 0px;  border-top: 3px solid #E0FF8B;}
+.list_table td { padding:20px 0px 20px 10px;  border-top:1px solid #EFEFEF;}
+.list_table td,.list_table th { font-size: 12px;}
+ 
+ 디테일
+.detail_table { width:98%; border-top: 3px solid #E0FF8B;border-bottom: 3px solid #E0FF8B;}
+.detail_table th { text-align:center; background-color: #F6FFCC;}
+.detail_table td { padding:20px 0px 20px 10px; text-align: left;}
+.detail_table td,.detail_table th { font-size: 12px; border-bottom:1px solid #EFEFEF;}
+
+.before_table { width:98%;}
+.before_table th { text-align:center; padding:20px 0px; }
+.before_table td { border-top:1px solid #EFEFEF; text-align: left; padding:5px 0px 5px 10px;}
+.before_table td,.list_table th { font-size: 12px;}
+ */

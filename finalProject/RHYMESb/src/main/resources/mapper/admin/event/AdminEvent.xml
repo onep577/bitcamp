@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adminevent">
+	
+<!-- 이벤트리스트 -->
+<select id="getEventList" parameterType="com.rhymes.app.event.model.EventParam" resultType="com.rhymes.app.event.model.EventDTO">
+	SELECT SEQ, TITLE, CONTENT, TYPE, date_format(RDATE, "%Y-%m-%d") AS RDATE, SDATE, EDATE, VISIBLE
+       FROM (SELECT ROW_NUMBER()OVER(
+       								<choose>
+										<when test="sorting == 'SEQ'">
+											ORDER BY SEQ DESC
+										</when>
+										<when test="sorting == 'TITLE'">
+											ORDER BY TITLE ASC
+										</when>
+										<when test="sorting == 'TYPE'">
+											ORDER BY TYPE ASC
+										</when>
+										<when test="sorting == 'SDATE'">
+											ORDER BY SDATE ASC
+										</when>
+										<when test="sorting == 'EDATE'">
+											ORDER BY EDATE ASC
+										</when>
+										<when test="sorting == 'RDATE'">
+											ORDER BY RDATE ASC
+										</when>
+									</choose>
+       								)AS RNUM,
+				SEQ, TITLE, CONTENT, TYPE, RDATE, SDATE, EDATE, VISIBLE
+			FROM rhy_event_list
+			WHERE 1=1
+			<if test="s_category != null and s_category != ''">
+				<if test="s_keyword != null and s_keyword != ''">
+					<if test="s_category == '01'">
+						AND TITLE LIKE '%' #{s_keyword} '%'
+					</if>
+					<if test="s_category == '02'">
+						AND TYPE LIKE '%' #{s_keyword} '%'
+					</if>
+					<if test="s_category == '03'">
+						AND SDATE LIKE '%' #{s_keyword} '%'
+					</if>
+					<if test="s_category == '04'">
+						AND EDATE LIKE '%' #{s_keyword} '%'
+					</if>
+				</if>
+			</if>
+				)B
+		WHERE RNUM BETWEEN ${start} AND ${end}
+		<choose>
+			<when test="sorting == 'SEQ'">
+				ORDER BY SEQ DESC
+			</when>
+			<when test="sorting == 'TITLE'">
+				ORDER BY TITLE ASC
+			</when>
+			<when test="sorting == 'TYPE'">
+				ORDER BY TYPE ASC
+			</when>
+			<when test="sorting == 'SDATE'">
+				ORDER BY SDATE ASC
+			</when>
+			<when test="sorting == 'EDATE'">
+				ORDER BY EDATE ASC
+			</when>
+			<when test="sorting == 'RDATE'">
+				ORDER BY RDATE ASC
+			</when>
+			<!-- <otherwise></otherwise> -->
+		</choose>
+<!-- 		ORDER BY #{sorting} DESC -->
+</select>
+
+<!-- 이벤트 리스트 count -->
+<select id="getEventCount" parameterType="com.rhymes.app.event.model.EventParam" resultType="java.lang.Integer">
+	SELECT IFNULL(COUNT(*), 0) AS CNT
+	FROM rhy_event_list
+	WHERE 1=1
+		<if test="s_category != null and s_category != ''
+						and s_keyword != null and s_keyword != ''">
+			<if test="s_category == '01'">
+					AND TITLE LIKE '%' #{s_keyword} '%'
+				</if>
+				<if test="s_category == '02'">
+					AND TYPE LIKE '%' #{s_keyword} '%'
+				</if>
+				<if test="s_category == '03'">
+					AND RDATE LIKE '%' #{s_keyword} '%'
+				</if>
+				<if test="s_category == '04'">
+					AND SDATE LIKE '%' #{s_keyword} '%'
+				</if>
+				<if test="s_category == '05'">
+					AND EDATE LIKE '%' #{s_keyword} '%'
+				</if>					
+		</if>
+</select>
+
+<!-- 쿠폰리스트 -->
+<select id="getcouponlist" parameterType="com.rhymes.app.admin.events.model.CouponDTO" resultType="com.rhymes.app.admin.events.model.CouponDTO">
+	SELECT SEQ, TITLE, SUB_TITLE, APP_CATE, FUNC, FUNC_NUM, FUNC_MEASURE, FUNC_TIME_LIMIT, RDATE
+	FROM RHY_MEM_COUPON
+	<if test="func!='전체'">
+		WHERE FUNC=#{func}
+	</if>
+</select>
+
+<!-- 이벤트 글 작성 -->
+<insert id="geteventwrite" parameterType="com.rhymes.app.event.model.EventDTO">
+	INSERT INTO RHY_EVENT_LIST(TITLE, TYPE, CONTENT, COUPON_SEQ1, COUPON_SEQ2, COUPON_TITLE1, COUPON_TITLE2, PHOTO_BANNER, PHOTO_CONTENT, SDATE, EDATE, VISIBLE)
+	VALUES(#{title}, #{type}, #{content}, #{coupon_seq1}, #{coupon_seq2}, #{coupon_title1}, #{coupon_title2}, #{photo_banner}, #{photo_content}, #{sdate}, #{edate}, 1)	
+</insert>
+	
+<!-- 쿠폰리스트 -->
+<select id="getcoupon" resultType="com.rhymes.app.member.model.mypage.MemberCouponDTO">
+	SELECT SEQ, TITLE, SUB_TITLE, APP_CATE, FUNC, FUNC_NUM, FUNC_MEASURE, FUNC_TIME_LIMIT, RDATE
+	FROM RHY_MEM_COUPON
+</select>
+
+<!-- 파일저장 -->
+<insert id="getFileUpload" parameterType="com.rhymes.app.event.model.EventDTO">
+	INSERT INTO RHY_EVENT_LIST(PHOTO_BANNER)
+	VALUES(#{photo_banner})
+</insert>
+
+<!-- 삭제 -->
+<update id="geteventdel" parameterType="com.rhymes.app.event.model.EventDTO">
+	DELETE 
+	FROM RHY_EVENT_LIST
+	WHERE SEQ=#{seq}
+</update>
+
+<!-- 수정 -->
+<select id="getEventUpdate" parameterType="com.rhymes.app.event.model.EventDTO" resultType="com.rhymes.app.event.model.EventDTO">
+	SELECT SEQ, TITLE, CONTENT, TYPE, COUPON_SEQ1, COUPON_SEQ2, COUPON_TITLE1, COUPON_TITLE2, PHOTO_BANNER, PHOTO_CONTENT, SDATE, EDATE, VISIBLE
+	FROM RHY_EVENT_LIST
+	WHERE SEQ=#{seq}
+</select>
+
+<update id="geteventupdateAf" parameterType="com.rhymes.app.event.model.EventDTO">
+	UPDATE RHY_EVENT_LIST
+	SET	TITLE=#{title}, CONTENT=#{content}, TYPE=#{type}, COUPON_SEQ1=#{coupon_seq1}, COUPON_SEQ2=#{coupon_seq2}, 
+			COUPON_TITLE1=#{coupon_title1}, COUPON_TITLE2=#{coupon_title2}, PHOTO_BANNER=#{photo_banner}, PHOTO_CONTENT=#{photo_content}, SDATE=#{sdate}, EDATE=#{edate}
+	WHERE SEQ=#{seq}
+
+</update>
+
+
+
+
+
+</mapper>

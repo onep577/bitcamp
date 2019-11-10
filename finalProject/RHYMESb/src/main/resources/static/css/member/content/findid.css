@@ -1,0 +1,214 @@
+@charset "UTF-8";
+
+/* 개인회원 */
+.inputtext_b_long12{
+	word-break: break-all;
+	box-sizing: border-box;
+	font: inherit;
+	margin: 5px 5px 3px 5px;
+	letter-spacing: -0.05em;
+	max-width: 100%;
+	font-family: 'Noto Sans';
+	color: #333;
+	width: 498px;
+	height: 54px;
+	padding: 0 19px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	background-color: #fff;
+	font-size: 14px;
+	line-height: 20px;
+	outline: none;
+}
+.regibutton_long{
+	border-radius: 10px;
+	margin-top:13px;
+   margin-bottom:10px;
+   width:498px;
+   height:55px;
+   background: #CFEC40;   
+   font: Open Sans 30px;
+   color: black; 
+   outline: 0;
+   border: 0px solid gray; 
+}
+
+
+
+
+
+
+.inputtext_b_long_ch{
+	word-break: break-all;
+	box-sizing: border-box;
+	font: inherit;
+	margin: 5px 5px 5px 5px;
+	letter-spacing: -0.05em;
+	max-width: 100%;
+	font-family: 'Noto Sans';
+	color: #333;
+	width: 320px;
+	height: 54px;
+	padding: 0 19px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	background-color: #fff;
+	font-size: 14px;
+	line-height: 20px;
+	outline: none;
+}
+.inputtext_s{
+	word-break: break-all;
+	box-sizing: border-box;
+	font: inherit;
+	margin: 5px 5px 5px 5px;
+	letter-spacing: -0.05em;
+	max-width: 100%;
+	font-family: 'Noto Sans';
+	color: #333;
+	width: 150px;
+	height: 54px;
+	padding: 0 19px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	background-color: #fff;
+	font-size: 14px;
+	line-height: 20px;
+	outline: none;
+}
+.inputtext_b_long{
+	word-break: break-all;
+	box-sizing: border-box;
+	font: inherit;
+	margin: 5px 5px 5px 5px;
+	letter-spacing: -0.05em;
+	max-width: 100%;
+	font-family: 'Noto Sans';
+	color: #333;
+	width: 498px;
+	height: 54px;
+	padding: 0 19px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	background-color: #fff;
+	font-size: 14px;
+	line-height: 20px;
+	outline: none;
+}
+
+
+/* button:hover{
+	border: 1px solid #d7fd75;
+} */
+.regibutton_b{
+    border-radius: 5px;
+    border: solid 1px #c5c5c5;
+    background-color: #ffffff;
+    color: #545454;
+    font-weight: bolder;
+    height: 41px;
+    padding: 0px 30px 0px 30px;
+    margin: 5px 5px 30px 5px;
+    position: relative;
+    top: -82.5px;
+    left: 106.5px;
+}
+.regibutton_b:hover, .sendbutton_b:hover, .regibutton_b_long:hover, .regibutton_long:hover{
+	opacity: 0.5;
+}
+.sendbutton_b{
+    border-radius: 5px;
+    border: solid 1px #c5c5c5;
+    background-color: #ffffff;
+    color: #545454;
+    font-weight: bolder;
+    height: 41px;
+    padding: 0px 30px 0px 30px;
+    margin: 5px 5px 30px 5px;
+    position: relative;
+    top: -82.5px;
+    left: 124.5px;
+}
+.findNum{
+	border-radius: 5px;
+    border: solid 1px #c5c5c5;
+    background-color: #ffffff;
+    color: #000000;
+/*     font-weight: bolder; */
+	font-size: 14px;
+    height: 54px;
+    width:184px;
+    padding: 0px 30px 0px 30px;
+    margin: 5px 5px 30px 5px;
+/*     position: relative; */
+/*     top: -224px; */
+/*     left: -68px; */
+}
+.regibutton_b_long{
+	border-radius: 10px;
+   margin-top:13px;
+   margin-bottom:10px;
+   width:498px;
+   height:55px;
+   background: #CFEC40;   
+   font: Open Sans 30px;
+   color: black; 
+   outline: 0;
+   border: 0px solid gray; 
+    
+}
+
+.selectbox{
+	word-break: break-all;
+	box-sizing: border-box;
+	font: inherit;
+	margin: 5px 5px 5px 5px;
+	letter-spacing: -0.05em;
+	max-width: 100%;
+	font-family: 'Noto Sans';
+	color: #333;
+	width: 90px;
+	height: 54px;
+	padding: 0 19px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	background-color: #fff;
+	font-size: 14px;
+	line-height: 20px;
+	outline: none;
+}
+.idpwbtn{
+	border-radius: 5px;
+    border: solid 3px #e6e6e6;
+    background-color: #ffffff;
+    color: #545454;
+    font-weight: bolder;
+    height: 54px;
+    padding: 0px 30px 0px 30px;
+    margin: 5px 0px 30px 0px;
+    border-bottom: white;
+}
+#footer_wrap {
+	z-index: -1;
+	position: relative;
+	top: 26px;
+}
+
+input{
+	border: 1px solid #d7fd75;
+}
+.findidtext {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: larger;
+    color: #505050;
+    /* margin-bottom: 10px; */
+    padding-bottom: 16px;
+}
+.text{
+	color: #b3b3b3;
+	
+}
+.textdiv{
+	margin-bottom: 17px;
+}

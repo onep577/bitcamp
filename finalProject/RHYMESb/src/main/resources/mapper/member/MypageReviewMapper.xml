@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="review">	
+
+	<!-- 매개변수로 받은 유저ID가 갖고있는 모든 주문번호를 가져옴 -->
+	<select id="getPaymentCodesByUserid" parameterType="java.lang.String" resultType="java.lang.String">
+		<include refid="getPaymentCodesByUseridSql"/></select>
+	
+	<!-- 매개변수로 받은 검색조건(userid, review_written(t/f))에 맞는 모든 주문의 개수를 리턴 -->
+	<select id="getReviewCountByIdAndConditions" parameterType="com.rhymes.app.member.model.mypage.MemberReviewPagingDTO"
+		resultType="java.lang.Integer">
+		<include refid="getReviewCountByIdAndConditionsSql"/></select>
+	
+	<!-- 매개변수로 받은 검색조건(USERID, review_written(t/f), paging)에 맞는 모든 주문목록를 가져옴 -->
+	<select id="getReviewByIdAndOtherConditions" parameterType="com.rhymes.app.member.model.mypage.MemberReviewPagingDTO"
+		resultType="com.rhymes.app.member.model.mypage.MemberReviewDTO">
+		<include refid="getReviewByIdAndOtherConditionsSql"/></select>
+		
+	<!-- 매개변수로 받은 디테일id(seq)에 맞는 주문정보 리턴 -->
+	<select id="getReviewByIdSeq" parameterType="java.lang.Integer"
+		resultType="com.rhymes.app.member.model.mypage.MemberReviewDTO">
+		<include refid="getReviewByIdSeqSql"/></select>
+		
+	<!-- 후기 게시물 DB에 저장 -->
+	<insert id="insertNewReviewBbs" parameterType="com.rhymes.app.member.model.mypage.MemberReviewBbsDTO">
+		<include refid="insertNewReviewBbsSql"></include></insert>
+	
+	<!-- 후기 게시물 저장이 완료된 경우 rhy_payment_details에 review_written값 true로 변경 -->
+	<update id="updateReviewWritten" parameterType="java.lang.Integer">
+		UPDATE RHY_PAYMENT_DETAILS SET REVIEW_WRITTEN='true' WHERE SEQ=#{seq}</update>
+	
+	
+	<!-- Query -->
+	<!-- 매개변수로 받은 유저ID가 갖고있는 모든 주문번호를 가져옴 -->
+	<sql id="getPaymentCodesByUseridSql">
+		SELECT PAYMENT_CODE FROM RHY_PAYMENT WHERE USERID=#{userid};
+	</sql>
+	
+	<!-- 매개변수로 받은 검색조건(userid, review_written(t/f))에 맞는 모든 후기의 개수를 리턴 -->
+	<sql id="getReviewCountByIdAndConditionsSql">
+		SELECT COUNT(*)
+		FROM RHY_PAYMENT A, RHY_PAYMENT_DETAILS B 
+		WHERE A.PAYMENT_CODE = B.PAYMENT_CODE
+			AND A.USERID=#{userid} AND B.REVIEW_WRITTEN=#{review_written}
+			AND A.PAYMENT_STATUS = '결제완료'
+	</sql>
+	
+	<!-- 매개변수로 받은 검색조건(USERID, review_written(t/f), paging)에 맞는 모든 후기를 가져옴 -->
+	<sql id="getReviewByIdAndOtherConditionsSql">		
+		SELECT RNUM, SEQ, PAYMENT_CODE, USERID, P_NAME, P_TITLE, TOTALPRICE, PRICE, EA, PAYMENT_STATUS, RDATE, IMG, DELIVERY_STATUS, EDATE, REVIEW_WRITTEN, P_SEQ, C1_NAME, C2_NAME, C3_NAME
+		FROM(
+			SELECT @ROWNUM := @ROWNUM +1 AS RNUM, SEQ, PAYMENT_CODE, USERID, P_NAME, P_TITLE, TOTALPRICE, PRICE, EA, PAYMENT_STATUS, RDATE, IMG, DELIVERY_STATUS, EDATE, REVIEW_WRITTEN, P_SEQ, C1_NAME, C2_NAME, C3_NAME
+			FROM(
+				SELECT  B.SEQ, A.PAYMENT_CODE AS PAYMENT_CODE, A.USERID AS USERID, D.P_NAME AS P_NAME, A.TOTALPRICE AS TOTALPRICE,
+					B.PRICE AS PRICE , A.PAYMENT_STATUS AS PAYMENT_STATUS, A.RDATE AS RDATE, B.EA AS EA, D.P_TITLE AS P_TITLE,
+					D.PHOTO1_FILE AS IMG, E.DELIVERY_STATUS AS DELIVERY_STATUS, E.EDATE AS EDATE, B.REVIEW_WRITTEN AS REVIEW_WRITTEN
+					, D.P_SEQ AS P_SEQ, D.C1_NAME AS C1_NAME, D.C2_NAME AS C2_NAME, D.C3_NAME AS C3_NAME
+				FROM RHY_PAYMENT A, (SELECT * FROM RHY_PAYMENT_DETAILS ORDER BY PRICE) B, RHY_STORE_STOCK C, RHY_STORE_PRODUCT D, RHY_DELIVERY E
+				WHERE A.PAYMENT_CODE = B.PAYMENT_CODE AND B.S_SEQ = C.STOCK_SEQ AND C.P_SEQ = D.P_SEQ AND B.PAYMENT_CODE = E.PAYMENT_CODE 
+					AND A.USERID=#{userid} AND A.PAYMENT_STATUS = '결제완료' <include refid="dateConditions"/>					
+				ORDER BY B.PRICE DESC) AA, (SELECT @ROWNUM :=0) BB
+			) AAA
+		LIMIT #{startSeq},#{recordCountPerPage};
+	</sql>
+	
+	<!-- 날짜, 리뷰작성여부 검색조건 -->
+	<sql id="dateConditions">
+		<if test="review_written == 'false'">AND B.REVIEW_WRITTEN=#{review_written} AND A.RDATE <![CDATA[>=]]> DATE_ADD(NOW(), INTERVAL -1 MONTH) </if>
+		<if test="review_written == 'true'">AND B.REVIEW_WRITTEN=#{review_written} </if>
+	</sql>
+	
+	<!-- 매개변수로 받은 디테일id(seq)에 맞는 주문정보 리턴 -->
+	<sql id="getReviewByIdSeqSql">
+		SELECT RNUM, SEQ, PAYMENT_CODE, USERID, P_NAME, P_TITLE, TOTALPRICE, PRICE, EA, PAYMENT_STATUS, RDATE, IMG, DELIVERY_STATUS, EDATE, REVIEW_WRITTEN, P_SEQ, C1_NAME, C2_NAME, C3_NAME
+		FROM(
+			SELECT @ROWNUM := @ROWNUM +1 AS RNUM, SEQ, PAYMENT_CODE, USERID, P_NAME, P_TITLE, TOTALPRICE, PRICE, EA, PAYMENT_STATUS, RDATE, IMG, DELIVERY_STATUS, EDATE, REVIEW_WRITTEN, P_SEQ, C1_NAME, C2_NAME, C3_NAME
+			FROM(
+				SELECT  B.SEQ, A.PAYMENT_CODE AS PAYMENT_CODE, A.USERID AS USERID, D.P_NAME AS P_NAME, A.TOTALPRICE AS TOTALPRICE,
+					B.PRICE AS PRICE , A.PAYMENT_STATUS AS PAYMENT_STATUS, A.RDATE AS RDATE, B.EA AS EA, D.P_TITLE AS P_TITLE,
+					D.PHOTO1_FILE AS IMG, E.DELIVERY_STATUS AS DELIVERY_STATUS, E.EDATE AS EDATE, B.REVIEW_WRITTEN AS REVIEW_WRITTEN
+					, D.P_SEQ AS P_SEQ, D.C1_NAME AS C1_NAME, D.C2_NAME AS C2_NAME, D.C3_NAME AS C3_NAME
+				FROM RHY_PAYMENT A, (SELECT * FROM RHY_PAYMENT_DETAILS ORDER BY PRICE) B, RHY_STORE_STOCK C, RHY_STORE_PRODUCT D, RHY_DELIVERY E
+				WHERE A.PAYMENT_CODE = B.PAYMENT_CODE AND B.S_SEQ = C.STOCK_SEQ AND C.P_SEQ = D.P_SEQ AND B.PAYMENT_CODE = E.PAYMENT_CODE 
+					AND B.SEQ=#{seq}					
+				ORDER BY B.PRICE DESC) AA, (SELECT @ROWNUM :=0) BB
+			) AAA
+	</sql>
+	
+	<!-- 후기 게시물 DB에 저장 -->
+	<sql id="insertNewReviewBbsSql">
+		INSERT INTO RHY_PRODUCT_REVIEW
+			(PD_SEQ, USERID, TITLE, CONTENT, REF, STEP, DEPTH, PARENT)
+		VALUES(#{pd_seq}, #{userid}, #{title}, #{content}, LAST_INSERT_ID() + 1, 0, 0, 0)
+	</sql>
+
+</mapper>

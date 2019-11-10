@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <mapper namespace="com.mde.app.common.dao"> -->
+
+<mapper namespace="purchase">
+
+ <!-- 상품디테일 -->
+ <select id="getProductDetail" parameterType="Integer" resultType="com.rhymes.app.store.model.ProductDto">
+ 	SELECT SUM(b.QUANTITY) AS SUM,
+	    a.P_SEQ,
+		 a.C_NAME,
+		 a.P_NAME,
+		 a.P_TITLE,
+		 a.P_PRICE,
+		 a.P_COLOR,
+		 a.NATION,
+		 a.MDATE,
+		 a.DETAIL,
+		 a.PHOTO1_FILE,
+		 a.PHOTO2_FILE,
+		 a.PHOTO3_FILE,
+		 a.PHOTO4_FILE,
+		 a.PHOTO5_FILE,
+		 a.CP_CODE,
+		 a.C1_NAME,
+		 a.C2_NAME,
+		 a.C3_NAME,
+		 a.RDATE,
+		 a.BFS_PRICE 
+	FROM rhy_store_product a
+		INNER JOIN rhy_store_stock b
+		 ON a.P_SEQ = b.P_SEQ
+	WHERE a.P_SEQ = #{p_seq}
+	GROUP BY a.P_SEQ
+ </select>
+ 
+ <!-- 상품디테일에 사이즈 가져오기 -->
+ <select id="getSizeList" parameterType="Integer" resultType="com.rhymes.app.store.model.StockDto">
+ 	SELECT STOCK_SEQ, SIZE, QUANTITY
+ 	FROM rhy_store_stock
+ 	WHERE P_SEQ = #{p_seq}
+ </select>
+ 
+<!-- 장바구니(일반:로그인O, 세션:로그인X) -->
+
+	<!-- 일반 장바구니 -->
+		 <!--장바구니 INSERT -->
+		 <insert id="insertBakset" parameterType="com.rhymes.app.store.model.BasketDto">
+		 	INSERT INTO rhy_store_basket
+		 	VALUES(NULL, #{id}, #{stock_seq}, #{p_quantity}, NOW())
+		 </insert>
+		<!-- 장바구니 중복 확인 -->
+		 <select id="chkBasket" parameterType="com.rhymes.app.store.model.BasketDto" resultType="Integer">
+		 	SELECT COUNT(*) FROM rhy_store_basket
+			WHERE ID = #{id} AND STOCK_SEQ=#{stock_seq}
+		 </select>
+		 <!-- 장바구니 리스트 GET -->
+		 <select id="getBasketList" parameterType="java.lang.String" resultType="com.rhymes.app.store.model.BasketListDto">
+		 	SELECT a.PHOTO1_FILE, a.C_NAME, a.P_NAME, a.P_PRICE, b.SIZE, b.STOCK_SEQ, b.P_SEQ, b.QUANTITY, c.P_QUANTITY, c.RDATE, c.B_SEQ
+		 	FROM rhy_store_stock b INNER JOIN rhy_store_basket c ON b.STOCK_SEQ = c.STOCK_SEQ
+		 		INNER JOIN rhy_store_product a ON a.P_SEQ = b.P_SEQ
+		 	WHERE ID=#{id}
+		 	ORDER BY c.rdate
+		 </select>
+		 <!-- 장바구니 삭제 --> 
+		 <delete id="deleteBasket" parameterType="Integer">
+		 	DELETE FROM rhy_store_basket
+		 	WHERE B_SEQ = #{b_seq}
+		 </delete>
+		 <!-- 장바구니 수량 변경 -->
+		 <update id="updateBasketQ" parameterType="com.rhymes.app.store.model.BasketDto">
+		 	UPDATE rhy_store_basket
+		 	SET P_QUANTITY = #{p_quantity}
+		 	WHERE STOCK_SEQ = #{stock_seq} AND ID = #{id}
+		 </update>
+		 <!-- 장바구니 전체 삭제 -->
+		 <delete id="deleteBasketAll" parameterType="com.rhymes.app.store.model.BasketDto">
+		 	DELETE FROM rhy_store_basket
+		 	WHERE ID = #{id}
+		 </delete>
+	 <!-- 세션 장바구니 -->
+	 	<!-- 장바구니 DTO GET->컨트롤러에서 리스트로 만들어야함 -->
+	 	<select id="getSessionBasketDto" parameterType="Integer" resultType="com.rhymes.app.store.model.BasketListDto">
+	 		SELECT b.PHOTO1_FILE, b.C_NAME, b.P_NAME, b.P_PRICE, a.QUANTITY, a.SIZE, a.STOCK_SEQ
+			FROM rhy_store_stock a INNER JOIN rhy_store_product b 
+				ON a.P_SEQ = b.P_SEQ
+			WHERE a.STOCK_SEQ = #{stocK_seq}
+	 	</select>
+<!-- 장바구니 끝 -->
+
+ 
+<!-- 위시리스트(찜)  -->
+	<!-- 위시리스트 INSERT -->
+	 <insert id="insertWishlist" parameterType="com.rhymes.app.store.model.WishlistDto">
+	 	INSERT INTO rhy_store_wishlist
+	 	VALUES(NULL, #{id}, #{p_seq}, NOW())
+	 </insert>
+	 <!-- 위시리스트 중복 확인 -->
+	 <select id="chkWishlist" parameterType="com.rhymes.app.store.model.WishlistDto" resultType="Integer">
+	 	SELECT COUNT(*) FROM rhy_store_wishlist
+		WHERE ID = #{id} AND P_SEQ=#{p_seq}
+	 </select>
+	 <!-- 위시리스트 삭제 -->
+	 <delete id="deleteWishlist">
+	 	DELETE FROM rhy_store_wishlist
+		WHERE ID = #{id} AND P_SEQ = #{p_seq}
+	 </delete>
+<!-- 위리스트 끝 -->	 
+	 
+<!-- 재입고 알림 -->
+	<!-- 재입고 알림 테이블 INSERT -->
+	 <insert id="rn_insert" parameterType="com.rhymes.app.store.model.RestockNotifyDto">
+	 	INSERT INTO rhy_store_restock_notify
+	 	VALUES(NULL, #{id}, #{stock_seq}, #{phone}, NOW())
+	 </insert>
+	 <!-- 재입고 알림 테이블 중복 확인 --> 
+	 <select id="chkRestockN" parameterType="com.rhymes.app.store.model.RestockNotifyDto" resultType="Integer">
+	 	SELECT COUNT(*) FROM rhy_store_restock_notify
+		WHERE ID = #{id} AND STOCK_SEQ=#{stock_seq}
+	 </select>
+<!-- 재입고 알림 끝 -->	 
+
+<!-- 재고 확인(장바구니 수량변경 / 상품구매 수량선택시 -->
+	<select id="stockCheck" parameterType="Integer" resultType="Integer">
+		SELECT QUANTITY FROM rhy_store_stock
+		WHERE STOCK_SEQ = #{stock_seq}
+	</select>
+ 
+</mapper>

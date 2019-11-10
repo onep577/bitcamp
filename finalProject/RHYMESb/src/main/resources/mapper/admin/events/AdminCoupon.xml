@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adcoupon">
+	
+	<!-- 검색조건에 맞는 총 쿠폰 개수 -->
+	<select id="getTotalCountOfCoupons" parameterType="com.rhymes.app.admin.events.model.AdminPointsPagingDTO" resultType="java.lang.Integer">
+		<include refid="getTotalCountOfCouponsSql"/></select>
+	
+	<!-- 페이징, 검색 조건에 맞는 쿠폰 리턴 -->
+	<select id="getCouponsByConditions" parameterType="com.rhymes.app.admin.events.model.AdminPointsPagingDTO"
+		resultType="com.rhymes.app.admin.events.model.CouponDTO">
+		<include refid="getCouponsByConditionsSql"/></select>
+	
+	<!-- SEQ(ID)에 맞는 쿠폰정보 리턴 -->
+	<select id="getCouponInfoBySeq" parameterType="java.lang.Integer" resultType="com.rhymes.app.admin.events.model.CouponDTO">
+		SELECT * FROM RHY_MEM_COUPON WHERE SEQ=#{seq}</select>
+		
+	<!-- 검색조건에 맞는 총 쿠폰 디테일 개수 -->
+	<select id="getTotalCountOfCouponDetail" parameterType="com.rhymes.app.admin.events.model.CouponDetailPagingDTO" resultType="java.lang.Integer">
+		<include refid="getTotalCountOfCouponDetailSql"/></select>
+	
+	<!-- 검색조건에 맞는 쿠폰 디테일 리턴 -->
+	<select id="getCouponDetails" parameterType="com.rhymes.app.admin.events.model.CouponDetailPagingDTO"
+		resultType="com.rhymes.app.admin.events.model.CouponDetailDTO">
+		<include refid="getCouponDetailsSql"/></select>
+
+	<!-- 쿠폰코드 List DB에 저장 -->
+	<insert id="insertCouponList" parameterType="java.util.List">
+		<include refid="insertCouponListSql"/></insert>
+		
+	<!-- 새 쿠폰 디테일 저장(쿠폰코드를 사용자에게 등록) -->
+	<update id="giveCouponToOneUser" parameterType="com.rhymes.app.admin.events.model.CouponDetailDTO">
+		UPDATE RHY_MEM_COUPON_DETAIL  SET USERID=#{userid}, GDATE=#{gdate}, EXPDATE=#{expdate}  WHERE COUP_CODE = #{coup_code}
+	</update>
+	
+	<!-- 새 쿠폰 생성(rhy_mem_coupon) -->
+	<insert id="insertNewCoupon" parameterType="com.rhymes.app.admin.events.model.CouponDTO">
+		<include refid="insertNewCouponSql"/></insert>
+
+	<!-- 쿼리정보 -->
+	<!-- 검색조건에 맞는 총 쿠폰 개수 -->
+	<sql id="getTotalCountOfCouponsSql">
+		SELECT COUNT(*) FROM RHY_MEM_COUPON
+		<include refid="searchConditions"/>
+	</sql>
+	
+	<!-- 페이징, 검색 조건에 맞는 쿠폰 리턴 -->	
+	<sql id="getCouponsByConditionsSql">
+		SELECT * 
+		FROM (
+			SELECT 
+				@ROWNUM := @ROWNUM +1 AS RNUM, A.SEQ AS SEQ, TITLE, SUB_TITLE, APP_CATE, FUNC, FUNC_NUM, FUNC_MEASURE, FUNC_TIME_LIMIT, RDATE
+			FROM RHY_MEM_COUPON A, (SELECT @ROWNUM :=0) B
+			<include refid="searchConditions"/>
+			ORDER BY RDATE DESC
+			) RESULT
+		LIMIT #{startSeq}, #{recordCountPerPage};
+	</sql>
+	
+	<sql id="searchConditions">
+		<where>			
+			<if test="cond == 1">TITLE LIKE '%' #{keyword} '%'</if>
+			<if test="cond == 2">APP_CATE LIKE '%' #{keyword} '%'</if>
+			<if test="cond == 3">FUNC LIKE '%' #{keyword} '%'</if>
+		</where>
+	</sql>
+	
+	
+	<!-- 검색조건에 맞는 총 쿠폰 디테일 개수 리턴 -->
+	<sql id="getTotalCountOfCouponDetailSql">
+		SELECT COUNT(*) FROM RHY_MEM_COUPON_DETAIL
+		<include refid="detailSearchConditions"/>
+	</sql>
+	
+	<!-- 검색조건에 맞는 쿠폰 디테일 리턴 -->
+	<sql id="getCouponDetailsSql">
+		SELECT * 
+		FROM (
+			SELECT 
+				@ROWNUM := @ROWNUM +1 AS RNUM, SEQ, USERID, GDATE, EXPDATE, COUP_CODE, ISUSED, USED_ID, USED_DATE
+			FROM RHY_MEM_COUPON_DETAIL A, (SELECT @ROWNUM :=0) B
+			<include refid="detailSearchConditions"/>
+			ORDER BY SEQ DESC
+			) RESULT
+		LIMIT #{startSeq}, #{recordCountPerPage};
+	</sql>
+	
+	<sql id="detailSearchConditions">
+		<where>
+			C_SEQ = #{seq}
+			<if test="cond == 1 and keyword != null and keyword != ''">AND USERID LIKE '%' #{keyword} '%'</if>
+			<if test="cond == 2 and keyword != null and keyword != ''">AND USED_ID LIKE '%' #{keyword} '%'</if>
+			<if test="cond == 3 and keyword != null and keyword != ''">AND COUP_CODE LIKE '%' #{keyword} '%'</if>
+			<if test="cond == 4">AND ISUSED = #{keyword}</if>
+		</where>
+	</sql>
+	
+	<!-- 쿠폰코드 List DB에 저장 -->
+	<sql id="insertCouponListSql"> 
+        INSERT INTO RHY_MEM_COUPON_DETAIL (C_SEQ, COUP_CODE)
+        VALUES 
+        <foreach item="item" collection="list" separator=",">
+		        ("${item.seq}", "${item.coup_code}")	        
+        </foreach>
+    </sql>
+    
+    <!-- 새 쿠폰 생성(rhy_mem_coupon) -->
+    <sql id="insertNewCouponSql">
+    	INSERT INTO RHY_MEM_COUPON (TITLE, SUB_TITLE, APP_CATE, FUNC, FUNC_NUM, FUNC_MEASURE, FUNC_TIME_LIMIT )
+    	VALUES ( #{title}, #{sub_title}, #{app_cate}, #{func}, #{func_num}, #{func_measure}, #{func_time_limit} )
+    </sql>
+
+</mapper>

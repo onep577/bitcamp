@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="orderlog">	
+
+	<!-- 매개변수로 받은 조건에 맞는 주문내역들을 리턴 -->
+	<select id="getOrderlogsById" parameterType="com.rhymes.app.member.model.mypage.MemberOrderPagingDTO"
+	 resultType="com.rhymes.app.member.model.mypage.MemberOrderDTO">
+		<include refid="getOrderlogsByIdSql"/></select>
+		
+	<!-- 매개변수로 받은 조건에 맞는 총 주문내역 개수를 리턴 -->
+	<select id="getTotalOrderlogCount" parameterType="com.rhymes.app.member.model.mypage.MemberOrderPagingDTO" resultType="java.lang.Integer">
+		<include refid="getTotalOrderlogCountSql"/></select>
+	
+	<!-- 매개변수로 받은 주문번호에 맞는 세부 주문내역 리턴 -->
+	<select id="getOrderlogDetailsByPaymentCode" parameterType="java.lang.String"
+		resultType="com.rhymes.app.member.model.mypage.MemberOrderDetailDTO">
+		<include refid="getOrderlogDetailsByPaymentCodeSql"/></select>
+		
+	<!-- 매개변수로 받은 주문번호에 맞는 결제정보, 주문정보, 배송정보 리턴 -->
+	<select id="getPaymentInfoByPaymentCode" parameterType="java.lang.String"
+		resultType="com.rhymes.app.member.model.mypage.MemberPaymentDTO">
+		<include refid="getPaymentInfoByPaymentCodeSql"/></select>
+		
+	<!-- 매개변수로 받은 주문번호 삭제(주문취소, 미결제인 경우에만 가능) -->
+	<delete id="deletePayment" parameterType="java.lang.String">
+		<include refid="deletePaymentSql"/></delete>
+		
+	<!-- 매개변수로 받은 주문번호에 맞는 상세정보 삭제(주문취소, 미결제인 경우에만 가능) -->
+	<delete id="deletePaymentDetail" parameterType="java.lang.String">
+		<include refid="deletePaymentDetailSql"/></delete>
+	
+	
+	<!-- QUERY --> 	
+ 	<!-- 매개변수로 받은 ID의 주문상세내역을 리턴 -->
+ 	<sql id="getOrderlogsByIdSql">		
+		SELECT RNUM, PAYMENT_CODE, USERID, COUNT, P_NAME, TOTALPRICE, PAYMENT_STATUS, RDATE, IMG, REVIEW_WRITTEN
+			, P_SEQ, C1_NAME, C2_NAME, C3_NAME 
+		FROM(
+			SELECT @ROWNUM := @ROWNUM +1 AS RNUM, PAYMENT_CODE, USERID, COUNT, P_NAME, TOTALPRICE, PAYMENT_STATUS, RDATE, IMG, REVIEW_WRITTEN
+				, P_SEQ, C1_NAME, C2_NAME, C3_NAME
+			FROM(
+				SELECT  A.PAYMENT_CODE AS PAYMENT_CODE, A.USERID AS USERID, COUNT(*) AS COUNT, D.P_NAME AS P_NAME, A.TOTALPRICE AS TOTALPRICE, A.PAYMENT_STATUS AS PAYMENT_STATUS, A.RDATE AS RDATE, D.PHOTO1_FILE AS IMG, B.REVIEW_WRITTEN AS REVIEW_WRITTEN
+					, D.P_SEQ AS P_SEQ, D.C1_NAME AS C1_NAME, D.C2_NAME AS C2_NAME, D.C3_NAME AS C3_NAME
+				FROM RHY_PAYMENT A, (SELECT * FROM RHY_PAYMENT_DETAILS ORDER BY PRICE) B, RHY_STORE_STOCK C, RHY_STORE_PRODUCT D 
+				WHERE A.PAYMENT_CODE = B.PAYMENT_CODE AND B.S_SEQ = C.STOCK_SEQ AND C.P_SEQ = D.P_SEQ AND A.USERID=#{userid}
+				<include refid="searchConditions"/>
+				GROUP BY A.PAYMENT_CODE
+				ORDER BY B.PRICE DESC) AA, (SELECT @ROWNUM :=0) BB
+			) AAA
+		LIMIT #{startSeq }, #{recordCountPerPage}
+ 	</sql>
+ 	
+ 	<!-- 매개변수로 받은 조건에 맞는 총 주문내역 개수를 리턴 -->
+ 	<sql id="getTotalOrderlogCountSql">
+ 		SELECT COUNT(*) FROM RHY_PAYMENT A WHERE USERID=#{userid}<include refid="searchConditions"/>;
+ 	</sql>
+	
+	<!-- 날짜 검색조건 -->
+	<sql id="searchConditions">
+		<if test="cond == 1">AND A.RDATE <![CDATA[>=]]> date_add(now(), interval -1 year) </if>
+		<if test="cond == 2">AND A.RDATE <![CDATA[>=]]> date_add(now(), interval -2 year) </if>
+	</sql>
+	
+	<!-- 매개변수로 받은 주문번호에 맞는 세부 주문내역 리턴 -->
+	<sql id="getOrderlogDetailsByPaymentCodeSql">
+		SELECT B.SEQ AS SEQ, B.S_SEQ AS S_SEQ, D.PHOTO1_FILE AS IMG, D.P_NAME AS P_NAME, D.P_PRICE, B.EA, A.PAYMENT_STATUS AS PAYMENT_STATUS
+			, E.DELIVERY_STATUS AS DELIVERY_STATUS, E.DELIVERY_POST_CODE AS DELIVERY_POST_CODE , B.REVIEW_WRITTEN
+			, D.P_SEQ AS P_SEQ, D.C1_NAME AS C1_NAME, D.C2_NAME AS C2_NAME, D.C3_NAME AS C3_NAME
+		FROM RHY_PAYMENT A, RHY_PAYMENT_DETAILS B, RHY_STORE_STOCK C, RHY_STORE_PRODUCT D, RHY_DELIVERY E
+		WHERE A.PAYMENT_CODE = B.PAYMENT_CODE AND B.S_SEQ = C.STOCK_SEQ AND C.P_SEQ = D.P_SEQ AND B.PAYMENT_CODE = E.PAYMENT_CODE
+			AND B.PAYMENT_CODE LIKE CONCAT('%',#{keyword},'%') 
+	</sql>
+	
+	<!-- 매개변수로 받은 주문번호에 맞는 결제정보, 주문정보, 배송정보 리턴 -->
+	<sql id="getPaymentInfoByPaymentCodeSql">
+		SELECT TOTALPRICE, DISC_PRODUCT, COUPON_CODE, DISC_COUPON, DISC_POINT, DELIVERY_PRICE, ADD_POINT, PAYMENT_METHOD
+			,A.PAYMENT_CODE, USERID, SEND_NAME, RDATE, PAYMENT_STATUS, DELIVERY_STATUS
+			, RECEIVE_NAME, RECEIVE_PHONE, RECEIVE_POSTNUM, RECEIVE_ADDRESS, DELIVERY_REQUEST, DELIVERY_COMPANY, DELIVERY_POST_CODE
+		FROM RHY_PAYMENT A, RHY_DELIVERY B
+		WHERE A.PAYMENT_CODE = B.PAYMENT_CODE 
+			AND A.PAYMENT_CODE LIKE CONCAT('%',#{payment_code},'%') 
+	</sql>
+	
+	<!-- 매개변수로 받은 주문번호 주문정보 삭제(주문취소, 미결제인 경우에만 가능) -->
+	<sql id="deletePaymentSql">
+		DELETE FROM RHY_PAYMENT WHERE PAYMENT_CODE LIKE CONCAT('%',#{payment_code},'%')
+	</sql>
+	
+	<!-- 매개변수로 받은 주문번호에 맞는 상세정보 삭제(주문취소, 미결제인 경우에만 가능) -->
+	<sql id="deletePaymentDetailSql">
+		DELETE FROM RHY_PAYMENT_DETAILS WHERE PAYMENT_CODE LIKE CONCAT('%',#{payment_code},'%')
+	</sql>
+		
+</mapper>
+
+
+
+

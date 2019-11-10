@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AdminNotice">
+    <select id="getNoticeList" parameterType="com.rhymes.app.customer.model.CustomerParam"  resultType="com.rhymes.app.customer.model.NoticeDto">
+       SELECT SEQ, ID, TITLE,WDATE, READCOUNT, FILENAME
+       FROM (SELECT ROW_NUMBER()OVER(ORDER BY SEQ DESC)AS RNUM,
+				SEQ, ID, TITLE,CONTENT, WDATE, 
+				READCOUNT, FILENAME
+				FROM NOTICE 
+				WHERE 1=1 
+				<if test="s_category != null and s_category != ''
+					and s_keyword != null and s_keyword != ''">
+				
+				<if test="s_category == 'title'">
+					AND TITLE LIKE '%' #{s_keyword} '%'
+				</if>
+				<if test="s_category == 'content'">
+					AND CONTENT LIKE '%' #{s_keyword} '%'
+				</if>
+				<if test="s_category == 'writer'">
+					AND ID LIKE '%' #{s_keyword} '%'
+				</if>
+				
+				</if>
+				)A
+		WHERE RNUM BETWEEN ${start} AND ${end}		
+      	ORDER BY SEQ DESC
+    </select>
+    
+  <select id="getNoticeCount" parameterType="com.rhymes.app.customer.model.CustomerParam"
+		resultType="java.lang.Integer">
+	
+	SELECT IFNULL(COUNT(*), 0) AS CNT
+	FROM NOTICE 
+	WHERE 1=1
+		<if test="s_category != null and s_category != ''
+						and s_keyword != null and s_keyword != ''">
+					
+			<if test="s_category == 'title'">
+				AND TITLE LIKE '%' #{s_keyword} '%'
+			</if>
+			<if test="s_category == 'content'">
+				AND CONTENT LIKE '%' #{s_keyword} '%'
+			</if>
+			<if test="s_category == 'writer'">
+				AND ID LIKE '%' #{s_keyword} '%'
+			</if>
+		</if>
+	
+</select>
+    
+    
+    
+    
+    
+    
+    
+    
+   <!-- noticedetail -->
+    <select id="getNoticeDetail" parameterType="java.lang.Integer" resultType="com.rhymes.app.customer.model.NoticeDto">
+       SELECT * 
+       FROM notice
+       WHERE SEQ = #{seq}
+    </select>
+    
+    
+    <insert id="NoticeUpload" parameterType="com.rhymes.app.customer.model.NoticeDto">
+	INSERT INTO NOTICE(ID, TITLE, CONTENT, WDATE, READCOUNT,FILENAME)
+	VALUES(#{ id}, #{title}, #{content}, NOW(), 0, #{filename})
+	</insert>
+    
+    <update id="NoticeUpdateAf" parameterType="com.rhymes.app.customer.model.NoticeDto">
+	UPDATE NOTICE
+	SET TITLE=#{title}, CONTENT=#{content}, FILENAME=#{filename}
+	WHERE SEQ=#{seq}
+	</update>
+	
+	<delete id="NoticeDelete" parameterType="java.lang.Integer">
+	DELETE FROM NOTICE 
+	WHERE SEQ=#{seq}
+	</delete>
+	
+	<select id="NoticeFilename" parameterType="java.lang.Integer" resultType="String">
+	SELECT FILENAME 
+	FROM NOTICE
+	WHERE SEQ=#{seq}
+	</select>
+	
+	<update id="NoticeUpRead" parameterType="java.lang.Integer">
+	UPDATE NOTICE 
+	SET READCOUNT= READCOUNT+1
+	WHERE SEQ=#{seq}
+	</update> 
+
+    
+</mapper>

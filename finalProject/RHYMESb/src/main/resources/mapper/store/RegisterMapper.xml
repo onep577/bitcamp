@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <mapper namespace="com.mde.app.common.dao"> -->
+
+<mapper namespace="register">
+ 
+ <select id="getCate2List" parameterType="Integer" resultType="com.rhymes.app.store.model.category.Category2Dto">
+     SELECT C2_SEQ, C2_NAME, C1_SEQ FROM rhy_store_cate2
+     WHERE 1=1 
+     	<if test="c1_seq != '' and c1_seq != null">
+     		AND C1_SEQ = #{c1_seq}
+     	</if>
+ </select>
+ <select id="getCate3List" parameterType="Integer" resultType="com.rhymes.app.store.model.category.Category3Dto">
+     SELECT C3_SEQ, C3_NAME, C2_SEQ FROM rhy_store_cate3
+     WHERE C2_SEQ = #{c2_seq}
+ </select>
+ 
+ <select id="getPseq" resultType="Integer">
+ 	SELECT nextval('p_seq') FROM DUAL
+ </select>
+ 
+ <insert id="insertProduct" parameterType="com.rhymes.app.store.model.ProductDto">
+ 	INSERT INTO rhy_store_product
+ 	VALUES(#{p_seq}, #{c_name}, #{p_name}, #{p_title}, #{cp_code}, #{p_price}, #{p_color}, #{c1_name}, #{c2_name}, #{c3_name},
+ 		#{nation}, #{mdate}, #{detail}, #{photo1_file}, #{photo2_file}, #{photo3_file}, #{photo4_file}, #{photo5_file}, NOW() )
+ </insert>
+ <insert id="insertStock" parameterType="com.rhymes.app.store.model.StockDto">
+ 	INSERT INTO rhy_store_stock
+ 	VALUES(NULL, #{p_seq}, #{p_size}, #{p_quantity})
+ </insert>
+ 
+ <select id="getSizeunit" resultType="String" parameterType="com.rhymes.app.store.model.SizeunitDto">
+ 	SELECT C2_SIZE 
+ 	FROM rhy_store_sizeunit
+ 	WHERE C2_SEQ = #{c2_seq}
+ </select>
+
+ <select id="getProductList" parameterType="com.rhymes.app.store.model.ProductDto" resultType="com.rhymes.app.store.model.ProductDto">
+ 	SELECT P_NAME, P_TITLE, P_PRICE, P_COLOR, PHOTO1_FILE, C1_NAME 		
+ 	FROM rhy_store_product 	 
+ </select>
+ 
+ <select id="getCname" resultType="com.rhymes.app.member.model.SellerDTO" parameterType="com.rhymes.app.member.model.SellerDTO">
+ 	SELECT C_NAME FROM rhy_mem_c
+ 	WHERE ID = #{ id }  	
+ </select>
+ 	
+</mapper>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="personal">	
+
+	<!-- 매개변수로 받은 ID의 암호화된 비밀번호를 리턴 -->
+	<select id="getOnePwById" parameterType="java.lang.String" resultType="java.lang.String">
+		<include refid="getOnePwByIdSql"/></select>
+	
+	<!-- 매개변수로 받은 ID가 갖는 권한 리턴 -->
+	<select id="getAuthorities" parameterType="java.lang.String" resultType="java.lang.String">
+		<include refid="getAuthoritiesSql"/></select>
+	
+	<!-- 개인회원 상세 정보 리턴(RHY_MEM_P) -->
+	<select id="getOnePersonalMemberById" parameterType="java.lang.String"
+		resultType="com.rhymes.app.member.model.P_MemberDTO">
+	<include refid="getOnePersonalMemberByIdSql"/></select>
+	
+	<!-- 기업회원 상세 정보 리턴(RHY_MEM_C) -->
+	<select id="getOneSellerMemberById" parameterType="java.lang.String"
+		resultType="com.rhymes.app.member.model.SellerDTO">
+	<include refid="getOneSellerMemberByIdSql"/></select>
+	
+	<!-- 회원탈퇴기능. ENABLED를 false로 변경 -->
+	<update id="updateOneMemberToDisabled" parameterType="java.lang.String">
+		<include refid="updateOneMemberToDisabledSql"/></update>
+	
+	<!-- 회원 비밀번호 update -->
+	<update id="updateMemberPassword" parameterType="com.rhymes.app.member.model.MemberDTO">
+		<include refid="updateMemberPasswordSql"/></update>
+	
+	<!-- 개인회원정보 update -->
+	<update id="updateOnePMember" parameterType="com.rhymes.app.member.model.P_MemberDTO">
+		<include refid="updateOnePMemberSql"/></update>
+	
+	<!-- QUERY --> 	
+ 	<!-- 매개변수로 받은 ID의 암호화된 비밀번호를 리턴 -->
+ 	<sql id="getOnePwByIdSql">
+ 		SELECT PW FROM RHY_MEM WHERE ID=#{id}		
+ 	</sql>
+ 	
+ 	<!-- 매개변수로 받은 ID가 갖는 권한 리턴 -->
+ 	<sql id="getAuthoritiesSql">
+ 		SELECT AUTHORITY FROM AUTHORITIES WHERE ID=#{id}		
+ 	</sql>
+ 	
+ 	<!-- 개인회원 상세 정보 리턴(RHY_MEM_P) resultType="com.rhymes.app.member.model.P_MemberDTO" -->
+ 	<sql id="getOnePersonalMemberByIdSql">
+ 		SELECT ID AS USERID, NAME AS USERNAME, POSTCODE, ADDRESS, DETAILADDRESS, PHONE
+ 			, EMAIL AS USEREMAIL, GENDER AS USERGENDER, BIRTH AS USERBIRTH, COUNT
+ 		FROM RHY_MEM_P
+ 		WHERE ID=#{id}
+ 	</sql>	
+	
+	<!-- 기업회원 상세 정보 리턴(RHY_MEM_C) resultType="com.rhymes.app.member.model.SellerDTO" -->
+	<sql id="getOneSellerMemberByIdSql">
+		SELECT ID, C_NAME, C_NUM, P_NAME, C__ADDRESS, C_DETAILADDRESS, C_COND, C_TYPE, IC_NAME
+			, IC_EMAIL, S_POSTCODE, S_ADDRESS, S_DETAILADDRESS, R_POSTCODE, R_ADDRESS, R_DETAILADDRESS, C_CODE
+		FROM RHY_MEM_C
+		WHERE ID=#{id}
+	</sql>
+	
+	<!-- 회원탈퇴기능. ENABLED를 false로 변경 -->
+	<sql id="updateOneMemberToDisabledSql">
+		UPDATE RHY_MEM SET ENABLED='false'
+		WHERE ID=#{userid}
+	</sql>
+	
+	<!-- 회원 비밀번호 update -->
+	<sql id="updateMemberPasswordSql">
+		UPDATE RHY_MEM
+		SET PW=#{userpw}
+		WHERE ID=#{userid}
+	</sql>
+		
+	<!-- 개인회원정보 update -->
+	<sql id="updateOnePMemberSql">
+		UPDATE RHY_MEM_P
+		SET NAME=#{username}, POSTCODE=#{postcode}, ADDRESS=#{address}, DETAILADDRESS=#{detailAddress}
+			,EMAIL=#{useremail}, PHONE=#{phone}, GENDER=#{usergender}, BIRTH=#{userbirth}
+		WHERE ID=#{userid}
+	</sql>	
+	
+</mapper>

@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="store">
+
+<select id="search_auto" resultType="String">
+	SELECT a.P_NAME, b_
+	FROM rhy_store_product a INNER JOIN rhy_mem_c b
+	
+</select>
+
+<select id="getCompanyList" resultType="String">
+	SELECT C_NAME FROM rhy_mem_c
+	ORDER BY (CASE WHEN C_NAME REGEXP '[A-Z]' THEN C_NAME REGEXP '[0-9]' ELSE C_NAME  NOT REGEXP '[A-Z]' END), C_NAME  ASC 
+</select>
+
+<!-- 상품리스트 -->
+ <select id="getProductList" parameterType="com.rhymes.app.store.model.ProductParam" resultType="com.rhymes.app.store.model.ProductDto">
+	
+	SELECT F.RNUM,
+		   F.P_SEQ,
+		   F.P_NAME,
+		   F.C_NAME,
+		   F.C1_NAME,	
+		   F.P_TITLE,	   
+		   F.P_PRICE,
+		   F.BFS_PRICE,
+		   F.P_COLOR,
+		   F.PHOTO1_FILE,
+		   F.RDATE,
+		   F.SUM,
+		   F.SALESVOLUME
+		   
+	FROM(SELECT ROW_NUMBER()OVER(ORDER BY
+									<if test="key == '' or key == null">
+									 	<if test="sorting == '' or sorting == null">
+									 		a.P_SEQ DESC
+									 	</if>
+								 	</if>
+								 	
+								 	<if test="key != '' and key != null">
+								 		<if test="sorting == '' or sorting == null">
+									 		<if test="key == 'newarrival' or key =='sale'">
+									 			a.P_SEQ DESC
+									 		</if>
+									 		<if test="key == 'best'">
+									 			SALESVOLUME DESC
+									 		</if>
+									 	</if>	
+								 	</if>
+								 	
+								 	<!-- 최신순으로 표시 -->
+								 	<if test="sorting == 'NEW'">
+								 		a.P_SEQ ASC
+								 	</if>
+								 	<!-- 낮은 가격 순으로 표시 -->
+								 	<if test="sorting == 'PRICEDOWN'">
+								 		a.P_PRICE ASC
+								 	</if>
+								 	<!-- 높은 가격 순으로 표시 -->
+								 	<if test="sorting == 'PRICEUP'">
+								 		a.P_PRICE DESC
+								 	</if>
+								 	<if test="sorting == 'BEST'">
+								 		SALESVOLUME DESC
+								 	</if>		
+					 					) AS RNUM,
+										   a.P_SEQ,
+								 		   a.P_NAME,
+								 		   a.C_NAME,
+								 		   a.C1_NAME,
+								 		   a.P_TITLE,
+								 		   a.P_PRICE,
+								 		   a.BFS_PRICE,
+								 		   a.P_COLOR,
+								 		   a.PHOTO1_FILE,
+								 		   a.RDATE,
+								 		   a.SUM, 		   	 		   
+								 		   SUM(SALES) AS SALESVOLUME
+	 		   
+ 			FROM (SELECT ROW_NUMBER()OVER(ORDER BY 
+		 	
+		 	<if test="key == '' or key == null">
+			 	<if test="sorting == '' or sorting == null">
+			 		a.P_SEQ DESC
+			 	</if>
+		 	</if>
+		 	
+		 	<if test="key != '' and key != null">
+		 		<if test="sorting == '' or sorting == null">
+			 		<if test="key == 'newarrival' or key =='sale'">
+			 			a.P_SEQ DESC
+			 		</if>
+			 		<if test="key == 'best'">
+			 			SALES DESC
+			 		</if>
+			 	</if>	
+		 	</if>
+		 	
+		 	<!-- 최신순으로 표시 -->
+		 	<if test="sorting == 'NEW'">
+		 		a.P_SEQ ASC
+		 	</if>
+		 	<!-- 낮은 가격 순으로 표시 -->
+		 	<if test="sorting == 'PRICEDOWN'">
+		 		a.P_PRICE ASC
+		 	</if>
+		 	<!-- 높은 가격 순으로 표시 -->
+		 	<if test="sorting == 'PRICEUP'">
+		 		a.P_PRICE DESC
+		 	</if>
+		 	<if test="sorting == 'BEST'">
+		 		SALES DESC
+		 	</if>
+			) AS RNUM2, 
+				a.P_SEQ,
+				a.P_NAME,
+				a.C_NAME,
+				a.C1_NAME,
+				a.P_TITLE,
+				a.P_PRICE,
+				a.BFS_PRICE,
+				a.P_COLOR,
+				a.PHOTO1_FILE,
+				a.RDATE,
+				SUM(b.QUANTITY)AS SUM,
+				IFNULL((SELECT SUM(d.EA) 
+							FROM rhy_payment e 
+							WHERE e.PAYMENT_STATUS = '결제완료' 
+								AND e.PAYMENT_CODE = d.PAYMENT_CODE
+							GROUP BY d.S_SEQ), 0) AS SALES
+			
+			FROM rhy_store_product a 
+				INNER JOIN rhy_store_stock b 
+					ON a.P_SEQ = b.P_SEQ
+				LEFT OUTER JOIN rhy_payment_details d
+					ON b.STOCK_SEQ = d.S_SEQ	
+			WHERE 1 = 1
+ 			
+ 			<!-- 검색시 -->
+ 			<if test="criterion != null and criterion != '' and keyword != null and keyword != ''">
+				<!-- 브랜드 선택/검색 -->
+				<if test="criterion == 'company_search'">
+					AND a.C_NAME LIKE '%' #{keyword} '%'
+				</if>
+				<!-- 제품이름&브랜드 통합검색 -->				
+				<if test="criterion == 'all_search'">
+					<if test="c1_name != null and c1_name != ''">
+					AND a.C1_NAME = #{c1_name}
+					</if>
+					
+					<if test="c1_name == null or c1_name == ''">
+						<if test="c2_name != null and c2_name != '' and c3_name != null and c3_name != ''">
+						AND a.C2_NAME = #{c2_name} AND a.C3_NAME = #{c3_name}
+						</if>	
+					</if>
+					
+					AND (a.C_NAME LIKE '%' #{keyword} '%' OR a.P_NAME LIKE '%' #{keyword} '%')
+				</if>
+			</if>
+			
+			<!-- 카테고리 선택시 -->
+				<!-- 1차 카테고리만 선택시 -->
+				<if test="c1_name != null and c1_name != ''">
+					AND a.C1_NAME = #{c1_name}
+					<!-- 1,2차 카테고리 선택시 -->
+					<if test="c1_name != null and c1_name != '' and c2_name != null and c2_name != ''">
+						AND a.C2_NAME = #{c2_name}
+						<!-- 1,2,3차 카테고리 선택시 -->
+						<if test="c1_name != null and c1_name != '' and c2_name != null and c2_name != '' and c3_name != null and c3_name != ''" >
+						AND a.C3_NAME = #{c3_name}
+							<!-- 키워드가 존재할 때 -->
+							<if test="keyword != null and keyword != ''">
+								AND (a.C_NAME LIKE '%' #{keyword} '%' OR a.P_NAME LIKE '%' #{keyword} '%') 
+							</if>
+						</if>
+					</if>
+					<if test="key == 'sale'">
+						AND a.BFS_PRICE != 0
+					</if>
+				</if>
+				GROUP BY a.P_SEQ	
+				)A
+    GROUP BY a.P_SEQ DESC) F				
+ 	WHERE 
+		<if test="key != 'newarrival' and key != 'best'">
+			RNUM BETWEEN ${start} AND #{end}
+		</if>
+		
+ 		<if test="key == 'newarrival' or key == 'best'">
+ 			RNUM BETWEEN 1 AND 12
+ 		</if>	
+
+ 	ORDER BY 
+ 			<if test="key == '' or key == null">
+			 	<if test="sorting == '' or sorting == null">
+			 		F.P_SEQ DESC
+			 	</if>
+		 	</if>
+		 	
+		 	<if test="key != '' and key != null">
+		 		<if test="sorting == '' or sorting == null">
+			 		<if test="key == 'newarrival' or key =='sale'">
+			 			F.P_SEQ DESC
+			 		</if>
+			 		<if test="key == 'best'">
+			 			F.SALESVOLUME DESC
+			 		</if>
+			 	</if>	
+		 	</if>
+ 	
+ 			<!-- 최신순으로 표시 -->
+		 	<if test="sorting == 'NEW'">
+		 		F.P_SEQ ASC
+		 	</if>
+		 	<!-- 낮은 가격 순으로 표시 -->
+		 	<if test="sorting == 'PRICEDOWN'">
+		 		F.P_PRICE ASC
+		 	</if>
+		 	<!-- 높은 가격 순으로 표시 -->
+		 	<if test="sorting == 'PRICEUP'">
+		 		F.P_PRICE DESC
+		 	</if>
+		 	<if test="sorting == 'BEST'">
+		 		F.SALESVOLUME DESC
+		 	</if>
+ </select>
+ 
+ <!-- 리스트에 불러올 상품 갯수 -->
+ <select id="productCnt" parameterType="com.rhymes.app.store.model.ProductParam" resultType="java.lang.Integer">
+ 	SELECT IFNULL(COUNT(*), 0) AS CNT
+	FROM rhy_store_product
+	WHERE 1=1
+	<!-- 검색시 -->
+		<if test="criterion != null and criterion != '' and keyword != null and keyword != ''">
+			<!-- 브랜드 검색 -->
+			<if test="criterion == 'company_search'">
+				AND C_NAME LIKE '%' #{keyword} '%'
+			</if>
+			<!-- 제품이름&브랜드 통합검색 -->				
+			<if test="criterion == 'all_search'">
+				<if test="c1_name != null and c1_name != ''">
+				AND C1_NAME = #{c1_name}
+				</if>
+				<if test="c1_name == null or c1_name == ''">
+					<if test="c2_name != null and c2_name != '' and c3_name != null and c3_name != ''">
+					AND C2_NAME = #{c2_name} AND C3_NAME = #{c3_name}
+					</if>
+				</if>
+				
+				AND (C_NAME LIKE '%' #{keyword} '%' OR P_NAME LIKE '%' #{keyword} '%')
+			</if>
+		</if>
+		
+		<if test="key == 'sale'">
+			AND BFS_PRICE != 0 
+		</if>
+		
+		
+	<!-- 카테고리 선택시 -->
+		<!-- 1차 카테고리만 선택시 -->
+		<if test="c1_name != null and c1_name != ''">
+			AND C1_NAME = #{c1_name}
+			<!-- 1,2차 카테고리 선택시 -->
+			<if test="c1_name != null and c1_name != '' and c2_name != null and c2_name != ''">
+				AND C2_NAME = #{c2_name}
+				<!-- 1,2,3차 카테고리 선택시 -->
+				<if test="c1_name != null and c1_name != '' and c2_name != null and c2_name != '' and c3_name != null and c3_name != ''" >
+				AND C3_NAME = #{c3_name}
+				</if>
+			</if>
+		</if>
+	
+ </select>
+
+<!-- 브랜드 1차 카테고리 불러오기 -->
+ <select id="kCate1list" resultType="com.rhymes.app.store.model.category.Category1Dto" parameterType="com.rhymes.app.store.model.ProductParam">
+ 	SELECT DISTINCT(a.C1_NAME), b.C1_SEQ
+ 	FROM rhy_store_product a INNER JOIN rhy_store_cate1 b
+ 		ON a.C1_NAME = b.C1_NAME
+ 	WHERE (a.C_NAME LIKE '%' #{keyword} '%' OR a.P_NAME LIKE '%' #{keyword} '%' )	 
+ 		<if test="c1_name != null and c1_name != ''">
+ 		AND (a.C1_NAME = #{c1_name}) 
+ 		</if> 		
+ </select>
+ 
+ <!--2차 카테고리 불러오기 (1차카테고리 선택 + 통합검색 후 )  -->
+ <select id="kCate2list" resultType="com.rhymes.app.store.model.category.Category2Dto" parameterType="com.rhymes.app.store.model.ProductParam">	 	
+ 	<!-- SELECT DISTINCT(C2_NAME) FROM rhy_store_product
+ 	WHERE C_NAME LIKE '%' #{keyword} '%' OR P_NAME LIKE '%' #{keyword} '%'
+ 		AND C1_NAME = #{c1_name} -->
+ 	SELECT DISTINCT(a.C2_NAME), b.C2_SEQ
+ 	FROM rhy_store_product a INNER JOIN rhy_store_cate2 b
+ 		ON a.C2_NAME = b.C2_NAME
+ 	WHERE (a.C_NAME LIKE '%' #{keyword} '%' OR a.P_NAME LIKE '%' #{keyword} '%' )
+ 		AND (a.C1_NAME = #{c1_name} AND b.C1_SEQ = #{c1_seq})	 
+ </select>
+ 
+  <!--3차 카테고리 AJAX -->
+ <select id="kCate3list" resultType="com.rhymes.app.store.model.category.Category3Dto" parameterType="com.rhymes.app.store.model.ProductParam">	 	
+ 	SELECT DISTINCT(C3_NAME) FROM rhy_store_product
+ 	WHERE (C_NAME LIKE '%' #{keyword} '%' OR P_NAME LIKE '%' #{keyword} '%') 
+ 		AND (C1_NAME = #{c1_name} AND C2_NAME = #{c2_name})
+ </select>
+ 
+</mapper>

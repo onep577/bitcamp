@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adminPayment">
+
+<!-- 관리자페이지 결제내역조회 -->
+<!-- 검색 : 회원ID, 회원이름, 주문번호, 결제상태, 결제수단  -->
+<select id="getOrderSuccessList" parameterType="com.rhymes.app.admin.payment.model.AdminPaymentParam" resultType="com.rhymes.app.payment.model.PaymentDTO">
+SELECT PAYMENT_CODE, USERID, SEND_NAME, COUPON_CODE, PAYMENT_METHOD, PAYMENT_STATUS, TOTALPRICE, RDATE
+FROM
+	(SELECT ROW_NUMBER()OVER(ORDER BY P.RDATE DESC) AS RNUM, P.PAYMENT_CODE, P.USERID, P.SEND_NAME, P.COUPON_CODE, P.PAYMENT_METHOD, P.PAYMENT_STATUS, P.TOTALPRICE, P.RDATE
+	FROM RHY_PAYMENT P, RHY_PAYMENT_DETAILS PD, RHY_STORE_STOCK SS, RHY_STORE_PRODUCT SP
+	WHERE P.PAYMENT_CODE=PD.PAYMENT_CODE AND PD.S_SEQ=SS.STOCK_SEQ AND SS.P_SEQ=SP.P_SEQ
+		<if test="s_category != null and s_category != ''">
+			<if test="s_keyword != null and s_keyword != ''">
+				<if test="s_category == 'id'">
+					AND USERID LIKE '%' #{s_keyword} '%'
+				</if>
+				<if test="s_category == 'name'">
+					AND SEND_NAME LIKE '%' #{s_keyword} '%'
+				</if>
+				<if test="s_category == 'payment_method'">
+					AND PAYMENT_METHOD LIKE '%' #{s_keyword} '%'
+				</if>
+				<if test="s_category == 'payment_status'">
+					AND PAYMENT_STATUS LIKE '%' #{s_keyword} '%'
+				</if>
+			</if>
+		</if>
+	GROUP BY P.PAYMENT_CODE
+	ORDER BY P.RDATE DESC
+	) B
+WHERE RNUM BETWEEN ${start} AND ${end}
+</select>
+
+<!-- 관리자페이지 결제상내역 총 개수 -->
+<select id="getOrderSuccessCount" parameterType="com.rhymes.app.admin.payment.model.AdminPaymentParam" resultType="com.rhymes.app.payment.model.PaymentDTO">
+SELECT *
+FROM RHY_PAYMENT P, RHY_PAYMENT_DETAILS PD, RHY_STORE_STOCK SS, RHY_STORE_PRODUCT SP, RHY_MEM_C MC
+WHERE P.PAYMENT_CODE=PD.PAYMENT_CODE AND PD.S_SEQ=SS.STOCK_SEQ AND SS.P_SEQ=SP.P_SEQ
+<if test="s_category != null and s_category != ''">
+	<if test="s_keyword != null and s_keyword != ''">
+		<if test="s_category == 'id'">
+			AND USERID LIKE '%' #{s_keyword} '%'
+		</if>
+		<if test="s_category == 'name'">
+			AND SEND_NAME LIKE '%' #{s_keyword} '%'
+		</if>
+		<if test="s_category == 'payment_method'">
+			AND PAYMENT_METHOD LIKE '%' #{s_keyword} '%'
+		</if>
+		<if test="s_category == 'payment_status'">
+			AND PAYMENT_STATUS LIKE '%' #{s_keyword} '%'
+		</if>
+	</if>
+</if>
+GROUP BY P.PAYMENT_CODE
+ORDER BY P.RDATE DESC
+</select>
+
+<!-- 관리자페이지 결제상세내역조회 -->
+<select id="getOrderDetail" parameterType="com.rhymes.app.payment.model.PaymentDTO" resultType="com.rhymes.app.admin.payment.model.AdminPaymentDetailDTO">
+SELECT *
+FROM RHY_PAYMENT P, RHY_PAYMENT_AFTER PA, RHY_PAYMENT_DETAILS PD, RHY_STORE_STOCK SS, RHY_STORE_PRODUCT SP, RHY_DELIVERY D, RHY_MEM_COUPON MC, RHY_MEM_COUPON_DETAIL MCD
+WHERE P.PAYMENT_CODE = PA.PAYMENT_CODE AND P.PAYMENT_CODE = PD.PAYMENT_CODE AND P.PAYMENT_CODE = D.PAYMENT_CODE
+		AND PD.S_SEQ = SS.STOCK_SEQ AND SS.P_SEQ = SP.P_SEQ
+		<if test="coupon_code != null and coupon_code != ''">
+			AND P.COUPON_CODE = MCD.COUP_CODE AND MCD.C_SEQ = MC.SEQ AND MCD.COUP_CODE=#{coupon_code}
+		</if>
+		AND P.PAYMENT_CODE LIKE CONCAT('%',#{payment_code},'%')
+GROUP BY SS.STOCK_SEQ
+</select>
+
+</mapper>

@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+.mem_p_wrap {
+	border: 1px solid #d0d0d0;
+}
+
+.form-row{
+	margin-top: 20px;
+}
+
+.form-row label{
+	margin-left: 5px;
+	font-size: 14px;
+}
+
+.form-row hr{
+	border: 1px solid #d0d0d0;
+}
+
+#btn_search_address{
+	width: 110px;
+}
+
+._form_phone_wrap input{
+	width: 100px;
+	float: left;
+}
+._form_phone_wrap a{
+	float: left;
+	margin: 8px;
+}
+.row_address{
+	margin-top: 2px
+}
+
+#form_birth_wrap{
+	margin-top: 5px;
+	border: 1px solid #d0d0d0;
+	width: 300px;
+	height: 50px;
+	padding-top: 10px;
+	padding-left: 5px;
+}
+
+#form_birth_wrap input{
+	margin:auto;
+	width:100px !important;
+	float: left;
+	border: 0px;
+	margin-left: -5px;
+	text-align:center;
+	outline: none !important;
+}
+
+#form_birth_wrap a{
+	float: left;
+	z-index:10;
+	font-size: 10px;
+	position: absolute;
+	padding-top: 4px;
+	color: #d0d0d0;
+}
+
+#footer_wrap{
+	top:550px !important;
+}
+
+.form_btn_wrap{
+	width: 100%;
+	margin-top: 60px;	
+}
+.form_btn_wrap input{
+	width: 150px !important;
+	margin: auto;
+}
+
+
+/* modal form */
+.modal-backdrop{	
+	background-color: rgba(0,0,0,0.1) !important; 
+}
+#_leave_confirm{
+	top: 0%;
+	left: 0%;
+	padding-top: 150px;
+}
+.leave_modal_info{
+	margin: 20px;
+}
+.leave_modal_info_confirmpw{
+	margin: 20px;
+	margin-top: 50px;
+}
+.leave_modal_btns_confirmpw{
+	margin:auto;
+}
+#_txt_leave_confirmpw_tooltip{
+	margin-top: -35px;
+}

@@ -1,0 +1,111 @@
+@charset "UTF-8";
+.regibutton{
+	border-radius: 10px;
+    border: 0px solid gray;
+    background-color: #CFEC40;
+    color: black;
+    height: 55px;
+    width: 300px;
+    margin: 5px 5px 5px 5px;
+    padding: 0px 30px 0px 30px;
+    font: Open Sans 30px;
+    outline: 0;
+    margin-top: 13px;
+	position: relative;
+    top: 250px;
+
+}
+/* .regibutton1{
+	border-radius: 5px;
+    border: solid 1px #c5c5c5;
+    background-color: white;
+    color: #000000;
+    font-weight: bolder;
+    height: 54px;
+    width: 300px;
+    margin: 5px 5px 5px 5px;
+    padding: 0px 30px 0px 30px;
+    position: relative;
+    top: -171px;
+    left: 242px;
+}  */
+#choicetable{
+	border: solid 1px gray;
+}
+#choicetable td{
+	padding: 0px 61px;
+}
+
+.regibutton:hover, .regibutton1:hover{
+	opacity: 0.5;
+}
+img{
+	opacity: 10;
+}
+.selletext{
+	font-size: x-large;
+
+}
+.regiintroduce{
+	font-size: xx-large;
+}
+/* .regiintroducediv{
+	position: relative;
+	top: 178px;
+	color: white;
+} */
+.regiintroducediv2{
+	position: relative;
+	top: -151px;
+	left: -109px;
+}
+#footer_wrap {
+	z-index: -1;
+	position: relative;
+	top: 165px;
+}
+.regiintroducediv123{
+	position: relative;
+	top: 40px;
+}
+
+.findidtext{
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: larger;
+    color: #505050;
+    /* margin-bottom: 10px; */
+    padding-bottom: 16px;
+}
+
+.imgclass{
+	padding: 10px;
+}
+.btndiv{
+	position: relative;
+	top: -50px;
+}
+.backcolor{
+/* 	background-color: #f2f2f28c; */
+	border: solid 1px #c2fb2d;
+    position: absolute;
+    left: 503px;
+    z-index: -1;
+    height: 500px;
+    width: 700px;
+    /* padding-top: 6px; */
+    margin-top: -29px;
+	
+}
+.txtposition{
+	position:relative;
+	top:300px;
+	left:147px;
+}
+.txtposition1{
+	font-size: x-large;
+    position: relative;
+    top: 274px;
+    left: 329px;
+    color: #cfec40;
+}

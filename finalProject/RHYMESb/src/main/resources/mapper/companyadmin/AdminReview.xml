@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adreview">
+	
+	<!-- 페이징 조건(판매자, 페이지, 검색)에 맞는 리뷰 총 개수 리턴 -->
+	<select id="getTotalReviewAmounts" parameterType="com.rhymes.app.companyadmin.model.review.AdminReviewPagingDTO" resultType="java.lang.Integer">
+		<include refid="getTotalReviewAmountsSql"/></select>
+	
+	<!-- 페이징 조건(판매자, 페이지, 검색)에 맞는 리뷰리스트 리턴 -->
+	<select id="getAllReviewListByCName" parameterType="com.rhymes.app.companyadmin.model.review.AdminReviewPagingDTO"
+		resultType="com.rhymes.app.companyadmin.model.review.AdminReviewDTO">		
+		<include refid="getAllReviewListByCNameSql"/></select>
+	
+	<!-- 리뷰seq에 맞는 리뷰디테일 리턴 -->
+	<select id="getOneReviewInfo" parameterType="java.lang.Integer" resultType="com.rhymes.app.companyadmin.model.review.AdminReviewDTO">
+		<include refid="getOneReviewInfoSql"/></select>
+	
+	
+	<!-- 쿼리 -->
+	<!-- 페이징 조건(판매자, 페이지, 검색)에 맞는 리뷰 총 개수 리턴 -->
+	<sql id="getTotalReviewAmountsSql">
+		SELECT COUNT(B.SEQ) AS CNT
+		FROM RHY_PRODUCT_REVIEW B, RHY_PAYMENT_DETAILS C, RHY_STORE_STOCK D, RHY_STORE_PRODUCT E, RHY_MEM_C F
+		<include refid="searchConditions"/>
+		ORDER BY F.C_NAME;
+	</sql>
+	
+	<!-- 페이징 조건(판매자, 페이지, 검색)에 맞는 리뷰리스트 리턴 -->
+	<sql id="getAllReviewListByCNameSql">
+		<include refid="selectColumns"/>
+		FROM RHY_PRODUCT_REVIEW B, RHY_PAYMENT_DETAILS C, RHY_STORE_STOCK D, RHY_STORE_PRODUCT E, RHY_MEM_C F
+		<include refid="searchConditions"/>
+		ORDER BY B.SEQ DESC
+		LIMIT #{startSeq}, #{recordCountPerPage}
+	</sql>
+	
+	<sql id="searchConditions">
+		<where>
+			B.PD_SEQ = C.SEQ AND C.S_SEQ = D.STOCK_SEQ AND D.P_SEQ = E.P_SEQ AND E.C_NAME = F.C_NAME AND F.ID = #{c_name}
+			<if test="cond == 1">AND USERID LIKE '%' #{keyword} '%'</if>
+			<if test="cond == 2">AND P_NAME LIKE '%' #{keyword} '%'</if>
+			<if test="cond == 3">AND CP_CODE LIKE '%' #{keyword} '%'</if>
+		</where>
+	</sql>
+	
+	<sql id="selectColumns"><!-- AdminReviewDTO select 컬럼 -->
+		SELECT B.SEQ AS seq, B.PD_SEQ AS pd_seq, B.USERID AS userid, B.TITLE AS title, B.CONTENT AS content, B.IMG AS img, 
+			B.LIKES_CNT AS likes_cnt, B.RDATE AS rdate, 
+			E.C_NAME AS c_name, E.P_NAME AS p_name, E.P_TITLE AS p_title, E.CP_CODE AS cp_code,
+			E.P_COLOR AS p_color, D.SIZE AS size, C.EA AS ea, D.QUANTITY AS quantity
+	</sql>
+	
+	<!-- 리뷰seq에 맞는 리뷰디테일 리턴 -->
+	<sql id="getOneReviewInfoSql">
+		<include refid="selectColumns"/>
+		FROM RHY_PRODUCT_REVIEW B, RHY_PAYMENT_DETAILS C, RHY_STORE_STOCK D, RHY_STORE_PRODUCT E
+		WHERE B.PD_SEQ = C.SEQ AND C.S_SEQ = D.STOCK_SEQ AND D.P_SEQ = E.P_SEQ AND B.SEQ = #{seq}
+	</sql>
+	
+	
+</mapper>
+	

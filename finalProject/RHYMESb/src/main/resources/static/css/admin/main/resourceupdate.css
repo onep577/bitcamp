@@ -1,0 +1,186 @@
+@charset "UTF-8";
+
+body {
+	color: black;
+	.
+}
+#main-div {	
+	padding: 30px;
+	height: 5000px;
+}
+button{
+
+	border-radius: 10px;
+   margin-top:20px;
+   width:110px;
+   height:40px;
+   background: white;
+   font: Open Sans 30px;
+   color: black; 
+   outline: 0;
+   border: 1px solid #cccccc; 
+		 
+}
+
+
+#bannerresource-div{
+	border: 2px solid #DADCE0;
+	width: 70%;
+	height: 25% auto;	
+	margin-bottom: 3%;
+	padding: 1%;
+}
+#eachresource-div {
+	border: 2px solid #DADCE0;
+	width: 70%;
+	height: 30%;	
+	margin-bottom: 3%;
+	padding: 2%;
+}
+#video-div{
+	border: 2px solid blue;	
+	height:90%;
+	margin-bottom: 20px;
+}
+#text-div{
+	border: 0px solid #DADCE0;	
+	margin-left: 100px;
+	margin-right: 100px;
+	margin-top: 15px;
+	margin-bottom:20px;
+	text-align: center;
+	
+}
+#eachcontent-div{
+	margin-left: 3%;
+	margin-right: 3%;
+}
+#eachtitle-div{
+	margin-bottom: 3%;
+}
+#eachcontent-div2{
+	margin-left: 10%;
+	margin-right: 10%;	
+}
+#photo-div{
+	border: 2px solid orange;	
+	height: 90%;
+	margin-bottom: 20px;
+}
+.text_update-btn{
+   border-radius: 10px;
+   margin-top:20px;
+   width:90px;
+   height:35px;
+   background: white;
+   font: Open Sans 13px;
+   color: black; 
+   outline: 0;
+   border: 1px solid #cccccc; 
+			 
+}
+
+/* msg Modal */
+.msgModal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 9999; /* Sit on top */
+	left: 0;
+	margin:auto;
+	top: 300px;
+	width: 100%; /* Full width */
+	height: 50%; /* Full height */
+	overflow: hidden; /* Enable scroll if needed */
+	/* background-color: rgb(0,0,0); Fallback color
+	background-color: rgba(0,0,0,0.4); */ /* Black w/ opacity */
+	/* background-color:green; */
+}
+
+/* Modal Content/Box */
+.msg-content {
+	color:white;
+	font-weight:bold;
+	font-size:30px;
+	position:fixed;
+    background-color: #4375DB;
+    margin:3%;
+    padding: 20px;
+    opacity:0.7;
+    border: 0px solid #888;
+    width: 100%;
+    height: auto;
+    margin: 8% auto;
+    text-align: center;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+fieldset {
+  display: block;
+  position: absolute;
+  top: 8%;
+  left: 21%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: block;
+  margin: 1em;
+}
+label > input {
+  display: none;
+}
+label span {
+  color: #6A759B;
+}
+label i {
+  display: inline-block;
+  width: 64px;
+  height: 40px;
+  border-radius: 20px;
+  vertical-align: middle;
+  transition: .25s .09s;
+  position: relative;
+  background: #deeff7;
+}
+label i:after {
+  content: " ";
+  display: block;
+  width: 30px;
+  height: 30px;
+  top: 5px;
+  left: 5px;
+  border-radius: 50%;
+  background: #fff;
+  position: absolute;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.4);
+  transition: .15s;
+}
+label > input:checked + i {
+  background: #CFEC40;
+}
+label > input:checked + i + span {
+  color: #29316b;
+}
+label > input:checked + i:after {
+  -webkit-transform: translateX(25px);
+          transform: translateX(25px);
+}
+table{
+	font-size: 14px;	
+}
+table td{
+	vertical-align: middle;
+}
+table input{
+	width:90%; 
+	text-align: center;
+	border-radius: 5px;
+}

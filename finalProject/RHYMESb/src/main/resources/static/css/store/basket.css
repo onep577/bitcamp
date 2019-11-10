@@ -1,0 +1,249 @@
+@charset "UTF-8";
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+body{
+   font: Open Sans;
+   min-height: 100%;
+   box-sizing: border-box;
+   height:100%;
+   width:100%;
+   
+}
+h2 {
+  font: 100 40px Open Sans;
+  text-align: left;
+  margin: 50px 20px 22px 0px;
+}
+#cart_wrap{
+   margin-left: 50px;
+}
+#cntProduct_wrap{
+  font: 100 15px Open Sans;
+  text-align: left;
+  margin: 50px 20px 50px 0px;
+  margin-top: 0px;
+}
+#mainContainer{
+  position: absolute;
+  top: 450px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height:auto;
+  width: 1500px;
+  background: white;
+  margin: auto;
+}
+.listTable{
+ float:left;
+}
+.priceTable{
+ float:right;
+}
+#product-select-all{
+ font-size:14px;
+ border-top: 1px solid #DADCE0;
+ width:70%;
+ padding-top: 20px;
+ padding-bottom:20px;
+ float:left; 
+}
+.img_wrap{
+ float:left;
+ height:115px;
+ width:115px;
+ /* border: 2px solid green; */
+}
+.info_wrap{
+/*  display: inline-block;
+ box-sizing: border-box;
+ */
+  padding-left:20px;
+  height:110px;
+  width:500px;
+  /* border:2px solid red */
+  font-family:'Malgun Gothic'; 
+  font-size: 13px;
+  float:left;
+  
+}
+.info2_warp{
+  font-size: 13px;
+  font-family:'Malgun Gothic'; 
+}
+.product-opt_basket{
+border-top: 1px solid #DADCE0;
+border-bottom: 1px solid #DADCE0;
+padding-top: 15px;
+padding-bottom: 15px;
+width:70%;
+height:170px;
+float:left;
+}
+.pname_wrap{
+font-weight: bolder;
+}
+a{
+color:black;
+}
+.optionchange_wrap{
+float:left;
+width:160px;
+height:110px;
+/* border:2px solid blue; */
+font-size: 14px;
+}
+.price_wrap{
+color:#87CE00;
+font-size: 14px;
+float:left;
+width:110px;
+height:110px;
+/* border:2px solid orange; */
+}
+.delete_wrap{
+height:110px;
+/* border:2px solid black; */
+
+}
+.delete_btn{
+font-size: 20px;
+font-weight: bold;
+padding-left:75px;
+cursor:pointer;
+
+}
+.sub2Container{
+position:absolute;
+border:1px solid #EAEAEA;
+height:auto;
+width:400px;
+margin-left:100px;
+top:0px;
+left:1000px;
+float:right;
+padding-bottom: 10px;
+
+}
+#sub1Container{
+width:70%;
+height:1000px;
+border:3px solid green;
+float:left;
+}
+.gonna-pay{
+background-color: #EAEAEA;
+padding-left:20px;
+padding-top: 20px;
+padding-bottom: 25px;
+font-family: "Noto Sans KR", sans-serif;
+font-weight: bold;
+}
+.price-Table{
+font-family: "Noto Sans KR", sans-serif;
+width:100%;
+font-size: 14px;
+}
+.leftTd{
+text-align: left;
+padding-left: 20px;
+font-family: "Noto Sans KR", sans-serif;
+}
+.rightTd{
+text-align: right;
+padding-right: 25px;
+font-family: "Noto Sans KR", sans-serif;
+}
+.orderBtn{
+margin-top:34px;
+background-color: #d7fd75;
+/* background-color: #fb5302; */
+font-weight: bold;
+color: grey;
+width:90%;
+height:55px;
+display: inline-block;
+text-align: center;
+font-size: 17px;
+padding-top: 14px;
+padding-bottom: 5px;
+margin-left:17px;
+margin-right:8px;
+cursor:pointer;
+}
+.orderBtn:hover{
+opacity: 0.9;
+}
+.basketImg{
+width:100px;
+height:100px;
+position: absolute;
+top: -680px;
+bottom: 0;
+left: 0;
+right: 0;
+margin: auto;
+}
+.nothingLabel{
+position: relative;
+font-family: "Noto Sans KR", sans-serif;
+font-size: 20px;
+top:520px;
+bottom: 0;
+left: 65px;
+right: auto;
+margin-left: 38%;
+}
+.pqSelect{
+   border-radius: 10px;
+   width:100px;
+   border: 1px solid #DADCE0;
+   display:inline-block;
+   text-align: center;
+   margin-top: 30px;
+   position:relative;
+   left:-18px;
+   height:22px;
+}
+.goShopping{
+position: relative;
+background-color: black;
+font-family: "Noto Sans KR", sans-serif;
+font-weight: bold;
+color: white;
+width:180px;
+height:50px;
+text-align: center;
+font-size: 14px;
+cursor:pointer;
+top:560px;
+right:auto;
+margin-left: 47%;
+}
+.goShopping:hover{
+opacity:0.9;
+}
+.wModal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 9999; /* Sit on top */
+	left: 0;
+	margin:auto;
+	top: 300px;
+	width: 100%; /* Full width */
+	height: 50%; /* Full height */
+	overflow: hidden; /* Enable scroll if needed */
+}
+	
+/* Modal Content/Box */
+.wModal-content {
+	position:fixed;
+    background-color: #d7fd75;
+    margin:3%;
+    padding: 20px;
+    opacity:0.7;
+    border: 0px solid #888;
+    width: 100%;
+    height: auto;
+    margin: 8% auto;
+    text-align: center;
+}

@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+.mypage_middle_content_template{
+	position: absolute;
+    width: 800px;
+    height: 100%;
+/*     background-color: #eaeaeab3; */
+    z-index: 0;
+    position: absolute;
+    /* margin: 0 0 0 -198px; */
+    top: 77%;
+    left: 30.0%;
+}
+
+
+#body_wrap { width:1600px; margin-left:auto; height:auto; margin-right:auto; padding:0px;}	
+
+#middle_wrap { display:inline-block; width:100%; height:100%; padding:0px; margin:0px;  border:solid 1px #EFEFEF;}
+#footer_wrap { width:100%; clear:both;}
+	
+
+#content_wrap { float:left; width:1250px;  height:1500px; border-left:solid 1px #EFEFEF; padding: 5px; }
+	
+
+.login_wrap{
+	align-content: center;
+}

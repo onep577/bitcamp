@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+
+/* 버튼 */
+/* #paymentBtn{ border-radius: 10px; margin-top:13px; margin-bottom:10px; width:270px; height:55px; background: #CFEC40; font: Open Sans 30px; color: black; outline: 0; border: 0px solid gray; } */
+#paymentBtn{ border-radius: 10px; margin-top:13px; margin-bottom:10px; width:400px; height:100px; background: #CFEC40; font: Open Sans 30px; color: black; outline: 0; border: 0px solid gray; }
+#paymentBtn:hover{ opacity: 0.5; }
+
+#coupon_btn{ border-radius: 10px; margin-top:5px; width:135px; height:45px; background: white; font: Open Sans 30px; color: black; outline: 0; border: 1px solid #cccccc; }
+#coupon_btn:hover{ opacity:0.5; }
+#oneselfConfirmBtn{ border-radius: 10px; margin-top:5px; width:135px; height:45px; background: white; font: Open Sans 30px; color: black; outline: 0; border: 1px solid #cccccc; }
+#oneselfConfirmBtn:hover{ opacity:0.5; }
+#postcode_btn{ border-radius: 10px; margin-top:5px; width:135px; height:45px; background: white; font: Open Sans 30px; color: black; outline: 0; border: 1px solid #cccccc; }
+#postcode_btn:hover{ opacity:0.5; }
+
+
+
+/* 결제 페이지 */
+.payment_tb td{ padding: 10px 10px 10px 10px; }
+.payment_tb th{ padding-left : 10px; width: 25%; }
+#payment_tb_tr{ border-bottom: 1px solid #dbdbdb; }
+h4{ border-bottom: 5px solid #d7fd75; padding-bottom: 20px; }
+h1{ border-bottom: 5px solid #d7fd75; padding-bottom: 20px; }
+.payment_tb{ width: 100%; }
+.divback{ border-bottom: 1px solid #dbdbdb; padding-top: 10px; width: 100%; }
+.divfirst{ width: 60%; margin: auto; }
+/* #paymentBtn{ background-color: #d7fd75; border: 1px solid #d7fd75; width: 400px; height: 100px; font-family: sans-serif; font-size: 30px; margin-top: 70px; } */
+#enterBtn{ border-radius: 10px; margin-top:5px; width:135px; height:45px; background: white; font: Open Sans 30px; color: black; outline: 0; border: 1px solid #cccccc; }
+#enterBtn:hover{ opacity: 0.5; }
+.bottom_line{ border-bottom: 1px solid #dbdbdb; }

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MyUsed">
+<!-- 아이디 조회 -->
+<select id="getMemberid" resultType="java.lang.String" parameterType="java.lang.String">
+	SELECT id 
+	FROM rhy_mem_p
+	WHERE ID LIKE CONCAT('%',#{value},'%')
+	AND subscribe = 0
+	AND id not in(#{id})
+	ORDER BY CHAR_LENGTH(id)
+</select>
+
+<!-- 보낸 쪽지함 -->
+<select id="getsendnotes" parameterType="com.rhymes.app.used.model.NotesSendParam" resultType="com.rhymes.app.used.model.NotesDto">
+	SELECT seq,send_id,recv_id,content,data_send,data_read,recv_read,send_del,recv_del,readcount
+	FROM (SELECT ROW_NUMBER()OVER(ORDER BY data_send desc) as RNUM,
+		seq,send_id,recv_id,content,data_send,data_read,recv_read,send_del,recv_del,readcount
+		FROM rhy_used_notes
+		WHERE 1=1
+		AND send_id=#{id}
+		AND send_del='N'
+			<if test="s_select != null and s_keyword != null">
+         <if test="s_select == 's_content'">
+            AND CONTENT LIKE CONCAT('%',#{s_keyword},'%')
+         </if>
+         <if test="s_select == 's_id'">
+            AND recv_id LIKE CONCAT('%',#{s_keyword},'%')
+         </if>
+      </if>
+      ) A
+    WHERE RNUM BETWEEN ${s_start} AND ${s_end}
+
+	ORDER BY data_send desc
+</select>
+
+<!-- 받은 쪽지함 -->
+<select id="getrecvnotes" parameterType="com.rhymes.app.used.model.NotesRecvParam" resultType="com.rhymes.app.used.model.NotesDto">
+		SELECT seq,send_id,recv_id,content,data_send,data_read,recv_read,send_del,recv_del,readcount
+	FROM (SELECT ROW_NUMBER()OVER(ORDER BY data_send desc) as RNUM,
+		seq,send_id,recv_id,content,data_send,data_read,recv_read,send_del,recv_del,readcount
+		FROM rhy_used_notes
+		WHERE 1=1
+		AND recv_id=#{id}
+		AND recv_del='N'
+			<if test="r_select != null and r_keyword != null">
+         <if test="r_select == 'r_content'">
+            AND CONTENT LIKE CONCAT('%',#{r_keyword},'%')
+         </if>
+         <if test="r_select == 'r_id'">
+            AND SEND_ID LIKE LIKE CONCAT('%',#{r_keyword},'%')
+         </if>
+      </if>
+      ) A
+    WHERE RNUM BETWEEN ${r_start} AND ${r_end}
+
+	ORDER BY data_send desc
+</select>
+
+<!-- 받은 쪽지함 갯수 -->
+<select id="getRecvNotesCount" parameterType="com.rhymes.app.used.model.NotesRecvParam" resultType="java.lang.Integer">
+	SELECT COUNT(*)
+	FROM rhy_used_notes
+	WHERE 1=1
+	  <if test="r_select != null and r_keyword != null">
+         <if test="r_select == 'r_content'">
+            AND CONTENT LIKE CONCAT('%',#{r_keyword},'%')
+         </if>
+       <if test="r_select == 'id'">
+            AND SEND_ID LIKE LIKE CONCAT('%',#{r_keyword},'%')
+       	</if>
+      </if>
+	AND recv_id=#{id}
+	AND recv_del='N'
+</select>
+
+<!-- 보낸 쪽지함 갯수 -->
+<select id="getSendNotesCount" parameterType="com.rhymes.app.used.model.NotesSendParam" resultType="java.lang.Integer">
+	SELECT COUNT(*)
+	FROM rhy_used_notes
+	WHERE 1=1
+	<if test="s_select != null and s_keyword != null">
+         <if test="s_select == 's_content'">
+            AND CONTENT LIKE CONCAT('%',#{s_keyword},'%')
+         </if>
+       <if test="s_select == 's_id'">
+            AND RECV_ID LIKE CONCAT('%',#{s_keyword},'%')
+       	</if>
+      </if>
+	AND send_id=#{id}
+	AND send_del='N'
+</select>
+
+
+
+<select id="getsubscribe" resultType="java.lang.Integer"> <!-- 수신 여부 조회 -->
+	SELECT subscribe
+	FROM rhy_mem_p
+	WHERE id=#{id}
+</select>
+
+<update id="deletesubscribe"> <!-- 수신 설정 -->
+ 	UPDATE rhy_mem_p
+ 	SET subscribe = 0
+ 	WHERE id=#{id}
+</update>
+
+<update id="addsubscribe">	<!-- 수신거부 설정 -->
+ 	UPDATE rhy_mem_p
+ 	SET subscribe = 1
+ 	WHERE id=#{id}
+</update>
+
+<select id="idcheck" parameterType="java.lang.String" resultType="java.lang.Integer"> <!-- 실시간 아이디 체크 -->
+	SELECT COUNT(*)
+	FROM rhy_mem_p
+	WHERE ID=#{id}
+	AND subscribe = 0
+</select>
+
+<!-- 쪽지 발송  -->
+<insert id="sendnotes" parameterType="com.rhymes.app.used.model.NotesDto">
+	INSERT INTO rhy_used_notes(send_id,recv_id,content,data_send,send_del,recv_del)
+	VALUES(#{send_id},#{recv_id},#{content},NOW(),#{send_del},'N')
+</insert>
+
+<!-- 쪽지 디테일 -->
+<select id="getnotesdetail" parameterType="java.lang.String" resultType="com.rhymes.app.used.model.NotesDto">
+	SELECT *
+	FROM rhy_used_notes
+	WHERE SEQ=#{seq}
+</select>
+
+<update id="readcount" parameterType="java.lang.Integer">
+	UPDATE rhy_used_notes
+	SET readcount = 1, recv_read ='Y', data_read=now()
+	WHERE seq=#{seq}
+</update>
+
+
+<!-- 쪽지 삭제 -->
+<update id="notesdelete" parameterType="com.rhymes.app.used.model.NotesDto">
+	UPDATE rhy_used_notes
+	SET recv_del = 'Y'
+	WHERE recv_id=#{recv_id}
+	AND seq=#{seq}
+</update>
+
+<!-- 쪽지 삭제 -->
+<update id="notesdelete2" parameterType="com.rhymes.app.used.model.NotesDto">
+	UPDATE rhy_used_notes
+	SET send_del = 'Y'
+	WHERE send_id=#{send_id}
+	AND seq=#{seq}
+</update>
+
+<!-- 판매자가 판매하는 상품 목록을 불러온다 -->
+<select id="getMyUsedList" parameterType="com.rhymes.app.used.model.MyUsedParam" resultType="com.rhymes.app.used.model.ProductsDto">
+	SELECT seq,s_id,category,title,content,price,quantity,place,photo,photo_sys,division,likes,readcount,rdate
+	FROM (SELECT ROW_NUMBER()OVER(ORDER BY RDATE DESC) AS RNUM, 
+			seq,s_id,category,title,content,price,quantity,place,photo,photo_sys,division,likes,readcount,rdate
+		  FROM rhy_used_products
+		  WHERE 1=1
+		  AND s_id=#{id}
+	<if test="select != null and keyword != null">
+		<if test="select == 'title'">
+            AND TITLE LIKE CONCAT('%',#{keyword},'%')         
+         </if>
+         <if test="select == 'content'">
+            AND CONTENT LIKE CONCAT('%',#{keyword},'%')       
+         </if>
+         <if test="select == 'id'">
+            AND S_ID LIKE LIKE CONCAT('%',#{keyword},'%')        
+         </if>
+      </if>
+   ) A
+	WHERE RNUM BETWEEN ${start} AND ${end}
+
+	<!-- AND CATEGORY LIKE CONCAT('%',#{category},'%') -->
+	ORDER BY RDATE DESC
+</select>
+
+<!--판매현황 수정  -->
+<update id="updatedivision" parameterType="com.rhymes.app.used.model.ProductsDto">
+	UPDATE rhy_used_products
+	SET division=#{division}
+	WHERE seq =#{seq}
+</update>
+
+
+<!-- 내 판매목록 글 개수  -->
+<select id="MyusedCount" parameterType="com.rhymes.app.used.model.MyUsedParam" resultType="java.lang.Integer">
+	SELECT COUNT(*)
+	FROM rhy_used_products
+		WHERE 1=1
+	<if test="select != null and keyword != null">
+         <if test="select == 'content'">
+            AND content LIKE CONCAT('%',#{keyword},'%')
+         </if>
+       <if test="select == 'title'">
+            AND title LIKE CONCAT('%',#{keyword},'%')
+       	</if>
+      </if>
+	AND s_id=#{id}
+</select>
+
+
+	 
+</mapper> 

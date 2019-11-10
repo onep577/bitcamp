@@ -1,0 +1,97 @@
+@charset "UTF-8";
+@charset "UTF-8";
+
+
+.inputtext{
+    /* word-break: break-all; */
+    /* box-sizing: border-box; */
+    font: inherit;
+    margin: 5px 5px 5px 5px;
+    letter-spacing: -0.05em;
+    max-width: 100%;
+    font-family: 'Noto Sans';
+    color: #333;
+    width: 320px;
+    height: 45px;
+    padding: 0 19px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    font-size: 14px;
+    line-height: 20px;
+    outline: none;
+}
+.spantxt{
+	font-size: 14px;
+	padding-right: 10px;
+}
+.inputtext:hover{
+	border: 1px solid #c6ff33; 
+}
+.bodyclass{
+	background-color: #f7f7f7;
+	height: 1256px;
+	padding-top: 150px;
+}
+.bodyclass2{
+    background-color: white;
+    height: 321px;
+    padding-top: 30px;
+    width: 537px;
+    border-radius: 10px;
+}.bodyclass3{
+	background-color: white;
+    height: 427px;
+    padding-top: 30px;
+    width: 537px;
+    border-radius: 10px;
+    position: relative;
+    top: 356px;
+}
+.bodyclass4{
+    position: relative;
+    top: -360px;
+}
+.bodyclass5{
+	position: relative;
+    top: -200px;
+}
+.bodyclass6{
+	position: relative;
+    top: -100px;
+}
+.Btn{
+    border-radius: 0px 10px 10px 0;
+    border: solid 1px #c5c5c5;
+    background-color: #ffffff;
+    color: #545454;
+    height: 45px;
+    padding: 0px 30px 0px 30px;
+    margin: 5px 5px 5px 5px;
+    position: relative;
+    left: 164px;
+    top: -55px;
+}
+.btnhidden{
+	position: relative;
+	left: 1000px;
+}
+.test{
+	border: solid 1px white;
+    width: 100px;
+    font-size: 14px;
+}
+
+#footer_wrap{
+	position: relative;
+	top: 1px;
+}
+.regibutton{
+	border-radius: 10px;
+    border: solid 1px #ccc;
+    background-color: white;
+    color: #545454;
+    height: 44px;
+    width: 474px;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adminChartMapper">
+
+<!-- 월별 총 매출 -->
+<select id="getSalaryPriceMonth" parameterType="com.rhymes.app.admin.chart.model.AdminChartSearchDTO" resultType="com.rhymes.app.payment.model.PaymentDTO">
+SELECT DATE_FORMAT(rdate,'%m') as rdate, SUM(TOTALPRICE) as totalprice
+FROM rhy_payment
+WHERE RDATE BETWEEN CONCAT(#{year},'-01-01') AND CONCAT(#{_year},'-01-01')
+GROUP BY DATE_FORMAT(rdate,'%m')
+</select>
+
+<!-- 월별 총 판매 상품 개수 -->
+<select id="getSalaryNumMonth" parameterType="com.rhymes.app.admin.chart.model.AdminChartSearchDTO" resultType="com.rhymes.app.payment.model.PaymentDetailsDTO">
+SELECT DATE_FORMAT(RDATE,'%m') as rdate, SUM(EA) as ea
+FROM RHY_PAYMENT_DETAILS
+WHERE RDATE BETWEEN CONCAT(#{year},'-01-01') AND CONCAT(#{_year},'-01-01')
+GROUP BY DATE_FORMAT(RDATE,'%m')
+</select>
+
+<!-- 일별 총 매출 -->
+<select id="getSalaryDay" parameterType="com.rhymes.app.admin.chart.model.AdminChartSearchDTO" resultType="com.rhymes.app.payment.model.PaymentDTO">
+SELECT DATE_FORMAT(rdate,'%d') AS RDATE, SUM(totalprice) AS TOTALPRICE
+FROM rhy_payment
+WHERE RDATE BETWEEN CONCAT(#{year},'-',#{month},'-01') AND CONCAT(#{_year},'-',#{_month},'-01')
+GROUP BY DATE_FORMAT(rdate,'%d')
+</select>
+
+</mapper>

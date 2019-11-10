@@ -1,0 +1,148 @@
+@charset "UTF-8";
+.inputtext_long{
+	word-break: break-all;
+	box-sizing: border-box;
+	font: inherit;
+	margin: 5px 5px 5px 5px;
+	letter-spacing: -0.05em;
+	max-width: 100%;
+	font-family: 'Noto Sans';
+	color: #333;
+	width: 300px;
+	height: 54px;
+	padding: 0 19px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	background-color: #fff;
+	font-size: 14px;
+	line-height: 20px;
+	outline: none;
+}
+.regibutton_login{
+	border-radius: 10px;
+    border: 0px solid gray;
+    background-color: #CFEC40;
+    color: black;
+    /* font-weight: bolder; */
+    height: 55px;
+    width: 300px;
+    margin: 5px 5px 5px 5px;
+    padding: 0px 30px 0px 30px;
+    font: Open Sans 30px;
+    outline: 0;
+    margin-top: 13px;
+}
+.regibutton_login:hover{
+	opacity: 0.5; 
+}
+a{
+	text-decoration: none;
+}
+a:visited {
+	color: black;
+/* 	한 번 이상 방문했을 때 */
+}
+
+a:active {
+	color: gray;
+/* 	링크를 클릭한 순간 */
+}
+#footer_wrap {
+	z-index: -1;
+	position: relative;
+	top: 76px;
+}
+.rememberCheck{
+    /* padding-left: 1.25rem; */
+    margin-bottom: 0;
+    position: relative;
+    left: 6px;
+    top: 2px;
+}
+.findidpw{
+	padding: 0px;
+	position: relative;
+	left: 11px;
+	color: #212529;
+}
+.logintext{
+	font-family: sans-serif;
+	font-weight: bold;
+    font-size: larger;
+    color: #505050;
+    /* margin-bottom: 10px; */
+    padding-bottom: 16px;
+}
+#capslock{
+ 	font-size: 11px;
+    line-height: 14px;
+    position: static;
+    margin-top: 8px;
+    padding: 9px 9px 7px;
+    letter-spacing: -1px;
+    color: #777;
+    border: solid 1px #d8d1aa;
+    background: #fffadc;
+    z-index: 10;
+ 	position: absolute;
+ 	zoom: 1;
+}
+#capsdiv{
+	position: relative;
+    top: -9px;
+    left: 4px;
+}
+#loginfail{
+	color: red; 
+	font-size: small; 
+	padding-left: 4px;
+	display: block;
+	
+}
+#kakaoIdLogin{
+	position: relative;
+    left: -125px;
+/*     border-radius: 5px; */
+}
+.snslogin{
+	display: block;
+    height: 50px;
+    width: 255px;
+    line-height: 43px;
+    margin-left: 50px;
+    background-color: #fff;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 16px;
+    color: #525252;
+    font-weight: bold;
+    position: relative;
+    left: -1px;
+    border: solid 1px #f7e318;
+    top: -50px;
+    border-left-width: 9px;
+}
+
+.snsNaverlogin{
+    display: block;
+    height: 50px;
+    width: 254px;
+    line-height: 43px;
+    margin-left: 50px;
+    background-color: #fff;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 16px;
+    color: #525252;
+    font-weight: bold;
+    position: relative;
+/*     left: -2px; */
+    border: solid 1px #1ec800;
+    top: -58px;
+    border-left-width: 8px;
+}
+
+#kakaowrap{
+	position: relative;
+	top: 10px;
+} 

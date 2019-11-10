@@ -1,0 +1,96 @@
+@charset "UTF-8";
+
+
+
+#body_wrap { width:1600px; margin-left:auto; height:auto; margin-right:auto; padding:0px;}	
+
+#middle_wrap { display:inline-block; width:100%; height:100%; padding:0px; margin:0px;  border:solid 1px #EFEFEF;}
+#footer_wrap { width:100%; clear:both;}
+	
+
+#content_wrap { float:left; width:1250px;  height:1500px; border-left:solid 1px #EFEFEF; padding: 5px; }
+
+#content_title_wrap { height:90px; width:100%;  text-align:left; font-weight:normal; line-height:2.5em; _line-height:2.7em; margin-bottom:10px; }
+#content_title_wrap div.title { padding-left:25px; background-repeat:no-repeat; background-position:10px 9px; font-weight:bold; }
+	
+	
+/* Fixed sidenav, full height */
+.sidenav {
+
+  width:80%; 
+  padding:0; 
+  margin-left:25px;
+  margin-top:20px; 
+  color:#000000; 
+  text-align:left; 
+  font-size: 12px;
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+	
+
+	font-size : 12px;
+  padding: 16px 0px 16px 19px; 
+  text-decoration: none;
+  color: #000;
+  display: block;
+	border:none;
+  background: none;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  
+}
+
+.sidenav a { 
+	font-size : 12px;
+	display:block; 
+	
+	background-color:#ffffff; 
+	padding: 16px 0px 16px 19px; 
+	text-decoration:none; 
+	color:#000000;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  background-repeat:no-repeat; 
+  background-position:5px 7px; 
+  background-color:#E1FF36;
+  color:#000000;  
+  
+}
+
+/* Main content */
+.main {
+	
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 14px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+.active {
+	
+  background-color: #d7fd75;
+  color: #000;
+}
+
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+ 
+  background-color: #fff;
+  padding-left: 13px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+	
+  float: right;
+  padding-right: 8px;
+ 
+}

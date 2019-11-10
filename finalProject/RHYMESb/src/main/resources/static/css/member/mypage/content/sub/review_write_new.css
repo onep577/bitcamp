@@ -1,0 +1,68 @@
+@charset "UTF-8";
+/* 푸터위치조절 */
+#footer_wrap{  z-index:-2;  top: 250px !important;	position: relative;}
+
+/* ck에디터 크기 조절 */
+.note-editor .note-editable{    text-align:center !important;}
+.ck-editor__editable_inline {   text-align:center !important;  min-height: 400px; max-height: 400px;}
+
+
+.review_main_nav_tab_item{
+	width: 50%;	
+}
+
+.review_notice {	/* 상품후기 게시판 설명 */
+	font-size: 7px;
+	margin-top: 10px;
+}
+
+/* 작성 가능 내용 관련 */
+.order_id {	/*주문번호*/
+	margin-top: 20px;
+	font-size: 13px;
+	color: #555555;
+}
+.review_item_desc {
+	margin: 90px 0px 0px 0px;
+	padding-top: 3px;
+	padding-bottom: 20px;
+	vertical-align: middle;
+}
+
+.img_waiting_item img {
+	width: 90px;
+	height: 100px;
+}
+
+.detail_waiting_item div{
+	margin-bottom: 5px;
+}
+
+.delivery_waiting_item {
+	vertical-align: middle;
+	margin: auto;
+}
+
+.writenew_waiting_item {
+	vertical-align: middle;
+	margin: auto;
+}
+
+.writenew_waiting_item input{
+	color: #400000;
+	background-color: #d7fd75;
+}
+
+/* 리뷰작성부분 */
+#_new_review_wrap{
+	width: 95%;
+}
+#_new_review_wrap .form-row{
+	margin-bottom: 30px;
+}
+
+#btn_save, #btn_cancel{
+	margin: auto;
+	width: 250px !important;
+	height: 60px !important;
+}

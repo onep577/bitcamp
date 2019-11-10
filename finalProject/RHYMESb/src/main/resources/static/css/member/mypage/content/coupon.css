@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+div {
+	/* margin: auto; */
+}
+
+.regi_new_coupon{
+	width: 100%;
+	border: 0.03px solid #e0e0e0;
+	padding: 30px;
+	margin-top: 20px;
+}
+
+#_coupon_input_info {
+	margin: 5px;
+	margin-top: 10px;
+	color: #C73F3A;
+}
+
+.form-row {
+	margin-bottom: 20px;
+}
+
+.coupon_input {
+	height: 60px;
+}
+
+#_coupon_list_info{
+	font-size: 9px;	
+}
+
+#_btn_regi_new_coupon {
+	width: 150px;
+	color: #400000;
+	background-color: #d7fd75;
+}
+
+.coupon_table_head{
+	font-size: 11px;
+}
+
+.coupon_table_body{
+	font-size: 13px;
+}
+
+#_txt_coupon_input{
+	width: 350px;
+	position: absolute;
+	left: 0px;
+	margin: auto;
+	padding: 10px;
+}
+
+
+.btn-delete-item{
+	width: 40px;
+	border: 1px solid #d7fd75;
+	background-color: #d7fd75;
+	margin-top : 5px;
+}
+
+/*페이징 네비게이션*/
+.pagination{
+	position: absolute;
+	left: 45%;
+}

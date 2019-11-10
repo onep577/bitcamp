@@ -1,0 +1,253 @@
+@charset "UTF-8";
+#body_wrap {
+	width: 1600px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0px;
+}
+
+#middle_wrap {
+	display: inline-block;
+	width: 100%;
+	padding: 0px;
+	margin: 0px;	
+	border: solid 1px #EFEFEF;
+}
+
+#footer_wrap {
+	width: 100%;
+	clear: both;
+	
+}
+
+#sidebar_wrap {
+	float: left;
+	width: 250px;
+	margin: 0px;
+	padding: 5px;
+}
+
+#content_wrap {
+	float: left;
+	width: 1340px;
+	height: 1500px;
+	border-left: solid 1px #EFEFEF;
+	padding: 5px;
+}
+
+#content_wrap2{
+	float: left;
+	width: 1340px;
+	height: 700px;
+	border-left: solid 1px #EFEFEF;
+	padding: 5px;
+}
+
+#content_title_wrap {
+	height: 90px;
+	width: 100%;
+	text-align: left;
+	font-weight: normal;
+	line-height: 2.5em;
+	_line-height: 2.7em;
+	margin-bottom: 10px;
+}
+
+#content_title_wrap div.title {
+	padding-left: 25px;
+	background-repeat: no-repeat;
+	background-position: 10px 9px;
+	font-weight: bold;
+}
+
+
+.rhybtn {
+	border-radius: 10px;
+	margin: 10px 10px 10px 10px;
+	width: 100px;
+	height: 30px;
+	background: white;
+	font: Open Sans 30px;
+	color: black;
+	outline: 0;
+	border: 1px solid #cccccc;
+}
+
+a {
+	text-decoration: none;
+	color: #333333;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #333333;
+}
+
+#product_main {
+	display:inline-block;
+   border: 1px solid #E3E3E3;
+   width: 290px;
+   height:400px;
+   float:left;
+   margin-bottom:8px;
+   margin-top: 2%;
+   margin-left:2%;
+   margin-right:1%;
+   text-align: center;
+
+}
+
+#product_img {
+	
+margin:0 auto;
+   display:table;
+   width:90%;
+   height:auto;
+   text-align: center;
+   vertical-align: middle;
+   left:50%;
+   align:center;
+}
+
+#used_list_img {
+	height: 250px;
+	width: 250px;
+}
+
+#_hr {
+	border: solid 0.5px black;
+}
+
+#detail_wrap{
+	width: 1330px;
+	height: 1000px;	
+}
+
+
+#div_title_wrap{
+	position: absolute;
+	top: 430px;
+	left: 1100px;
+	width: 500px;
+	height: 500px;
+	margin: 0px 0px 0px 0px;
+	z-index: 100;
+	background-color: white;
+	color: white;
+	padding: 0px;
+}
+
+#div_content{
+	position: absolute;
+	top:950px;
+	width: 700px;
+	height: 300px;
+	background-color: white;
+}
+
+#market_info{
+	position: absolute;
+	top:950px;
+	width: 700px;
+	height: 300px;
+	background-color: white;
+}
+#map{
+	position: absolute;
+	top:300px;
+	
+}
+
+#div_btn{
+	position: absolute;
+	top:1200px;
+	left: 65%;
+ }
+ 
+.sbtn{
+  	width: 200px;
+  	margin-left: 11px;
+  	
+ }
+ 
+ 
+/* Fixed sidenav, full height */
+.sidenav {
+
+  width:80%; 
+  padding:0; 
+  margin-left:25px;
+  margin-top:40px; 
+  color:#000000; 
+  text-align:left; 
+  font-size: 12px;
+}
+
+/* Style the sidenav links and the dropdown button */
+
+.all-btn{
+  font-size : 12px;
+  padding: 16px 0px 16px 19px; 
+  text-decoration: none;
+  color: #000;
+  display: block;
+	border:none;
+  background: none;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+	
+}
+
+.sidenav a, .dropdown-btn {
+	
+  font-size : 12px;
+  padding: 16px 0px 16px 19px; 
+  text-decoration: none;
+  color: #000;
+  display: block;
+	border:none;
+  background: none;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  
+}
+
+.sidenav a { 
+	font-size : 12px;
+	display:block; 
+	background-color:#ffffff; 
+	padding: 16px 0px 16px 19px; 
+	text-decoration:none; 
+	color:#000000;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  background-repeat:no-repeat; 
+  background-position:5px 7px; 
+  background-color:#E1FF36;
+  color:#000000;  
+  
+}
+
+.rhybtn {
+	border-radius: 10px;
+	margin-left: 10px;
+	margin-right: 2px;
+	width: 80px;
+	height: 30px;
+	background: white;
+	font: Open Sans 30px;
+	color: black;
+	outline: 0;
+	border: 1px solid #cccccc;
+}
+
+.rhybtn:hover {
+	opacity: 0.5;
+}
+
