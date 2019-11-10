@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+
+<!-- 이벤트 리스트 -->
+   <definition name="eventList.tiles" template="/WEB-INF/views/event/layout/event_template.jsp">
+       <put-attribute name="header" value="/WEB-INF/views/common/layout/header.jsp" />
+       <put-attribute name="left_menu" value="/WEB-INF/views/event/left_event.jsp" />
+       <put-attribute name="body" value="/WEB-INF/views/event/eventList.jsp" />
+       <put-attribute name="footer" value="/WEB-INF/views/common/layout/footer.jsp" />
+   </definition> 
+   
+   <!-- 디테일 -->
+   <definition name="eventdetail.tiles" extends="eventList.tiles">
+   		<put-attribute name="body" value="/WEB-INF/views/event/eventdetail.jsp" />
+   </definition>
+   
+   <!-- 종료된 이벤트 리스트 -->
+   <definition name="eventListEnd.tiles" extends="eventList.tiles">
+   		<put-attribute name="body" value="/WEB-INF/views/event/eventListEnd.jsp" />
+   </definition>
+   
+   
+   <!-- 기간제 특별 이벤트 -->
+   <!-- SMS 연동 이벤트 -->
+   <definition name="eventdetail/period/*" extends="eventList.tiles">
+   		<put-attribute name="body" value="/WEB-INF/views/event/period/{1}.jsp" />
+   </definition>
+
+   
+</tiles-definitions>
+

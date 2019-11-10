@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<!-- 관리자 -->
+   	<definition name="companypaylist" template="/WEB-INF/views/admin/common/layout/admin_template_new.jsp">
+		<put-attribute name="ex_resources" value="/WEB-INF/views/admin/common/layout/admin_ex_resources.jsp" />
+	    <put-attribute name="left_menu" value="/WEB-INF/views/admin/common/layout/left_menu_new.jsp" />
+	    <put-attribute name="header" value="/WEB-INF/views/admin/common/layout/header_new.jsp" />
+	    <put-attribute name="content_main" value="" />
+	    <put-attribute name="footer" value="/WEB-INF/views/admin/common/layout/footer_new.jsp" />
+	</definition>
+	
+	<!-- 업체별 주문내역 -->
+	<definition name="company/success" extends="companypaylist">
+	    <put-attribute name="content_main" value="/WEB-INF/views/companyadmin/payment/com_pay_list.jsp" />
+	</definition>
+	
+	<!-- 업체별 주문상세내역 -->
+	<definition name="company/detail" extends="companypaylist">
+	    <put-attribute name="content_main" value="/WEB-INF/views/companyadmin/payment/com_pay_Detaillist.jsp" />
+	</definition>
+	
+	<!-- 업체별 무통장입금 관리  -->
+	<definition name="company/vbank" extends="companypaylist">
+	    <put-attribute name="content_main" value="/WEB-INF/views/companyadmin/payment/com_pay_vbank.jsp" />
+	</definition>
+	
+	<!-- 배송 준비 중 -->
+	<definition name="company/delivery/ready" extends="companypaylist">
+	    <put-attribute name="content_main" value="/WEB-INF/views/companyadmin/payment/com_pay_delivery_ready.jsp" />
+	</definition>
+	
+	<!-- 배송 중 -->
+	<definition name="company/delivery/ing" extends="companypaylist">
+	    <put-attribute name="content_main" value="/WEB-INF/views/companyadmin/payment/com_pay_delivery_ing.jsp" />
+	</definition>
+
+</tiles-definitions>
+
+

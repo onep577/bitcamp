@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<!-- main -->
+   <definition name="main" template="/WEB-INF/views/main/layout/base-main.jsp">
+       <put-attribute name="header" value="/WEB-INF/views/common/layout/header.jsp" />
+       <put-attribute name="body" value="/WEB-INF/views/main/main.jsp" />
+       <put-attribute name="footer" value="/WEB-INF/views/common/layout/footer.jsp" />
+   </definition>
+   
+   <!-- error pages(400, 401, 403, 404 ... ) -->
+	<definition name="errors/*" extends="main">
+       <put-attribute name="body" value="/WEB-INF/views/common/error/{1}.jsp" />
+   	</definition>
+
+
+	
+
+</tiles-definitions>
+

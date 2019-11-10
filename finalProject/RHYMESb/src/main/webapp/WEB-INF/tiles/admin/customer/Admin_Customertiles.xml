@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+ 
+
+   <!-- notice --> 
+   <!-- 리스트 -->
+   <definition name="adminnoticelist.tiles" template="/WEB-INF/views/admin/customer/layout/admin_customer_template.jsp">
+   		<put-attribute name="ex_resources" value="/WEB-INF/views/admin/common/layout/admin_ex_resources.jsp" />	
+		<put-attribute name="left_menu" value="/WEB-INF/views/admin/common/layout/left_menu_new.jsp" />
+ 	    <put-attribute name="header" value="/WEB-INF/views/admin/common/layout/header_new.jsp" />
+     	<put-attribute name="body" value="/WEB-INF/views/admin/customer/noticelist.jsp" />
+     	<put-attribute name="footer" value="/WEB-INF/views/admin/common/layout/footer_new.jsp" />
+   </definition>
+   
+   <!-- 디테일 -->
+    <definition name="adminnoticedetail.tiles" extends="adminnoticelist.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/admin/customer/noticedetail.jsp" />
+   </definition>
+   
+   <!-- 글쓰기 -->
+   <definition name="adminnoticewrite.tiles" extends="adminnoticelist.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/admin/customer/noticewrite.jsp" />
+   </definition>
+   
+   <!-- 글수정 -->
+   <definition name="adminnoticeupdate.tiles" extends="adminnoticelist.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/admin/customer/noticeupdate.jsp" />
+   </definition>
+   
+   
+   <!-- faq -->
+   <!-- faq리스트 -->
+   <definition name="adminfaqlist.tiles" extends="adminnoticelist.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/admin/customer/faqlist.jsp" />
+   </definition>
+   <!-- 글작성 -->
+   <definition name="adminfaqwrite.tiles" extends="adminnoticelist.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/admin/customer/faqwrite.jsp" />
+   </definition>
+    <!-- 글수정 -->
+   <definition name="adminfaqupdate.tiles" extends="adminnoticelist.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/admin/customer/faqupdate.jsp" />
+   </definition>
+   
+   
+   <!-- qna -->
+   <!-- qna리스트 -->
+   <definition name="adminqnalist.tiles" extends="adminnoticelist.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/admin/customer/qnalist.jsp" />
+   </definition>
+   <!-- qna detail -->
+   <definition name="adminqnadetail.tiles" extends="adminnoticelist.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/admin/customer/qnadetail.jsp" />
+   </definition>
+   <!-- qna 글쓰기 -->
+   <definition name="adminqnawrite.tiles" extends="adminnoticelist.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/admin/customer/qnawrite.jsp" />
+   </definition>
+   
+   <!-- qna 글수정 -->
+   <definition name="adminqnaupdate.tiles" extends="adminnoticelist.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/admin/customer/qnaupdate.jsp" />
+   </definition>
+   
+   <!-- qna 답글 -->
+   <definition name="adminqnaanswer.tiles" extends="adminnoticelist.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/admin/customer/qnaanswer.jsp" />
+   </definition>
+   
+   
+   
+    
+</tiles-definitions>

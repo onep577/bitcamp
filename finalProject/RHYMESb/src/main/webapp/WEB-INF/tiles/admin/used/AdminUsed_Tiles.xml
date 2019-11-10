@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<!-- 비매너 회원 관리 -->
+   	<definition name="admin/used/*" template="/WEB-INF/views/admin/used/layout/admin_used_template.jsp">
+		<put-attribute name="ex_resources" value="/WEB-INF/views/admin/common/layout/admin_ex_resources.jsp" />
+	    <put-attribute name="left_menu" value="/WEB-INF/views/admin/common/layout/left_menu_new.jsp" />
+	    <put-attribute name="header" value="/WEB-INF/views/admin/common/layout/header_new.jsp" />
+	    <put-attribute name="content_main" value="/WEB-INF/views/admin/used/{1}.jsp" />
+	    <put-attribute name="footer" value="/WEB-INF/views/admin/common/layout/footer_new.jsp" />
+	</definition>
+	
+</tiles-definitions>
+
+

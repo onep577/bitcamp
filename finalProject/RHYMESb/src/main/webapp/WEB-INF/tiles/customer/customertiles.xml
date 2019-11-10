@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+ 
+
+   <!-- notice --> 
+   <!-- 리스트 -->
+   <definition name="noticelist.tiles" template="/WEB-INF/views/customer/layout/customer_template.jsp">
+      <put-attribute name="header" value="/WEB-INF/views/common/layout/header.jsp" />
+       <put-attribute name="left_menu" value="/WEB-INF/views/customer/left_customer.jsp"/>
+       <put-attribute name="body" value="/WEB-INF/views/customer/noticelist.jsp" />
+       <put-attribute name="footer" value="/WEB-INF/views/common/layout/footer.jsp" />
+   </definition>
+   
+   <!-- 디테일 -->
+    <definition name="noticedetail.tiles" extends="noticelist.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/customer/noticedetail.jsp" />
+   </definition>
+   
+   <!-- 글쓰기 -->
+   <definition name="noticewrite.tiles" extends="noticelist.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/customer/noticewrite.jsp" />
+   </definition>
+   
+   <!-- 글수정 -->
+   <definition name="noticeupdate.tiles" extends="noticelist.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/customer/noticeupdate.jsp" />
+   </definition>
+   
+   
+   <!-- faq -->
+   <!-- faq리스트 -->
+   <definition name="faqlist.tiles" extends="noticelist.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/customer/faqlist.jsp" />
+   </definition>
+   <!-- 글작성 -->
+   <definition name="faqwrite.tiles" extends="noticelist.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/customer/faqwrite.jsp" />
+   </definition>
+    <!-- 글수정 -->
+   <definition name="faqupdate.tiles" extends="noticelist.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/customer/faqupdate.jsp" />
+   </definition>
+   
+   
+   <!-- qna -->
+   <!-- qna리스트 -->
+   <definition name="qnalist.tiles" extends="noticelist.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/customer/qnalist.jsp" />
+   </definition>
+   <!-- qna detail -->
+   <definition name="qnadetail.tiles" extends="noticelist.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/customer/qnadetail.jsp" />
+   </definition>
+   <!-- qna 글쓰기 -->
+   <definition name="qnawrite.tiles" extends="noticelist.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/customer/qnawrite.jsp" />
+   </definition>
+   
+   <!-- qna 글수정 -->
+   <definition name="qnaupdate.tiles" extends="noticelist.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/customer/qnaupdate.jsp" />
+   </definition>
+   
+   <!-- qna 답글 -->
+   <definition name="qnaanswer.tiles" extends="noticelist.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/customer/qnaanswer.jsp" />
+   </definition>
+   
+   
+   <!-- 연습용 상품문의 -->
+   
+   
+<!-- 상품문의 -->   
+   <definition name="pqnalist.tiles" template="/WEB-INF/views/customer/layout/pqna_template.jsp">
+       <put-attribute name="body" value="/WEB-INF/views/store/productqna/pqnalist.jsp" />
+   </definition>
+   
+   <!-- Pqna글쓰기 -->
+   <definition name="pqnawrite.tiles" template="/WEB-INF/views/customer/layout/write_template.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/common/layout/header.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/store/productqna/pqnawrite.jsp" />
+       <put-attribute name="footer" value="/WEB-INF/views/common/layout/footer.jsp" />      
+   </definition>
+   <!-- 글수정 -->
+   <definition name="pqnaupdate.tiles" extends="pqnawrite.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/store/productqna/pqnaupdate.jsp" />
+   </definition>
+      <!-- pqna 답글 -->
+   <definition name="pqnaanswer.tiles" extends="pqnawrite.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/store/productqna/pqnaanswer.jsp" />
+   </definition>  
+<!-- 상품후기  -->
+    <definition name="previewlist.tiles" template="/WEB-INF/views/customer/layout/pqna_template.jsp">
+       <put-attribute name="body" value="/WEB-INF/views/store/productqna/previewlist.jsp" />
+   </definition>
+   
+   
+    
+</tiles-definitions>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	
+	
+   <!-- login -->
+   <definition name="rhylogin" template="/WEB-INF/views/member/layout/login_template.jsp">
+       <put-attribute name="header" value="/WEB-INF/views/common/layout/header.jsp" />
+       <put-attribute name="member_top" value="/WEB-INF/views/member/layout/member_main_top.jsp" />
+       <put-attribute name="mypage_content" value="/WEB-INF/views/member/login.jsp" />
+       <put-attribute name="footer" value="/WEB-INF/views/common/layout/footer.jsp" />
+   </definition>
+  
+
+	<!-- registration -->
+	<definition name="rhyregimain"	extends="rhylogin">
+		<put-attribute name="mypage_content" value="/WEB-INF/views/member/regiChoice.jsp"/>
+	</definition>
+	
+	<definition name="rhyregimember" extends="rhylogin">
+		<put-attribute name="mypage_content" value="/WEB-INF/views/member/regiMember.jsp"/>
+	</definition>
+	
+	<definition name="rhyregiseller" extends="rhylogin">
+		<put-attribute name="mypage_content" value="/WEB-INF/views/member/regiSeller.jsp"/>
+	</definition>
+	
+	<definition name="rhyregisellerdetail" extends="rhylogin">
+		<put-attribute name="mypage_content" value="/WEB-INF/views/member/regiSellerDetail.jsp"/>
+	</definition>
+	
+	<definition name="rhyregisuc" extends="rhylogin">
+		<put-attribute name="mypage_content" value="/WEB-INF/views/member/regisuc.jsp"/>
+	</definition>
+	
+	<!-- id찾기 -->
+	<definition name="rhyfindid" extends="rhylogin">
+		<put-attribute name="mypage_content" value="/WEB-INF/views/member/Find_Id.jsp"/>
+	</definition>
+
+	<!-- id찾기AF -->
+	<definition name="rhyfindAf" extends="rhylogin">
+		<put-attribute name="mypage_content" value="/WEB-INF/views/member/Find_IdAf.jsp"/>
+	</definition>
+	
+	<!-- 사업자 id찾기Af -->
+	<definition name="rhyfindsellefAf" extends="rhylogin">
+		<put-attribute name="mypage_content" value="/WEB-INF/views/member/Find_IdAf_seller.jsp"/>
+	</definition>
+	
+	<!-- 찾기완료 view이동 -->
+	<definition name="rhyfindsuc" extends="rhylogin">
+		<put-attribute name="mypage_content" value="/WEB-INF/views/member/findsuc.jsp"/>
+	</definition>
+
+	<!-- 비밀번호찾기 -->
+	<definition name="rhyfindpw" extends="rhylogin">
+	<put-attribute name="mypage_content" value="/WEB-INF/views/member/Find_Pw.jsp"/>
+	</definition>
+
+	<!-- 비밀번호 재설정 -->
+	<definition name="rhypwreset" extends="rhylogin">
+		<put-attribute name="mypage_content" value="/WEB-INF/views/member/Find_Pw_Reset.jsp"/>
+	</definition>
+	
+	<!-- 카카오톡 추가정보 -->
+	<definition name="kakaoLoginadd" extends="rhylogin">
+		<put-attribute name="mypage_content" value="/WEB-INF/views/member/KakaoAddInfo.jsp"/>
+	</definition>
+	
+	<!-- 카카오톡 jsp로 보내기 -->
+	<definition name="kakaologinsuc" extends="rhylogin">
+		<put-attribute name="mypage_content" value="/WEB-INF/views/member/kakaologin.jsp"/>
+	</definition>
+	
+	<!-- 카카오톡 jsp로 보내기 -->
+	<definition name="navercallback" extends="rhylogin">
+		<put-attribute name="mypage_content" value="/WEB-INF/views/member/callback.jsp"/>
+	</definition>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	<!-- admin test -->
+<!-- 	<definition name="memtest/admin" template="/WEB-INF/views/member/tmp/admin.jsp">
+	</definition> -->
+
+	<!-- member test -->
+<!-- 	<definition name="memtest/member" template="/WEB-INF/views/member/tmp/member.jsp">
+	</definition> -->
+
+	<!-- seller test -->
+<!-- 	<definition name="memtest/seller" template="/WEB-INF/views/member/tmp/seller.jsp">
+	</definition> -->
+
+</tiles-definitions>
+

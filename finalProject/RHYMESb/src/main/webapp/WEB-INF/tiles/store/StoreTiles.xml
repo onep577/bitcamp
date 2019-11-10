@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+
+<!-- 상품 리스트 -->
+     <definition name="productList.tiles" template="/WEB-INF/views/store/layout/store_template.jsp">
+       <put-attribute name="header" value="/WEB-INF/views/common/layout/header.jsp" />
+       <put-attribute name="body" value="/WEB-INF/views/store/productList.jsp" />
+       <put-attribute name="left_menu" value="/WEB-INF/views/store/layout/left_store.jsp"/>
+       <put-attribute name="footer" value="/WEB-INF/views/common/layout/footer.jsp" />
+   </definition>
+<!-- 상품 디테일 -->
+	<definition name="productDetail.tiles" template="/WEB-INF/views/store/layout/store_template.jsp">
+       <put-attribute name="header" value="/WEB-INF/views/common/layout/header.jsp" />
+       <put-attribute name="body" value="/WEB-INF/views/store/productDetail.jsp"/>
+       <put-attribute name="left_menu" value="/WEB-INF/views/store/layout/left_store.jsp"/>
+       <put-attribute name="footer" value="/WEB-INF/views/common/layout/footer.jsp" />      
+    </definition>
+<!-- 상품등록 -->    
+   <definition name="register.tiles" template="/WEB-INF/views/store/register.jsp">       
+   </definition>
+<!-- 장바구니 --> 
+    <definition name="basket.tiles" template="/WEB-INF/views/store/layout/store_template2.jsp">
+       <put-attribute name="header" value="/WEB-INF/views/common/layout/header.jsp" />
+       <put-attribute name="body" value="/WEB-INF/views/store/basket.jsp"/>
+       <put-attribute name="footer" value="/WEB-INF/views/common/layout/footer.jsp" />
+    </definition>
+<!--SESSION 장바구니 --> 
+    <definition name="sessionbasket.tiles" template="/WEB-INF/views/store/layout/store_template2.jsp">
+       <put-attribute name="header" value="/WEB-INF/views/common/layout/header.jsp" />
+       <put-attribute name="body" value="/WEB-INF/views/store/sessionbasket.jsp"/>
+       <put-attribute name="footer" value="/WEB-INF/views/common/layout/footer.jsp" />
+    </definition>    
+
+</tiles-definitions>
+
+ 

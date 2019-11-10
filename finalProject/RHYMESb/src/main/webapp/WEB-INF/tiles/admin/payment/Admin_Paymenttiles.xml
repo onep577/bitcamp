@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<!-- 관리자 -->
+   	<definition name="paylist" template="/WEB-INF/views/admin/common/layout/admin_template_new.jsp">
+		<put-attribute name="ex_resources" value="/WEB-INF/views/admin/common/layout/admin_ex_resources.jsp" />
+	    <put-attribute name="left_menu" value="/WEB-INF/views/admin/common/layout/left_menu_new.jsp" />
+	    <put-attribute name="header" value="/WEB-INF/views/admin/common/layout/header_new.jsp" />
+	    <put-attribute name="content_main" value="/WEB-INF/views/admin/payment/payment_exchange.jsp" />
+	    <put-attribute name="footer" value="/WEB-INF/views/admin/common/layout/footer_new.jsp" />
+	</definition>
+	
+	<!-- 관리자페이지 결제내역조회 -->
+   	<definition name="success" extends="paylist">
+	    <put-attribute name="content_main" value="/WEB-INF/views/admin/payment/payment_list.jsp" />
+	</definition>
+	
+	<!-- 관리자페이지 결제상상세내역조회 -->
+   	<definition name="detail" extends="paylist">
+	    <put-attribute name="content_main" value="/WEB-INF/views/admin/payment/payment_detail_list.jsp" />
+	</definition>
+
+
+</tiles-definitions>
+
+

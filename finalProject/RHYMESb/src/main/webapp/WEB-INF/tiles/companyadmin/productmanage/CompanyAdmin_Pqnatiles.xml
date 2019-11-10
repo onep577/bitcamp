@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+ 
+
+   <!-- 상품문의 --> 
+   <!-- 리스트 -->
+   <definition name="adminpqnalist.tiles" template="/WEB-INF/views/admin/customer/layout/admin_customer_template.jsp">
+   		<put-attribute name="ex_resources" value="/WEB-INF/views/admin/common/layout/admin_ex_resources.jsp" />	
+		<put-attribute name="left_menu" value="/WEB-INF/views/admin/common/layout/left_menu_new.jsp" />
+ 	    <put-attribute name="header" value="/WEB-INF/views/admin/common/layout/header_new.jsp" />
+     	<put-attribute name="body" value="/WEB-INF/views/companyadmin/productqna/pqnalist.jsp" />
+     	<put-attribute name="footer" value="/WEB-INF/views/admin/common/layout/footer_new.jsp" />
+   </definition>
+  
+  <!-- Pqna detail -->
+   <definition name="adminpqnadetail.tiles" extends="adminpqnalist.tiles">
+        <put-attribute name="body" value="/WEB-INF/views/companyadmin/productqna/pqnadetail.jsp" />
+   </definition>
+
+ 	<!--글수정 -->
+   <definition name="adminpqnaupdate.tiles" extends="adminpqnalist.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/companyadmin/productqna/pqnaupdate.jsp"/>
+   </definition>
+   
+    <!-- pqna 답글 -->
+   <definition name="adminpqnaanswer.tiles" extends="adminpqnalist.tiles">
+       <put-attribute name="body" value="/WEB-INF/views/companyadmin/productqna/pqnaanswer.jsp"/>
+   </definition>  
+    
+    
+</tiles-definitions>

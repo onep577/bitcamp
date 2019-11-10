@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+   <definition name="used/test" template="/WEB-INF/views/used/test.jsp">
+   </definition>
+
+	<!-- 팝업창  -->
+   <definition name="popup" template="/WEB-INF/views/used/popup.jsp">
+   </definition>
+	
+	<!-- 기본 틀 -->
+	<definition name="usedlist.tiles" template="/WEB-INF/views/used/layout/used_template.jsp">
+  	   <put-attribute name="header" value="/WEB-INF/views/common/layout/header.jsp"/> 
+      <put-attribute name="body" value="/WEB-INF/views/used/usedlist.jsp"/>
+       <put-attribute name="left_menu" value="/WEB-INF/views/used/left_used.jsp"/> 
+  	   <put-attribute name="footer" value="/WEB-INF/views/common/layout/footer.jsp"/>
+   </definition>
+
+	<!-- 상품 등록 -->
+	<definition name="usedwrite.tiles" extends="usedlist.tiles">
+	<put-attribute name="header" value="/WEB-INF/views/common/layout/header.jsp"/> 
+	   <put-attribute name="body" value="/WEB-INF/views/used/usedwrite.jsp"/>
+	   <put-attribute name="left_menu" value="/WEB-INF/views/used/left_used.jsp"/> 
+  	   <put-attribute name="footer" value="/WEB-INF/views/common/layout/footer.jsp"/>       
+   </definition>
+   
+	<!-- 디테일 -->
+	<definition name="useddetail.tiles" extends="usedlist.tiles">
+		<put-attribute name="body" value="/WEB-INF/views/used/useddetail.jsp"/>       
+   </definition>
+
+   	<!-- 디테일 -->
+	<definition name="usedupdate.tiles" extends="usedlist.tiles">
+		<put-attribute name="body" value="/WEB-INF/views/used/usedupdate.jsp"/>       
+   </definition>
+   
+   
+   <!-- 쪽지 보내기  -->
+   
+   <!-- 팝업창  -->
+   <definition name="notesWrite.tiles" template="/WEB-INF/views/member/mypage/content/sub/noteswrite.jsp">  
+   </definition>
+   
+   <!-- 팝업창  -->
+   <definition name="notesdetail.tiles" template="/WEB-INF/views/member/mypage/content/sub/notesdetail.jsp">  
+   </definition>
+    
+   <!-- 팝업창  -->
+   <definition name="notesanswer.tiles" template="/WEB-INF/views/member/mypage/content/sub/notesanswer.jsp">  
+   </definition>
+	
+   
+   
+</tiles-definitions>

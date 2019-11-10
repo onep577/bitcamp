@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions> 
+	
+	<!-- 1.상품등록 -->
+	<definition name="CompanyAdminProductregister" template="/WEB-INF/views/admin/common/layout/admin_template_new.jsp">
+		<put-attribute name="ex_resources" value="/WEB-INF/views/admin/common/layout/admin_ex_resources.jsp" />	    
+	    <put-attribute name="left_menu" value="/WEB-INF/views/admin/common/layout/left_menu_new.jsp" />
+	    <put-attribute name="header" value="/WEB-INF/views/admin/common/layout/header_new.jsp" />
+	    <put-attribute name="content_main" value="/WEB-INF/views/companyadmin/productmanage/productregister.jsp" />
+	    <put-attribute name="footer" value="/WEB-INF/views/admin/common/layout/footer_new.jsp" />
+	</definition>
+	<!-- 2.상품조회 -->
+	<definition name="CompanyAdminProductlist" extends="CompanyAdminProductregister">
+	    <put-attribute name="content_main" value="/WEB-INF/views/companyadmin/productmanage/productlist.jsp" />
+	</definition>
+	<!-- 2(2).상품 상세조회 -->
+	<definition name="CompanyAdminStocklist" extends="CompanyAdminProductregister">
+	    <put-attribute name="content_main" value="/WEB-INF/views/companyadmin/productmanage/productstocklist.jsp" />
+	</definition>
+	<!-- 3.상품 수정 -->
+	<definition name="CompanyAdminProductOpertlist" extends="CompanyAdminProductregister">
+	    <put-attribute name="content_main" value="/WEB-INF/views/companyadmin/productmanage/productoperlist.jsp" />
+	</definition>
+	<!-- 3(1).상품 수정 -->
+	<definition name="CompanyAdminProductupdate" extends="CompanyAdminProductregister">
+	    <put-attribute name="content_main" value="/WEB-INF/views/companyadmin/productmanage/productupdate.jsp" />
+	</definition>
+	<!-- 4.SALE 상품관리 -->
+	<definition name="CompanyAdminSaleProduct" extends="CompanyAdminProductregister">
+	    <put-attribute name="content_main" value="/WEB-INF/views/companyadmin/productmanage/saleproductmanage.jsp" />
+	</definition>
+	<!-- 5.재고관리 -->
+	<definition name="CompanyAdminStockManage" extends="CompanyAdminProductregister">
+	    <put-attribute name="content_main" value="/WEB-INF/views/companyadmin/productmanage/stockmanage.jsp" />
+	</definition>
+	
+	
+</tiles-definitions>
+

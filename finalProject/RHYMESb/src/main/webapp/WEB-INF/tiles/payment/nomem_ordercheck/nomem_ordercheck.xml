@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<!-- main -->
+	<definition name="ordercheck.tiles" template="/WEB-INF/views/payment/nomem_ordercheck/layout/nomem_ordercheck_template.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/common/layout/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/common/layout/footer.jsp" />
+	</definition>
+	
+	<definition name="/order_confirm" extends="ordercheck.tiles">
+		<put-attribute name="body" value="/WEB-INF/views/payment/nomem_ordercheck/nomem_ordercheck_confirm.jsp" />
+	</definition>
+
+	<definition name="/order_detail" extends="ordercheck.tiles">
+		<put-attribute name="body" value="/WEB-INF/views/payment/nomem_ordercheck/nomem_ordercheck_detail.jsp" />
+	</definition>
+
+	<!-- 	
+	<definition name="/order_move" extends="ordercheck.tiles">
+		<put-attribute name="body" value="/WEB-INF/views/payment/nomem_ordercheck/nomem_ordercheck.jsp" />
+	</definition>
+
+	<definition name="/order_delivery_popup" template="/WEB-INF/views/payment/nomem_ordercheck/nomem_delivery_popup.jsp">
+	</definition>
+	
+	<definition name="/order_review_move" extends="ordercheck.tiles">
+		<put-attribute name="body" value="/WEB-INF/views/payment/nomem_ordercheck/nomem_ordercheck_review.jsp" />
+	</definition> -->
+
+
+
+</tiles-definitions>

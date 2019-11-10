@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<!-- main -->
+	<definition name="member/mypage" template="/WEB-INF/views/member/layout/mypage_template.jsp">
+	<!-- <definition name="member/mypage" template="/WEB-INF/views/member/layout/mypage_temp.jsp"> -->
+		<put-attribute name="header" value="/WEB-INF/views/common/layout/header.jsp" />
+        <put-attribute name="mypage_top" value="/WEB-INF/views/member/mypage/mypage_main_top.jsp" />
+		<put-attribute name="mypage_left" value="/WEB-INF/views/member/mypage/mypage_main_left.jsp" />
+		<put-attribute name="mypage_content" value="/WEB-INF/views/member/mypage/mypage_main_content.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/common/layout/footer.jsp" />
+	</definition>
+	
+	<!-- sub pages(orderlog, review, points, wishlist... )  -->
+	<definition name="member/mypage/*" extends="member/mypage">
+       <put-attribute name="mypage_content" value="/WEB-INF/views/member/mypage/content/{1}.jsp" />
+   	</definition>
+   	
+   	<!-- sub detail pages(order detail ...) -->
+   	<definition name="member/mypage/orderlog/detail" extends="member/mypage">
+       <put-attribute name="mypage_content" value="/WEB-INF/views/member/mypage/content/sub/orderdetail.jsp" />
+   	</definition>
+   	
+   	<!-- write new review view -->
+   	<definition name="member/mypage/review/writenew" extends="member/mypage">
+       <put-attribute name="mypage_content" value="/WEB-INF/views/member/mypage/content/sub/review_write_new.jsp" />
+   	</definition>
+   	
+   	<!-- sub-sub pages(written review, un written review ... )  -->
+	<definition name="member/mypage/sub/*" template="/WEB-INF/views/member/mypage/content/sub/{1}.jsp">
+       <put-attribute name="mypage_content" value="/WEB-INF/views/member/mypage/content/sub/{1}.jsp" />
+   	</definition>
+   
+   	<!-- patial pages(frm_personalform...) -->
+   	<definition name="member/mypagepartial/personalform" template="/WEB-INF/views/member/mypage/content/personalform.jsp">
+	</definition>
+	
+</tiles-definitions>
+
