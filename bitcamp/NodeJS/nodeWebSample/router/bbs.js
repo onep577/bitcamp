@@ -26,12 +26,12 @@ app.get("/bbslist", function (req, resp) {
     dbconn.execute(sql, {}, {outFormat:oracledb.OBJECT}, function (err, result) {
         if(err) { console.log("조회 실패"); }
 
-        console.log(result);
-
         str = JSON.stringify(result.rows);
         var json = JSON.parse(str);
 
-        console.log(json);
+        console.log("1 : " + result.rows);
+        console.log("2 : " + result.rows[0]);
+        console.log("3 : " + result.rows[0].ID);
 
         // bbslist.ejs
         resp.render("bbslist.ejs");

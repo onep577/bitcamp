@@ -1,0 +1,69 @@
+<%
+// 추가
+function arrow( depth ){	// depth = 0(부모글), depth = 1 ~ (댓글)
+    console.log("arrow");
+	var rs = "<img src='/arrow' width='20px' height='20px'/>";
+	var nbsp = "&nbsp;&nbsp;&nbsp;&nbsp;";	// 여백
+	
+	var ts = "";	
+	for(i = 0;i < depth; i++){
+		ts += nbsp;
+	}	
+    return depth==0?"":ts + rs;    
+}
+%>
+
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>bbslist</title>
+
+    <!-- 추가 -->
+    <link rel="stylesheet" type="text/css" href="/style"> 
+
+
+</head>
+<body>
+
+<h3>여기는 list.ejs</h3>
+
+<h2>환영합니다. <%=user %>님 반갑습니다</h2>
+
+<div align="center">
+
+<table border="1">
+<col width="70"><col width="500"><col width="150">
+
+<tr>
+    <th>번호</th><th>제목</th><th>작성자</th>
+</tr>
+     
+<% data.forEach(function (data,index){ %>
+<tr>
+    <td>
+        <%=index+1 %>
+    </td>    
+    <td>
+        <%- arrow( data.DEPTH ) %>                  
+        <a href='/bbsdetail?seq=<%= data.SEQ %>'><%=data.TITLE %></a>                                 
+    </td>
+    <td>
+        <%= data.ID %>
+    </td>            
+</tr>
+<% });%>    
+    
+</table>
+
+</div>
+<a href="/bbswrite">글쓰기</a>
+
+
+<script type="text/javascript">
+    alert("bbs");
+</script>
+
+</body>
+
+</html>
