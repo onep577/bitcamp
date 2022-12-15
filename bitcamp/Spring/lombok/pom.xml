@@ -32,7 +32,7 @@
  	<dependency>
 	  <groupId>org.springframework</groupId>
 	  <artifactId>spring-webmvc</artifactId>
-	  <version>5.1.5.RELEASE</version>
+	  <version>5.2.20.RELEASE</version>
 	</dependency>
 	
 	<!-- log4j와 slf4j는 logger 찍는데 필요하다 -->
